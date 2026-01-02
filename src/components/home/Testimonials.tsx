@@ -74,22 +74,26 @@ export default function Testimonials() {
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-10">
+          <div className="flex items-center justify-center gap-4 mt-10" role="group" aria-label="Testimonial navigation">
             <motion.button
               onClick={prev}
               className="w-12 h-12 rounded-full border border-border-light flex items-center justify-center hover:bg-primary-black hover:text-white hover:border-primary-black transition-all"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
+              aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5" aria-hidden="true" />
             </motion.button>
 
             {/* Dots */}
-            <div className="flex gap-2">
-              {testimonials.map((_, index) => (
+            <div className="flex gap-2" role="tablist" aria-label="Testimonial indicators">
+              {testimonials.map((testimonial, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrent(index)}
+                  role="tab"
+                  aria-selected={index === current}
+                  aria-label={`Go to testimonial ${index + 1} from ${testimonial.author}`}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === current 
                       ? 'bg-primary-black w-8' 
@@ -104,8 +108,9 @@ export default function Testimonials() {
               className="w-12 h-12 rounded-full border border-border-light flex items-center justify-center hover:bg-primary-black hover:text-white hover:border-primary-black transition-all"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
+              aria-label="Next testimonial"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5" aria-hidden="true" />
             </motion.button>
           </div>
         </AnimatedSection>

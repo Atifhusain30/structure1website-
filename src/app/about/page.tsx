@@ -65,7 +65,7 @@ export default function AboutPage() {
               </div>
 
               <h1 className="font-heading font-bold text-hero text-primary-black mb-6">
-                Building Dreams Since 2009
+                Building Dreams Since 2021
               </h1>
               <p className="text-text-gray text-xl leading-relaxed mb-8">
                 For over 4 years, Structure1 Construction has been transforming homes 
