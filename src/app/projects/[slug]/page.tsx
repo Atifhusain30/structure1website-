@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
@@ -96,31 +97,31 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Main Image */}
             <AnimatedSection className="lg:col-span-2">
-              <div className="aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-cream to-border-light">
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-text-gray font-heading">
-                    {project.title} - Main Image
-                  </span>
-                </div>
+              <div className="aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-cream to-border-light relative">
+                <Image
+                  src={project.images[0]}
+                  alt={`${project.title} - Main Image`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                />
               </div>
             </AnimatedSection>
 
             {/* Additional Images */}
-            <AnimatedSection delay={0.1}>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-cream to-border-light">
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-text-gray font-heading">Detail View 1</span>
+            {project.images.slice(1).map((image, index) => (
+              <AnimatedSection key={index} delay={0.1 * (index + 1)}>
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-cream to-border-light relative">
+                  <Image
+                    src={image}
+                    alt={`${project.title} - Detail View ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                  />
                 </div>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.2}>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-cream to-border-light">
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-text-gray font-heading">Detail View 2</span>
-                </div>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
@@ -190,4 +191,5 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     </>
   );
 }
+
 

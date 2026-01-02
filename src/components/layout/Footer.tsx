@@ -21,7 +21,7 @@ export default function Footer() {
             </Link>
             <p className="mt-6 text-gray-400 leading-relaxed">
               Building dreams into reality. Premium construction services with 
-              unmatched quality and craftsmanship for over 15 years.
+              unmatched quality and craftsmanship for over 4 years.
             </p>
             <div className="flex gap-4 mt-6">
               <motion.a
@@ -135,4 +135,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 

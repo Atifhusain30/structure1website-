@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -16,6 +17,7 @@ export default function ServiceCard({
   id, 
   title, 
   shortDescription,
+  image,
   index 
 }: ServiceCardProps) {
   return (
@@ -38,11 +40,17 @@ export default function ServiceCard({
           {/* Image */}
           <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-cream to-border-light">
             <motion.div
-              className="w-full h-full flex items-center justify-center"
+              className="w-full h-full"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-text-gray font-heading text-sm">{title}</span>
+              <Image
+                src={image}
+                alt={title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </motion.div>
           </div>
 

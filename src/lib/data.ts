@@ -4,7 +4,7 @@ export const services = [
     title: 'Patio Covers',
     shortDescription: 'Custom-designed outdoor living spaces that extend your home\'s comfort.',
     fullDescription: 'Transform your backyard into a stunning outdoor living area with our premium patio cover solutions. We design and build custom structures that provide shade, protection, and style to your outdoor spaces.',
-    image: '/images/services/patio-covers.jpg',
+    image: '/images/hero/Patio cover home 1.jpg',
     icon: 'sun',
     features: [
       'Attached & Freestanding Structures',
@@ -20,7 +20,7 @@ export const services = [
     title: 'Kitchens',
     shortDescription: 'Transform the heart of your home with modern, functional designs.',
     fullDescription: 'Create the kitchen of your dreams with our comprehensive renovation services. From custom cabinetry to countertop installation, we handle every detail to deliver a space that combines beauty with functionality.',
-    image: '/images/services/kitchens.jpg',
+    image: '/images/hero/kitchen remodel 1.jpg',
     icon: 'chef-hat',
     features: [
       'Full Kitchen Renovations',
@@ -36,7 +36,7 @@ export const services = [
     title: 'Floors',
     shortDescription: 'Premium flooring solutions from hardwood to luxury vinyl.',
     fullDescription: 'Elevate your space with beautiful, durable flooring that stands the test of time. Our expert team handles everything from hardwood installation to tile work, ensuring a flawless finish every time.',
-    image: '/images/services/floors.jpg',
+    image: '/images/hero/flooring 1.jpg',
     icon: 'layers',
     features: [
       'Hardwood Installation',
@@ -48,27 +48,11 @@ export const services = [
     ]
   },
   {
-    id: 'new-builds',
-    title: 'New Builds',
-    shortDescription: 'Custom homes and additions built to your exact specifications.',
-    fullDescription: 'From ground-up construction to room additions, we bring your vision to life with precision and care. Our full design-build service ensures a seamless experience from concept to completion.',
-    image: '/images/services/new-builds.jpg',
-    icon: 'building',
-    features: [
-      'Custom Home Construction',
-      'ADUs & Guest Houses',
-      'Room Additions',
-      'Garage Conversions',
-      'Full Design-Build Service',
-      'Permit Management'
-    ]
-  },
-  {
     id: 'pools',
     title: 'Pools',
     shortDescription: 'Create your backyard oasis with custom pool construction.',
     fullDescription: 'Dive into luxury with a custom-designed pool that transforms your backyard into a personal paradise. We handle everything from design to construction, including spas, water features, and decking.',
-    image: '/images/services/pools.jpg',
+    image: '/images/hero/pool 1.jpg',
     icon: 'waves',
     features: [
       'In-Ground Pool Construction',
@@ -88,8 +72,8 @@ export const projects = [
     title: 'Modern Backyard Oasis',
     category: 'pools',
     location: 'Dallas, TX',
-    image: '/images/projects/pool-1.jpg',
-    images: ['/images/projects/pool-1.jpg', '/images/projects/pool-1b.jpg'],
+    image: '/images/hero/ai pool 2.jpg',
+    images: ['/images/hero/AI pool.jpg', '/images/hero/ai pool 2.jpg', '/images/hero/ai pool 3.jpg'],
     description: 'Complete backyard transformation featuring a custom pool with water features, modern decking, and integrated lighting for the perfect outdoor entertainment space.',
     featured: true
   },
@@ -99,8 +83,8 @@ export const projects = [
     title: 'Contemporary Kitchen Remodel',
     category: 'kitchens',
     location: 'Austin, TX',
-    image: '/images/projects/kitchen-1.jpg',
-    images: ['/images/projects/kitchen-1.jpg'],
+    image: '/images/hero/AI kitchen.jpg',
+    images: ['/images/hero/AI kitchen.jpg'],
     description: 'A complete kitchen transformation with custom white cabinetry, quartz countertops, and state-of-the-art appliances.',
     featured: true
   },
@@ -110,8 +94,8 @@ export const projects = [
     title: 'Elegant Patio Extension',
     category: 'patio-covers',
     location: 'Houston, TX',
-    image: '/images/projects/patio-1.jpg',
-    images: ['/images/projects/patio-1.jpg'],
+    image: '/images/hero/AI patio cover.jpg',
+    images: ['/images/hero/AI patio cover.jpg'],
     description: 'A stunning covered patio with integrated fans, lighting, and outdoor kitchen area for year-round enjoyment.',
     featured: true
   },
@@ -121,20 +105,9 @@ export const projects = [
     title: 'Luxury Hardwood Flooring',
     category: 'floors',
     location: 'San Antonio, TX',
-    image: '/images/projects/floors-1.jpg',
-    images: ['/images/projects/floors-1.jpg'],
+    image: '/images/hero/AI flooring.jpg',
+    images: ['/images/hero/AI flooring.jpg'],
     description: 'Premium oak hardwood flooring installation throughout a 3,500 sq ft home with custom staining.',
-    featured: true
-  },
-  {
-    id: 5,
-    slug: 'custom-family-home',
-    title: 'Custom Family Home',
-    category: 'new-builds',
-    location: 'Fort Worth, TX',
-    image: '/images/projects/newbuild-1.jpg',
-    images: ['/images/projects/newbuild-1.jpg'],
-    description: 'A beautiful 4-bedroom custom home built from the ground up with modern amenities and energy-efficient features.',
     featured: true
   },
   {
@@ -143,8 +116,8 @@ export const projects = [
     title: 'Resort Style Pool',
     category: 'pools',
     location: 'Plano, TX',
-    image: '/images/projects/pool-2.jpg',
-    images: ['/images/projects/pool-2.jpg'],
+    image: '/images/hero/AI pool project.jpg',
+    images: ['/images/hero/AI pool project.jpg'],
     description: 'An expansive resort-style pool with infinity edge, spa, and natural stone surroundings.',
     featured: false
   },
@@ -154,8 +127,8 @@ export const projects = [
     title: 'Modern Open Kitchen',
     category: 'kitchens',
     location: 'Irving, TX',
-    image: '/images/projects/kitchen-2.jpg',
-    images: ['/images/projects/kitchen-2.jpg'],
+    image: '/images/hero/AI open kitchen.jpg',
+    images: ['/images/hero/AI open kitchen.jpg'],
     description: 'Open-concept kitchen renovation with large island, pendant lighting, and seamless flow to living areas.',
     featured: false
   },
@@ -165,8 +138,8 @@ export const projects = [
     title: 'Covered Outdoor Living',
     category: 'patio-covers',
     location: 'Frisco, TX',
-    image: '/images/projects/patio-2.jpg',
-    images: ['/images/projects/patio-2.jpg'],
+    image: '/images/hero/open outdoor living.jpg',
+    images: ['/images/hero/open outdoor living.jpg'],
     description: 'Aluminum patio cover with integrated ceiling fans, recessed lighting, and stone column accents.',
     featured: false
   }
@@ -209,7 +182,7 @@ export const testimonials = [
 
 export const stats = [
   { value: 150, suffix: '+', label: 'Projects Completed' },
-  { value: 15, suffix: '+', label: 'Years Experience' },
+  { value: 4, suffix: '+', label: 'Years Experience' },
   { value: 100, suffix: '%', label: 'Client Satisfaction' }
 ];
 
@@ -233,4 +206,5 @@ export const navigation = [
   { name: 'Projects', href: '/projects' },
   { name: 'Contact', href: '/contact' },
 ];
+
 

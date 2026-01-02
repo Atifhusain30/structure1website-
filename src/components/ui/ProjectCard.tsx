@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -17,6 +18,7 @@ export default function ProjectCard({
   slug, 
   title, 
   category,
+  image,
   location 
 }: ProjectCardProps) {
   return (
@@ -27,16 +29,22 @@ export default function ProjectCard({
         whileHover="hover"
         animate="rest"
       >
-        {/* Image Placeholder */}
+        {/* Project Image */}
         <motion.div
-          className="w-full h-full bg-gradient-to-br from-cream to-text-gray/20 flex items-center justify-center"
+          className="w-full h-full relative"
           variants={{
             rest: { scale: 1 },
             hover: { scale: 1.05 },
           }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-text-gray font-heading text-sm">{title}</span>
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </motion.div>
 
         {/* Overlay */}

@@ -9,7 +9,7 @@ import { stats } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about Structure1 Construction - over 15 years of experience delivering quality construction services in Texas. Meet our team and discover our values.',
+    'Learn about Structure1 Construction - over 4 years of experience delivering quality construction services in Texas. Meet our team and discover our values.',
 };
 
 const values = [
@@ -40,11 +40,11 @@ const values = [
 ];
 
 const milestones = [
-  { year: '2009', title: 'Company Founded', description: 'Structure1 Construction established in Dallas, TX' },
-  { year: '2012', title: 'Expanded Services', description: 'Added pool construction and patio covers to our offerings' },
-  { year: '2015', title: '100th Project', description: 'Celebrated completing our 100th construction project' },
-  { year: '2020', title: 'Regional Growth', description: 'Expanded operations across major Texas cities' },
-  { year: '2024', title: '150+ Projects', description: 'Continuing to grow with unwavering commitment to quality' },
+  { year: '2021', title: 'Company Founded', description: 'Structure1 Construction established in Dallas, TX' },
+  { year: '2022', title: 'Expanded Services', description: 'Added pool construction and patio covers to our offerings' },
+  { year: '2023', title: '50th Project', description: 'Celebrated completing our 50th construction project' },
+  { year: '2024', title: 'Regional Growth', description: 'Expanded operations across major Texas cities' },
+  { year: '2025', title: '150+ Projects', description: 'Continuing to grow with unwavering commitment to quality' },
 ];
 
 export default function AboutPage() {
@@ -68,7 +68,7 @@ export default function AboutPage() {
                 Building Dreams Since 2009
               </h1>
               <p className="text-text-gray text-xl leading-relaxed mb-8">
-                For over 15 years, Structure1 Construction has been transforming homes 
+                For over 4 years, Structure1 Construction has been transforming homes 
                 across Texas. We combine traditional craftsmanship with modern innovation 
                 to deliver exceptional results.
               </p>
