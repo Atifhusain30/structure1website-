@@ -195,7 +195,7 @@ export const companyInfo = {
   hours: 'Mon - Fri: 8:00 AM - 6:00 PM',
   social: {
     facebook: 'https://facebook.com/structure1',
-    instagram: 'https://instagram.com/structure1',
+    instagram: 'https://www.instagram.com/structure1builds/',
     linkedin: 'https://linkedin.com/company/structure1',
   }
 };
