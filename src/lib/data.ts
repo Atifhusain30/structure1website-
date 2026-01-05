@@ -194,7 +194,7 @@ export const companyInfo = {
   address: '123 Construction Ave, Dallas, TX 75201',
   hours: 'Mon - Fri: 8:00 AM - 6:00 PM',
   social: {
-    facebook: 'https://facebook.com/structure1',
+    facebook: 'https://www.facebook.com/profile.php?id=61585877196113',
     instagram: 'https://www.instagram.com/structure1builds/',
     linkedin: 'https://linkedin.com/company/structure1',
   }
