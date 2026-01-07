@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 import StructuredData from '@/components/seo/StructuredData';
+import FloatingPhone from '@/components/ui/FloatingPhone';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -90,6 +91,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
         <StructuredData />
+        <FloatingPhone />
       </body>
     </html>
   );
