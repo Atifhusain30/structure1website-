@@ -11,10 +11,10 @@ export default function StructuredData() {
     "email": companyInfo.email,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "123 Construction Ave",
+      "streetAddress": "5473 Blair Rd Ste 100 PMB 476653",
       "addressLocality": "Dallas",
       "addressRegion": "TX",
-      "postalCode": "75201",
+      "postalCode": "75231-4227",
       "addressCountry": "US"
     },
     "geo": {
@@ -70,6 +70,7 @@ export default function StructuredData() {
     </>
   );
 }
+
 
 
 

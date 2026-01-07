@@ -191,7 +191,7 @@ export const companyInfo = {
   tagline: 'Where Quality Meets Craftsmanship',
   phone: '(555) 123-4567',
   email: 'info@structure1.com',
-  address: '123 Construction Ave, Dallas, TX 75201',
+  address: '5473 Blair Rd Ste 100 PMB 476653, Dallas, TX 75231-4227',
   hours: 'Mon - Fri: 8:00 AM - 6:00 PM',
   social: {
     facebook: 'https://www.facebook.com/profile.php?id=61585877196113',
