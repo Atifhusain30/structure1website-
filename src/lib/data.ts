@@ -190,7 +190,7 @@ export const companyInfo = {
   name: 'Structure1 Construction',
   tagline: 'Where Quality Meets Craftsmanship',
   phone: '(580) 665-2758',
-  email: 'info@structure1.com',
+  email: 'samuel.c.w.allison@gmail.com',
   address: '5473 Blair Rd Ste 100 PMB 476653, Dallas, TX 75231-4227',
   hours: 'Mon - Fri: 8:00 AM - 6:00 PM',
   social: {

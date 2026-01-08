@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Check, Loader2 } from 'lucide-react';
+import { Send, Check, Loader2, AlertCircle } from 'lucide-react';
 import { services } from '@/lib/data';
 
 interface FormData {
@@ -23,23 +23,44 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Submit to Netlify Function
+      const response = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit form');
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('Form submission error:', err);
+      setError('There was an error sending your message. Please try again or call us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -53,7 +74,30 @@ export default function ContactForm() {
             transition={{ duration: 0.3 }}
             onSubmit={handleSubmit}
             className="space-y-6"
+            name="contact"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
           >
+            {/* Honeypot field for spam protection */}
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don&apos;t fill this out: <input name="bot-field" />
+              </label>
+            </p>
+
+            {/* Error Message */}
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3"
+              >
+                <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                <p className="text-red-700 text-sm">{error}</p>
+              </motion.div>
+            )}
+
             {/* Name */}
             <div>
               <label
@@ -148,11 +192,11 @@ export default function ContactForm() {
               >
                 <option value="">Select a service</option>
                 {services.map((service) => (
-                  <option key={service.id} value={service.id}>
+                  <option key={service.id} value={service.title}>
                     {service.title}
                   </option>
                 ))}
-                <option value="other">Other</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
@@ -242,4 +286,3 @@ export default function ContactForm() {
     </div>
   );
 }
-
