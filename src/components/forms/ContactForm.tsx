@@ -74,17 +74,7 @@ export default function ContactForm() {
             transition={{ duration: 0.3 }}
             onSubmit={handleSubmit}
             className="space-y-6"
-            name="contact"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
           >
-            {/* Honeypot field for spam protection */}
-            <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden">
-              <label>
-                Don&apos;t fill this out: <input name="bot-field" />
-              </label>
-            </p>
 
             {/* Error Message */}
             {error && (
