@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
 const galleryImages = [
@@ -126,78 +126,56 @@ export default function GableGallery() {
             {/* Main Image Display - Right Side */}
             <div className="lg:col-span-8 order-1 lg:order-2">
               <motion.div
-                className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-primary-black/5"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-[#1a1a1a]"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.5 }}
               >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeIndex}
-                    initial={{ 
-                      opacity: 0, 
-                      scale: 1.1,
-                      filter: 'blur(10px)',
-                    }}
-                    animate={{ 
-                      opacity: 1, 
-                      scale: 1,
-                      filter: 'blur(0px)',
-                    }}
-                    exit={{ 
-                      opacity: 0, 
-                      scale: 0.95,
-                      filter: 'blur(10px)',
-                    }}
-                    transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="absolute inset-0"
+                {/* Pre-load all images to prevent glitching */}
+                {galleryImages.map((image, idx) => (
+                  <div
+                    key={idx}
+                    className={`absolute inset-0 transition-opacity duration-500 ${
+                      idx === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
                   >
                     <Image
-                      src={galleryImages[activeIndex].src}
-                      alt={galleryImages[activeIndex].alt}
+                      src={image.src}
+                      alt={image.alt}
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 700px"
                       quality={85}
-                      priority
-                      placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSIRMxQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMRIf/aAAwDAQACEQMRAD8AyDT9MuNV1GK0tIzLPK2FRfpPwD2SBgdZzWt7Y2vb7W13ELq3huRH5AjljDhS3ElRkd4H7SlKpZNhaZ//2Q=="
+                      priority={idx === 0}
+                      loading={idx === 0 ? 'eager' : 'lazy'}
                     />
-                    
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary-black/60 via-primary-black/10 to-transparent" />
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
+                ))}
+                
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-black/60 via-primary-black/10 to-transparent z-20 pointer-events-none" />
 
                 {/* Content overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={`content-${activeIndex}`}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
-                    >
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="w-8 h-[2px] bg-accent-warm" />
-                        <span className="text-accent-warm text-sm font-medium uppercase tracking-wider">
-                          Step {activeIndex + 1} of {galleryImages.length}
-                        </span>
-                      </div>
-                      <h3 className="font-heading font-bold text-3xl text-white mb-2">
-                        {galleryImages[activeIndex].title}
-                      </h3>
-                      <p className="text-white/80 text-lg">
-                        {galleryImages[activeIndex].subtitle}
-                      </p>
-                    </motion.div>
-                  </AnimatePresence>
+                <div className="absolute bottom-0 left-0 right-0 p-8 z-30">
+                  <div className="transition-opacity duration-300">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="w-8 h-[2px] bg-accent-warm" />
+                      <span className="text-accent-warm text-sm font-medium uppercase tracking-wider">
+                        Step {activeIndex + 1} of {galleryImages.length}
+                      </span>
+                    </div>
+                    <h3 className="font-heading font-bold text-3xl text-white mb-2">
+                      {galleryImages[activeIndex].title}
+                    </h3>
+                    <p className="text-white/80 text-lg">
+                      {galleryImages[activeIndex].subtitle}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Navigation arrows */}
-                <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between pointer-events-none">
+                <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between pointer-events-none z-30">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -222,7 +200,7 @@ export default function GableGallery() {
 
                 {/* Floating badge */}
                 <motion.div
-                  className="absolute top-6 right-6"
+                  className="absolute top-6 right-6 z-30"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5, type: 'spring' }}

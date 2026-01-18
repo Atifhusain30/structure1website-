@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
 const galleryImages = [
@@ -66,53 +66,44 @@ export default function PatioGallery() {
 
         {/* Animated Gallery */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-30px' }}
-          transition={{ duration: isMobile ? 0.4 : 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative w-full max-w-4xl mx-auto aspect-[4/3] sm:aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden bg-primary-black/5 gpu-accelerated"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative w-full max-w-4xl mx-auto aspect-[4/3] sm:aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden bg-[#1a1a1a] gpu-accelerated"
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: isMobile ? 1 : 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: isMobile ? 1 : 0.95 }}
-              transition={{ duration: isMobile ? 0.4 : 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute inset-0"
+          {/* Pre-load all images to prevent glitching */}
+          {galleryImages.map((image, idx) => (
+            <div
+              key={idx}
+              className={`absolute inset-0 transition-opacity duration-500 ${
+                idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
             >
               <Image
-                src={galleryImages[currentIndex].src}
-                alt={galleryImages[currentIndex].alt}
+                src={image.src}
+                alt={image.alt}
                 fill
                 className="object-cover"
                 sizes="(max-width: 375px) 100vw, (max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
                 quality={isMobile ? 70 : 80}
-                priority={currentIndex === 0}
-                loading={currentIndex === 0 ? 'eager' : 'lazy'}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSIRMxQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMRIf/aAAwDAQACEQMRAD8AyDT9MuNV1GK0tIzLPK2FRfpPwD2SBgdZzWt7Y2vb7W13ELq3huRH5AjljDhS3ElRkd4H7SlKpZNhaZ//2Q=="
+                priority={idx < 2}
+                loading={idx < 2 ? 'eager' : 'lazy'}
               />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-black/40 via-transparent to-transparent" />
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          ))}
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-black/40 via-transparent to-transparent z-20 pointer-events-none" />
 
           {/* Progress indicator label */}
-          <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-10">
-            <motion.span
-              key={`label-${currentIndex}`}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white/90 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium text-primary-black"
-            >
+          <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-30">
+            <span className="bg-white/90 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium text-primary-black transition-opacity duration-300">
               {galleryImages[currentIndex].label}
-            </motion.span>
+            </span>
           </div>
 
           {/* Navigation dots - touch-friendly */}
-          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-10">
+          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-30">
             {galleryImages.map((_, index) => (
               <button
                 key={index}
@@ -141,7 +132,7 @@ export default function PatioGallery() {
           </div>
 
           {/* Thumbnail strip - hidden on mobile */}
-          <div className="absolute bottom-6 right-6 hidden lg:flex gap-2 z-10">
+          <div className="absolute bottom-6 right-6 hidden lg:flex gap-2 z-30">
             {galleryImages.map((image, index) => (
               <motion.button
                 key={index}

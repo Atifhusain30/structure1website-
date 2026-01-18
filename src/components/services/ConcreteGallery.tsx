@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
 const concreteImages = [
@@ -18,8 +18,8 @@ const concreteImages = [
   },
   {
     src: '/images/hero/concrete3.jpg',
-    alt: 'Herringbone brick pattern concrete',
-    label: 'Herringbone Brick',
+    alt: 'Fresh poured concrete slab foundation',
+    label: 'Foundation Work',
   },
   {
     src: '/images/hero/Concrete4.jpg',
@@ -28,8 +28,8 @@ const concreteImages = [
   },
   {
     src: '/images/hero/Concrete5.jpg',
-    alt: 'Fresh poured concrete slab foundation',
-    label: 'Foundation Work',
+    alt: 'Herringbone brick pattern concrete',
+    label: 'Herringbone Brick',
   },
   {
     src: '/images/hero/concrete6.PNG',
@@ -93,50 +93,43 @@ export default function ConcreteGallery() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {/* Featured Large Image */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden bg-[#2a2a2a]"
+            transition={{ duration: 0.5 }}
+            className="relative aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden bg-[#1a1a1a]"
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="absolute inset-0"
+            {/* Pre-load all images to prevent glitching */}
+            {concreteImages.map((image, idx) => (
+              <div
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
               >
                 <Image
-                  src={concreteImages[currentIndex].src}
-                  alt={concreteImages[currentIndex].alt}
+                  src={image.src}
+                  alt={image.alt}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                   quality={80}
-                  priority
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSIRMxQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMRIf/aAAwDAQACEQMRAD8AyDT9MuNV1GK0tIzLPK2FRfpPwD2SBgdZzWt7Y2vb7W13ELq3huRH5AjljDhS3ElRkd4H7SlKpZNhaZ//2Q=="
+                  priority={idx < 2}
+                  loading={idx < 2 ? 'eager' : 'lazy'}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            ))}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-20 pointer-events-none" />
 
             {/* Label */}
-            <div className="absolute top-4 left-4 z-10">
-              <motion.span
-                key={`label-${currentIndex}`}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-primary-black shadow-lg"
-              >
+            <div className="absolute top-4 left-4 z-30">
+              <span className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-primary-black shadow-lg transition-opacity duration-300">
                 {concreteImages[currentIndex].label}
-              </motion.span>
+              </span>
             </div>
 
             {/* Progress Dots */}
-            <div className="absolute bottom-4 left-4 right-4 flex justify-center gap-2 z-10">
+            <div className="absolute bottom-4 left-4 right-4 flex justify-center gap-2 z-30">
               {concreteImages.map((_, idx) => (
                 <button
                   key={idx}
