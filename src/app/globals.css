@@ -265,24 +265,39 @@ select:focus-visible {
 
 /* Optimize images for all devices */
 img {
-  /* Prevent layout shift */
-  contain: layout style paint;
   /* FIX: iOS image rotation - respect EXIF orientation */
   image-orientation: from-image;
-  /* GPU acceleration for smooth rendering */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  /* Smooth image rendering */
+  /* Prevent flickering during load */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  /* Better image quality on high DPI screens */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+}
+
+/* iOS-specific image fixes */
+@supports (-webkit-touch-callout: none) {
+  img {
+    /* Force GPU rendering on iOS */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    /* Prevent image flickering on iOS Safari */
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  
+  /* Fix for Next.js Image component on iOS */
+  img[decoding="async"] {
+    will-change: auto;
+  }
 }
 
 /* Next.js Image component optimization */
 img[loading="lazy"] {
   content-visibility: auto;
+}
+
+/* Fix image container glitching */
+[class*="aspect-"] {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Ensure smooth transitions for images */
@@ -295,13 +310,6 @@ img[loading="lazy"] {
 
 /* Mobile-optimized animations */
 @media (max-width: 768px) {
-  /* Reduce transition complexity on mobile - but NOT animation durations */
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.2s !important;
-  }
-  
   /* Disable complex transforms on mobile for better performance */
   .perspective-1000 {
     perspective: none;
@@ -312,6 +320,13 @@ img[loading="lazy"] {
   .shadow-xl {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
   }
+}
+
+/* Prevent image glitching during transitions */
+.transition-opacity img,
+[class*="transition"] img {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Rotating badge - ensure smooth rotation on all devices */

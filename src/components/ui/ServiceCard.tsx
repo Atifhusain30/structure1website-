@@ -104,142 +104,102 @@ export default function ServiceCard({
             }}
             transition={{ duration: isTouchDevice ? 0.2 : 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Photo Collage Grid */}
+                {/* Photo Collage Grid */}
             {hasCollage ? (
               <div className="relative p-3 md:p-4">
                 <div className="grid grid-cols-3 grid-rows-3 gap-1.5 md:gap-2 h-[280px] sm:h-[340px] md:h-[400px]">
                   {/* Top left - small */}
-                  <motion.div 
-                    className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.05 }}
-                  >
+                  <div className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]">
                     <Image
                       src={galleryImages[0]}
                       alt={`${title} project 1`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 33vw, 150px"
-                      quality={75}
+                      quality={70}
                       loading="eager"
                       placeholder="blur"
                       blurDataURL={blurDataURL}
                     />
-                  </motion.div>
+                  </div>
                   
                   {/* Top center - small */}
-                  <motion.div 
-                    className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                  >
+                  <div className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]">
                     <Image
                       src={galleryImages[1]}
                       alt={`${title} project 2`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 33vw, 150px"
-                      quality={75}
+                      quality={70}
                       loading="eager"
                       placeholder="blur"
                       blurDataURL={blurDataURL}
                     />
-                  </motion.div>
+                  </div>
                   
                   {/* Top right - large, spans 2 rows */}
-                  <motion.div 
-                    className="relative rounded-lg md:rounded-xl overflow-hidden row-span-2 bg-[#2a2a2a]"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.15 }}
-                  >
+                  <div className="relative rounded-lg md:rounded-xl overflow-hidden row-span-2 bg-[#2a2a2a]">
                     <Image
                       src={galleryImages[2]}
                       alt={`${title} project 3`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 33vw, 200px"
-                      quality={80}
+                      quality={75}
                       loading="eager"
                       placeholder="blur"
                       blurDataURL={blurDataURL}
                     />
-                  </motion.div>
+                  </div>
                   
                   {/* Middle left - medium, spans 2 columns */}
-                  <motion.div 
-                    className="relative rounded-lg md:rounded-xl overflow-hidden col-span-2 bg-[#2a2a2a]"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.2 }}
-                  >
+                  <div className="relative rounded-lg md:rounded-xl overflow-hidden col-span-2 bg-[#2a2a2a]">
                     <Image
                       src={galleryImages[3]}
                       alt={`${title} project 4`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 66vw, 300px"
-                      quality={80}
+                      quality={75}
                       loading="eager"
                       placeholder="blur"
                       blurDataURL={blurDataURL}
                     />
-                  </motion.div>
+                  </div>
                   
                   {/* Bottom row - 3 small images */}
-                  <motion.div 
-                    className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.25 }}
-                  >
+                  <div className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]">
                     <Image
                       src={galleryImages[4]}
                       alt={`${title} project 5`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 33vw, 150px"
-                      quality={75}
+                      quality={70}
+                      loading="lazy"
                       placeholder="blur"
                       blurDataURL={blurDataURL}
                     />
-                  </motion.div>
+                  </div>
                   
-                  <motion.div 
-                    className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                  >
+                  <div className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]">
                     <Image
                       src={galleryImages[5]}
                       alt={`${title} project 6`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 33vw, 150px"
-                      quality={75}
+                      quality={70}
+                      loading="lazy"
                       placeholder="blur"
                       blurDataURL={blurDataURL}
                     />
-                  </motion.div>
+                  </div>
                   
                   {/* Last cell - show 7th image or more count (only if there are more than 6 images) */}
                   {galleryImages.length > 6 && (
-                    <motion.div 
-                      className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.35 }}
-                    >
+                    <div className="relative rounded-lg md:rounded-xl overflow-hidden bg-[#2a2a2a]">
                       {galleryImages[6] && (
                         <Image
                           src={galleryImages[6]}
@@ -247,7 +207,8 @@ export default function ServiceCard({
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 33vw, 150px"
-                          quality={75}
+                          quality={70}
+                          loading="lazy"
                           placeholder="blur"
                           blurDataURL={blurDataURL}
                         />
@@ -257,7 +218,7 @@ export default function ServiceCard({
                           <span className="text-white/90 text-sm font-medium">+{galleryImages.length - 7}</span>
                         </div>
                       )}
-                    </motion.div>
+                    </div>
                   )}
                 </div>
               </div>
