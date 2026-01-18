@@ -209,13 +209,17 @@ export default function RecentWork() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: isMobile ? 0.2 : 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 safe-top safe-bottom"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95"
             onClick={closeLightbox}
+            style={{ 
+              paddingBottom: 'env(safe-area-inset-bottom)',
+              paddingTop: 'env(safe-area-inset-top)'
+            }}
           >
             {/* Close Button - larger tap target for mobile */}
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 p-3 sm:p-3 rounded-full bg-white/10 active:bg-white/30 transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Close lightbox"
             >
               <X className="w-6 h-6 text-white" />
@@ -241,7 +245,10 @@ export default function RecentWork() {
               />
 
               {/* Project Info */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
+              <div 
+                className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <span className="text-amber-400 text-xs sm:text-sm font-medium uppercase tracking-wider">
                   {selectedProject.location}
                 </span>
@@ -251,12 +258,10 @@ export default function RecentWork() {
               </div>
             </motion.div>
 
-            {/* Tap to close hint on mobile */}
-            {isMobile && (
-              <div className="absolute bottom-safe-area-inset-bottom pb-8 left-0 right-0 text-center">
-                <span className="text-white/50 text-xs">Tap anywhere to close</span>
-              </div>
-            )}
+            {/* Tap to close hint - always visible */}
+            <div className="mt-4 text-center pointer-events-none">
+              <span className="text-white/40 text-xs">Tap anywhere to close</span>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

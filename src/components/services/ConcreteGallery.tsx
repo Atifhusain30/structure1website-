@@ -274,6 +274,7 @@ export default function ConcreteGallery() {
             ? 'opacity-100 pointer-events-auto' 
             : 'opacity-0 pointer-events-none'
         }`}
+        onClick={closeLightbox}
         style={{ 
           paddingBottom: 'env(safe-area-inset-bottom)',
           paddingTop: 'env(safe-area-inset-top)'
@@ -284,15 +285,14 @@ export default function ConcreteGallery() {
           className={`absolute inset-0 bg-black transition-opacity duration-300 ${
             lightboxOpen ? 'opacity-95' : 'opacity-0'
           }`}
-          onClick={closeLightbox}
         />
         
         {/* Content */}
-        <div className="relative h-full flex items-center justify-center p-4 sm:p-8">
+        <div className="relative h-full flex flex-col items-center justify-center p-4 sm:p-8">
           {/* Close button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors touch-manipulation"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 active:bg-white/30 transition-colors touch-manipulation"
             aria-label="Close lightbox"
           >
             <X className="w-6 h-6" />
@@ -301,7 +301,7 @@ export default function ConcreteGallery() {
           {/* Navigation - Previous */}
           <button
             onClick={(e) => { e.stopPropagation(); prevImage(); }}
-            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors touch-manipulation"
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 active:bg-white/30 transition-colors touch-manipulation"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -310,7 +310,7 @@ export default function ConcreteGallery() {
           {/* Navigation - Next */}
           <button
             onClick={(e) => { e.stopPropagation(); nextImage(); }}
-            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors touch-manipulation"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 active:bg-white/30 transition-colors touch-manipulation"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
@@ -342,35 +342,44 @@ export default function ConcreteGallery() {
             ))}
           </div>
 
-          {/* Label and counter */}
-          <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 text-center">
+          {/* Label, counter, and thumbnails */}
+          <div 
+            className="mt-4 flex flex-col items-center gap-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Thumbnail strip */}
+            <div className="flex gap-2">
+              {concreteImages.map((image, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => { e.stopPropagation(); setLightboxIndex(idx); }}
+                  className={`relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden transition-all duration-200 touch-manipulation ${
+                    idx === lightboxIndex 
+                      ? 'ring-2 ring-white scale-110' 
+                      : 'opacity-50 hover:opacity-100'
+                  }`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                    sizes="48px"
+                    quality={50}
+                  />
+                </button>
+              ))}
+            </div>
+
+            {/* Label and counter */}
             <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-medium">
               {concreteImages[lightboxIndex].label} — {lightboxIndex + 1} / {concreteImages.length}
             </span>
           </div>
 
-          {/* Thumbnail strip */}
-          <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
-            {concreteImages.map((image, idx) => (
-              <button
-                key={idx}
-                onClick={(e) => { e.stopPropagation(); setLightboxIndex(idx); }}
-                className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden transition-all duration-200 touch-manipulation ${
-                  idx === lightboxIndex 
-                    ? 'ring-2 ring-white scale-110' 
-                    : 'opacity-50 hover:opacity-100'
-                }`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  sizes="56px"
-                  quality={50}
-                />
-              </button>
-            ))}
+          {/* Tap to close hint */}
+          <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+            <span className="text-white/40 text-xs">Tap anywhere to close</span>
           </div>
         </div>
       </div>

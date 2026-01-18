@@ -190,13 +190,18 @@ export default function ProjectGallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-sm"
             onClick={closeLightbox}
+            style={{ 
+              paddingBottom: 'env(safe-area-inset-bottom)',
+              paddingTop: 'env(safe-area-inset-top)'
+            }}
           >
             {/* Close Button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label="Close lightbox"
             >
               <X className="w-6 h-6 text-white" />
             </button>
@@ -225,13 +230,15 @@ export default function ProjectGallery() {
                 <>
                   <button
                     onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/30 transition-colors"
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/30 active:bg-white/40 transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+                    aria-label="Previous image"
                   >
                     <ChevronLeft className="w-6 h-6 text-white" />
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/30 transition-colors"
+                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/30 active:bg-white/40 transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+                    aria-label="Next image"
                   >
                     <ChevronRight className="w-6 h-6 text-white" />
                   </button>
@@ -239,11 +246,14 @@ export default function ProjectGallery() {
               )}
 
               {/* Project Info */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
-                <span className="text-amber-400 text-sm font-medium uppercase tracking-wider">
+              <div 
+                className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <span className="text-amber-400 text-xs sm:text-sm font-medium uppercase tracking-wider">
                   {selectedProject.category.replace('-', ' ')} • {selectedProject.location}
                 </span>
-                <h3 className="text-white font-heading font-bold text-2xl mt-1">
+                <h3 className="text-white font-heading font-bold text-lg sm:text-2xl mt-1">
                   {selectedProject.title}
                 </h3>
                 {selectedProject.images.length > 1 && (
@@ -252,17 +262,23 @@ export default function ProjectGallery() {
                       <button
                         key={index}
                         onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(index); }}
-                        className={`w-2 h-2 rounded-full transition-all ${
+                        className={`w-2 h-2 rounded-full transition-all touch-manipulation ${
                           index === currentImageIndex 
                             ? 'bg-amber-400 w-6' 
                             : 'bg-white/40 hover:bg-white/60'
                         }`}
+                        aria-label={`Go to image ${index + 1}`}
                       />
                     ))}
                   </div>
                 )}
               </div>
             </motion.div>
+
+            {/* Tap to close hint */}
+            <div className="mt-4 text-center pointer-events-none">
+              <span className="text-white/40 text-xs">Tap anywhere to close</span>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
