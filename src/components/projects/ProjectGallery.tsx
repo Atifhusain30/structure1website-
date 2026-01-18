@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import ProjectFilter from './ProjectFilter';
@@ -57,21 +57,21 @@ export default function ProjectGallery() {
     setCurrentImageIndex(0);
   };
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     if (selectedProject && selectedProject.images.length > 1) {
       setCurrentImageIndex((prev) => 
         prev === selectedProject.images.length - 1 ? 0 : prev + 1
       );
     }
-  };
+  }, [selectedProject]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     if (selectedProject && selectedProject.images.length > 1) {
       setCurrentImageIndex((prev) => 
         prev === 0 ? selectedProject.images.length - 1 : prev - 1
       );
     }
-  };
+  }, [selectedProject]);
 
   // Handle keyboard navigation
   useEffect(() => {
