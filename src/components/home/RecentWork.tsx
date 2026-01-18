@@ -150,11 +150,9 @@ export default function RecentWork() {
                   alt={project.title}
                   fill
                   className={`object-cover ${!isMobile ? 'transition-transform duration-500 group-hover:scale-105' : ''}`}
-                  style={{ imageOrientation: 'from-image' }}
                   sizes="(max-width: 375px) 50vw, (max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   quality={isMobile ? 70 : 80}
                   loading={index < 4 ? 'eager' : 'lazy'}
-                  unoptimized={isMobile}
                 />
                 
                 {/* Overlay - always visible on mobile */}

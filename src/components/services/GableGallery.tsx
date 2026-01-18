@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
@@ -29,14 +29,6 @@ const galleryImages = [
 export default function GableGallery() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [, setHoveredIndex] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   return (
     <section className="py-section bg-gradient-to-b from-cream to-off-white overflow-hidden">
@@ -153,12 +145,10 @@ export default function GableGallery() {
                       alt={image.alt}
                       fill
                       className="object-cover"
-                      style={{ imageOrientation: 'from-image' }}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 700px"
                       quality={85}
                       priority={idx === 0}
                       loading={idx === 0 ? 'eager' : 'lazy'}
-                      unoptimized={isMobile}
                     />
                   </div>
                 ))}

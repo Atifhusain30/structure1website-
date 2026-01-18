@@ -99,11 +99,9 @@ export default function Hero() {
                   alt="Custom gable patio cover with outdoor furniture"
                   fill
                   className="object-cover"
-                  style={{ imageOrientation: 'from-image' }}
                   sizes="(max-width: 375px) 65vw, (max-width: 640px) 70vw, (max-width: 1024px) 50vw, 35vw"
                   quality={isMobile ? 70 : 80}
                   priority
-                  unoptimized={isMobile}
                 />
               </motion.div>
 
@@ -120,11 +118,9 @@ export default function Hero() {
                   alt="Pergola with polycarbonate roofing and ceiling fan"
                   fill
                   className="object-cover"
-                  style={{ imageOrientation: 'from-image' }}
                   sizes="(max-width: 375px) 50vw, (max-width: 640px) 55vw, (max-width: 1024px) 40vw, 28vw"
                   quality={isMobile ? 70 : 80}
                   priority
-                  unoptimized={isMobile}
                 />
               </motion.div>
 
@@ -141,11 +137,9 @@ export default function Hero() {
                   alt="Beautiful patio cover illuminated at night"
                   fill
                   className="object-cover"
-                  style={{ imageOrientation: 'from-image' }}
                   sizes="(max-width: 375px) 40vw, (max-width: 640px) 45vw, (max-width: 1024px) 35vw, 23vw"
                   quality={isMobile ? 70 : 80}
                   loading={isMobile ? 'lazy' : 'eager'}
-                  unoptimized={isMobile}
                 />
               </motion.div>
 

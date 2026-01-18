@@ -154,12 +154,10 @@ export default function ConcreteGallery() {
                     alt={image.alt}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    style={{ imageOrientation: 'from-image' }}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                     quality={80}
                     priority={idx < 2}
                     loading={idx < 2 ? 'eager' : 'lazy'}
-                    unoptimized={isMobile}
                   />
                 </div>
               ))}
