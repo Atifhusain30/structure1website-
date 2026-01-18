@@ -266,26 +266,49 @@ select:focus-visible {
 /* Optimize images for all devices */
 img {
   /* FIX: iOS image rotation - respect EXIF orientation */
-  image-orientation: from-image;
+  image-orientation: from-image !important;
   /* Prevent flickering during load */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
+/* Force image orientation on ALL images including Next.js */
+img,
+img[decoding="async"],
+img[loading="lazy"],
+img[loading="eager"],
+[data-nimg] img,
+[data-nimg="fill"] img,
+[data-nimg="1"] img,
+[data-nimg="intrinsic"] img,
+[data-nimg="responsive"] img,
+span > img,
+div > img,
+picture > img,
+figure > img {
+  image-orientation: from-image !important;
+  -webkit-image-orientation: from-image !important;
+}
+
+/* Next.js Image wrapper fix */
+span[style*="position: absolute"] > img,
+div[style*="position: absolute"] > img {
+  image-orientation: from-image !important;
+}
+
 /* iOS-specific image fixes */
 @supports (-webkit-touch-callout: none) {
-  img {
+  img,
+  img[decoding="async"],
+  [data-nimg] img {
     /* Force GPU rendering on iOS */
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     /* Prevent image flickering on iOS Safari */
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-  }
-  
-  /* Fix for Next.js Image component on iOS */
-  img[decoding="async"] {
-    will-change: auto;
+    /* Force orientation fix on iOS Safari */
+    image-orientation: from-image !important;
   }
 }
 

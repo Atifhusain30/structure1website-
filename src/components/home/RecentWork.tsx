@@ -150,11 +150,11 @@ export default function RecentWork() {
                   alt={project.title}
                   fill
                   className={`object-cover ${!isMobile ? 'transition-transform duration-500 group-hover:scale-105' : ''}`}
+                  style={{ imageOrientation: 'from-image' }}
                   sizes="(max-width: 375px) 50vw, (max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   quality={isMobile ? 70 : 80}
                   loading={index < 4 ? 'eager' : 'lazy'}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSIRMxQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMRIf/aAAwDAQACEQMRAD8AyDT9MuNV1GK0tIzLPK2FRfpPwD2SBgdZzWt7Y2vb7W13ELq3huRH5AjljDhS3ElRkd4H7SlKpZNhaZ//2Q=="
+                  unoptimized={isMobile}
                 />
                 
                 {/* Overlay - always visible on mobile */}

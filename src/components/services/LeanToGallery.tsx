@@ -81,10 +81,12 @@ export default function LeanToGallery() {
                   alt={image.alt}
                   fill
                   className="object-cover"
+                  style={{ imageOrientation: 'from-image' }}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 900px"
                   quality={80}
                   priority={idx === 0}
                   loading={idx === 0 ? 'eager' : 'lazy'}
+                  unoptimized={isMobile}
                 />
               </div>
             ))}

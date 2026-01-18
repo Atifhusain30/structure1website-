@@ -85,10 +85,12 @@ export default function PatioGallery() {
                 alt={image.alt}
                 fill
                 className="object-cover"
+                style={{ imageOrientation: 'from-image' }}
                 sizes="(max-width: 375px) 100vw, (max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
                 quality={isMobile ? 70 : 80}
                 priority={idx < 2}
                 loading={idx < 2 ? 'eager' : 'lazy'}
+                unoptimized={isMobile}
               />
             </div>
           ))}
