@@ -8,11 +8,9 @@ export const services = [
     images: [
       '/images/hero/cover1.JPG',
       '/images/hero/cover2.JPG',
-      '/images/hero/buckfin1.JPG',
       '/images/hero/jeff2.JPG',
       '/images/hero/cover3.JPG',
       '/images/hero/sashi3.JPG',
-      '/images/hero/sashi4.JPG',
       '/images/hero/cover4.JPG',
     ],
     icon: 'sun',
