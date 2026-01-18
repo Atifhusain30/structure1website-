@@ -19,10 +19,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Experimental optimizations
-  experimental: {
-    optimizeCss: true,
-  },
   // Headers for mobile optimization
   async headers() {
     return [
