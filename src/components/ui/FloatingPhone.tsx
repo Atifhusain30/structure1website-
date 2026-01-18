@@ -2,127 +2,204 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Facebook, Instagram, X, Sparkles } from 'lucide-react';
+import { Phone, Facebook, Instagram, X, MessageCircle } from 'lucide-react';
 
 export default function FloatingPhone() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [floatOffset, setFloatOffset] = useState({ x: 0, y: 0 });
   const phoneNumber = '(580) 665-2758';
   const phoneLink = 'tel:5806652758';
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    
+    // Gentle floating animation
+    let animationFrame: number;
+    let time = 0;
+    
+    const animate = () => {
+      if (!isOpen) {
+        time += 0.015;
+        // Smooth floating pattern
+        setFloatOffset({
+          x: Math.sin(time) * 6,
+          y: Math.sin(time * 1.5) * 8 + Math.cos(time * 0.5) * 4
+        });
+      }
+      animationFrame = requestAnimationFrame(animate);
+    };
+    
+    animate();
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isOpen]);
 
   if (!mounted) return null;
 
   return (
     <>
-      {/* Floating Action Button Container */}
-      <div className="fixed bottom-8 right-8 z-50">
+      {/* Backdrop when open */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+            style={{ WebkitBackdropFilter: 'blur(8px)' }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Floating Button Container */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ 
+          scale: 1, 
+          opacity: 1,
+          x: isOpen ? 0 : floatOffset.x,
+          y: isOpen ? 0 : floatOffset.y,
+        }}
+        transition={{ 
+          scale: { type: 'spring', stiffness: 400, damping: 20, delay: 0.5 },
+          x: { type: 'spring', stiffness: 100, damping: 30 },
+          y: { type: 'spring', stiffness: 100, damping: 30 },
+        }}
+        className="fixed right-6 bottom-28 z-50"
+        style={{ 
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+        }}
+      >
         {/* Expanded Menu */}
         <AnimatePresence>
           {isOpen && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setIsOpen(false)}
-                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-              />
-              
-              {/* Social Links */}
-              <div className="absolute bottom-20 right-0 flex flex-col items-end gap-4 z-50">
-                {/* Phone with number */}
-                <motion.a
-                  href={phoneLink}
-                  initial={{ opacity: 0, scale: 0, x: 100 }}
-                  animate={{ opacity: 1, scale: 1, x: 0 }}
-                  exit={{ opacity: 0, scale: 0, x: 100 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25, delay: 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-3 bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-4 rounded-2xl shadow-lg shadow-green-500/30"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+              className="absolute right-0 bottom-20 flex flex-col gap-3 z-50"
+            >
+              {/* Phone Card */}
+              <motion.a
+                href={phoneLink}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 50 }}
+                transition={{ delay: 0.05 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-5 py-4 rounded-2xl shadow-xl shadow-green-500/25 min-w-[220px]"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                <motion.div
+                  animate={{ 
+                    rotate: [0, -10, 10, -10, 0],
+                  }}
+                  transition={{ 
+                    duration: 0.5, 
+                    repeat: Infinity, 
+                    repeatDelay: 3 
+                  }}
+                  className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center"
                 >
-                  <motion.div
-                    animate={{ rotate: [0, -15, 15, -15, 15, 0] }}
-                    transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
-                  >
-                    <Phone className="w-6 h-6" />
-                  </motion.div>
-                  <div className="flex flex-col">
-                    <span className="text-xs opacity-80">Call Us Now</span>
-                    <span className="font-bold text-lg">{phoneNumber}</span>
-                  </div>
+                  <Phone className="w-6 h-6" />
+                </motion.div>
+                <div>
+                  <p className="text-xs text-white/80 font-medium">Call Us Now</p>
+                  <p className="text-lg font-bold">{phoneNumber}</p>
+                </div>
+              </motion.a>
+
+              {/* Social Row */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 50 }}
+                transition={{ delay: 0.1 }}
+                className="flex gap-3 justify-end"
+              >
+                {/* Facebook */}
+                <motion.a
+                  href="https://facebook.com/structure1construction"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/25"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                >
+                  <Facebook className="w-7 h-7 text-white" />
                 </motion.a>
 
-                {/* Social Icons Row */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25, delay: 0.2 }}
-                  className="flex gap-3"
+                {/* Instagram */}
+                <motion.a
+                  href="https://instagram.com/structure1construction"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-14 h-14 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-2xl flex items-center justify-center shadow-lg shadow-pink-500/25"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
-                  <motion.a
-                    href="https://facebook.com/structure1construction"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.15, y: -5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30"
-                  >
-                    <Facebook className="w-7 h-7 text-white" />
-                  </motion.a>
-                  
-                  <motion.a
-                    href="https://instagram.com/structure1construction"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.15, y: -5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center shadow-lg shadow-pink-500/30"
-                  >
-                    <Instagram className="w-7 h-7 text-white" />
-                  </motion.a>
-                </motion.div>
-              </div>
-            </>
+                  <Instagram className="w-7 h-7 text-white" />
+                </motion.a>
+              </motion.div>
+            </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Main Floating Button */}
+        {/* Main Button */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 15, delay: 0.5 }}
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className={`relative w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-50 transition-all duration-300 ${
+          whileTap={{ scale: 0.95 }}
+          className={`relative w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 ${
             isOpen 
-              ? 'bg-gradient-to-br from-red-500 to-red-600 shadow-red-500/40' 
-              : 'bg-gradient-to-br from-amber-500 to-orange-600 shadow-orange-500/40'
+              ? 'bg-gradient-to-br from-red-500 to-red-600' 
+              : 'bg-gradient-to-br from-amber-500 to-orange-600'
           }`}
+          style={{ 
+            WebkitTapHighlightColor: 'transparent',
+            boxShadow: isOpen 
+              ? '0 10px 40px rgba(239, 68, 68, 0.4)' 
+              : '0 10px 40px rgba(249, 115, 22, 0.4)'
+          }}
         >
-          {/* Animated ring */}
+          {/* Pulsing rings when closed */}
           {!isOpen && (
-            <motion.div
-              className="absolute inset-0 rounded-full border-4 border-orange-400"
-              animate={{ 
-                scale: [1, 1.4, 1.4],
-                opacity: [0.8, 0, 0.8],
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                ease: 'easeOut'
-              }}
-            />
+            <>
+              <motion.div
+                className="absolute inset-0 rounded-full bg-orange-500"
+                animate={{ 
+                  scale: [1, 1.5],
+                  opacity: [0.4, 0],
+                }}
+                transition={{ 
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: 'easeOut'
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 rounded-full bg-orange-500"
+                animate={{ 
+                  scale: [1, 1.8],
+                  opacity: [0.3, 0],
+                }}
+                transition={{ 
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: 'easeOut',
+                  delay: 0.3
+                }}
+              />
+            </>
           )}
           
+          {/* Icon */}
           <AnimatePresence mode="wait">
             {isOpen ? (
               <motion.div
@@ -130,41 +207,49 @@ export default function FloatingPhone() {
                 initial={{ rotate: -90, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.15 }}
               >
-                <X className="w-8 h-8 text-white" />
+                <X className="w-7 h-7 text-white" />
               </motion.div>
             ) : (
               <motion.div
-                key="contact"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="flex flex-col items-center"
+                key="message"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                transition={{ duration: 0.15 }}
               >
-                <Sparkles className="w-7 h-7 text-white" />
+                <MessageCircle className="w-7 h-7 text-white" />
               </motion.div>
             )}
           </AnimatePresence>
         </motion.button>
-        
-        {/* "Contact Us" label */}
+
+        {/* Floating tooltip that appears periodically */}
         {!isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 }}
-            className="absolute right-20 top-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-xl shadow-lg whitespace-nowrap"
+            initial={{ opacity: 0, x: 20, scale: 0.8 }}
+            animate={{ 
+              opacity: [0, 1, 1, 0],
+              x: [20, 0, 0, 20],
+              scale: [0.8, 1, 1, 0.8]
+            }}
+            transition={{ 
+              duration: 4,
+              repeat: Infinity,
+              repeatDelay: 6,
+              times: [0, 0.1, 0.9, 1]
+            }}
+            className="absolute right-20 top-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-xl shadow-lg pointer-events-none"
           >
-            <span className="text-sm font-semibold text-gray-800">Contact Us!</span>
-            {/* Arrow */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-0 h-0 border-t-8 border-b-8 border-l-8 border-transparent border-l-white" />
+            <span className="text-sm font-semibold text-gray-800 whitespace-nowrap">
+              Contact Us! 👋
+            </span>
+            {/* Arrow pointing right */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-0 h-0 border-t-[8px] border-b-[8px] border-l-[8px] border-transparent border-l-white" />
           </motion.div>
         )}
-      </div>
+      </motion.div>
     </>
   );
 }
-
-
