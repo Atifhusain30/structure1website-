@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
@@ -19,21 +19,37 @@ const inter = Inter({
   display: 'swap',
 });
 
+// Separate viewport export for Next.js 14+ (iOS/Android optimized)
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FAF9F6' },
+    { media: '(prefers-color-scheme: dark)', color: '#1A1A1A' },
+  ],
+  // iOS specific
+  interactiveWidget: 'resizes-visual',
+  colorScheme: 'light',
+};
+
 export const metadata: Metadata = {
   title: {
     default: 'Structure1 Construction | Premium Home Construction Services',
     template: '%s | Structure1 Construction',
   },
   description:
-    'Transform your living space with Structure1 Construction. Expert design-build services for patio covers, kitchens, floors, and pools. Free consultations available.',
+    'Transform your outdoor living space with Structure1 Construction. Expert patio cover design and build services including gable, lean-to, and pergola styles. Free consultations available.',
   keywords: [
     'construction',
-    'home renovation',
     'patio covers',
-    'kitchen remodeling',
-    'flooring',
-    'pool construction',
+    'gable patio cover',
+    'pergola',
+    'outdoor living',
     'Texas contractor',
+    'Dallas patio covers',
   ],
   metadataBase: new URL('https://structure1.com'),
   alternates: {
@@ -41,6 +57,17 @@ export const metadata: Metadata = {
   },
   authors: [{ name: 'Structure1 Construction' }],
   creator: 'Structure1 Construction',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Structure1',
+  },
+  formatDetection: {
+    telephone: true,
+    date: false,
+    address: false,
+    email: true,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -77,8 +104,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
-      <body className="font-body antialiased bg-off-white text-primary-black">
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Preconnect to external resources */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* iOS splash screens */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        {/* Prevent phone number detection on iOS */}
+        <meta name="format-detection" content="telephone=no" />
+      </head>
+      <body className="font-body antialiased bg-off-white text-primary-black min-h-screen touch-manipulation">
         <a 
           href="#main-content" 
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary-black focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:outline-none"

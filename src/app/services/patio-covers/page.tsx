@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import ServiceHero from '@/components/services/ServiceHero';
 import ServiceFeatures from '@/components/services/ServiceFeatures';
-import ServiceProjects from '@/components/services/ServiceProjects';
+import PatioGallery from '@/components/services/PatioGallery';
+import LeanToGallery from '@/components/services/LeanToGallery';
+import GableGallery from '@/components/services/GableGallery';
 import CTASection from '@/components/home/CTASection';
 import { services } from '@/lib/data';
 
@@ -18,9 +20,12 @@ export default function PatioCoversPage() {
       <ServiceHero
         title={service.title}
         description={service.fullDescription}
+        image="/images/hero/debrabuck.JPG"
       />
       <ServiceFeatures title={service.title} features={service.features} />
-      <ServiceProjects category={service.id} title={service.title} />
+      <PatioGallery />
+      <GableGallery />
+      <LeanToGallery />
       <CTASection />
     </>
   );

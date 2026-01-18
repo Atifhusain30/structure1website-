@@ -7,7 +7,7 @@ import CTASection from '@/components/home/CTASection';
 export const metadata: Metadata = {
   title: 'Our Projects',
   description:
-    'Explore our portfolio of completed construction projects including pools, kitchens, patio covers, flooring, and custom home builds.',
+    'Explore our portfolio of completed patio cover projects including gable designs, lean-to covers, and pergolas with polycarbonate roofing.',
 };
 
 export default function ProjectsPage() {

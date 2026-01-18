@@ -8,7 +8,7 @@ import { services } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Our Services',
   description:
-    'Explore our comprehensive construction services including patio covers, kitchens, floors, new builds, and pools. Quality craftsmanship for your home.',
+    'Explore our premium construction services including patio covers, concrete work, and outdoor living spaces. Quality craftsmanship for your home.',
 };
 
 export default function ServicesPage() {

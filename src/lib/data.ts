@@ -4,7 +4,17 @@ export const services = [
     title: 'Patio Covers',
     shortDescription: 'Custom-designed outdoor living spaces that extend your home\'s comfort.',
     fullDescription: 'Transform your backyard into a stunning outdoor living area with our premium patio cover solutions. We design and build custom structures that provide shade, protection, and style to your outdoor spaces.',
-    image: '/images/hero/Patio cover home 1.jpg',
+    image: '/images/hero/cover5.PNG',
+    images: [
+      '/images/hero/cover1.JPG',
+      '/images/hero/cover2.JPG',
+      '/images/hero/buckfin1.JPG',
+      '/images/hero/jeff2.JPG',
+      '/images/hero/cover3.JPG',
+      '/images/hero/sashi3.JPG',
+      '/images/hero/sashi4.JPG',
+      '/images/hero/cover4.JPG',
+    ],
     icon: 'sun',
     features: [
       'Attached & Freestanding Structures',
@@ -16,51 +26,27 @@ export const services = [
     ]
   },
   {
-    id: 'kitchens',
-    title: 'Kitchens',
-    shortDescription: 'Transform the heart of your home with modern, functional designs.',
-    fullDescription: 'Create the kitchen of your dreams with our comprehensive renovation services. From custom cabinetry to countertop installation, we handle every detail to deliver a space that combines beauty with functionality.',
-    image: '/images/hero/kitchen remodel 1.jpg',
-    icon: 'chef-hat',
-    features: [
-      'Full Kitchen Renovations',
-      'Cabinet Refacing & Installation',
-      'Countertop Installation',
-      'Kitchen Islands',
-      'Appliance Installation',
-      'Custom Cabinetry'
-    ]
-  },
-  {
-    id: 'floors',
-    title: 'Floors',
-    shortDescription: 'Premium flooring solutions from hardwood to luxury vinyl.',
-    fullDescription: 'Elevate your space with beautiful, durable flooring that stands the test of time. Our expert team handles everything from hardwood installation to tile work, ensuring a flawless finish every time.',
-    image: '/images/hero/flooring 1.jpg',
+    id: 'concrete',
+    title: 'Concrete',
+    shortDescription: 'Durable foundations and stunning finishes for patios, driveways, and more.',
+    fullDescription: 'From solid foundations to beautiful decorative finishes, our concrete services deliver lasting quality. We specialize in patios, driveways, walkways, and custom concrete work that enhances your property.',
+    image: '/images/hero/Concrete1.PNG',
+    images: [
+      '/images/hero/Concrete1.PNG',
+      '/images/hero/concrete2.jpg',
+      '/images/hero/concrete3.jpg',
+      '/images/hero/Concrete4.jpg',
+      '/images/hero/Concrete5.jpg',
+      '/images/hero/concrete6.PNG',
+    ],
     icon: 'layers',
     features: [
-      'Hardwood Installation',
-      'Tile & Stone Work',
-      'Luxury Vinyl Plank',
-      'Epoxy Garage Floors',
-      'Refinishing Services',
-      'Subfloor Repair'
-    ]
-  },
-  {
-    id: 'pools',
-    title: 'Pools',
-    shortDescription: 'Create your backyard oasis with custom pool construction.',
-    fullDescription: 'Dive into luxury with a custom-designed pool that transforms your backyard into a personal paradise. We handle everything from design to construction, including spas, water features, and decking.',
-    image: '/images/hero/pool 1.jpg',
-    icon: 'waves',
-    features: [
-      'In-Ground Pool Construction',
-      'Spas & Hot Tubs',
-      'Pool Remodeling',
-      'Decking & Coping',
-      'Water Features',
-      'Equipment Installation'
+      'Stamped & Decorative Concrete',
+      'Driveways & Walkways',
+      'Patio Slabs & Extensions',
+      'Foundation Work',
+      'Concrete Staining & Sealing',
+      'Repair & Resurfacing'
     ]
   }
 ];
@@ -68,97 +54,64 @@ export const services = [
 export const projects = [
   {
     id: 1,
-    slug: 'modern-backyard-oasis',
-    title: 'Modern Backyard Oasis',
-    category: 'pools',
+    slug: 'classic-gable-patio-cover',
+    title: 'Classic Gable Patio Cover',
+    category: 'patio-covers',
     location: 'Dallas, TX',
-    image: '/images/hero/ai pool 2.jpg',
-    images: ['/images/hero/AI pool.jpg', '/images/hero/ai pool 2.jpg', '/images/hero/ai pool 3.jpg'],
-    description: 'Complete backyard transformation featuring a custom pool with water features, modern decking, and integrated lighting for the perfect outdoor entertainment space.',
-    featured: true
-  },
-  {
-    id: 2,
-    slug: 'contemporary-kitchen-remodel',
-    title: 'Contemporary Kitchen Remodel',
-    category: 'kitchens',
-    location: 'Austin, TX',
-    image: '/images/hero/AI kitchen.jpg',
-    images: ['/images/hero/AI kitchen.jpg'],
-    description: 'A complete kitchen transformation with custom white cabinetry, quartz countertops, and state-of-the-art appliances.',
+    image: '/images/hero/buckfin1.JPG',
+    images: ['/images/hero/buckfin1.JPG', '/images/hero/buckfin2.JPG', '/images/hero/buckfin3.JPG'],
+    description: 'Beautiful gable-style patio cover with cedar posts, white trusses, and outdoor living furniture for the perfect backyard retreat.',
     featured: true
   },
   {
     id: 3,
-    slug: 'elegant-patio-extension',
-    title: 'Elegant Patio Extension',
+    slug: 'lean-to-patio-cover',
+    title: 'Lean-To Style Patio Cover',
     category: 'patio-covers',
-    location: 'Houston, TX',
-    image: '/images/hero/AI patio cover.jpg',
-    images: ['/images/hero/AI patio cover.jpg'],
-    description: 'A stunning covered patio with integrated fans, lighting, and outdoor kitchen area for year-round enjoyment.',
+    location: 'Frisco, TX',
+    image: '/images/hero/jeff2.JPG',
+    images: ['/images/hero/jeff1.png', '/images/hero/jeff3.JPG', '/images/hero/jeff2.JPG'],
+    description: 'Modern lean-to patio cover attached to the existing roofline with dark wood ceiling, recessed lighting, and ceiling fan.',
     featured: true
   },
   {
-    id: 4,
-    slug: 'luxury-hardwood-flooring',
-    title: 'Luxury Hardwood Flooring',
-    category: 'floors',
-    location: 'San Antonio, TX',
-    image: '/images/hero/AI flooring.jpg',
-    images: ['/images/hero/AI flooring.jpg'],
-    description: 'Premium oak hardwood flooring installation throughout a 3,500 sq ft home with custom staining.',
-    featured: true
-  },
-  {
-    id: 6,
-    slug: 'resort-style-pool',
-    title: 'Resort Style Pool',
-    category: 'pools',
+    id: 5,
+    slug: 'pergola-with-polycarbonate',
+    title: 'Pergola with Polycarbonate',
+    category: 'patio-covers',
     location: 'Plano, TX',
-    image: '/images/hero/AI pool project.jpg',
-    images: ['/images/hero/AI pool project.jpg'],
-    description: 'An expansive resort-style pool with infinity edge, spa, and natural stone surroundings.',
-    featured: false
+    image: '/images/hero/sashi3.JPG',
+    images: ['/images/hero/sashi1.JPG', '/images/hero/sashi2.jpg', '/images/hero/sashi3.JPG', '/images/hero/sashi4.JPG'],
+    description: 'Custom pergola with polycarbonate roofing, cedar posts, and integrated ceiling fan for year-round outdoor comfort.',
+    featured: true
   },
   {
     id: 7,
-    slug: 'modern-open-kitchen',
-    title: 'Modern Open Kitchen',
-    category: 'kitchens',
-    location: 'Irving, TX',
-    image: '/images/hero/AI open kitchen.jpg',
-    images: ['/images/hero/AI open kitchen.jpg'],
-    description: 'Open-concept kitchen renovation with large island, pendant lighting, and seamless flow to living areas.',
-    featured: false
-  },
-  {
-    id: 8,
-    slug: 'covered-outdoor-living',
-    title: 'Covered Outdoor Living',
+    slug: 'pergola-with-back-wall',
+    title: 'Pergola with Back Wall',
     category: 'patio-covers',
-    location: 'Frisco, TX',
-    image: '/images/hero/open outdoor living.jpg',
-    images: ['/images/hero/open outdoor living.jpg'],
-    description: 'Aluminum patio cover with integrated ceiling fans, recessed lighting, and stone column accents.',
-    featured: false
+    location: 'McKinney, TX',
+    image: '/images/hero/cover4.JPG',
+    images: ['/images/hero/cover4.JPG'],
+    description: 'Custom pergola design featuring a protective back wall for added privacy and wind protection.',
+    featured: true
   }
 ];
 
 export const testimonials = [
   {
     id: 1,
-    quote: 'Structure1 transformed our backyard into an absolute paradise. The pool and patio cover exceeded every expectation. Professional from start to finish.',
+    quote: 'Structure1 transformed our backyard into an absolute paradise. The patio cover exceeded every expectation. Professional from start to finish.',
     author: 'Sarah & Michael Johnson',
-    project: 'Pool + Patio Project',
+    project: 'Patio Cover Project',
     location: 'Dallas, TX',
     rating: 5
   },
   {
     id: 2,
-    quote: 'Our kitchen renovation was seamless. The team was communicative, clean, and delivered ahead of schedule. We couldn\'t be happier with our new space.',
+    quote: 'Our pergola project was seamless. The team was communicative, clean, and delivered ahead of schedule. We couldn\'t be happier with our new outdoor space.',
     author: 'Jennifer Martinez',
-    project: 'Kitchen Renovation',
+    project: 'Pergola Project',
     location: 'Austin, TX',
     rating: 5
   },

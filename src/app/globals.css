@@ -17,6 +17,12 @@
   --section-padding: clamp(80px, 10vw, 160px);
   --container-max: 1400px;
   --grid-gap: 24px;
+  
+  /* iOS safe areas */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
 }
 
 * {
@@ -27,12 +33,69 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent iOS rubber-banding on overscroll */
+  overscroll-behavior: none;
+  /* Smooth scrolling for iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent text size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   color: var(--primary-black);
   background: var(--off-white);
   overflow-x: hidden;
+  /* iOS safe area padding */
+  padding-top: var(--safe-area-inset-top);
+  padding-bottom: var(--safe-area-inset-bottom);
+  /* Prevent pull-to-refresh on mobile */
+  overscroll-behavior-y: none;
+  /* Enable GPU acceleration */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* iOS-specific touch optimizations */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* Disable iOS tap highlight */
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Prevent iOS zoom on input focus */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Touch-friendly tap targets (44x44px minimum for iOS/Android) */
+a, button, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  /* Improve touch responsiveness */
+  touch-action: manipulation;
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .nav-link::after {
+    display: none;
+  }
+  
+  .image-hover-zoom:hover img {
+    transform: none;
+  }
+  
+  .btn-primary:hover,
+  .btn-outline:hover {
+    transform: none;
+  }
+  
+  .card-hover:hover {
+    transform: none;
+    box-shadow: inherit;
+  }
 }
 
 /* Selection styles */
@@ -190,4 +253,125 @@ textarea:focus-visible,
 select:focus-visible {
   outline: 2px solid var(--primary-black);
   outline-offset: 2px;
+}
+
+/* ========== MOBILE OPTIMIZATIONS ========== */
+
+/* GPU acceleration for smooth animations */
+.gpu-accelerated {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+/* Optimize images for mobile */
+img {
+  content-visibility: auto;
+  /* Prevent layout shift */
+  contain: layout style paint;
+}
+
+/* Mobile-optimized animations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Disable complex transforms on mobile for better performance */
+  .perspective-1000 {
+    perspective: none;
+  }
+  
+  /* Simplify shadows on mobile */
+  .shadow-2xl,
+  .shadow-xl {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* iOS notch and home indicator safe areas */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Optimized scrolling containers */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+/* Prevent content from being selected during scroll/touch */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Active state for touch feedback */
+@media (hover: none) and (pointer: coarse) {
+  a:active,
+  button:active,
+  [role="button"]:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+}
+
+/* Hide scrollbar on mobile but keep functionality */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Optimize font rendering on mobile */
+@media (max-width: 768px) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+}
+
+/* Landscape mode optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+
+/* High DPI / Retina display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
 }

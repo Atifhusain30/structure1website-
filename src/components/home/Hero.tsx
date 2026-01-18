@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import AnimatedText from '@/components/ui/AnimatedText';
@@ -7,37 +8,50 @@ import RotatingBadge from '@/components/ui/RotatingBadge';
 import Button from '@/components/ui/Button';
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, -50]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
-  const y3 = useTransform(scrollY, [0, 500], [0, -75]);
+  
+  // Detect mobile on mount
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  // Reduced parallax on mobile for performance
+  const y1 = useTransform(scrollY, [0, 500], [0, isMobile ? -20 : -50]);
+  const y2 = useTransform(scrollY, [0, 500], [0, isMobile ? -40 : -100]);
+  const y3 = useTransform(scrollY, [0, 500], [0, isMobile ? -30 : -75]);
 
   return (
-    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-off-white">
-      <div className="max-w-container mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+    <section className="relative min-h-screen pt-24 sm:pt-32 pb-12 sm:pb-20 overflow-hidden bg-off-white hero-section">
+      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 items-center">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
             <AnimatedText
               text="Where Quality Meets Craftsmanship"
-              className="font-heading font-bold text-hero leading-[1.05] text-primary-black mb-6"
+              className="font-heading font-bold text-hero leading-[1.05] text-primary-black mb-4 sm:mb-6"
             />
             
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-text-gray text-lg lg:text-xl leading-relaxed max-w-lg mb-10"
+              transition={{ duration: isMobile ? 0.4 : 0.6, delay: isMobile ? 0.3 : 0.8 }}
+              className="text-text-gray text-base sm:text-lg lg:text-xl leading-relaxed max-w-lg mb-6 sm:mb-10"
             >
               Transform your living space with our expert design-build services—from 
               stunning pools to complete home renovations.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="flex flex-wrap gap-4"
+              transition={{ duration: isMobile ? 0.4 : 0.6, delay: isMobile ? 0.4 : 1 }}
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
               <Button href="/projects" variant="outline">
                 Explore Our Work
@@ -47,91 +61,100 @@ export default function Hero() {
               </Button>
             </motion.div>
 
-            {/* Stats preview */}
+            {/* Stats preview - responsive grid on mobile */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex gap-12 mt-16 pt-8 border-t border-border-light"
+              transition={{ duration: isMobile ? 0.4 : 0.6, delay: isMobile ? 0.5 : 1.2 }}
+              className="grid grid-cols-3 gap-4 sm:gap-8 lg:gap-12 mt-8 sm:mt-16 pt-6 sm:pt-8 border-t border-border-light"
             >
-              <div>
-                <span className="block font-heading font-bold text-4xl text-primary-black">150+</span>
-                <span className="text-text-gray text-sm">Projects Done</span>
+              <div className="text-center sm:text-left">
+                <span className="block font-heading font-bold text-2xl sm:text-4xl text-primary-black">150+</span>
+                <span className="text-text-gray text-xs sm:text-sm">Projects Done</span>
               </div>
-              <div>
-                <span className="block font-heading font-bold text-4xl text-primary-black">4+</span>
-                <span className="text-text-gray text-sm">Years Experience</span>
+              <div className="text-center sm:text-left">
+                <span className="block font-heading font-bold text-2xl sm:text-4xl text-primary-black">4+</span>
+                <span className="text-text-gray text-xs sm:text-sm">Years Experience</span>
               </div>
-              <div>
-                <span className="block font-heading font-bold text-4xl text-primary-black">100%</span>
-                <span className="text-text-gray text-sm">Satisfaction</span>
+              <div className="text-center sm:text-left">
+                <span className="block font-heading font-bold text-2xl sm:text-4xl text-primary-black">100%</span>
+                <span className="text-text-gray text-xs sm:text-sm">Satisfaction</span>
               </div>
             </motion.div>
           </div>
 
           {/* Right - Image Grid */}
           <div className="order-1 lg:order-2 relative">
-            <div className="relative h-[500px] lg:h-[700px]">
-              {/* Main large image - Pool with Patio Cover */}
+            <div className="relative h-[350px] sm:h-[450px] lg:h-[700px]">
+              {/* Main large image - Gable Patio Cover */}
               <motion.div
-                style={{ y: y1 }}
-                initial={{ opacity: 0, scale: 1.1 }}
+                style={isMobile ? {} : { y: y1 }}
+                initial={{ opacity: 0, scale: isMobile ? 1 : 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="absolute top-0 right-0 w-[70%] h-[60%] rounded-2xl overflow-hidden shadow-2xl z-10"
+                transition={{ duration: isMobile ? 0.4 : 0.8, delay: 0.1 }}
+                className="absolute top-0 right-0 w-[70%] h-[60%] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl z-10 bg-[#2d3a4a] gpu-accelerated"
               >
                 <Image
-                  src="/images/hero/hero-1.png"
-                  alt="Luxury pool with custom patio cover and outdoor kitchen"
+                  src="/images/hero/cover1.JPG"
+                  alt="Custom gable patio cover with outdoor furniture"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 70vw, 35vw"
+                  sizes="(max-width: 375px) 65vw, (max-width: 640px) 70vw, (max-width: 1024px) 50vw, 35vw"
+                  quality={isMobile ? 70 : 80}
                   priority
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSIRMxQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMRIf/aAAwDAQACEQMRAD8AyDT9MuNV1GK0tIzLPK2FRfpPwD2SBgdZzWt7Y2vb7W13ELq3huRH5AjljDhS3ElRkd4H7SlKpZNhaZ//2Q=="
                 />
               </motion.div>
 
-              {/* Second image - Modern Home with Pool */}
+              {/* Second image - Pergola with Polycarbonate */}
               <motion.div
-                style={{ y: y2 }}
-                initial={{ opacity: 0, scale: 1.1 }}
+                style={isMobile ? {} : { y: y2 }}
+                initial={{ opacity: 0, scale: isMobile ? 1 : 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="absolute top-[40%] left-0 w-[55%] h-[45%] rounded-2xl overflow-hidden shadow-xl z-20"
+                transition={{ duration: isMobile ? 0.4 : 0.8, delay: 0.2 }}
+                className="absolute top-[40%] left-0 w-[55%] h-[45%] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl z-20 bg-[#3a4555] gpu-accelerated"
               >
                 <Image
-                  src="/images/hero/hero-2.png"
-                  alt="Modern custom home with geometric pool design"
+                  src="/images/hero/cover2.JPG"
+                  alt="Pergola with polycarbonate roofing and ceiling fan"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 55vw, 28vw"
+                  sizes="(max-width: 375px) 50vw, (max-width: 640px) 55vw, (max-width: 1024px) 40vw, 28vw"
+                  quality={isMobile ? 70 : 80}
                   priority
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSIRMxQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMRIf/aAAwDAQACEQMRAD8AyDT9MuNV1GK0tIzLPK2FRfpPwD2SBgdZzWt7Y2vb7W13ELq3huRH5AjljDhS3ElRkd4H7SlKpZNhaZ//2Q=="
                 />
               </motion.div>
 
-              {/* Third image - Patio Cover */}
+              {/* Third image - Patio Cover at Night */}
               <motion.div
-                style={{ y: y3 }}
-                initial={{ opacity: 0, scale: 1.1 }}
+                style={isMobile ? {} : { y: y3 }}
+                initial={{ opacity: 0, scale: isMobile ? 1 : 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="absolute bottom-0 right-[10%] w-[45%] h-[35%] rounded-2xl overflow-hidden shadow-lg z-30"
+                transition={{ duration: isMobile ? 0.4 : 0.8, delay: 0.3 }}
+                className="absolute bottom-[5%] right-[5%] w-[50%] sm:w-[45%] h-[30%] sm:h-[35%] rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg z-30 bg-[#1a2433] gpu-accelerated"
               >
                 <Image
-                  src="/images/hero/hero-3.png"
-                  alt="Custom patio cover with outdoor living space"
+                  src="/images/hero/cover3.JPG"
+                  alt="Beautiful patio cover illuminated at night"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 45vw, 23vw"
-                  priority
+                  sizes="(max-width: 375px) 40vw, (max-width: 640px) 45vw, (max-width: 1024px) 35vw, 23vw"
+                  quality={isMobile ? 70 : 80}
+                  loading={isMobile ? 'lazy' : 'eager'}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSIRMxQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMRIf/aAAwDAQACEQMRAD8AyDT9MuNV1GK0tIzLPK2FRfpPwD2SBgdZzWt7Y2vb7W13ELq3huRH5AjljDhS3ElRkd4H7SlKpZNhaZ//2Q=="
                 />
               </motion.div>
 
-              {/* Rotating Badge */}
+              {/* Rotating Badge - smaller on mobile */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
-                className="absolute top-[20%] left-[10%] z-40"
+                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0.4 : 1 }}
+                className="absolute top-[15%] sm:top-[20%] left-[5%] sm:left-[10%] z-40 scale-75 sm:scale-100"
               >
                 <RotatingBadge />
               </motion.div>
@@ -140,9 +163,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-40 left-10 w-20 h-20 bg-accent-warm/10 rounded-full blur-2xl" />
-      <div className="absolute bottom-40 right-10 w-40 h-40 bg-cream rounded-full blur-3xl" />
+      {/* Decorative elements - hidden on mobile for performance */}
+      <div className="hidden sm:block absolute top-40 left-10 w-20 h-20 bg-accent-warm/10 rounded-full blur-2xl" />
+      <div className="hidden sm:block absolute bottom-40 right-10 w-40 h-40 bg-cream rounded-full blur-3xl" />
     </section>
   );
 }

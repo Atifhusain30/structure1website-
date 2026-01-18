@@ -1,6 +1,6 @@
 import Hero from '@/components/home/Hero';
 import ServicesSection from '@/components/home/ServicesSection';
-import FeaturedProjects from '@/components/home/FeaturedProjects';
+import RecentWork from '@/components/home/RecentWork';
 import WhyUs from '@/components/home/WhyUs';
 import Testimonials from '@/components/home/Testimonials';
 import CTASection from '@/components/home/CTASection';
@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Hero />
       <ServicesSection />
-      <FeaturedProjects />
+      <RecentWork />
       <WhyUs />
       <Testimonials />
       <CTASection />
