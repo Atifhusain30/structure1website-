@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const concreteImages = [
   {
@@ -41,6 +42,40 @@ const concreteImages = [
 export default function ConcreteGallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Lightbox navigation
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = '';
+  };
+
+  const nextImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev + 1) % concreteImages.length);
+  }, []);
+
+  const prevImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev - 1 + concreteImages.length) % concreteImages.length);
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, nextImage, prevImage]);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -97,7 +132,8 @@ export default function ConcreteGallery() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden bg-[#1a1a1a]"
+            className="relative aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden bg-[#1a1a1a] cursor-pointer group"
+            onClick={() => openLightbox(currentIndex)}
           >
             {/* Pre-load all images to prevent glitching */}
             {concreteImages.map((image, idx) => (
@@ -111,7 +147,7 @@ export default function ConcreteGallery() {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                   quality={80}
                   priority={idx < 2}
@@ -120,6 +156,13 @@ export default function ConcreteGallery() {
               </div>
             ))}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-20 pointer-events-none" />
+            
+            {/* Click to view indicator */}
+            <div className="absolute inset-0 z-25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <span className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-primary-black shadow-lg">
+                Click to view
+              </span>
+            </div>
 
             {/* Label */}
             <div className="absolute top-4 left-4 z-30">
@@ -212,6 +255,114 @@ export default function ConcreteGallery() {
             From stamped patterns to smooth finishes, we deliver quality that lasts.
           </p>
         </motion.div>
+      </div>
+
+      {/* Lightbox Modal */}
+      <div
+        className={`fixed inset-0 z-50 transition-all duration-300 ${
+          lightboxOpen 
+            ? 'opacity-100 pointer-events-auto' 
+            : 'opacity-0 pointer-events-none'
+        }`}
+        style={{ 
+          paddingBottom: 'env(safe-area-inset-bottom)',
+          paddingTop: 'env(safe-area-inset-top)'
+        }}
+      >
+        {/* Backdrop */}
+        <div 
+          className={`absolute inset-0 bg-black transition-opacity duration-300 ${
+            lightboxOpen ? 'opacity-95' : 'opacity-0'
+          }`}
+          onClick={closeLightbox}
+        />
+        
+        {/* Content */}
+        <div className="relative h-full flex items-center justify-center p-4 sm:p-8">
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors touch-manipulation"
+            aria-label="Close lightbox"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Navigation - Previous */}
+          <button
+            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors touch-manipulation"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          {/* Navigation - Next */}
+          <button
+            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors touch-manipulation"
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Image Container */}
+          <div 
+            className="relative w-full max-w-5xl aspect-[4/3] sm:aspect-[16/10]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Pre-render all images for smooth transitions */}
+            {concreteImages.map((image, idx) => (
+              <div
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-300 ${
+                  idx === lightboxIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  quality={90}
+                  priority={idx === lightboxIndex}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Label and counter */}
+          <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 text-center">
+            <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-medium">
+              {concreteImages[lightboxIndex].label} — {lightboxIndex + 1} / {concreteImages.length}
+            </span>
+          </div>
+
+          {/* Thumbnail strip */}
+          <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
+            {concreteImages.map((image, idx) => (
+              <button
+                key={idx}
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(idx); }}
+                className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden transition-all duration-200 touch-manipulation ${
+                  idx === lightboxIndex 
+                    ? 'ring-2 ring-white scale-110' 
+                    : 'opacity-50 hover:opacity-100'
+                }`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  sizes="56px"
+                  quality={50}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
