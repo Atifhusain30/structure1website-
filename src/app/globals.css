@@ -272,6 +272,8 @@ img {
   content-visibility: auto;
   /* Prevent layout shift */
   contain: layout style paint;
+  /* FIX: iOS image rotation - respect EXIF orientation */
+  image-orientation: from-image;
 }
 
 /* Mobile-optimized animations */
