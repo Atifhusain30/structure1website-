@@ -22,7 +22,7 @@ export default function PatioCoversPage() {
         description={service.fullDescription}
         image="/images/hero/debrabuck.JPG"
       />
-      <ServiceFeatures title={service.title} features={service.features} />
+      <ServiceFeatures features={service.features} />
       <PatioGallery />
       <GableGallery />
       <LeanToGallery />

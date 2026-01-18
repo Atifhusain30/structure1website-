@@ -19,7 +19,7 @@ export default function FloorsPage() {
         title={service.title}
         description={service.fullDescription}
       />
-      <ServiceFeatures title={service.title} features={service.features} />
+      <ServiceFeatures features={service.features} />
       <ServiceProjects category={service.id} title={service.title} />
       <CTASection />
     </>

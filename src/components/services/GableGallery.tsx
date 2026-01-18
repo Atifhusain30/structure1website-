@@ -28,7 +28,7 @@ const galleryImages = [
 
 export default function GableGallery() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section className="py-section bg-gradient-to-b from-cream to-off-white overflow-hidden">

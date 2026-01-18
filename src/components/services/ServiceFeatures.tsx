@@ -5,11 +5,10 @@ import { Check } from 'lucide-react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
 interface ServiceFeaturesProps {
-  title: string;
   features: string[];
 }
 
-export default function ServiceFeatures({ title, features }: ServiceFeaturesProps) {
+export default function ServiceFeatures({ features }: ServiceFeaturesProps) {
   return (
     <section className="py-12 bg-off-white">
       <div className="max-w-container mx-auto px-6 lg:px-8">

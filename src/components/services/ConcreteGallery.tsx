@@ -215,7 +215,7 @@ export default function ConcreteGallery() {
           className="mt-10 text-center"
         >
           <p className="text-text-gray text-sm sm:text-base max-w-xl mx-auto">
-            Every concrete project is custom-designed to match your home's style. 
+            Every concrete project is custom-designed to match your home&apos;s style. 
             From stamped patterns to smooth finishes, we deliver quality that lasts.
           </p>
         </motion.div>

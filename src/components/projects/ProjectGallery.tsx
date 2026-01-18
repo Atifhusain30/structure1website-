@@ -83,7 +83,7 @@ export default function ProjectGallery() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedProject]);
+  }, [selectedProject, nextImage, prevImage]);
 
   // Prevent body scroll when lightbox is open
   useEffect(() => {
