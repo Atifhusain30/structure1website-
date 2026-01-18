@@ -132,52 +132,62 @@ export default function ConcreteGallery() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden bg-[#1a1a1a] cursor-pointer group"
-            onClick={() => openLightbox(currentIndex)}
+            className="relative aspect-[4/3] lg:aspect-[3/4] rounded-2xl overflow-hidden bg-[#1a1a1a]"
           >
-            {/* Pre-load all images to prevent glitching */}
-            {concreteImages.map((image, idx) => (
-              <div
-                key={idx}
-                className={`absolute inset-0 transition-opacity duration-500 ${
-                  idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                }`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                  quality={80}
-                  priority={idx < 2}
-                  loading={idx < 2 ? 'eager' : 'lazy'}
-                />
+            {/* Clickable image area */}
+            <button
+              type="button"
+              onClick={() => openLightbox(currentIndex)}
+              className="absolute inset-0 z-10 w-full h-full cursor-pointer touch-manipulation focus:outline-none group"
+              aria-label="View image in fullscreen"
+            >
+              {/* Pre-load all images to prevent glitching */}
+              {concreteImages.map((image, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    idx === currentIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                    quality={80}
+                    priority={idx < 2}
+                    loading={idx < 2 ? 'eager' : 'lazy'}
+                  />
+                </div>
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+              
+              {/* Click to view indicator */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <span className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-primary-black shadow-lg">
+                  Tap to view
+                </span>
               </div>
-            ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-20 pointer-events-none" />
-            
-            {/* Click to view indicator */}
-            <div className="absolute inset-0 z-25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <span className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-primary-black shadow-lg">
-                Click to view
-              </span>
-            </div>
+            </button>
 
-            {/* Label */}
-            <div className="absolute top-4 left-4 z-30">
+            {/* Label - pointer-events-none so clicks pass through */}
+            <div className="absolute top-4 left-4 z-20 pointer-events-none">
               <span className="bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-primary-black shadow-lg transition-opacity duration-300">
                 {concreteImages[currentIndex].label}
               </span>
             </div>
 
             {/* Progress Dots */}
-            <div className="absolute bottom-4 left-4 right-4 flex justify-center gap-2 z-30">
+            <div className="absolute bottom-4 left-4 right-4 flex justify-center gap-2 z-20">
               {concreteImages.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className="relative p-1 touch-manipulation"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentIndex(idx);
+                  }}
+                  className="relative p-2 touch-manipulation"
                   aria-label={`Go to image ${idx + 1}`}
                 >
                   <span
@@ -187,7 +197,7 @@ export default function ConcreteGallery() {
                   />
                   {idx === currentIndex && (
                     <motion.span
-                      className="absolute inset-0 top-1 bg-accent-warm rounded-full h-1"
+                      className="absolute inset-0 top-2 bg-accent-warm rounded-full h-1 mx-2"
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{ duration: isMobile ? 5 : 4, ease: 'linear' }}
@@ -207,37 +217,37 @@ export default function ConcreteGallery() {
             className="grid grid-cols-2 gap-3 sm:gap-4"
           >
             {concreteImages.map((image, idx) => (
-              <motion.button
+              <button
                 key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                className={`relative aspect-square rounded-xl overflow-hidden touch-manipulation transition-all duration-300 ${
+                type="button"
+                onClick={() => openLightbox(idx)}
+                className={`relative aspect-square rounded-xl overflow-hidden touch-manipulation transition-all duration-300 cursor-pointer group ${
                   idx === currentIndex 
                     ? 'ring-2 ring-accent-warm ring-offset-2 ring-offset-[#f5f5f0]' 
                     : 'opacity-70 hover:opacity-100'
                 }`}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * idx }}
+                aria-label={`View ${image.label}`}
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 25vw, 150px"
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
+                  sizes="(max-width: 768px) 45vw, 200px"
                   quality={70}
                   loading={idx < 4 ? 'eager' : 'lazy'}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDBAMBAAAAAAAAAAAAAQIDAAQRBQYSIRMxQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/EABkRAAIDAQAAAAAAAAAAAAAAAAABAgMRIf/aAAwDAQACEQMRAD8AyDT9MuNV1GK0tIzLPK2FRfpPwD2SBgdZzWt7Y2vb7W13ELq3huRH5AjljDhS3ElRkd4H7SlKpZNhaZ//2Q=="
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <span className="absolute bottom-2 left-2 right-2 text-white text-xs font-medium truncate">
                   {image.label}
                 </span>
-              </motion.button>
+                {/* Tap indicator on hover */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <span className="bg-white/90 px-3 py-1 rounded-full text-xs font-semibold text-primary-black">
+                    View
+                  </span>
+                </div>
+              </button>
             ))}
           </motion.div>
         </div>
