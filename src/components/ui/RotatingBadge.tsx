@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 interface RotatingBadgeProps {
   text?: string;
   size?: number;
@@ -18,12 +16,8 @@ export default function RotatingBadge({
       className="relative"
       style={{ width: size, height: size }}
     >
-      {/* Rotating text */}
-      <motion.div
-        className="absolute inset-0 rotating-badge"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-      >
+      {/* Rotating text - using CSS animation only for iOS compatibility */}
+      <div className="absolute inset-0 rotating-badge">
         <svg
           viewBox="0 0 160 160"
           className="w-full h-full"
@@ -40,11 +34,11 @@ export default function RotatingBadge({
             </textPath>
           </text>
         </svg>
-      </motion.div>
+      </div>
       
       {/* Center logo */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-16 h-16 bg-primary-black rounded-full flex items-center justify-center">
+        <div className="w-16 h-16 bg-primary-black rounded-full flex items-center justify-center shadow-lg">
           <span className="text-white font-heading font-bold text-lg">S1</span>
         </div>
       </div>
