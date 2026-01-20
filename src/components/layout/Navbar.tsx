@@ -120,40 +120,74 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu - iOS optimized with NO transforms */}
+      {/* Mobile Menu - iOS optimized: no transforms, no animations, explicit visibility */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-[55] bg-off-white animate-fade-in"
+          className="md:hidden"
           style={{
-            paddingTop: 'env(safe-area-inset-top)',
-            paddingBottom: 'env(safe-area-inset-bottom)',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 55,
+            backgroundColor: '#FAFAFA',
+            paddingTop: 'max(env(safe-area-inset-top, 0px), 80px)',
+            paddingBottom: 'env(safe-area-inset-bottom, 20px)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'auto',
+            WebkitOverflowScrolling: 'touch',
           }}
         >
-          <div className="flex flex-col items-center justify-center h-full pt-20 pb-10 overflow-y-auto">
-            <nav className="flex flex-col items-center gap-6 sm:gap-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className="block text-3xl sm:text-4xl font-heading font-bold text-primary-black active:text-text-dark-gray transition-colors touch-manipulation py-2"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="mt-6">
-                <Link
-                  href="/contact"
-                  onClick={closeMenu}
-                  className="inline-block bg-primary-black text-white px-8 py-4 rounded-full text-sm font-medium tracking-wider active:bg-gray-800 transition-colors touch-manipulation"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  Get a Consultation
-                </Link>
-              </div>
-            </nav>
-          </div>
+          <nav
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '24px',
+            }}
+          >
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={closeMenu}
+                style={{
+                  display: 'block',
+                  fontSize: '28px',
+                  fontWeight: 700,
+                  color: '#0A0A0A',
+                  padding: '12px 24px',
+                  textDecoration: 'none',
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              onClick={closeMenu}
+              style={{
+                display: 'inline-block',
+                marginTop: '16px',
+                backgroundColor: '#0A0A0A',
+                color: '#FFFFFF',
+                padding: '16px 32px',
+                borderRadius: '9999px',
+                fontSize: '14px',
+                fontWeight: 500,
+                letterSpacing: '0.05em',
+                textDecoration: 'none',
+                WebkitTapHighlightColor: 'transparent',
+              }}
+            >
+              Get a Consultation
+            </Link>
+          </nav>
         </div>
       )}
     </>

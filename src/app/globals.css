@@ -51,9 +51,7 @@ body {
   padding-bottom: var(--safe-area-inset-bottom);
   /* Prevent pull-to-refresh on mobile */
   overscroll-behavior-y: none;
-  /* Enable GPU acceleration */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  /* NOTE: Do NOT use transform on body - it breaks position:fixed on iOS Safari */
 }
 
 /* iOS-specific touch optimizations */
@@ -144,6 +142,8 @@ a, button, [role="button"] {
 
 .animate-fade-in {
   animation: fadeIn 0.15s ease-out forwards;
+  /* Fallback: ensure content is visible if animation fails */
+  opacity: 1;
 }
 
 /* Slow pulse animation for tooltip */
