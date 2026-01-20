@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -21,6 +22,47 @@ export default function ProjectCard({
   image,
   location 
 }: ProjectCardProps) {
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  // On touch devices, always show content (no hover)
+  if (isTouchDevice) {
+    return (
+      <Link href={`/projects/${slug}`} className="block touch-manipulation">
+        <div className="group relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl bg-cream active:opacity-90 transition-opacity">
+          {/* Project Image */}
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={70}
+            loading="lazy"
+          />
+
+          {/* Always visible overlay on mobile */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-black/80 via-primary-black/30 to-transparent" />
+
+          {/* Always visible content on mobile */}
+          <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6">
+            <span className="text-white/80 text-xs sm:text-sm font-medium uppercase tracking-wider mb-1">
+              {category.replace('-', ' ')}
+            </span>
+            <h3 className="text-white font-heading font-bold text-lg sm:text-xl mb-1">
+              {title}
+            </h3>
+            <p className="text-white/70 text-xs sm:text-sm">{location}</p>
+          </div>
+        </div>
+      </Link>
+    );
+  }
+
+  // Desktop version with hover effects
   return (
     <Link href={`/projects/${slug}`}>
       <motion.div
@@ -44,6 +86,8 @@ export default function ProjectCard({
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={80}
+            loading="lazy"
           />
         </motion.div>
 

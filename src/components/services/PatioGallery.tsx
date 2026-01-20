@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/ui/AnimatedSection';
@@ -31,23 +31,32 @@ const galleryImages = [
 export default function PatioGallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
+
+  const handleSetIndex = useCallback((index: number) => {
+    setCurrentIndex(index);
+  }, []);
 
   useEffect(() => {
-    // Detect mobile
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    // Detect mobile and iOS
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+      setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent) || 
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
     
-    // Auto-rotate - slower on mobile to save battery
+    // Auto-rotate - slower on mobile/iOS to save battery
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % galleryImages.length);
-    }, isMobile ? 5000 : 4000);
+    }, isMobile || isIOS ? 6000 : 4000);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('resize', checkDevice);
     };
-  }, [isMobile]);
+  }, [isMobile, isIOS]);
 
   return (
     <section className="py-12 sm:py-section bg-cream">
@@ -85,10 +94,10 @@ export default function PatioGallery() {
                 alt={image.alt}
                 fill
                 className="object-cover"
-                sizes="(max-width: 375px) 100vw, (max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
-                quality={isMobile ? 70 : 80}
-                priority={idx < 2}
-                loading={idx < 2 ? 'eager' : 'lazy'}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
+                quality={isIOS ? 60 : (isMobile ? 70 : 80)}
+                priority={idx === 0}
+                loading={idx === 0 ? 'eager' : 'lazy'}
               />
             </div>
           ))}
@@ -107,9 +116,14 @@ export default function PatioGallery() {
             {galleryImages.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className="group relative p-1 touch-manipulation"
+                onClick={() => handleSetIndex(index)}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  handleSetIndex(index);
+                }}
+                className="group relative p-2 touch-manipulation"
                 aria-label={`Go to image ${index + 1}`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 <span
                   className={`block w-8 sm:w-12 h-1 rounded-full transition-all duration-300 ${
@@ -134,10 +148,9 @@ export default function PatioGallery() {
           {/* Thumbnail strip - hidden on mobile */}
           <div className="absolute bottom-6 right-6 hidden lg:flex gap-2 z-30">
             {galleryImages.map((image, index) => (
-              <motion.button
+              <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                whileTap={{ scale: 0.95 }}
+                onClick={() => handleSetIndex(index)}
                 className={`relative w-16 h-11 rounded-lg overflow-hidden transition-all duration-300 touch-manipulation ${
                   index === currentIndex
                     ? 'ring-2 ring-white ring-offset-2 ring-offset-transparent'
@@ -153,7 +166,7 @@ export default function PatioGallery() {
                   quality={50}
                   loading="lazy"
                 />
-              </motion.button>
+              </button>
             ))}
           </div>
         </motion.div>
@@ -177,3 +190,4 @@ export default function PatioGallery() {
     </section>
   );
 }
+

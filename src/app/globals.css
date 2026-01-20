@@ -132,6 +132,34 @@ a, button, [role="button"] {
   }
 }
 
+/* Simple fade-in animation for mobile menu - no transforms */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+/* Slow pulse animation for tooltip */
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 6s ease-in-out infinite;
+}
+
 /* Nav link hover underline effect */
 .nav-link {
   position: relative;
@@ -251,16 +279,36 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ========== MOBILE OPTIMIZATIONS ========== */
+/* ========== MOBILE & iOS OPTIMIZATIONS ========== */
 
-/* GPU acceleration for smooth animations */
+/* iOS-specific fixes for native scrolling */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    /* Enable native momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent overscroll bounce that causes issues */
+    overscroll-behavior: none;
+  }
+  
+  /* Note: Removed transform on .fixed elements as it was causing logo spin issues */
+}
+
+/* GPU acceleration for smooth animations - simplified for mobile */
 .gpu-accelerated {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
+}
+
+/* Disable GPU acceleration on mobile to prevent memory issues */
+@media (max-width: 768px) {
+  .gpu-accelerated {
+    -webkit-transform: none;
+    transform: none;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+  }
 }
 
 /* Optimize images for all devices */
@@ -298,17 +346,20 @@ div[style*="position: absolute"] > img {
 
 /* iOS-specific image fixes */
 @supports (-webkit-touch-callout: none) {
+  /* Simplified transforms for iOS - avoid memory issues */
   img,
   img[decoding="async"],
   [data-nimg] img {
-    /* Force GPU rendering on iOS */
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    /* Prevent image flickering on iOS Safari */
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
     /* Force orientation fix on iOS Safari */
     image-orientation: from-image !important;
+    /* Use simpler compositing */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Prevent iOS from caching images incorrectly */
+  img[loading="lazy"] {
+    content-visibility: visible;
   }
 }
 
@@ -393,13 +444,12 @@ img[loading="lazy"] {
   -webkit-touch-callout: none;
 }
 
-/* Active state for touch feedback */
+/* Active state for touch feedback - simplified to prevent animation issues */
 @media (hover: none) and (pointer: coarse) {
   a:active,
   button:active,
   [role="button"]:active {
-    opacity: 0.7;
-    transform: scale(0.98);
+    opacity: 0.8;
   }
 }
 

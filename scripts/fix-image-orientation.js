@@ -70,3 +70,4 @@ async function processAllImages() {
 }
 
 processAllImages().catch(console.error);
+

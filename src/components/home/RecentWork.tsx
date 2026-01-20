@@ -50,13 +50,18 @@ export default function RecentWork() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
 
-  // Detect mobile on mount
+  // Detect mobile and iOS on mount
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+      setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent) || 
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+    };
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
   const openLightbox = useCallback((project: SelectedProject) => {
@@ -77,17 +82,35 @@ export default function RecentWork() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedProject, closeLightbox]);
 
-  // Prevent body scroll when lightbox is open
+  // Prevent body scroll when lightbox is open - iOS compatible
   useEffect(() => {
     if (selectedProject) {
+      const scrollY = window.scrollY;
       document.body.style.overflow = 'hidden';
+      if (isIOS) {
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${scrollY}px`;
+      }
     } else {
-      document.body.style.overflow = 'unset';
+      if (isIOS) {
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        if (scrollY) {
+          window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+        }
+      }
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
     };
-  }, [selectedProject]);
+  }, [selectedProject, isIOS]);
 
   return (
     <section className="py-12 sm:py-section bg-off-white overflow-hidden">
@@ -149,10 +172,10 @@ export default function RecentWork() {
                   src={project.src}
                   alt={project.title}
                   fill
-                  className={`object-cover ${!isMobile ? 'transition-transform duration-500 group-hover:scale-105' : ''}`}
-                  sizes="(max-width: 375px) 50vw, (max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  quality={isMobile ? 70 : 80}
-                  loading={index < 4 ? 'eager' : 'lazy'}
+                  className={`object-cover ${!isMobile && !isIOS ? 'transition-transform duration-500 group-hover:scale-105' : ''}`}
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  quality={isIOS ? 60 : (isMobile ? 70 : 80)}
+                  loading={index < 2 ? 'eager' : 'lazy'}
                 />
                 
                 {/* Overlay - always visible on mobile */}
@@ -237,9 +260,10 @@ export default function RecentWork() {
                 alt={selectedProject.title}
                 fill
                 className="object-contain rounded-lg"
-                sizes="(max-width: 375px) 100vw, (max-width: 768px) 100vw, 80vw"
-                quality={isMobile ? 75 : 85}
+                sizes="(max-width: 768px) 100vw, 80vw"
+                quality={isIOS ? 65 : (isMobile ? 75 : 85)}
                 priority
+                loading="eager"
               />
 
               {/* Project Info */}
@@ -266,3 +290,4 @@ export default function RecentWork() {
     </section>
   );
 }
+

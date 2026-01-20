@@ -9,22 +9,28 @@ import Button from '@/components/ui/Button';
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
   const { scrollY } = useScroll();
   
-  // Detect mobile on mount
+  // Detect mobile and iOS on mount
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    const checkDevice = () => {
+      const mobile = window.innerWidth < 768 || 'ontouchstart' in window;
+      const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      setIsMobile(mobile);
+      setIsIOS(ios);
     };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
   }, []);
   
-  // Reduced parallax on mobile for performance
-  const y1 = useTransform(scrollY, [0, 500], [0, isMobile ? -20 : -50]);
-  const y2 = useTransform(scrollY, [0, 500], [0, isMobile ? -40 : -100]);
-  const y3 = useTransform(scrollY, [0, 500], [0, isMobile ? -30 : -75]);
+  // Disable parallax completely on mobile/iOS for performance
+  const shouldDisableParallax = isMobile || isIOS;
+  const y1 = useTransform(scrollY, [0, 500], [0, shouldDisableParallax ? 0 : -50]);
+  const y2 = useTransform(scrollY, [0, 500], [0, shouldDisableParallax ? 0 : -100]);
+  const y3 = useTransform(scrollY, [0, 500], [0, shouldDisableParallax ? 0 : -75]);
 
   return (
     <section className="relative min-h-screen pt-24 sm:pt-32 pb-12 sm:pb-20 overflow-hidden bg-off-white hero-section">
@@ -83,83 +89,88 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right - Image Grid */}
+          {/* Right - Image Grid - Simplified animations for iOS */}
           <div className="order-1 lg:order-2 relative">
             <div className="relative h-[350px] sm:h-[450px] lg:h-[700px]">
               {/* Main large image - Gable Patio Cover */}
               <motion.div
-                style={isMobile ? {} : { y: y1 }}
-                initial={{ opacity: 0, scale: isMobile ? 1 : 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: isMobile ? 0.4 : 0.8, delay: 0.1 }}
-                className="absolute top-0 right-0 w-[70%] h-[60%] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl z-10 bg-[#2d3a4a] gpu-accelerated"
+                style={shouldDisableParallax ? undefined : { y: y1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="absolute top-0 right-0 w-[70%] h-[60%] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl z-10 bg-[#2d3a4a]"
               >
                 <Image
                   src="/images/hero/cover1.JPG"
                   alt="Custom gable patio cover with outdoor furniture"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 375px) 65vw, (max-width: 640px) 70vw, (max-width: 1024px) 50vw, 35vw"
-                  quality={isMobile ? 70 : 80}
+                  sizes="(max-width: 640px) 70vw, (max-width: 1024px) 50vw, 35vw"
+                  quality={isIOS ? 60 : (isMobile ? 70 : 80)}
                   priority
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </motion.div>
 
               {/* Second image - Pergola with Polycarbonate */}
               <motion.div
-                style={isMobile ? {} : { y: y2 }}
-                initial={{ opacity: 0, scale: isMobile ? 1 : 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: isMobile ? 0.4 : 0.8, delay: 0.2 }}
-                className="absolute top-[40%] left-0 w-[55%] h-[45%] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl z-20 bg-[#3a4555] gpu-accelerated"
+                style={shouldDisableParallax ? undefined : { y: y2 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="absolute top-[40%] left-0 w-[55%] h-[45%] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl z-20 bg-[#3a4555]"
               >
                 <Image
                   src="/images/hero/cover2.JPG"
                   alt="Pergola with polycarbonate roofing and ceiling fan"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 375px) 50vw, (max-width: 640px) 55vw, (max-width: 1024px) 40vw, 28vw"
-                  quality={isMobile ? 70 : 80}
+                  sizes="(max-width: 640px) 55vw, (max-width: 1024px) 40vw, 28vw"
+                  quality={isIOS ? 60 : (isMobile ? 70 : 80)}
                   priority
+                  loading="eager"
                 />
               </motion.div>
 
               {/* Third image - Patio Cover at Night */}
               <motion.div
-                style={isMobile ? {} : { y: y3 }}
-                initial={{ opacity: 0, scale: isMobile ? 1 : 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: isMobile ? 0.4 : 0.8, delay: 0.3 }}
-                className="absolute bottom-[5%] right-[5%] w-[50%] sm:w-[45%] h-[30%] sm:h-[35%] rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg z-30 bg-[#1a2433] gpu-accelerated"
+                style={shouldDisableParallax ? undefined : { y: y3 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+                className="absolute bottom-[5%] right-[5%] w-[50%] sm:w-[45%] h-[30%] sm:h-[35%] rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg z-30 bg-[#1a2433]"
               >
                 <Image
                   src="/images/hero/cover3.JPG"
                   alt="Beautiful patio cover illuminated at night"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 375px) 40vw, (max-width: 640px) 45vw, (max-width: 1024px) 35vw, 23vw"
-                  quality={isMobile ? 70 : 80}
-                  loading={isMobile ? 'lazy' : 'eager'}
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 35vw, 23vw"
+                  quality={isIOS ? 60 : (isMobile ? 70 : 80)}
+                  loading="lazy"
                 />
               </motion.div>
 
-              {/* Rotating Badge - smaller on mobile */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0.4 : 1 }}
-                className="absolute top-[15%] sm:top-[20%] left-[5%] sm:left-[10%] z-40 scale-75 sm:scale-100"
-              >
-                <RotatingBadge />
-              </motion.div>
+              {/* Rotating Badge - smaller on mobile, simplified on iOS */}
+              {!isIOS && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                  className="absolute top-[15%] sm:top-[20%] left-[5%] sm:left-[10%] z-40 scale-75 sm:scale-100"
+                >
+                  <RotatingBadge />
+                </motion.div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
       {/* Decorative elements - hidden on mobile for performance */}
-      <div className="hidden sm:block absolute top-40 left-10 w-20 h-20 bg-accent-warm/10 rounded-full blur-2xl" />
-      <div className="hidden sm:block absolute bottom-40 right-10 w-40 h-40 bg-cream rounded-full blur-3xl" />
+      <div className="hidden lg:block absolute top-40 left-10 w-20 h-20 bg-accent-warm/10 rounded-full blur-2xl" />
+      <div className="hidden lg:block absolute bottom-40 right-10 w-40 h-40 bg-cream rounded-full blur-3xl" />
     </section>
   );
 }
