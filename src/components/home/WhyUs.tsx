@@ -10,7 +10,7 @@ const benefits = [
   { icon: Shield, text: 'Licensed & Insured' },
   { icon: DollarSign, text: 'Free Consultations' },
   { icon: Check, text: 'Transparent Pricing' },
-  { icon: Award, text: '5-Year Warranty' },
+  { icon: Award, text: '2-Year Workmanship Warranty' },
 ];
 
 export default function WhyUs() {
