@@ -1,25 +1,24 @@
 import type { Metadata, Viewport } from 'next';
-import { Space_Grotesk, Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans, DM_Sans } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 import StructuredData from '@/components/seo/StructuredData';
-import FloatingPhone from '@/components/ui/FloatingPhone';
+import FloatingCTA from '@/components/ui/FloatingCTA';
 
-const spaceGrotesk = Space_Grotesk({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-jakarta',
   display: 'swap',
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-dm-sans',
   display: 'swap',
 });
 
-// Separate viewport export for Next.js 14+ (iOS/Android optimized)
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -27,70 +26,60 @@ export const viewport: Viewport = {
   userScalable: true,
   viewportFit: 'cover',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FAF9F6' },
-    { media: '(prefers-color-scheme: dark)', color: '#1A1A1A' },
+    { media: '(prefers-color-scheme: light)', color: '#FAFAF8' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1a1a' },
   ],
-  // iOS specific
-  interactiveWidget: 'resizes-visual',
   colorScheme: 'light',
 };
 
 export const metadata: Metadata = {
   title: {
-    default: 'Structure1 Construction | Premium Home Construction Services',
+    default: 'Structure1 Construction | Patio Covers & Concrete in Dallas-Fort Worth',
     template: '%s | Structure1 Construction',
   },
   description:
-    'Transform your outdoor living space with Structure1 Construction. Expert patio cover design and build services including gable, lean-to, and pergola styles. Free consultations available.',
+    "Dallas-Fort Worth's premier patio cover and concrete contractor. 150+ projects completed. Licensed, insured, 2-year warranty. Get your free estimate today.",
   keywords: [
-    'construction',
-    'patio covers',
-    'gable patio cover',
-    'pergola',
-    'outdoor living',
-    'Texas contractor',
-    'Dallas patio covers',
+    'patio covers Dallas',
+    'concrete contractor Fort Worth',
+    'outdoor living DFW',
+    'patio cover installation',
+    'concrete driveway Dallas',
+    'pergola builder Frisco',
+    'patio cover McKinney',
+    'concrete patio Plano',
+    'patio covers Fort Worth',
+    'concrete contractor Dallas',
   ],
-  metadataBase: new URL('https://structure1.com'),
+  metadataBase: new URL('https://structure1builds.com'),
   alternates: {
     canonical: '/',
   },
   authors: [{ name: 'Structure1 Construction' }],
   creator: 'Structure1 Construction',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'Structure1',
-  },
-  formatDetection: {
-    telephone: true,
-    date: false,
-    address: false,
-    email: true,
-  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://structure1.com',
+    url: 'https://structure1builds.com',
     siteName: 'Structure1 Construction',
-    title: 'Structure1 Construction | Premium Home Construction Services',
+    title: 'Structure1 Construction | Premium Patio Covers & Concrete',
     description:
-      'Transform your living space with expert design-build services for patio covers, kitchens, floors, new builds, and pools.',
+      "Transform your outdoor space with Dallas-Fort Worth's most trusted construction team. 150+ projects. Free estimates.",
     images: [
       {
-        url: '/images/hero/hero-1.png',
+        url: '/images/hero/cover1.JPG',
         width: 1200,
         height: 630,
-        alt: 'Structure1 Construction - Premium Home Construction Services',
+        alt: 'Structure1 Construction - Custom patio cover in Dallas-Fort Worth',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Structure1 Construction | Premium Home Construction Services',
+    title: 'Structure1 Construction | Patio Covers & Concrete DFW',
     description:
-      'Transform your living space with expert design-build services.',
-    images: ['/images/hero/hero-1.png'],
+      'Premium patio covers and concrete work in Dallas-Fort Worth. Free estimates.',
+    images: ['/images/hero/cover1.JPG'],
   },
   robots: {
     index: true,
@@ -104,20 +93,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${jakarta.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <head>
-        {/* Preconnect to external resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* iOS splash screens */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        {/* Prevent phone number detection on iOS */}
-        <meta name="format-detection" content="telephone=no" />
       </head>
       <body className="font-body antialiased bg-off-white text-primary-black min-h-screen touch-manipulation">
-        <a 
-          href="#main-content" 
+        <a
+          href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary-black focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:outline-none"
         >
           Skip to main content
@@ -128,7 +113,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
         <StructuredData />
-        <FloatingPhone />
+        <FloatingCTA />
       </body>
     </html>
   );

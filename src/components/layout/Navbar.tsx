@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { navigation } from '@/lib/data';
 import { cn } from '@/lib/utils';
@@ -9,6 +8,7 @@ import { cn } from '@/lib/utils';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -16,7 +16,30 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when menu is open
+  // Active section tracking via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = navigation
+      .map(n => { const h = n.href.indexOf('#'); return h !== -1 ? n.href.slice(h + 1) : ''; })
+      .filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     if (mobileMenuOpen) {
       const scrollY = window.scrollY;
@@ -42,70 +65,106 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Toggle menu with proper iOS touch handling
-  const toggleMenu = useCallback(() => {
-    setMobileMenuOpen(prev => !prev);
-  }, []);
+  const toggleMenu = useCallback(() => setMobileMenuOpen(prev => !prev), []);
+  const closeMenu = useCallback(() => setMobileMenuOpen(false), []);
 
-  const closeMenu = useCallback(() => {
-    setMobileMenuOpen(false);
-  }, []);
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    closeMenu();
+
+    // Plain "/" — go home
+    if (href === '/') {
+      e.preventDefault();
+      if (window.location.pathname === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.location.href = '/';
+      }
+      return;
+    }
+
+    // Anchored link like "/#services"
+    const hashIndex = href.indexOf('#');
+    if (hashIndex === -1) {
+      // Regular page link like "/blog" — let browser navigate naturally
+      return;
+    }
+
+    const id = href.slice(hashIndex + 1);
+    const isHomepage = window.location.pathname === '/';
+
+    if (isHomepage) {
+      e.preventDefault();
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+    // If not on homepage, let the browser navigate to "/#section" naturally
+  }, [closeMenu]);
 
   return (
     <>
-      {/* Use regular nav instead of motion.nav to prevent iOS animation issues */}
-      <nav
+      <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled ? 'py-4 bg-off-white/95 backdrop-blur-md' : 'py-6 bg-transparent'
+          scrolled
+            ? 'py-3 bg-off-white/80 backdrop-blur-xl shadow-subtle'
+            : 'py-5 bg-transparent'
         )}
       >
-        <div className="max-w-container mx-auto px-6 lg:px-8">
+        <nav className="max-w-container mx-auto px-6 lg:px-8" aria-label="Main navigation">
           <div className="flex items-center justify-between">
-            {/* Logo - NO animations on touch devices to prevent spinning */}
-            <Link 
-              href="/" 
+            <a
+              href="/"
               className="relative z-[60] touch-manipulation"
-              onClick={() => mobileMenuOpen && closeMenu()}
+              onClick={(e) => {
+                e.preventDefault();
+                if (window.location.pathname === '/') {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  window.location.href = '/';
+                }
+                if (mobileMenuOpen) closeMenu();
+              }}
             >
-              <span className="font-heading text-2xl font-bold tracking-[0.2em] text-primary-black">
+              <span className="font-heading text-lg md:text-xl font-bold tracking-[0.2em] text-primary-black">
                 STRUCTURE1
               </span>
-            </Link>
+            </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-10">
+            <div className="hidden lg:flex items-center gap-8">
               {navigation.map((item) => (
-                <Link
+                <a
                   key={item.name}
                   href={item.href}
-                  className="nav-link text-sm font-medium tracking-wide text-primary-black hover:text-text-dark-gray transition-colors"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={cn(
+                    'nav-link text-sm font-medium tracking-wide transition-colors',
+                    activeSection === item.href.replace('/#', '').replace('/', '')
+                      ? 'active text-accent-warm'
+                      : 'text-primary-black/70 hover:text-primary-black'
+                  )}
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
             </div>
 
-            {/* CTA Button - simplified for iOS */}
-            <div className="hidden md:block">
-              <Link
-                href="/contact"
-                className="bg-primary-black text-white px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:shadow-lg transition-shadow"
+            <div className="hidden lg:block">
+              <a
+                href="/#contact"
+                onClick={(e) => handleNavClick(e, '/#contact')}
+                className="bg-primary-black text-white px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:shadow-card-hover hover:scale-[1.02] transition-all"
               >
                 Get a Consultation
-              </Link>
+              </a>
             </div>
 
-            {/* Mobile Menu Button - iOS optimized */}
             <button
               type="button"
-              className="md:hidden relative z-[60] p-3 -mr-2 touch-manipulation select-none"
+              className="lg:hidden relative z-[60] p-3 -mr-2 touch-manipulation select-none"
               onClick={toggleMenu}
-              onTouchEnd={(e) => {
-                // Prevent ghost clicks on iOS
-                e.preventDefault();
-                toggleMenu();
-              }}
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
               style={{ WebkitTapHighlightColor: 'transparent' }}
@@ -117,13 +176,12 @@ export default function Navbar() {
               )}
             </button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
-      {/* Mobile Menu - iOS optimized: no transforms, no animations, explicit visibility */}
       {mobileMenuOpen && (
         <div
-          className="md:hidden"
+          className="lg:hidden"
           style={{
             position: 'fixed',
             top: 0,
@@ -131,8 +189,8 @@ export default function Navbar() {
             right: 0,
             bottom: 0,
             zIndex: 55,
-            backgroundColor: '#FAFAFA',
-            paddingTop: 'max(env(safe-area-inset-top, 0px), 80px)',
+            backgroundColor: '#FAFAF8',
+            paddingTop: 'max(env(safe-area-inset-top, 0px), 100px)',
             paddingBottom: 'env(safe-area-inset-bottom, 20px)',
             display: 'flex',
             flexDirection: 'column',
@@ -142,56 +200,59 @@ export default function Navbar() {
             WebkitOverflowScrolling: 'touch',
           }}
         >
-          <nav
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '24px',
-            }}
-          >
+          <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
             {navigation.map((item) => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, item.href)}
                 style={{
                   display: 'block',
                   fontSize: '28px',
                   fontWeight: 700,
-                  color: '#0A0A0A',
+                  color: activeSection === item.href.replace('/#', '').replace('/', '') ? '#D4A447' : '#1a1a1a',
                   padding: '12px 24px',
                   textDecoration: 'none',
                   WebkitTapHighlightColor: 'transparent',
                 }}
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
-            <Link
-              href="/contact"
-              onClick={closeMenu}
+            <a
+              href="/#contact"
+              onClick={(e) => handleNavClick(e, '/#contact')}
               style={{
                 display: 'inline-block',
                 marginTop: '16px',
-                backgroundColor: '#0A0A0A',
+                backgroundColor: '#1a1a1a',
                 color: '#FFFFFF',
-                padding: '16px 32px',
+                padding: '16px 40px',
                 borderRadius: '9999px',
                 fontSize: '14px',
                 fontWeight: 500,
                 letterSpacing: '0.05em',
                 textDecoration: 'none',
-                WebkitTapHighlightColor: 'transparent',
               }}
             >
               Get a Consultation
-            </Link>
+            </a>
+            <a
+              href="tel:5806652758"
+              style={{
+                marginTop: '8px',
+                color: '#D4A447',
+                fontSize: '18px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                padding: '8px',
+              }}
+            >
+              (580) 665-2758
+            </a>
           </nav>
         </div>
       )}
     </>
   );
 }
-
-

@@ -5,8 +5,8 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     "name": companyInfo.name,
-    "description": "Premium home construction services including patio covers, kitchens, floors, and pools in Texas.",
-    "url": "https://structure1.com",
+    "image": "https://structure1builds.com/images/hero/cover1.JPG",
+    "url": "https://structure1builds.com",
     "telephone": companyInfo.phone,
     "email": companyInfo.email,
     "address": {
@@ -14,14 +14,24 @@ export default function StructuredData() {
       "streetAddress": "5473 Blair Rd Ste 100 PMB 476653",
       "addressLocality": "Dallas",
       "addressRegion": "TX",
-      "postalCode": "75231-4227",
+      "postalCode": "75231",
       "addressCountry": "US"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "32.7767",
-      "longitude": "-96.7970"
+      "latitude": 32.7767,
+      "longitude": -96.7970
     },
+    "areaServed": [
+      { "@type": "City", "name": "Dallas" },
+      { "@type": "City", "name": "Fort Worth" },
+      { "@type": "City", "name": "Plano" },
+      { "@type": "City", "name": "Frisco" },
+      { "@type": "City", "name": "McKinney" },
+      { "@type": "City", "name": "Allen" },
+      { "@type": "City", "name": "Richardson" },
+      { "@type": "City", "name": "Arlington" }
+    ],
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -29,10 +39,6 @@ export default function StructuredData() {
       "closes": "18:00"
     },
     "priceRange": "$$",
-    "areaServed": {
-      "@type": "State",
-      "name": "Texas"
-    },
     "sameAs": [
       companyInfo.social.facebook,
       companyInfo.social.instagram,
@@ -40,8 +46,8 @@ export default function StructuredData() {
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "150"
+      "ratingValue": "5.0",
+      "reviewCount": "50"
     }
   };
 
@@ -49,12 +55,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": companyInfo.name,
-    "url": "https://structure1.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://structure1.com/projects?search={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "url": "https://structure1builds.com",
   };
 
   return (
@@ -70,7 +71,3 @@ export default function StructuredData() {
     </>
   );
 }
-
-
-
-

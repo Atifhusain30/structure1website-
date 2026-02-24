@@ -1,26 +1,15 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import ProjectFilter from './ProjectFilter';
 import Button from '@/components/ui/Button';
 import { projects } from '@/lib/data';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-
-interface SelectedProject {
-  title: string;
-  image: string;
-  images: string[];
-  location: string;
-  category: string;
-}
 
 export default function ProjectGallery() {
   const [filter, setFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(6);
-  const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const categories = ['all', ...Array.from(new Set(projects.map((p) => p.category)))];
 
@@ -41,62 +30,6 @@ export default function ProjectGallery() {
     setVisibleCount(6);
   };
 
-  const openLightbox = (project: typeof projects[0]) => {
-    setSelectedProject({
-      title: project.title,
-      image: project.image,
-      images: project.images,
-      location: project.location,
-      category: project.category
-    });
-    setCurrentImageIndex(0);
-  };
-
-  const closeLightbox = () => {
-    setSelectedProject(null);
-    setCurrentImageIndex(0);
-  };
-
-  const nextImage = useCallback(() => {
-    if (selectedProject && selectedProject.images.length > 1) {
-      setCurrentImageIndex((prev) => 
-        prev === selectedProject.images.length - 1 ? 0 : prev + 1
-      );
-    }
-  }, [selectedProject]);
-
-  const prevImage = useCallback(() => {
-    if (selectedProject && selectedProject.images.length > 1) {
-      setCurrentImageIndex((prev) => 
-        prev === 0 ? selectedProject.images.length - 1 : prev - 1
-      );
-    }
-  }, [selectedProject]);
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!selectedProject) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') nextImage();
-      if (e.key === 'ArrowLeft') prevImage();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedProject, nextImage, prevImage]);
-
-  // Prevent body scroll when lightbox is open
-  useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [selectedProject]);
-
   return (
     <div>
       <ProjectFilter
@@ -115,8 +48,6 @@ export default function ProjectGallery() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
-              onClick={() => openLightbox(project)}
-              className="cursor-pointer"
             >
               <motion.div
                 className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-cream"
@@ -124,7 +55,6 @@ export default function ProjectGallery() {
                 whileHover="hover"
                 animate="rest"
               >
-                {/* Project Image */}
                 <motion.div
                   className="w-full h-full relative bg-primary-black/10"
                   variants={{
@@ -135,7 +65,7 @@ export default function ProjectGallery() {
                 >
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} in ${project.location}`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
@@ -144,7 +74,6 @@ export default function ProjectGallery() {
                   />
                 </motion.div>
 
-                {/* Overlay */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-primary-black/80 via-primary-black/20 to-transparent"
                   variants={{
@@ -154,17 +83,14 @@ export default function ProjectGallery() {
                   transition={{ duration: 0.3 }}
                 />
 
-                {/* Content */}
-                <motion.div
-                  className="absolute inset-0 flex flex-col justify-end p-5"
-                >
-                  <span className="text-amber-400 text-xs font-medium uppercase tracking-wider mb-1">
+                <div className="absolute inset-0 flex flex-col justify-end p-5">
+                  <span className="text-accent-warm text-xs font-medium uppercase tracking-wider mb-1">
                     {project.location}
                   </span>
                   <h3 className="text-white font-heading font-bold text-lg">
                     {project.title}
                   </h3>
-                </motion.div>
+                </div>
               </motion.div>
             </motion.div>
           ))}
@@ -182,107 +108,6 @@ export default function ProjectGallery() {
           </Button>
         </motion.div>
       )}
-
-      {/* Lightbox Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-sm"
-            onClick={closeLightbox}
-            style={{ 
-              paddingBottom: 'env(safe-area-inset-bottom)',
-              paddingTop: 'env(safe-area-inset-top)'
-            }}
-          >
-            {/* Close Button */}
-            <button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label="Close lightbox"
-            >
-              <X className="w-6 h-6 text-white" />
-            </button>
-
-            {/* Image Container */}
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-5xl mx-4 aspect-[4/3]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={selectedProject.images[currentImageIndex]}
-                alt={selectedProject.title}
-                fill
-                className="object-contain rounded-lg"
-                sizes="(max-width: 768px) 100vw, 80vw"
-                quality={85}
-                priority
-              />
-
-              {/* Navigation Arrows */}
-              {selectedProject.images.length > 1 && (
-                <>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/30 active:bg-white/40 transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft className="w-6 h-6 text-white" />
-                  </button>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/30 active:bg-white/40 transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
-                    aria-label="Next image"
-                  >
-                    <ChevronRight className="w-6 h-6 text-white" />
-                  </button>
-                </>
-              )}
-
-              {/* Project Info */}
-              <div 
-                className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <span className="text-amber-400 text-xs sm:text-sm font-medium uppercase tracking-wider">
-                  {selectedProject.category.replace('-', ' ')} • {selectedProject.location}
-                </span>
-                <h3 className="text-white font-heading font-bold text-lg sm:text-2xl mt-1">
-                  {selectedProject.title}
-                </h3>
-                {selectedProject.images.length > 1 && (
-                  <div className="flex items-center gap-2 mt-3">
-                    {selectedProject.images.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(index); }}
-                        className={`w-2 h-2 rounded-full transition-all touch-manipulation ${
-                          index === currentImageIndex 
-                            ? 'bg-amber-400 w-6' 
-                            : 'bg-white/40 hover:bg-white/60'
-                        }`}
-                        aria-label={`Go to image ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
-            </motion.div>
-
-            {/* Tap to close hint */}
-            <div className="mt-4 text-center pointer-events-none">
-              <span className="text-white/40 text-xs">Tap anywhere to close</span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
-
