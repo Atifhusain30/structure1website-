@@ -16,10 +16,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Active section tracking via IntersectionObserver
   useEffect(() => {
     const sectionIds = navigation
-      .map(n => { const h = n.href.indexOf('#'); return h !== -1 ? n.href.slice(h + 1) : ''; })
+      .map((n) => {
+        const h = n.href.indexOf('#');
+        return h !== -1 ? n.href.slice(h + 1) : '';
+      })
       .filter(Boolean);
     const observer = new IntersectionObserver(
       (entries) => {
@@ -65,51 +67,48 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  const toggleMenu = useCallback(() => setMobileMenuOpen(prev => !prev), []);
+  const toggleMenu = useCallback(() => setMobileMenuOpen((prev) => !prev), []);
   const closeMenu = useCallback(() => setMobileMenuOpen(false), []);
 
-  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    closeMenu();
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      closeMenu();
 
-    // Plain "/" — go home
-    if (href === '/') {
-      e.preventDefault();
-      if (window.location.pathname === '/') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        window.location.href = '/';
+      if (href === '/') {
+        e.preventDefault();
+        if (window.location.pathname === '/') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.location.href = '/';
+        }
+        return;
       }
-      return;
-    }
 
-    // Anchored link like "/#services"
-    const hashIndex = href.indexOf('#');
-    if (hashIndex === -1) {
-      // Regular page link like "/blog" — let browser navigate naturally
-      return;
-    }
+      const hashIndex = href.indexOf('#');
+      if (hashIndex === -1) return;
 
-    const id = href.slice(hashIndex + 1);
-    const isHomepage = window.location.pathname === '/';
+      const id = href.slice(hashIndex + 1);
+      const isHomepage = window.location.pathname === '/';
 
-    if (isHomepage) {
-      e.preventDefault();
-      const el = document.getElementById(id);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
+      if (isHomepage) {
+        e.preventDefault();
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
       }
-    }
-    // If not on homepage, let the browser navigate to "/#section" naturally
-  }, [closeMenu]);
+    },
+    [closeMenu]
+  );
 
   return (
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           scrolled
-            ? 'py-3 bg-off-white/80 backdrop-blur-xl shadow-subtle'
+            ? 'py-3 bg-parchment/85 backdrop-blur-xl border-b border-border/50'
             : 'py-5 bg-transparent'
         )}
       >
@@ -128,7 +127,7 @@ export default function Navbar() {
                 if (mobileMenuOpen) closeMenu();
               }}
             >
-              <span className="font-heading text-lg md:text-xl font-bold tracking-[0.2em] text-primary-black">
+              <span className="font-heading text-lg md:text-xl font-bold tracking-[0.15em] text-rich-black">
                 STRUCTURE1
               </span>
             </a>
@@ -140,10 +139,10 @@ export default function Navbar() {
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
-                    'nav-link text-sm font-medium tracking-wide transition-colors',
+                    'nav-link font-body text-sm font-medium tracking-wide transition-colors',
                     activeSection === item.href.replace('/#', '').replace('/', '')
-                      ? 'active text-accent-warm'
-                      : 'text-primary-black/70 hover:text-primary-black'
+                      ? 'active text-gold'
+                      : 'text-rich-black/60 hover:text-rich-black'
                   )}
                 >
                   {item.name}
@@ -155,7 +154,7 @@ export default function Navbar() {
               <a
                 href="/#contact"
                 onClick={(e) => handleNavClick(e, '/#contact')}
-                className="bg-primary-black text-white px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:shadow-card-hover hover:scale-[1.02] transition-all"
+                className="bg-rich-black text-white px-6 py-3 rounded-full font-body text-sm font-medium tracking-wider hover:bg-warm-charcoal transition-all duration-400"
               >
                 Get a Consultation
               </a>
@@ -170,9 +169,9 @@ export default function Navbar() {
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-primary-black pointer-events-none" />
+                <X className="w-6 h-6 text-rich-black pointer-events-none" />
               ) : (
-                <Menu className="w-6 h-6 text-primary-black pointer-events-none" />
+                <Menu className="w-6 h-6 text-rich-black pointer-events-none" />
               )}
             </button>
           </div>
@@ -189,7 +188,7 @@ export default function Navbar() {
             right: 0,
             bottom: 0,
             zIndex: 55,
-            backgroundColor: '#FAFAF8',
+            backgroundColor: '#FAF7F2',
             paddingTop: 'max(env(safe-area-inset-top, 0px), 100px)',
             paddingBottom: 'env(safe-area-inset-bottom, 20px)',
             display: 'flex',
@@ -200,7 +199,14 @@ export default function Navbar() {
             WebkitOverflowScrolling: 'touch',
           }}
         >
-          <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+          <nav
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '16px',
+            }}
+          >
             {navigation.map((item) => (
               <a
                 key={item.name}
@@ -210,7 +216,11 @@ export default function Navbar() {
                   display: 'block',
                   fontSize: '28px',
                   fontWeight: 700,
-                  color: activeSection === item.href.replace('/#', '').replace('/', '') ? '#D4A447' : '#1a1a1a',
+                  fontFamily: 'var(--font-bodoni), Georgia, serif',
+                  color:
+                    activeSection === item.href.replace('/#', '').replace('/', '')
+                      ? '#C5A04E'
+                      : '#0D0D0D',
                   padding: '12px 24px',
                   textDecoration: 'none',
                   WebkitTapHighlightColor: 'transparent',
@@ -225,7 +235,7 @@ export default function Navbar() {
               style={{
                 display: 'inline-block',
                 marginTop: '16px',
-                backgroundColor: '#1a1a1a',
+                backgroundColor: '#0D0D0D',
                 color: '#FFFFFF',
                 padding: '16px 40px',
                 borderRadius: '9999px',
@@ -241,7 +251,7 @@ export default function Navbar() {
               href="tel:5806652758"
               style={{
                 marginTop: '8px',
-                color: '#D4A447',
+                color: '#C5A04E',
                 fontSize: '18px',
                 fontWeight: 600,
                 textDecoration: 'none',

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans, DM_Sans } from 'next/font/google';
+import { Bodoni_Moda, Outfit } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -7,15 +7,16 @@ import SmoothScroll from '@/components/layout/SmoothScroll';
 import StructuredData from '@/components/seo/StructuredData';
 import FloatingCTA from '@/components/ui/FloatingCTA';
 
-const jakarta = Plus_Jakarta_Sans({
+const bodoni = Bodoni_Moda({
   subsets: ['latin'],
-  variable: '--font-jakarta',
+  variable: '--font-bodoni',
   display: 'swap',
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-const dmSans = DM_Sans({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-outfit',
   display: 'swap',
 });
 
@@ -26,8 +27,8 @@ export const viewport: Viewport = {
   userScalable: true,
   viewportFit: 'cover',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FAFAF8' },
-    { media: '(prefers-color-scheme: dark)', color: '#1a1a1a' },
+    { media: '(prefers-color-scheme: light)', color: '#FAF7F2' },
+    { media: '(prefers-color-scheme: dark)', color: '#0D0D0D' },
   ],
   colorScheme: 'light',
 };
@@ -93,17 +94,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${dmSans.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${bodoni.variable} ${outfit.variable}`} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className="font-body antialiased bg-off-white text-primary-black min-h-screen touch-manipulation">
+      <body className="font-body antialiased bg-parchment text-rich-black min-h-screen touch-manipulation">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary-black focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:outline-none"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-rich-black focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:outline-none"
         >
           Skip to main content
         </a>

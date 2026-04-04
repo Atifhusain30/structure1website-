@@ -1,6 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { companyInfo } from '@/lib/data';
 
 interface FormData {
   name: string;
@@ -13,10 +16,6 @@ interface FormData {
 }
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
-
-const inputClass =
-  'w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all outline-none text-gray-900 placeholder:text-gray-400';
-const labelClass = 'block text-sm font-medium text-gray-700 mb-1.5';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState<FormData>({
@@ -107,49 +106,102 @@ export default function ContactSection() {
     setErrorMessage('');
   };
 
-  return (
-    <section id="contact" className="bg-[#F3F1ED] py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="text-[#D4A447] text-sm font-semibold uppercase tracking-[0.15em]">
-            Get Started
-          </span>
-          <h2 className="text-4xl font-bold text-gray-900 mt-2">
-            Ready to Build Your Dream?
-          </h2>
-          <p className="text-gray-600 mt-3 max-w-xl mx-auto">
-            Tell us about your project and we&apos;ll get back to you within 24 hours.
-          </p>
-        </div>
+  const inputClass =
+    'w-full px-4 py-3.5 rounded-card border border-border bg-warm-white font-body text-rich-black placeholder:text-text-muted focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all duration-300 outline-none';
+  const labelClass = 'block text-sm font-body font-medium text-text-secondary mb-1.5';
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+  const contactItems = [
+    {
+      icon: Phone,
+      label: 'Phone',
+      value: companyInfo.phone,
+      href: `tel:${companyInfo.phoneRaw}`,
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      value: companyInfo.email,
+      href: `mailto:${companyInfo.email}`,
+    },
+    {
+      icon: MapPin,
+      label: 'Address',
+      value: '5473 Blair Rd Ste 100 PMB 476653, Dallas, TX 75231',
+    },
+    {
+      icon: Clock,
+      label: 'Hours',
+      value: companyInfo.hours,
+    },
+  ];
+
+  return (
+    <section id="contact" className="bg-sand py-section">
+      <div className="max-w-container mx-auto px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-14"
+        >
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="section-divider" />
+            <span className="text-gold font-body text-xs font-semibold uppercase tracking-[0.25em]">
+              Get Started
+            </span>
+            <div className="section-divider" />
+          </div>
+          <h2 className="font-heading font-bold text-section text-rich-black mb-4">
+            Let&apos;s Talk About Your Project
+          </h2>
+          <p className="text-text-secondary font-body max-w-xl mx-auto">
+            Drop us a few details and we&apos;ll reach out within 24 hours. No pressure, no obligation.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-6xl mx-auto">
           {/* Left: Form */}
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl shadow-black/5">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="bg-parchment rounded-card-xl p-6 md:p-8 border border-border"
+          >
             {status === 'success' ? (
               <div className="text-center py-10">
-                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <div className="w-16 h-16 bg-green-50 border border-green-200 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <svg
+                    className="w-8 h-8 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-3">Request Received!</h3>
-                <p className="text-gray-600 text-lg mb-1">
+                <h3 className="font-heading font-bold text-2xl text-rich-black mb-3">
+                  Request Received!
+                </h3>
+                <p className="text-text-secondary font-body mb-1">
                   We&apos;ll get back to you within 24 hours.
                 </p>
-                <p className="text-gray-500 mb-8">
-                  Check your inbox — we&apos;ll be in touch soon.
+                <p className="text-text-muted font-body text-sm mb-8">
+                  Check your inbox &mdash; we&apos;ll be in touch soon.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <a
-                    href="tel:5806652758"
-                    className="bg-amber-500 text-white hover:bg-amber-600 rounded-lg px-6 py-3 font-semibold transition-colors"
+                    href={`tel:${companyInfo.phoneRaw}`}
+                    className="bg-gold text-white hover:bg-gold-dark rounded-full px-6 py-3 font-body font-semibold text-sm transition-colors"
                   >
-                    📞 Call Us Now
+                    Call Us Now
                   </a>
                   <button
                     onClick={resetForm}
-                    className="border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-lg px-6 py-3 font-medium transition-colors"
+                    className="border border-border text-text-secondary hover:bg-sand rounded-full px-6 py-3 font-body font-medium text-sm transition-colors"
                   >
                     Submit Another Request
                   </button>
@@ -157,7 +209,6 @@ export default function ContactSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate>
-                {/* Honeypot */}
                 <p className="hidden">
                   <label>
                     Don&apos;t fill this out: <input name="bot-field" />
@@ -166,7 +217,7 @@ export default function ContactSection() {
                 <input type="hidden" name="form-name" value="contact" />
 
                 <div className="space-y-5">
-                  {/* Row 1: Name + Phone */}
+                  {/* Name + Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className={labelClass}>
@@ -200,7 +251,7 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  {/* Row 2: Email + Service */}
+                  {/* Email + Service */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="email" className={labelClass}>
@@ -239,7 +290,7 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  {/* Row 3: Message */}
+                  {/* Message */}
                   <div>
                     <label htmlFor="message" className={labelClass}>
                       Tell Us About Your Project
@@ -255,7 +306,7 @@ export default function ContactSection() {
                     />
                   </div>
 
-                  {/* Row 4: Contact Method + Referral */}
+                  {/* Contact Method + Referral */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className={labelClass}>Preferred Contact Method</label>
@@ -271,10 +322,10 @@ export default function ContactSection() {
                               className="sr-only"
                             />
                             <span
-                              className={`block text-center py-2.5 rounded-xl border text-sm font-medium transition-all ${
+                              className={`block text-center py-2.5 rounded-card border text-sm font-body font-medium transition-all duration-300 ${
                                 formData.contactMethod === method
-                                  ? 'border-amber-400 bg-amber-50 text-amber-700'
-                                  : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
+                                  ? 'border-gold bg-gold/10 text-gold-dark'
+                                  : 'border-border bg-warm-white text-text-secondary hover:border-text-muted'
                               }`}
                             >
                               {method}
@@ -308,9 +359,13 @@ export default function ContactSection() {
 
                   {/* Error */}
                   {status === 'error' && errorMessage && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm flex items-start gap-3">
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-card text-sm font-body flex items-start gap-3">
                       <svg className="w-5 h-5 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        <path
+                          fillRule="evenodd"
+                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                       <span>{errorMessage}</span>
                     </div>
@@ -320,99 +375,89 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full py-4 bg-black text-white font-bold text-lg rounded-xl hover:bg-[#D4A447] hover:text-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-rich-black text-white font-body font-semibold text-base rounded-full hover:bg-warm-charcoal transition-all duration-400 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {status === 'submitting' ? (
                       <>
-                        <svg className="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg
+                          className="animate-spin w-5 h-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
                         </svg>
                         Sending Your Request...
                       </>
                     ) : (
-                      'Request Free Estimate →'
+                      'Request Free Estimate'
                     )}
                   </button>
 
-                  <p className="text-xs text-center text-gray-400 pt-1">
-                    Free consultation · No obligation · Response within 24 hours
+                  <p className="text-xs text-center text-text-muted font-body pt-1">
+                    Free consultation &middot; No obligation &middot; Response within 24 hours
                   </p>
                 </div>
               </form>
             )}
-          </div>
+          </motion.div>
 
           {/* Right: Contact Info */}
-          <div className="flex flex-col justify-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h3>
-            <div className="space-y-5">
-              {/* Phone */}
-              <a href="tel:5806652758" className="flex items-start gap-4 group">
-                <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-amber-100 transition-colors">
-                  <svg className="w-5 h-5 text-[#D4A447]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Phone</p>
-                  <p className="font-bold text-gray-900 text-lg">(580) 665-2758</p>
-                </div>
-              </a>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex flex-col justify-center"
+          >
+            <h3 className="font-heading font-bold text-subsection text-rich-black mb-8">
+              Get In Touch
+            </h3>
 
-              {/* Email */}
-              <a href="mailto:samuel.c.w.allison@gmail.com" className="flex items-start gap-4 group">
-                <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-amber-100 transition-colors">
-                  <svg className="w-5 h-5 text-[#D4A447]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Email</p>
-                  <p className="font-bold text-gray-900">samuel.c.w.allison@gmail.com</p>
-                </div>
-              </a>
+            <div className="space-y-6">
+              {contactItems.map((item) => {
+                const content = (
+                  <div className="flex items-start gap-4 group">
+                    <div className="w-11 h-11 bg-gold/[0.08] border border-gold/[0.12] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-gold/[0.15] transition-colors duration-300">
+                      <item.icon className="w-5 h-5 text-gold" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-text-muted font-body font-semibold uppercase tracking-widest mb-0.5">
+                        {item.label}
+                      </p>
+                      <p className="font-body font-semibold text-rich-black text-[15px]">
+                        {item.value}
+                      </p>
+                    </div>
+                  </div>
+                );
 
-              {/* Address */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-[#D4A447]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Address</p>
-                  <p className="font-bold text-gray-900">5473 Blair Rd Ste 100 PMB 476653</p>
-                  <p className="text-gray-600">Dallas, TX 75231</p>
-                </div>
-              </div>
-
-              {/* Hours */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-[#D4A447]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Business Hours</p>
-                  <p className="font-bold text-gray-900">Mon - Fri: 8:00 AM - 6:00 PM</p>
-                </div>
-              </div>
+                return item.href ? (
+                  <a key={item.label} href={item.href} className="block">
+                    {content}
+                  </a>
+                ) : (
+                  <div key={item.label}>{content}</div>
+                );
+              })}
             </div>
 
             {/* Branding */}
-            <div className="mt-10 pt-8 border-t border-gray-200">
-              <span className="font-heading text-lg font-bold tracking-[0.2em] text-gray-900">
+            <div className="mt-12 pt-8 border-t border-border">
+              <span className="font-heading text-xl font-bold tracking-[0.15em] text-rich-black">
                 STRUCTURE1
               </span>
-              <p className="text-gray-500 text-sm mt-2">
+              <p className="text-text-secondary font-body text-sm mt-3 leading-relaxed max-w-sm">
                 Dallas-Fort Worth&apos;s trusted patio cover &amp; concrete experts.
                 Licensed, insured, and backed by our 2-year workmanship warranty.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
