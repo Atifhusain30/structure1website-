@@ -51,7 +51,7 @@ export default function WhyUs() {
               {[
                 { value: 150, suffix: '+', label: 'Projects Completed' },
                 { value: 4, suffix: '+', label: 'Years Experience' },
-                { value: 100, suffix: '%', label: 'Client Satisfaction' },
+                { value: 100, suffix: '%', label: 'Satisfaction' },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
