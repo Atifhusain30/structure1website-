@@ -9,17 +9,20 @@ interface CounterProps {
   duration?: number;
 }
 
-export default function Counter({ 
-  target, 
-  suffix = '', 
-  duration = 2 
+export default function Counter({
+  target,
+  suffix = '',
+  duration = 2
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (isInView) {
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
+      setCount(0);
       const controls = animate(0, target, {
         duration,
         ease: 'easeOut',
@@ -27,7 +30,7 @@ export default function Counter({
       });
       return () => controls.stop();
     }
-  }, [isInView, target, duration]);
+  }, [isInView, target, duration, hasAnimated]);
 
   return (
     <span ref={ref} className="tabular-nums">

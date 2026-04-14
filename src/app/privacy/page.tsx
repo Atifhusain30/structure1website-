@@ -5,6 +5,7 @@ import AnimatedSection from '@/components/ui/AnimatedSection';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Privacy policy for Structure1 Construction. Learn how we collect, use, and protect your personal information.',
+  alternates: { canonical: '/privacy' },
 };
 
 export default function PrivacyPage() {

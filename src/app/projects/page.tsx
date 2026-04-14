@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Our Projects',
   description:
     'Explore our portfolio of completed patio cover projects including gable designs, lean-to covers, and pergolas with polycarbonate roofing.',
+  alternates: { canonical: '/projects' },
 };
 
 export default function ProjectsPage() {

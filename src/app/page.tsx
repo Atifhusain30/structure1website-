@@ -1,4 +1,9 @@
+import { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 import ServicesSection from '@/components/home/ServicesSection';
 import PortfolioSection from '@/components/home/PortfolioSection';
 import WhyUs from '@/components/home/WhyUs';

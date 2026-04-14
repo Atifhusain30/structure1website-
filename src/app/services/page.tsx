@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Our Services',
   description:
     'Explore our premium construction services including patio covers, concrete work, and outdoor living spaces. Quality craftsmanship for your home.',
+  alternates: { canonical: '/services' },
 };
 
 export default function ServicesPage() {

@@ -12,6 +12,7 @@ const service = services.find((s) => s.id === 'patio-covers')!;
 export const metadata: Metadata = {
   title: service.title,
   description: service.fullDescription,
+  alternates: { canonical: '/services/patio-covers' },
 };
 
 export default function PatioCoversPage() {

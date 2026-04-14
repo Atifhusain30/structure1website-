@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Learn about Structure1 Construction - over 4 years of experience delivering quality construction services in Texas. Meet our team and discover our values.',
+  alternates: { canonical: '/about' },
 };
 
 const values = [

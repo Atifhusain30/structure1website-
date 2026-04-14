@@ -53,9 +53,6 @@ export const metadata: Metadata = {
     'concrete contractor Dallas',
   ],
   metadataBase: new URL('https://structure1builds.com'),
-  alternates: {
-    canonical: '/',
-  },
   authors: [{ name: 'Structure1 Construction' }],
   creator: 'Structure1 Construction',
   openGraph: {
@@ -96,8 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bodoni.variable} ${outfit.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+{/* Fonts are self-hosted via next/font — no external preconnect needed */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>

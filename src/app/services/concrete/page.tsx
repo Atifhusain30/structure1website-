@@ -8,6 +8,7 @@ import { services } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Concrete Services',
   description: 'Professional concrete services including stamped concrete, driveways, patios, foundations, and decorative finishes. Quality craftsmanship in Dallas-Fort Worth.',
+  alternates: { canonical: '/services/concrete' },
 };
 
 export default function ConcretePage() {

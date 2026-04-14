@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Contact Us',
   description:
     'Get in touch with Structure1 Construction for a free consultation. Call us, email us, or fill out our contact form.',
+  alternates: { canonical: '/contact' },
 };
 
 export default function ContactPage() {

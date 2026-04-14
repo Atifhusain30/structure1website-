@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://structure1.com/sitemap.xml',
+    sitemap: 'https://structure1builds.com/sitemap.xml',
   };
 }
 

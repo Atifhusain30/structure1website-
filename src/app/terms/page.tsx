@@ -5,6 +5,7 @@ import AnimatedSection from '@/components/ui/AnimatedSection';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Terms of service for Structure1 Construction. Read our terms and conditions for using our services.',
+  alternates: { canonical: '/terms' },
 };
 
 export default function TermsPage() {
