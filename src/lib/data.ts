@@ -224,9 +224,9 @@ export const serviceAreas = [
 
 export const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'Our Work', href: '/projects' },
-  { name: 'About', href: '/about' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Our Work', href: '/#portfolio' },
+  { name: 'Why Us', href: '/#why-us' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact', href: '/#contact' },
 ];

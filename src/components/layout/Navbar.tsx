@@ -17,12 +17,29 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const handlePathnameChange = () => {
-      setActiveSection(window.location.pathname);
-    };
-    handlePathnameChange();
-    window.addEventListener('popstate', handlePathnameChange);
-    return () => window.removeEventListener('popstate', handlePathnameChange);
+    const sectionIds = navigation
+      .map((n) => {
+        const h = n.href.indexOf('#');
+        return h !== -1 ? n.href.slice(h + 1) : '';
+      })
+      .filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -54,8 +71,33 @@ export default function Navbar() {
   const closeMenu = useCallback(() => setMobileMenuOpen(false), []);
 
   const handleNavClick = useCallback(
-    () => {
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       closeMenu();
+
+      if (href === '/') {
+        e.preventDefault();
+        if (window.location.pathname === '/') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.location.href = '/';
+        }
+        return;
+      }
+
+      const hashIndex = href.indexOf('#');
+      if (hashIndex === -1) return;
+
+      const id = href.slice(hashIndex + 1);
+      const isHomepage = window.location.pathname === '/';
+
+      if (isHomepage) {
+        e.preventDefault();
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
     },
     [closeMenu]
   );
@@ -95,10 +137,10 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={handleNavClick}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
                     'nav-link font-body text-sm font-medium tracking-wide transition-colors',
-                    activeSection === item.href
+                    activeSection === item.href.replace('/#', '').replace('/', '')
                       ? 'active text-gold'
                       : 'text-rich-black/60 hover:text-rich-black'
                   )}
@@ -110,8 +152,8 @@ export default function Navbar() {
 
             <div className="hidden lg:block">
               <a
-                href="/contact"
-                onClick={handleNavClick}
+                href="/#contact"
+                onClick={(e) => handleNavClick(e, '/#contact')}
                 className="bg-rich-black text-white px-6 py-3 rounded-full font-body text-sm font-medium tracking-wider hover:bg-warm-charcoal transition-all duration-400"
               >
                 Get a Consultation
@@ -169,14 +211,14 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                onClick={handleNavClick}
+                onClick={(e) => handleNavClick(e, item.href)}
                 style={{
                   display: 'block',
                   fontSize: '28px',
                   fontWeight: 700,
                   fontFamily: 'var(--font-bodoni), Georgia, serif',
                   color:
-                    activeSection === item.href
+                    activeSection === item.href.replace('/#', '').replace('/', '')
                       ? '#C5A04E'
                       : '#0D0D0D',
                   padding: '12px 24px',
@@ -188,8 +230,8 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="/contact"
-              onClick={handleNavClick}
+              href="/#contact"
+              onClick={(e) => handleNavClick(e, '/#contact')}
               style={{
                 display: 'inline-block',
                 marginTop: '16px',
