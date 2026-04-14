@@ -17,20 +17,19 @@ export default function Counter({
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
   const [count, setCount] = useState(target);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (isInView && !hasAnimated) {
-      setHasAnimated(true);
+    if (isInView && !hasAnimated.current) {
+      hasAnimated.current = true;
       setCount(0);
-      const controls = animate(0, target, {
+      animate(0, target, {
         duration,
         ease: 'easeOut',
         onUpdate: (value) => setCount(Math.round(value)),
       });
-      return () => controls.stop();
     }
-  }, [isInView, target, duration, hasAnimated]);
+  }, [isInView, target, duration]);
 
   return (
     <span ref={ref} className="tabular-nums">
