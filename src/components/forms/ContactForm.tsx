@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, Check, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowUpRight, Check, Loader2, AlertCircle } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -69,24 +69,28 @@ export default function ContactForm() {
     }
   };
 
+  const inputClass =
+    'w-full px-4 py-3.5 bg-parchment border border-border text-rich-black placeholder:text-text-muted focus:border-gold focus:bg-warm-white transition-colors outline-none font-body';
+  const labelClass = 'block text-[11px] font-body font-semibold uppercase tracking-[0.18em] text-text-secondary mb-2';
+
   if (isSubmitted) {
     return (
       <div className="text-center py-12">
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <Check className="w-10 h-10 text-green-600" />
+        <div className="w-16 h-16 border border-gold/40 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Check className="w-7 h-7 text-gold" strokeWidth={1.6} />
         </div>
-        <h3 className="font-heading font-bold text-2xl text-primary-black mb-4">
-          Message Sent!
+        <h3 className="font-heading font-medium text-2xl text-rich-black mb-3">
+          Message Sent
         </h3>
-        <p className="text-text-gray mb-8">
-          Thank you for contacting us. We&apos;ll get back to you within 24 hours.
+        <p className="text-text-secondary font-body mb-8">
+          Thank you for reaching out. We&apos;ll be in touch within 24 hours.
         </p>
         <button
           onClick={() => {
             setIsSubmitted(false);
             setFormData({ name: '', email: '', phone: '', service: '', message: '' });
           }}
-          className="text-accent-warm hover:text-primary-black transition-colors font-medium"
+          className="text-gold hover:text-gold-dark font-body font-semibold uppercase tracking-[0.18em] text-[11px] transition-colors"
         >
           Send Another Message
         </button>
@@ -95,89 +99,91 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <p className="hidden">
         <label>Don&apos;t fill this out: <input name="bot-field" /></label>
       </p>
       <input type="hidden" name="form-name" value="contact" />
 
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3">
+        <div className="border border-red-200 bg-red-50/50 p-4 flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-          <p className="text-red-700 text-sm">{error}</p>
+          <p className="text-red-700 text-sm font-body">{error}</p>
         </div>
       )}
 
-      <div>
-        <label htmlFor="contact-name" className="block text-sm font-medium text-primary-black mb-2">
-          Full Name <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          id="contact-name"
-          name="name"
-          required
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full px-4 py-4 bg-cream rounded-xl border-2 border-transparent focus:border-primary-black focus:bg-white transition-all outline-none"
-          placeholder="John Smith"
-        />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="contact-name" className={labelClass}>
+            Full Name <span className="text-gold">*</span>
+          </label>
+          <input
+            type="text"
+            id="contact-name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            className={inputClass}
+            placeholder="John Smith"
+          />
+        </div>
+        <div>
+          <label htmlFor="contact-phone" className={labelClass}>
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="contact-phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className={inputClass}
+            placeholder="(555) 123-4567"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="contact-email" className={labelClass}>
+            Email <span className="text-gold">*</span>
+          </label>
+          <input
+            type="email"
+            id="contact-email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            className={inputClass}
+            placeholder="john@example.com"
+          />
+        </div>
+        <div>
+          <label htmlFor="contact-service" className={labelClass}>
+            Service
+          </label>
+          <select
+            id="contact-service"
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            className={`${inputClass} appearance-none cursor-pointer`}
+          >
+            <option value="">Select a service...</option>
+            <option value="Patio Cover">Patio Cover</option>
+            <option value="Pergola">Pergola</option>
+            <option value="Concrete">Concrete</option>
+            <option value="Outdoor Kitchen">Outdoor Kitchen</option>
+            <option value="Full Backyard Renovation">Full Backyard Renovation</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
       </div>
 
       <div>
-        <label htmlFor="contact-email" className="block text-sm font-medium text-primary-black mb-2">
-          Email Address <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="email"
-          id="contact-email"
-          name="email"
-          required
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full px-4 py-4 bg-cream rounded-xl border-2 border-transparent focus:border-primary-black focus:bg-white transition-all outline-none"
-          placeholder="john@example.com"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="contact-phone" className="block text-sm font-medium text-primary-black mb-2">
-          Phone Number
-        </label>
-        <input
-          type="tel"
-          id="contact-phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-4 py-4 bg-cream rounded-xl border-2 border-transparent focus:border-primary-black focus:bg-white transition-all outline-none"
-          placeholder="(555) 123-4567"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="contact-service" className="block text-sm font-medium text-primary-black mb-2">
-          Service Interested In
-        </label>
-        <select
-          id="contact-service"
-          name="service"
-          value={formData.service}
-          onChange={handleChange}
-          className="w-full px-4 py-4 bg-cream rounded-xl border-2 border-transparent focus:border-primary-black focus:bg-white transition-all outline-none appearance-none cursor-pointer"
-        >
-          <option value="">Select a service...</option>
-          <option value="Patio Cover">Patio Cover</option>
-          <option value="Pergola">Pergola</option>
-          <option value="Concrete">Concrete</option>
-          <option value="Outdoor Kitchen">Outdoor Kitchen</option>
-          <option value="Full Backyard Renovation">Full Backyard Renovation</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="contact-message" className="block text-sm font-medium text-primary-black mb-2">
+        <label htmlFor="contact-message" className={labelClass}>
           Project Description
         </label>
         <textarea
@@ -186,25 +192,25 @@ export default function ContactForm() {
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-4 bg-cream rounded-xl border-2 border-transparent focus:border-primary-black focus:bg-white transition-all outline-none resize-none"
-          placeholder="Tell us about your project..."
+          className={`${inputClass} resize-none`}
+          placeholder="Tell us about your project — size, style, timeline, budget…"
         />
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-primary-black text-white py-4 px-8 rounded-full font-medium tracking-wider uppercase text-sm flex items-center justify-center gap-2 hover:shadow-xl transition-shadow disabled:opacity-70"
+        className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light text-rich-black px-8 py-4 font-body font-semibold uppercase tracking-[0.18em] text-xs transition-colors duration-300 disabled:opacity-70"
       >
         {isSubmitting ? (
           <>
-            <Loader2 className="w-5 h-5 animate-spin" />
+            <Loader2 className="w-4 h-4 animate-spin" />
             Sending...
           </>
         ) : (
           <>
-            <Send className="w-5 h-5" />
-            Send Message
+            Submit Request
+            <ArrowUpRight className="w-4 h-4" />
           </>
         )}
       </button>

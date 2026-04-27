@@ -1,17 +1,37 @@
 'use client';
 
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Clock, ArrowUp } from 'lucide-react';
-import { companyInfo, navigation } from '@/lib/data';
+import Link from 'next/link';
+import { Facebook, Instagram, ArrowUpRight, MapPin } from 'lucide-react';
+import { companyInfo } from '@/lib/data';
+
+const serviceLinks = [
+  { label: 'Patio Covers', href: '/services/patio-covers' },
+  { label: 'Pergolas & Pavilions', href: '/services/patio-covers' },
+  { label: 'Outdoor Living', href: '/services/patio-covers' },
+  { label: 'Concrete Work', href: '/services/concrete' },
+  { label: 'Stamped Concrete', href: '/services/concrete' },
+  { label: 'Custom Design', href: '/contact' },
+];
+
+const companyLinks = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Our Process', href: '/about' },
+  { label: 'Our Work', href: '/projects' },
+  { label: 'Reviews', href: '/#testimonials' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
-  const scrollTo = (id: string) => {
+  const scrollToContact = () => {
+    if (typeof window === 'undefined') return;
     if (window.location.pathname !== '/') {
-      window.location.href = `/#${id}`;
+      window.location.href = '/#contact';
       return;
     }
-    const el = document.getElementById(id);
+    const el = document.getElementById('contact');
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
@@ -19,190 +39,168 @@ export default function Footer() {
   };
 
   return (
-    <>
-      {/* Mini CTA Bar */}
-      <div className="bg-warm-charcoal py-12 lg:py-16">
-        <div className="max-w-container mx-auto px-6 lg:px-8 text-center">
-          <h3 className="font-heading font-bold text-2xl md:text-3xl text-white mb-4">
-            Ready to get started?
-          </h3>
-          <p className="text-white/40 font-body mb-8 max-w-md mx-auto">
-            Schedule a free consultation and take the first step toward transforming your outdoor space.
-          </p>
-          <a
-            href="/#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollTo('contact');
-            }}
-            className="inline-block bg-gold text-white px-8 py-4 rounded-full font-body font-medium tracking-wider text-sm hover:bg-gold-dark transition-colors duration-400"
-          >
-            Get Free Estimate
-          </a>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-rich-black text-white">
-        <div className="max-w-container mx-auto px-6 lg:px-8 py-16 lg:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-            {/* Company */}
+    <footer className="bg-rich-black text-white">
+      {/* Ready to start */}
+      <div className="border-b border-white/[0.06]">
+        <div className="max-w-container mx-auto px-6 lg:px-10 py-16 lg:py-24">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
             <div>
-              <a
-                href="/"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (window.location.pathname === '/') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  } else {
-                    window.location.href = '/';
-                  }
-                }}
-                className="inline-block"
-              >
-                <span className="font-heading text-lg font-bold tracking-[0.15em]">
-                  STRUCTURE1
-                </span>
-              </a>
-              <p className="mt-4 text-white/30 font-body leading-relaxed text-sm">
-                Premium patio covers and concrete work in Dallas-Fort Worth. Unmatched quality and
-                craftsmanship for over 4 years.
+              <h2 className="font-heading font-medium leading-[1.05] tracking-tight text-white"
+                  style={{ fontSize: 'clamp(2.25rem, 4.4vw, 3.75rem)' }}>
+                Ready to Start
+                <br />
+                <span className="italic">Your Project?</span>
+              </h2>
+              <p className="text-white/55 font-body mt-5 max-w-md">
+                Tell us about your project and we&apos;ll be in touch
+                with a clear plan and estimate.
               </p>
-              <div className="flex gap-3 mt-5">
-                {[
-                  { href: companyInfo.social.facebook, icon: Facebook, label: 'Facebook' },
-                  { href: companyInfo.social.instagram, icon: Instagram, label: 'Instagram' },
-                  { href: companyInfo.social.linkedin, icon: Linkedin, label: 'LinkedIn' },
-                ].map(({ href, icon: Icon, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-400"
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                ))}
-              </div>
             </div>
-
-            {/* Navigation */}
             <div>
-              <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/50 mb-5">
-                Navigation
-              </h3>
-              <ul className="space-y-3">
-                {navigation.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      onClick={(e) => {
-                        if (item.href === '/') {
-                          e.preventDefault();
-                          if (window.location.pathname === '/') {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          } else {
-                            window.location.href = '/';
-                          }
-                        } else {
-                          const hashIdx = item.href.indexOf('#');
-                          if (hashIdx !== -1) {
-                            e.preventDefault();
-                            scrollTo(item.href.slice(hashIdx + 1));
-                          }
-                        }
-                      }}
-                      className="text-white/30 hover:text-white font-body transition-colors duration-300 text-sm"
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/50 mb-5">
-                Contact
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                  <span className="text-white/30 font-body text-sm">{companyInfo.address}</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-gold shrink-0" />
-                  <a
-                    href={`tel:${companyInfo.phoneRaw}`}
-                    className="text-white/30 hover:text-white font-body transition-colors duration-300 text-sm"
-                  >
-                    {companyInfo.phone}
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-gold shrink-0" />
-                  <a
-                    href={`mailto:${companyInfo.email}`}
-                    className="text-white/30 hover:text-white font-body transition-colors duration-300 text-sm"
-                  >
-                    {companyInfo.email}
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Clock className="w-4 h-4 text-gold shrink-0" />
-                  <span className="text-white/30 font-body text-sm">{companyInfo.hours}</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Back to Top */}
-            <div className="flex flex-col items-start lg:items-end justify-between">
-              <div>
-                <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/50 mb-5">
-                  Service Area
-                </h3>
-                <p className="text-white/30 font-body text-sm">
-                  Proudly serving the entire Dallas-Fort Worth metroplex including Plano, Frisco,
-                  McKinney, and more.
-                </p>
-              </div>
               <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="mt-6 w-12 h-12 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-400"
-                aria-label="Back to top"
+                onClick={scrollToContact}
+                className="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-rich-black px-8 py-4 font-body font-semibold uppercase tracking-[0.18em] text-xs transition-colors duration-400"
               >
-                <ArrowUp className="w-5 h-5" />
+                Request Estimate
+                <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Bottom */}
-          <div className="mt-14 pt-8 border-t border-white/[0.06]">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-white/20 font-body text-sm">
-                &copy; {currentYear} {companyInfo.name}. All rights reserved.
-              </p>
-              <div className="flex gap-6">
+      {/* Columns */}
+      <div className="max-w-container mx-auto px-6 lg:px-10 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
+          {/* Brand */}
+          <div>
+            <Link href="/" className="inline-block">
+              <span className="font-heading text-lg font-semibold tracking-[0.22em] text-white">
+                STRUCTURE1
+              </span>
+              <span className="block font-body text-[10px] font-medium uppercase tracking-[0.32em] text-gold mt-1">
+                Residential Construction
+              </span>
+            </Link>
+            <p className="text-white/45 font-body text-sm mt-5 leading-relaxed max-w-xs">
+              Proudly serving homeowners across the DFW Metroplex with premium
+              outdoor construction.
+            </p>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="font-body font-semibold text-white text-[11px] uppercase tracking-[0.28em] mb-5">
+              Services
+            </h3>
+            <ul className="space-y-3">
+              {serviceLinks.map((l) => (
+                <li key={l.label}>
+                  <Link
+                    href={l.href}
+                    className="text-white/55 hover:text-gold font-body text-sm transition-colors duration-300"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="font-body font-semibold text-white text-[11px] uppercase tracking-[0.28em] mb-5">
+              Company
+            </h3>
+            <ul className="space-y-3">
+              {companyLinks.map((l) => (
+                <li key={l.label}>
+                  <Link
+                    href={l.href}
+                    className="text-white/55 hover:text-gold font-body text-sm transition-colors duration-300"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="font-body font-semibold text-white text-[11px] uppercase tracking-[0.28em] mb-5">
+              Contact
+            </h3>
+            <ul className="space-y-3 text-white/55 font-body text-sm">
+              <li>
                 <a
-                  href="/privacy"
-                  className="text-white/20 hover:text-white font-body text-sm transition-colors duration-300"
+                  href={`tel:${companyInfo.phoneRaw}`}
+                  className="hover:text-gold transition-colors duration-300"
                 >
-                  Privacy Policy
+                  {companyInfo.phone}
                 </a>
+              </li>
+              <li>
                 <a
-                  href="/terms"
-                  className="text-white/20 hover:text-white font-body text-sm transition-colors duration-300"
+                  href={`mailto:${companyInfo.email}`}
+                  className="hover:text-gold transition-colors duration-300 break-all"
                 >
-                  Terms of Service
+                  {companyInfo.email}
                 </a>
-              </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-gold mt-1 shrink-0" />
+                <span>Dallas-Fort Worth, TX</span>
+              </li>
+            </ul>
+
+            {/* Socials */}
+            <div className="flex items-center gap-3 mt-6">
+              <a
+                href={companyInfo.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/65 hover:text-gold hover:border-gold transition-colors duration-300"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={companyInfo.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/65 hover:text-gold hover:border-gold transition-colors duration-300"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
         </div>
-      </footer>
-    </>
+
+        {/* Bottom bar */}
+        <div className="mt-14 pt-8 border-t border-white/[0.06]">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="text-white/30 font-body text-xs">
+              &copy; {year} {companyInfo.name}. All rights reserved.
+            </p>
+            <div className="flex gap-6">
+              <Link
+                href="/privacy"
+                className="text-white/30 hover:text-gold font-body text-xs transition-colors duration-300"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-white/30 hover:text-gold font-body text-xs transition-colors duration-300"
+              >
+                Terms of Service
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }

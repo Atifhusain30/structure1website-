@@ -1,28 +1,30 @@
 import { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
-
-export const metadata: Metadata = {
-  alternates: { canonical: '/' },
-};
-import ServicesSection from '@/components/home/ServicesSection';
-import PortfolioSection from '@/components/home/PortfolioSection';
-import WhyUs from '@/components/home/WhyUs';
+import TrustStrip from '@/components/home/TrustStrip';
+import ServicesGrid from '@/components/home/ServicesGrid';
+import CommitmentBlock from '@/components/home/CommitmentBlock';
+import RecentProjectsStrip from '@/components/home/RecentProjectsStrip';
 import Testimonials from '@/components/home/Testimonials';
 import FAQSection from '@/components/home/FAQSection';
 import ContactSection from '@/components/home/ContactSection';
 import ServiceAreaSection from '@/components/home/ServiceAreaSection';
 
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
+
 export default function Home() {
   return (
     <>
       <Hero />
-      <ServicesSection />
-      <PortfolioSection />
-      <WhyUs />
+      <TrustStrip />
+      <ServicesGrid />
+      <CommitmentBlock />
+      <RecentProjectsStrip />
       <Testimonials />
       <FAQSection />
-      <ContactSection />
       <ServiceAreaSection />
+      <ContactSection />
     </>
   );
 }

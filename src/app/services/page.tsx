@@ -1,65 +1,65 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import AnimatedSection from '@/components/ui/AnimatedSection';
-import ServiceCard from '@/components/ui/ServiceCard';
-import CTASection from '@/components/home/CTASection';
+import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
+import PageHero from '@/components/layout/PageHero';
 import { services } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Our Services',
   description:
-    'Explore our premium construction services including patio covers, concrete work, and outdoor living spaces. Quality craftsmanship for your home.',
+    'Premium residential construction services across DFW: patio covers, pergolas, outdoor living, concrete, and stamped finishes.',
   alternates: { canonical: '/services' },
 };
 
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="pt-40 pb-20 bg-cream">
-        <div className="max-w-container mx-auto px-6 lg:px-8">
-          <AnimatedSection className="max-w-3xl">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-sm text-text-gray mb-8">
-              <Link href="/" className="hover:text-primary-black transition-colors">
-                Home
+      <PageHero
+        eyebrow="Our Services"
+        title="Full-service residential construction."
+        description="From custom patio covers to stamped concrete finishes — quality work, premium materials, and a process that respects your time."
+        image="/images/hero/sashi3.JPG"
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
+      />
+
+      <section className="bg-parchment py-section">
+        <div className="max-w-container mx-auto px-6 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border/60 border border-border/60">
+            {services.map((s) => (
+              <Link
+                key={s.id}
+                href={`/services/${s.id}`}
+                className="group relative bg-warm-white block overflow-hidden"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-stone">
+                  <Image
+                    src={s.image}
+                    alt={s.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    quality={80}
+                    className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="p-8 lg:p-10">
+                  <h2 className="font-heading font-medium text-rich-black tracking-tight"
+                      style={{ fontSize: 'clamp(1.75rem, 2.6vw, 2.25rem)' }}>
+                    {s.title}
+                  </h2>
+                  <p className="text-text-secondary font-body text-[15px] leading-relaxed mt-4 max-w-md">
+                    {s.shortDescription}
+                  </p>
+                  <span className="inline-flex items-center gap-2 mt-7 text-rich-black font-body text-[11px] font-semibold uppercase tracking-[0.22em] group-hover:text-gold transition-colors">
+                    Explore {s.title}
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
               </Link>
-              <span>/</span>
-              <span className="text-primary-black">Services</span>
-            </div>
-
-            <h1 className="font-heading font-bold text-hero text-primary-black mb-6">
-              Our Services
-            </h1>
-            <p className="text-text-gray text-xl leading-relaxed">
-              From concept to completion, we deliver exceptional construction services 
-              tailored to transform your living spaces with quality and precision.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-section bg-off-white">
-        <div className="max-w-container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={service.id}
-                id={service.id}
-                title={service.title}
-                shortDescription={service.shortDescription}
-                image={service.image}
-                index={index}
-              />
             ))}
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <CTASection />
     </>
   );
 }
-

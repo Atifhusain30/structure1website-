@@ -1,8 +1,4 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
-import AnimatedSection from '@/components/ui/AnimatedSection';
 
 interface ServiceFeaturesProps {
   features: string[];
@@ -10,30 +6,31 @@ interface ServiceFeaturesProps {
 
 export default function ServiceFeatures({ features }: ServiceFeaturesProps) {
   return (
-    <section className="py-12 bg-off-white">
-      <div className="max-w-container mx-auto px-6 lg:px-8">
-        <AnimatedSection>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="flex items-center gap-3 p-4 bg-white rounded-xl"
-              >
-                <div className="w-6 h-6 bg-primary-black rounded-full flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 text-white" />
-                </div>
-                <span className="text-primary-black text-sm font-medium">{feature}</span>
-              </motion.div>
-            ))}
-          </div>
-        </AnimatedSection>
+    <section className="bg-parchment py-20">
+      <div className="max-w-container mx-auto px-6 lg:px-10">
+        <div className="text-center mb-12">
+          <span className="text-gold font-body text-[11px] font-semibold uppercase tracking-[0.32em] block mb-5">
+            What&apos;s Included
+          </span>
+          <h2 className="font-heading text-rich-black font-medium tracking-tight"
+              style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+            Built into every project.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border/60 border border-border/60 max-w-5xl mx-auto">
+          {features.map((feature) => (
+            <div key={feature} className="bg-warm-white p-6 flex items-start gap-3">
+              <div className="shrink-0 w-7 h-7 rounded-full border border-gold/40 flex items-center justify-center mt-0.5">
+                <Check className="w-3 h-3 text-gold" strokeWidth={2} />
+              </div>
+              <span className="text-rich-black font-body font-medium text-[14.5px]">
+                {feature}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-
-
