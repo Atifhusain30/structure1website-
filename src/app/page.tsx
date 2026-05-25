@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
 import TrustStrip from '@/components/home/TrustStrip';
 import ServicesGrid from '@/components/home/ServicesGrid';
-import CommitmentBlock from '@/components/home/CommitmentBlock';
-import RecentProjectsStrip from '@/components/home/RecentProjectsStrip';
-import Testimonials from '@/components/home/Testimonials';
-import FAQSection from '@/components/home/FAQSection';
-import ContactSection from '@/components/home/ContactSection';
+import InlineEstimate from '@/components/home/InlineEstimate';
+import RecentWork from '@/components/home/RecentWork';
+import Process from '@/components/home/Process';
 import ServiceAreaSection from '@/components/home/ServiceAreaSection';
+import Testimonials from '@/components/home/Testimonials';
+import CTASection from '@/components/home/CTASection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -19,12 +19,12 @@ export default function Home() {
       <Hero />
       <TrustStrip />
       <ServicesGrid />
-      <CommitmentBlock />
-      <RecentProjectsStrip />
+      <InlineEstimate />
+      <RecentWork />
+      <Process />
       <Testimonials />
-      <FAQSection />
       <ServiceAreaSection />
-      <ContactSection />
+      <CTASection />
     </>
   );
 }

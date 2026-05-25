@@ -87,37 +87,44 @@ export default async function BlogPostPage({ params }: PageProps) {
             sizes="100vw"
             quality={85}
             priority
-            className="object-cover opacity-45"
+            className="object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-rich-black/85 via-rich-black/50 to-rich-black/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-rich-black/90 via-rich-black/55 to-rich-black/95" />
+          <div className="absolute inset-0 grain-overlay opacity-50" />
         </div>
-        <div className="relative z-10 max-w-narrow mx-auto px-6 lg:px-10 pt-40 pb-16 lg:pt-48 lg:pb-20 text-center">
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex items-center justify-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/55 font-body">
-              <li><Link href="/" className="hover:text-gold">Home</Link></li>
-              <li className="text-white/30">/</li>
-              <li><Link href="/blog" className="hover:text-gold">Blog</Link></li>
-              <li className="text-white/30">/</li>
+        <div className="relative z-10 max-w-narrow mx-auto px-6 lg:px-16 pt-40 pb-20 lg:pt-48 lg:pb-24 text-center">
+          <nav aria-label="Breadcrumb" className="mb-10">
+            <ol className="flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-white/50">
+              <li>
+                <Link href="/" className="hover:text-gold">
+                  Home
+                </Link>
+              </li>
+              <li className="text-white/30">·</li>
+              <li>
+                <Link href="/blog" className="hover:text-gold">
+                  Journal
+                </Link>
+              </li>
+              <li className="text-white/30">·</li>
               <li className="text-white truncate max-w-[200px] md:max-w-none">{post.title}</li>
             </ol>
           </nav>
 
-          <span className="text-gold font-body text-[11px] font-semibold uppercase tracking-[0.32em]">
-            {post.category}
-          </span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.26em] text-gold">{post.category}</span>
           <h1
-            className="font-heading font-medium text-white tracking-tight leading-[1.1] mt-4 max-w-3xl mx-auto"
-            style={{ fontSize: 'clamp(2.25rem, 4.4vw, 3.5rem)' }}
+            className="font-display font-medium text-white leading-[1.02] tracking-[-0.025em] mt-5 max-w-3xl mx-auto"
+            style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}
           >
             {post.title}
           </h1>
-          <div className="flex items-center justify-center gap-5 mt-6 text-white/60 text-sm font-body">
+          <div className="flex items-center justify-center gap-6 mt-7 text-white/55 font-mono text-[10px] uppercase tracking-[0.22em]">
             <span className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-gold" />
-              {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              <Calendar className="w-3.5 h-3.5 text-gold" />
+              {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
             </span>
             <span className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-gold" />
+              <Clock className="w-3.5 h-3.5 text-gold" />
               {post.readTime}
             </span>
           </div>

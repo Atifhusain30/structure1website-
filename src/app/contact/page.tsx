@@ -1,101 +1,104 @@
 import { Metadata } from 'next';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import PageHero from '@/components/layout/PageHero';
-import ContactForm from '@/components/forms/ContactForm';
+import EstimateForm from '@/components/forms/EstimateForm';
 import { companyInfo } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact',
   description:
-    'Get in touch with Structure1 Construction for a free consultation. Call us, email us, or send a message.',
+    'Reach Structure1 Construction. Free estimates, transparent quotes, and one-business-day reply times across the DFW Metroplex.',
   alternates: { canonical: '/contact' },
 };
 
 const items = [
-  {
-    icon: Phone,
-    label: 'Phone',
-    value: companyInfo.phone,
-    href: `tel:${companyInfo.phoneRaw}`,
-  },
-  {
-    icon: Mail,
-    label: 'Email',
-    value: companyInfo.email,
-    href: `mailto:${companyInfo.email}`,
-  },
-  {
-    icon: MapPin,
-    label: 'Service Area',
-    value: 'Dallas-Fort Worth Metroplex',
-  },
-  {
-    icon: Clock,
-    label: 'Business Hours',
-    value: companyInfo.hours,
-  },
+  { icon: Phone, label: 'Call', value: companyInfo.phone, href: `tel:${companyInfo.phoneRaw}` },
+  { icon: Mail, label: 'Email', value: companyInfo.email, href: `mailto:${companyInfo.email}` },
+  { icon: MapPin, label: 'Service Area', value: 'Dallas–Fort Worth Metroplex' },
+  { icon: Clock, label: 'Hours', value: companyInfo.hours },
 ];
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Get In Touch"
-        title="Let's build something that lasts."
-        description="Tell us about your project and we'll be in touch within 24 hours with a clear plan and an honest estimate."
+        eyebrow="Get a free estimate"
+        title="Let's scope"
+        italicWord="your project."
+        description="Tell us what you have in mind. We respond within one business day with next steps, a site-visit window, and a transparent ballpark price."
         image="/images/hero/cover5.PNG"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
       />
 
-      <section className="bg-parchment py-section">
-        <div className="max-w-container mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            {/* Form */}
-            <div className="lg:col-span-7 bg-warm-white border border-border p-8 lg:p-10">
-              <h2 className="font-heading font-medium text-rich-black text-2xl lg:text-3xl mb-2">
-                Request an Estimate
+      <section className="bg-parchment py-24 lg:py-32">
+        <div className="max-w-wide mx-auto px-6 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+            <div className="lg:col-span-7">
+              <div className="eyebrow-row mb-5">
+                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold-dark">
+                  Project intake
+                </span>
+              </div>
+              <h2
+                className="font-display font-medium text-rich-black leading-[1.02] tracking-[-0.02em] mb-10"
+                style={{ fontSize: 'clamp(1.85rem, 3.4vw, 2.85rem)' }}
+              >
+                Send a few details.
               </h2>
-              <p className="text-text-secondary font-body text-[15px] mb-8">
-                Send us a few details and we&apos;ll reach out within 24 hours.
-              </p>
-              <ContactForm />
+              <EstimateForm variant="inline" cta="Send My Project" />
             </div>
 
-            {/* Info */}
             <div className="lg:col-span-5">
-              <span className="text-gold font-body text-[11px] font-semibold uppercase tracking-[0.32em] block mb-5">
-                Reach Out Directly
-              </span>
-              <h3 className="font-heading font-medium text-rich-black mb-8 leading-tight"
-                  style={{ fontSize: 'clamp(1.75rem, 2.6vw, 2.25rem)' }}>
-                Talk to a real human about your project.
+              <div className="eyebrow-row mb-5">
+                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold-dark">
+                  Reach out direct
+                </span>
+              </div>
+              <h3
+                className="font-display font-medium text-rich-black leading-[1.05] tracking-[-0.02em] mb-10"
+                style={{ fontSize: 'clamp(1.75rem, 2.8vw, 2.4rem)' }}
+              >
+                Talk to a real builder.
               </h3>
 
-              <div className="space-y-5">
+              <ul className="space-y-px bg-border/60 border border-border/60">
                 {items.map((it) => {
-                  const content = (
-                    <div className="flex items-start gap-4 group">
+                  const inner = (
+                    <div className="bg-parchment p-6 lg:p-7 flex items-start gap-5 group">
                       <div className="shrink-0 w-11 h-11 border border-gold/40 rounded-full flex items-center justify-center">
                         <it.icon className="w-4 h-4 text-gold" strokeWidth={1.6} />
                       </div>
                       <div>
-                        <p className="text-text-muted font-body text-[10px] uppercase tracking-[0.22em] mb-1">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-stone mb-1">
                           {it.label}
                         </p>
-                        <p className="font-body font-semibold text-rich-black text-[15px] group-hover:text-gold transition-colors">
+                        <p className="font-display text-[18px] lg:text-[20px] font-medium text-rich-black group-hover:text-gold transition-colors">
                           {it.value}
                         </p>
                       </div>
                     </div>
                   );
-                  return it.href ? (
-                    <a key={it.label} href={it.href} className="block">
-                      {content}
-                    </a>
-                  ) : (
-                    <div key={it.label}>{content}</div>
+                  return (
+                    <li key={it.label}>
+                      {it.href ? (
+                        <a href={it.href} className="block">
+                          {inner}
+                        </a>
+                      ) : (
+                        inner
+                      )}
+                    </li>
                   );
                 })}
+              </ul>
+
+              <div className="mt-10 p-6 lg:p-7 bg-rich-black text-white">
+                <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold mb-3">
+                  // Response time
+                </p>
+                <p className="font-display text-[20px] lg:text-[24px] leading-[1.3]">
+                  One business day. Every time. Or your project gets bumped to the front of the line.
+                </p>
               </div>
             </div>
           </div>

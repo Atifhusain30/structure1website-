@@ -1,135 +1,71 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Quote, Star } from 'lucide-react';
 import { testimonials } from '@/lib/data';
+import Reveal from '@/components/ui/Reveal';
 
 export default function Testimonials() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 7000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const next = () => setCurrent((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-
   return (
-    <section id="testimonials" className="py-section bg-parchment overflow-hidden">
-      <div className="max-w-container mx-auto px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="section-divider" />
-              <span className="text-gold font-body text-xs font-semibold uppercase tracking-[0.25em]">
-                Testimonials
+    <section id="testimonials" className="relative bg-parchment text-rich-black">
+      <div className="max-w-wide mx-auto px-6 lg:px-16 py-24 lg:py-32">
+        <div className="text-center max-w-2xl mx-auto mb-14 lg:mb-20">
+          <Reveal direction="up" delay={0.05}>
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="gold-rule" />
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold-dark">
+                Words from clients
               </span>
-              <div className="section-divider" />
+              <span className="gold-rule" />
             </div>
-            <h2 className="font-heading font-bold text-section text-rich-black">
-              What Our Clients Say
+          </Reveal>
+          <Reveal direction="up" delay={0.15}>
+            <h2
+              className="font-display font-medium leading-[1.02] tracking-[-0.02em]"
+              style={{ fontSize: 'clamp(2rem, 4.5vw, 3.75rem)' }}
+            >
+              What homeowners say
+              <br />
+              <span className="italic font-light text-stone">about the build.</span>
             </h2>
-          </motion.div>
+          </Reveal>
+        </div>
 
-          {/* Quote */}
-          <div className="relative min-h-[320px] sm:min-h-[280px] flex items-center justify-center">
-            {/* Large decorative quote mark */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 font-heading text-[12rem] leading-none text-gold/[0.07] select-none pointer-events-none">
-              &ldquo;
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="text-center relative z-10"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
+          {testimonials.slice(0, 6).map((t, i) => (
+            <Reveal
+              key={t.id}
+              direction="up"
+              delay={i * 0.1}
+              distance={40}
+              className={i === 0 ? 'lg:row-span-2 lg:col-span-1' : ''}
+            >
+              <article
+                className={`relative p-8 lg:p-10 border border-border bg-parchment h-full ${
+                  i === 0 ? 'bg-sand/40' : ''
+                }`}
               >
-                {/* Stars */}
-                <div className="flex justify-center gap-1 mb-8">
-                  {[...Array(testimonials[current].rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
+                <Quote className="w-7 h-7 text-gold mb-6" strokeWidth={1.4} />
+                <p
+                  className={`font-display ${
+                    i === 0 ? 'text-[24px] lg:text-[28px]' : 'text-[19px] lg:text-[22px]'
+                  } leading-[1.4] text-rich-black mb-8`}
+                >
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-2 mb-4">
+                  {Array.from({ length: t.rating }).map((_, i2) => (
+                    <Star key={i2} className="w-3.5 h-3.5 fill-gold text-gold" />
                   ))}
                 </div>
-
-                {/* Quote text */}
-                <blockquote className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] text-rich-black leading-[1.3] mb-10 italic">
-                  &ldquo;{testimonials[current].quote}&rdquo;
-                </blockquote>
-
-                {/* Author */}
-                <div className="flex flex-col items-center gap-1">
-                  <div className="w-8 h-[1.5px] bg-gold mb-4" />
-                  <p className="font-body font-semibold text-rich-black text-base">
-                    {testimonials[current].author}
-                  </p>
-                  <p className="text-text-muted font-body text-sm">
-                    {testimonials[current].project} &middot; {testimonials[current].location}
-                  </p>
+                <div className="pt-4 border-t border-border">
+                  <div className="font-sans font-semibold text-sm">{t.author}</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-stone mt-1.5">
+                    {t.project} · {t.location}
+                  </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-6 mt-12">
-            <button
-              onClick={prev}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-rich-black hover:text-white hover:border-rich-black transition-all duration-400 touch-manipulation"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <div className="flex gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrent(index)}
-                  className={`h-1.5 rounded-full transition-all duration-400 touch-manipulation ${
-                    index === current
-                      ? 'bg-gold w-8'
-                      : 'bg-border hover:bg-text-muted w-1.5'
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-rich-black hover:text-white hover:border-rich-black transition-all duration-400 touch-manipulation"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Google Review Link */}
-          <div className="text-center mt-8">
-            <a
-              href="https://www.google.com/search?q=Structure1+Construction+Dallas+TX+reviews"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold hover:text-gold-dark font-body font-semibold text-sm transition-colors inline-flex items-center gap-1.5"
-            >
-              Leave Us a Review on Google
-              <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-            </a>
-          </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

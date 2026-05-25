@@ -1,23 +1,31 @@
 import type { Metadata, Viewport } from 'next';
-import { Bodoni_Moda, Outfit } from 'next/font/google';
+import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 import StructuredData from '@/components/seo/StructuredData';
 import FloatingCTA from '@/components/ui/FloatingCTA';
+import ScrollProgress from '@/components/ui/ScrollProgress';
 
-const bodoni = Bodoni_Moda({
+const fraunces = Fraunces({
   subsets: ['latin'],
-  variable: '--font-bodoni',
+  variable: '--font-display',
   display: 'swap',
-  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-const outfit = Outfit({
+const plexSans = IBM_Plex_Sans({
   subsets: ['latin'],
-  variable: '--font-outfit',
+  variable: '--font-sans',
   display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+  weight: ['400', '500', '600'],
 });
 
 export const viewport: Viewport = {
@@ -91,7 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${outfit.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable}`} suppressHydrationWarning>
       <head>
 {/* Fonts are self-hosted via next/font — no external preconnect needed */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -104,6 +112,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <ScrollProgress />
         <SmoothScroll>
           <Navbar />
           <main id="main-content">{children}</main>

@@ -123,7 +123,7 @@ export const projects = [
     category: 'patio-covers',
     location: 'Fort Worth, TX',
     image: '/images/hero/cover3.JPG',
-    images: ['/images/hero/cover3.JPG', '/images/hero/cover5.PNG'],
+    images: ['/images/hero/cover3.JPG'],
     description: 'Custom pergola with polycarbonate roofing, cedar posts, and ceiling fans for year-round outdoor comfort.',
     featured: false
   },

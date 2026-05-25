@@ -6,14 +6,14 @@ import PageHero from '@/components/layout/PageHero';
 import { getAllPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
-  title: 'Patio Cover Blog | Tips, Costs & Design Ideas',
+  title: 'Journal',
   description:
-    'Expert insights on patio covers, pergolas, concrete work, and outdoor living in Dallas-Fort Worth.',
+    'Field notes from the build site. Cost guides, design inspiration, and planning tips for patio covers, pergolas, and concrete in DFW.',
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: 'Patio Cover Blog | Tips, Costs & Design Ideas | Structure1 Construction',
+    title: 'Journal | Structure1',
     description:
-      'Expert insights on patio covers, pergolas, concrete work, and outdoor living in Dallas-Fort Worth.',
+      'Field notes from the build site — patio covers, pergolas, and concrete in DFW.',
     url: 'https://structure1builds.com/blog',
     type: 'website',
   },
@@ -28,49 +28,52 @@ export default function BlogPage() {
     <>
       <PageHero
         eyebrow="Journal"
-        title="Field notes from the build site."
-        description="Cost guides, design inspiration, and project planning tips from the Structure1 team."
+        title="Field notes from"
+        italicWord="the build site."
+        description="Cost guides, design inspiration, permit how-tos. Written by the team that actually swings the hammer."
         image="/images/hero/sashi3.JPG"
-        crumbs={[{ label: 'Home', href: '/' }, { label: 'Blog' }]}
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Journal' }]}
       />
 
-      <section className="bg-parchment py-section">
-        <div className="max-w-container mx-auto px-6 lg:px-10">
+      <section className="bg-parchment py-24 lg:py-32">
+        <div className="max-w-wide mx-auto px-6 lg:px-16">
           {featured && (
-            <Link href={`/blog/${featured.slug}`} className="group block mb-16">
-              <article className="grid grid-cols-1 md:grid-cols-2 border border-border bg-warm-white overflow-hidden">
-                <div className="relative aspect-[16/10] md:aspect-auto bg-stone overflow-hidden">
+            <Link href={`/blog/${featured.slug}`} className="group block mb-16 lg:mb-20">
+              <article className="grid grid-cols-1 lg:grid-cols-2 bg-rich-black overflow-hidden">
+                <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden image-hover-zoom">
                   <Image
                     src={featured.featuredImage}
                     alt={featured.featuredImageAlt}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     quality={85}
-                    className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                    className="object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                     priority
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-gold text-rich-black text-[10px] font-body font-semibold px-3 py-1 uppercase tracking-[0.22em]">
+                  <div className="absolute top-5 left-5">
+                    <span className="bg-gold text-rich-black font-mono text-[10px] font-medium px-3 py-1.5 uppercase tracking-[0.22em]">
                       Featured
                     </span>
                   </div>
                 </div>
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <span className="text-gold font-body text-[11px] font-semibold uppercase tracking-[0.32em] mb-4">
+                <div className="p-8 lg:p-14 flex flex-col justify-center text-white">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold mb-4">
                     {featured.category}
-                  </span>
-                  <h2 className="font-heading font-medium text-rich-black tracking-tight"
-                      style={{ fontSize: 'clamp(1.75rem, 2.6vw, 2.25rem)' }}>
+                  </div>
+                  <h2
+                    className="font-display font-medium leading-[1.05] tracking-[-0.02em]"
+                    style={{ fontSize: 'clamp(1.85rem, 3.4vw, 2.6rem)' }}
+                  >
                     {featured.title}
                   </h2>
-                  <p className="text-text-secondary font-body text-[15px] leading-relaxed mt-4 line-clamp-3">
-                    {featured.excerpt}
-                  </p>
-                  <div className="flex items-center gap-5 mt-6 text-text-muted text-xs font-body">
+                  <p className="text-white/65 font-sans text-[15px] leading-[1.65] mt-5 line-clamp-3">{featured.excerpt}</p>
+                  <div className="flex items-center gap-5 mt-7 text-white/50 text-xs font-mono uppercase tracking-[0.22em]">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
                       {new Date(featured.date).toLocaleDateString('en-US', {
-                        month: 'long', day: 'numeric', year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
                       })}
                     </span>
                     <span className="flex items-center gap-1.5">
@@ -78,9 +81,9 @@ export default function BlogPage() {
                       {featured.readTime}
                     </span>
                   </div>
-                  <span className="inline-flex items-center gap-2 mt-7 text-rich-black font-body text-[11px] font-semibold uppercase tracking-[0.22em] group-hover:text-gold transition-colors">
+                  <span className="inline-flex items-center gap-2 mt-8 text-gold font-mono text-[11px] uppercase tracking-[0.24em] group-hover:gap-3 transition-all">
                     Read Article
-                    <ArrowUpRight className="w-4 h-4 transition-transform duration-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </div>
               </article>
@@ -91,33 +94,33 @@ export default function BlogPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {remaining.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-                  <article className="border border-border bg-warm-white h-full flex flex-col">
-                    <div className="relative aspect-[16/10] overflow-hidden bg-stone">
+                  <article className="bg-parchment border border-border h-full flex flex-col hover:border-gold transition-colors">
+                    <div className="relative aspect-[16/10] overflow-hidden image-hover-zoom">
                       <Image
                         src={post.featuredImage}
                         alt={post.featuredImageAlt}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                        className="object-cover"
                       />
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <span className="text-gold font-body text-[11px] font-semibold uppercase tracking-[0.32em]">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold-dark">
                         {post.category}
                       </span>
-                      <h3 className="font-heading font-medium text-rich-black text-xl mt-3 line-clamp-2">
+                      <h3 className="font-display font-medium text-rich-black text-[22px] leading-[1.15] mt-3 line-clamp-2">
                         {post.title}
                       </h3>
-                      <p className="text-text-secondary font-body text-[14px] leading-relaxed mt-2 line-clamp-2 flex-1">
+                      <p className="text-stone font-sans text-[14px] leading-[1.65] mt-3 line-clamp-2 flex-1">
                         {post.excerpt}
                       </p>
-                      <div className="flex items-center gap-4 mt-4 text-text-muted text-xs font-body">
+                      <div className="flex items-center gap-4 mt-5 text-stone text-[10px] font-mono uppercase tracking-[0.22em]">
                         <span className="flex items-center gap-1.5">
-                          <Calendar className="w-3.5 h-3.5" />
+                          <Calendar className="w-3 h-3" />
                           {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </span>
                         <span className="flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5" />
+                          <Clock className="w-3 h-3" />
                           {post.readTime}
                         </span>
                       </div>
@@ -130,7 +133,7 @@ export default function BlogPage() {
 
           {posts.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-text-muted font-body text-lg">Blog posts coming soon. Check back later.</p>
+              <p className="text-stone font-sans text-lg">Articles coming soon.</p>
             </div>
           )}
         </div>

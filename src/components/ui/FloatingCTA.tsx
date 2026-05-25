@@ -15,10 +15,10 @@ export default function FloatingCTA() {
 
   const scrollToContact = () => {
     if (window.location.pathname !== '/') {
-      window.location.href = '/#contact';
+      window.location.href = '/#estimate';
       return;
     }
-    const el = document.getElementById('contact');
+    const el = document.getElementById('estimate');
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
@@ -44,9 +44,9 @@ export default function FloatingCTA() {
           </a>
           <button
             onClick={scrollToContact}
-            className="flex-1 bg-gold text-white py-3 rounded-full font-body font-semibold text-sm tracking-wide touch-manipulation hover:bg-gold-dark transition-colors duration-300"
+            className="flex-1 bg-gold text-rich-black py-3 rounded-full font-sans font-semibold text-[12px] uppercase tracking-[0.18em] touch-manipulation transition-all duration-300"
           >
-            Get Free Estimate
+            Free Estimate
           </button>
         </div>
       </div>

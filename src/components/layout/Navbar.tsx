@@ -7,11 +7,11 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/#services' },
+  { name: 'Services', href: '/services' },
   { name: 'Our Work', href: '/projects' },
-  { name: 'About Us', href: '/about' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Process', href: '/#process' },
+  { name: 'About', href: '/about' },
+  { name: 'Journal', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -93,12 +93,12 @@ export default function Navbar() {
           aria-label="Main navigation"
         >
           {/* Brand */}
-          <Link href="/" className="relative z-[60] shrink-0" onClick={close}>
-            <span className="font-heading text-base md:text-lg font-semibold tracking-[0.22em] text-white">
-              STRUCTURE1
+          <Link href="/" className="relative z-[60] shrink-0 leading-none" onClick={close}>
+            <span className="font-display text-[22px] md:text-[26px] font-semibold tracking-[0.06em] text-white">
+              Structure<span className="text-gold">1</span>
             </span>
-            <span className="block font-body text-[9px] font-medium uppercase tracking-[0.32em] text-gold mt-0.5">
-              Residential Construction
+            <span className="block font-mono text-[9px] font-medium uppercase tracking-[0.32em] text-white/50 mt-1">
+              Construction · Outdoor Living
             </span>
           </Link>
 
@@ -129,13 +129,19 @@ export default function Navbar() {
           </div>
 
           {/* Right CTA */}
-          <div className="hidden lg:block shrink-0">
-            <Link
-              href={pathname === '/' ? '/#contact' : '/contact'}
-              onClick={(e) => handleAnchor(e, pathname === '/' ? '/#contact' : '/contact')}
-              className="inline-flex items-center bg-gold hover:bg-gold-light text-rich-black px-6 py-3 font-body font-semibold uppercase tracking-[0.18em] text-[11px] transition-colors duration-300"
+          <div className="hidden lg:flex items-center gap-6 shrink-0">
+            <a
+              href="tel:5806652758"
+              className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/70 hover:text-gold transition-colors"
             >
-              Request Estimate
+              (580) 665-2758
+            </a>
+            <Link
+              href={pathname === '/' ? '/#estimate' : '/contact'}
+              onClick={(e) => handleAnchor(e, pathname === '/' ? '/#estimate' : '/contact')}
+              className="inline-flex items-center bg-gold hover:brightness-95 text-rich-black px-5 py-3 font-sans font-semibold uppercase tracking-[0.18em] text-[11px] transition-all duration-300"
+            >
+              Free Estimate
             </Link>
           </div>
 
@@ -167,17 +173,23 @@ export default function Navbar() {
                 key={l.name}
                 href={l.href}
                 onClick={(e) => handleAnchor(e, l.href)}
-                className="font-heading text-[28px] font-semibold text-white hover:text-gold transition-colors"
+                className="font-display text-[34px] font-semibold text-white hover:text-gold transition-colors"
               >
                 {l.name}
               </Link>
             ))}
+            <a
+              href="tel:5806652758"
+              className="mt-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white/70 hover:text-gold transition-colors"
+            >
+              (580) 665-2758
+            </a>
             <Link
               href="/contact"
               onClick={close}
-              className="mt-6 inline-flex items-center bg-gold text-rich-black px-8 py-4 font-body font-semibold uppercase tracking-[0.18em] text-xs"
+              className="mt-4 inline-flex items-center bg-gold text-rich-black px-8 py-4 font-sans font-semibold uppercase tracking-[0.18em] text-xs"
             >
-              Request Estimate
+              Free Estimate
             </Link>
           </nav>
         </div>
