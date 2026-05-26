@@ -135,7 +135,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             <aside className="bg-rich-black text-white p-8">
-              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold mb-5">// Details</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold mb-5">{'// Details'}</p>
               <dl className="space-y-5">
                 <div>
                   <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 mb-1">Category</dt>

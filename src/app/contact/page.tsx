@@ -94,7 +94,7 @@ export default function ContactPage() {
 
               <div className="mt-10 p-6 lg:p-7 bg-rich-black text-white">
                 <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold mb-3">
-                  // Response time
+                  {'// Response time'}
                 </p>
                 <p className="font-display text-[20px] lg:text-[24px] leading-[1.3]">
                   One business day. Every time. Or your project gets bumped to the front of the line.

@@ -85,7 +85,7 @@ export default function ServicesPage() {
                 </div>
                 <div className="absolute inset-0 p-8 lg:p-10 flex flex-col justify-between text-white">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold">// 0{i + 1}</span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold">{`// 0${i + 1}`}</span>
                     <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-gold group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300" />
                   </div>
                   <div>

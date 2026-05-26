@@ -142,7 +142,7 @@ function FeatureCard({ service }: { service: Service }) {
       </div>
       <div className="absolute inset-0 p-7 lg:p-10 flex flex-col justify-between text-white">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold">// {service.index}</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold">{`// ${service.index}`}</span>
           <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-gold group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300" />
         </div>
         <div>
@@ -167,7 +167,7 @@ function StandardCard({ service }: { service: Service }) {
       </div>
       <div className="p-6">
         <div className="flex items-center justify-between mb-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold-dark">// {service.index}</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-gold-dark">{`// ${service.index}`}</span>
           <ArrowUpRight className="w-4 h-4 text-stone group-hover:text-gold transition-colors" />
         </div>
         <h3 className="font-display text-[22px] font-medium leading-[1.15] mb-2">{service.title}</h3>

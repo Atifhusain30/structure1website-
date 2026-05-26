@@ -49,7 +49,7 @@ export default function InlineEstimate() {
                   className="object-cover"
                 />
                 <div className="absolute bottom-6 left-6 right-6 flex justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-white/70">
-                  <span>// On site</span>
+                  <span>{'// On site'}</span>
                   <span>Forney, TX</span>
                 </div>
               </div>

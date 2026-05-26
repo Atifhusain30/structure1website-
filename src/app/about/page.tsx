@@ -70,7 +70,7 @@ export default function AboutPage() {
                   className="object-cover"
                 />
                 <div className="absolute bottom-5 left-5 right-5 flex justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-white/85">
-                  <span>// Pergola</span>
+                  <span>{'// Pergola'}</span>
                   <span>Plano, TX</span>
                 </div>
               </div>

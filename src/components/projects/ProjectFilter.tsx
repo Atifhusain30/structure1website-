@@ -22,7 +22,7 @@ export default function ProjectFilter({
 }: ProjectFilterProps) {
   return (
     <div className="flex flex-wrap items-center gap-3 mb-14">
-      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-stone mr-2">// Filter</span>
+      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-stone mr-2">{'// Filter'}</span>
       {categories.map((category) => {
         const active = activeFilter === category;
         return (
