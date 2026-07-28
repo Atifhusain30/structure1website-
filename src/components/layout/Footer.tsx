@@ -6,8 +6,7 @@ import { companyInfo } from '@/lib/data';
 
 const serviceLinks = [
   { label: 'Patio Covers', href: '/services/patio-covers' },
-  { label: 'Pergolas & Pavilions', href: '/services/patio-covers' },
-  { label: 'Outdoor Kitchens', href: '/services' },
+  { label: 'Pergolas', href: '/services/patio-covers' },
   { label: 'Stamped Concrete', href: '/services/concrete' },
   { label: 'Driveways & Walkways', href: '/services/concrete' },
   { label: 'New Builds & Remodels', href: '/services' },
@@ -17,7 +16,7 @@ const companyLinks = [
   { label: 'About', href: '/about' },
   { label: 'Our Process', href: '/#process' },
   { label: 'Our Work', href: '/projects' },
-  { label: 'Service Areas', href: '/#areas' },
+  { label: 'Service Areas', href: '/service-areas' },
   { label: 'Journal', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];

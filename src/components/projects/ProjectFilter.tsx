@@ -12,7 +12,6 @@ const PRETTY: Record<string, string> = {
   all: 'All Work',
   'patio-covers': 'Patio Covers',
   concrete: 'Concrete',
-  'outdoor-kitchens': 'Outdoor Kitchens',
 };
 
 export default function ProjectFilter({

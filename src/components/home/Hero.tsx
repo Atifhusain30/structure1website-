@@ -229,7 +229,7 @@ export default function Hero() {
             transition={{ delay: 0.75, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 max-w-xl text-[17px] md:text-[19px] leading-[1.55] text-white/85 font-sans"
           >
-            Custom patio covers, pergolas, stamped concrete, and outdoor kitchens by a local DFW crew that
+            Custom patio covers, pergolas, and stamped concrete by a local DFW crew that
             shows up, communicates, and finishes on time. Backed by a 2-year build warranty.
           </motion.p>
 

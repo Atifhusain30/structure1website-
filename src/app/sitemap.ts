@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { services, projects } from '@/lib/data';
 import { getAllPosts } from '@/lib/blog';
+import { cities } from '@/lib/city-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://structure1builds.com';
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/about',
     '/services',
+    '/service-areas',
     '/projects',
     '/contact',
     '/blog',
@@ -23,6 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const servicePages = services.map((service) => ({
     url: `${baseUrl}/services/${service.id}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  const cityPages = cities.map((city) => ({
+    url: `${baseUrl}/service-areas/${city.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
@@ -42,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...projectPages, ...blogPosts];
+  return [...staticPages, ...servicePages, ...cityPages, ...projectPages, ...blogPosts];
 }
 
 

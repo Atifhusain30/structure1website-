@@ -283,7 +283,6 @@ export default function ContactSection() {
                         <option value="Patio Cover">Patio Cover</option>
                         <option value="Pergola">Pergola</option>
                         <option value="Concrete">Concrete</option>
-                        <option value="Outdoor Kitchen">Outdoor Kitchen</option>
                         <option value="Full Backyard Renovation">Full Backyard Renovation</option>
                         <option value="Other">Other</option>
                       </select>

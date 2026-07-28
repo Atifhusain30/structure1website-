@@ -39,7 +39,7 @@ const milestones = [
   { year: '2021', title: 'Company Founded', description: 'Structure1 launches in Dallas with a focus on backyard transformations.' },
   { year: '2022', title: 'Concrete Expansion', description: 'In-house concrete crew added. Stamped, decorative, and structural slabs.' },
   { year: '2023', title: '50 Projects In', description: 'Built across Plano, Frisco, McKinney, Southlake, and the surrounding metro.' },
-  { year: '2024', title: 'Metro-wide', description: 'Service reach extends to 20+ DFW cities. Outdoor kitchen + remodel offerings added.' },
+  { year: '2024', title: 'Metro-wide', description: 'Service reach extends to 20+ DFW cities. Remodel offerings added.' },
   { year: '2025', title: '150+ Builds', description: 'Continuing the same standard, one homeowner at a time.' },
 ];
 

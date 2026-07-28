@@ -7,21 +7,15 @@ import CTASection from '@/components/home/CTASection';
 import { services } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Services',
+  title: 'Outdoor Living & Concrete Contractor in Dallas-Fort Worth',
   description:
-    'Construction and outdoor living services across DFW: patio covers, pergolas, outdoor kitchens, concrete, stamped finishes, and full remodels.',
+    'Outdoor living contractor in Dallas-Fort Worth: patio covers, pergolas, stamped concrete, and full remodels. Free estimates.',
   alternates: { canonical: '/services' },
 };
 
 const supportingServices = [
   {
-    title: 'Outdoor Kitchens',
-    blurb: 'Built-in grills, masonry counters, sinks, refrigeration — engineered for entertaining.',
-    image: '/images/hero/AI kitchen.jpg',
-    href: '/contact',
-  },
-  {
-    title: 'Pergolas & Cabanas',
+    title: 'Pergolas',
     blurb: 'Cedar timber and aluminum frame structures, free-standing or attached.',
     image: '/images/hero/sashi3.JPG',
     href: '/services/patio-covers',
@@ -39,9 +33,9 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="What we build"
-        title="Construction &"
-        italicWord="outdoor living."
-        description="From the structural permit drawings to the last finish coat, we keep every trade under our own roof so quality stays consistent."
+        title="Outdoor living & concrete,"
+        italicWord="built for Dallas-Fort Worth."
+        description="Patio covers, pergolas, and stamped concrete — from the structural permit drawings to the last finish coat, we keep every trade under our own roof so quality stays consistent."
         image="/images/hero/sashi3.JPG"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
       />
@@ -121,12 +115,12 @@ export default function ServicesPage() {
             </div>
             <div className="lg:col-span-5">
               <p className="text-stone text-[15px] leading-[1.7] font-sans max-w-md">
-                Outdoor kitchens, cabanas, full remodels — additional trades we can stack onto a primary build.
+                Pergolas and full remodels — additional trades we can stack onto a primary build.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-7">
             {supportingServices.map((s) => (
               <Link
                 key={s.title}

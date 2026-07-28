@@ -14,7 +14,6 @@ interface EstimateFormProps {
 const SERVICES = [
   'Patio Cover',
   'Pergola',
-  'Outdoor Kitchen',
   'Stamped / Decorative Concrete',
   'Driveway / Walkway',
   'New Build or Remodel',

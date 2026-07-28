@@ -33,22 +33,14 @@ const services: Service[] = [
   },
   {
     index: '03',
-    title: 'Outdoor Kitchens',
-    blurb: 'Built-in grills, masonry counters, fire features — designed to entertain.',
-    href: '/services',
-    image: '/images/hero/AI kitchen.jpg',
-    size: 'standard',
-  },
-  {
-    index: '04',
-    title: 'Cabanas & Pavilions',
-    blurb: 'Freestanding structural rooms for pools, dining, and lounging.',
+    title: 'Patio Covers',
+    blurb: 'Freestanding and attached shade structures for pools, dining, and lounging.',
     href: '/services/patio-covers',
     image: '/images/hero/sashi3.JPG',
     size: 'standard',
   },
   {
-    index: '05',
+    index: '04',
     title: 'Stamped Concrete',
     blurb: 'Premium-finish slabs in slate, stone, and brick patterns.',
     href: '/services/concrete',
@@ -56,7 +48,7 @@ const services: Service[] = [
     size: 'standard',
   },
   {
-    index: '06',
+    index: '05',
     title: 'New Builds & Remodels',
     blurb: 'Additions, full backyard makeovers, and interior remodels in select markets.',
     href: '/services',
@@ -94,7 +86,7 @@ export default function ServicesGrid() {
           <div className="lg:col-span-5">
             <Reveal direction="up" delay={0.25}>
               <p className="text-stone text-[16px] leading-[1.7] font-sans max-w-md">
-                Six core services. One in-house team. From the structural permit drawings to the last finish coat,
+                Five core services. One in-house team. From the structural permit drawings to the last finish coat,
                 we keep every trade under our own roof so quality stays consistent.
               </p>
               <Link
@@ -118,7 +110,7 @@ export default function ServicesGrid() {
         </div>
 
         {/* Standard row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
           {standards.map((s, i) => (
             <Reveal key={s.title} direction="up" delay={i * 0.08} distance={40}>
               <StandardCard service={s} />

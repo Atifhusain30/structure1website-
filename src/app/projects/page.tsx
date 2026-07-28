@@ -6,7 +6,7 @@ import CTASection from '@/components/home/CTASection';
 export const metadata: Metadata = {
   title: 'Our Work',
   description:
-    'A portfolio of completed patio covers, pergolas, outdoor kitchens, and concrete projects across the Dallas–Fort Worth Metroplex.',
+    'A portfolio of completed patio covers, pergolas, and concrete projects across the Dallas–Fort Worth Metroplex.',
   alternates: { canonical: '/projects' },
 };
 
@@ -17,7 +17,7 @@ export default function ProjectsPage() {
         eyebrow="Our work"
         title="Built across"
         italicWord="the Metroplex."
-        description="Patio covers, pergolas, outdoor kitchens, and concrete projects across DFW. Filter by service — each tile links to the full build story."
+        description="Patio covers, pergolas, and concrete projects across DFW. Filter by service — each tile links to the full build story."
         image="/images/hero/cover1.JPG"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Our Work' }]}
       />
