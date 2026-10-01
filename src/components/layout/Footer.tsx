@@ -1,214 +1,115 @@
-'use client';
-
 import Link from 'next/link';
-import { Facebook, Instagram, ArrowUpRight, MapPin } from 'lucide-react';
-import { companyInfo } from '@/lib/data';
-
-const serviceLinks = [
-  { label: 'Patio Covers', href: '/services/patio-covers' },
-  { label: 'Pergolas', href: '/services/patio-covers' },
-  { label: 'Stamped Concrete', href: '/services/concrete' },
-  { label: 'Driveways & Walkways', href: '/services/concrete' },
-  { label: 'New Builds & Remodels', href: '/services' },
-];
+import { Facebook, Instagram } from 'lucide-react';
+import Container from './Container';
+import { company } from '@/content/company';
+import { services } from '@/content/services';
+import { cities } from '@/content/cities';
 
 const companyLinks = [
+  { label: 'Projects', href: '/projects' },
+  { label: 'Our Process', href: '/process' },
   { label: 'About', href: '/about' },
-  { label: 'Our Process', href: '/#process' },
-  { label: 'Our Work', href: '/projects' },
-  { label: 'Service Areas', href: '/service-areas' },
-  { label: 'Journal', href: '/blog' },
+  { label: 'Resources', href: '/blog' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Get a Free Estimate', href: '/estimate' },
 ];
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
-  const scrollToContact = () => {
-    if (typeof window === 'undefined') return;
-    if (window.location.pathname !== '/') {
-      window.location.href = '/#estimate';
-      return;
-    }
-    const el = document.getElementById('estimate');
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <footer className="bg-rich-black text-white">
-      {/* Ready to start */}
-      <div className="border-b border-white/[0.06]">
-        <div className="max-w-container mx-auto px-6 lg:px-10 py-16 lg:py-24">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
-            <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-gold mb-5">
-                — Let&apos;s build it
-              </p>
-              <h2
-                className="font-display font-medium leading-[0.98] tracking-tight text-white"
-                style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}
-              >
-                Tell us about
-                <br />
-                <span className="italic font-light">your project.</span>
-              </h2>
-              <p className="text-white/55 font-sans mt-6 max-w-md">
-                A clear plan, transparent quote, and the right crew on site. We respond within one business day.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-              <a
-                href="tel:5806652758"
-                className="font-mono text-[12px] uppercase tracking-[0.22em] text-white/70 hover:text-gold transition-colors"
-              >
-                (580) 665-2758
-              </a>
-              <button
-                onClick={scrollToContact}
-                className="inline-flex items-center gap-2 bg-gold hover:brightness-95 text-rich-black px-8 py-4 font-sans font-semibold uppercase tracking-[0.18em] text-xs transition-all duration-300"
-              >
-                Free Estimate
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Columns */}
-      <div className="max-w-container mx-auto px-6 lg:px-10 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
-          {/* Brand */}
-          <div>
-            <Link href="/" className="inline-block leading-none">
-              <span className="font-display text-[26px] font-semibold tracking-[0.06em] text-white">
-                Structure<span className="text-gold">1</span>
-              </span>
-              <span className="block font-mono text-[10px] font-medium uppercase tracking-[0.32em] text-white/50 mt-1.5">
-                Construction · Outdoor Living
-              </span>
+    <footer className="bg-black text-white">
+      <Container className="py-16">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Link href="/" className="font-display text-xl font-bold">
+              Structure1
             </Link>
-            <p className="text-white/50 font-sans text-sm mt-6 leading-relaxed max-w-xs">
-              Dallas–Fort Worth&apos;s patio cover, pergola, and concrete builders. Custom outdoor living rooms — engineered for Texas weather, built to last.
+            <p className="mt-4 max-w-xs text-small text-white/70">
+              Dallas–Fort Worth patio covers, pergolas, concrete, and outdoor living. Designed, permitted, and built by one in-house crew.
             </p>
+            <Link href="/estimate" className="mt-6 inline-flex h-12 items-center bg-white px-6 text-sm font-medium text-black hover:bg-offwhite">
+              Get a Free Estimate
+            </Link>
           </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="font-body font-semibold text-white text-[11px] uppercase tracking-[0.28em] mb-5">
-              Services
-            </h3>
-            <ul className="space-y-3">
-              {serviceLinks.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    href={l.href}
-                    className="text-white/55 hover:text-gold font-body text-sm transition-colors duration-300"
-                  >
-                    {l.label}
+          <div className="lg:col-span-2">
+            <h2 className="text-eyebrow uppercase text-white/50">Services</h2>
+            <ul className="mt-4 space-y-2.5">
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link href={`/services/${s.slug}`} className="text-small text-white/80 hover:text-white">
+                    {s.navLabel}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="font-body font-semibold text-white text-[11px] uppercase tracking-[0.28em] mb-5">
-              Company
-            </h3>
-            <ul className="space-y-3">
+          <div className="lg:col-span-2">
+            <h2 className="text-eyebrow uppercase text-white/50">Company</h2>
+            <ul className="mt-4 space-y-2.5">
               {companyLinks.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    href={l.href}
-                    className="text-white/55 hover:text-gold font-body text-sm transition-colors duration-300"
-                  >
+                <li key={l.href}>
+                  <Link href={l.href} className="text-small text-white/80 hover:text-white">
                     {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="font-body font-semibold text-white text-[11px] uppercase tracking-[0.28em] mb-5">
-              Contact
-            </h3>
-            <ul className="space-y-3 text-white/55 font-body text-sm">
-              <li>
-                <a
-                  href={`tel:${companyInfo.phoneRaw}`}
-                  className="hover:text-gold transition-colors duration-300"
-                >
-                  {companyInfo.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${companyInfo.email}`}
-                  className="hover:text-gold transition-colors duration-300 break-all"
-                >
-                  {companyInfo.email}
-                </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-gold mt-1 shrink-0" />
-                <span>Dallas-Fort Worth, TX</span>
-              </li>
+          <div className="lg:col-span-2">
+            <h2 className="text-eyebrow uppercase text-white/50">Service Areas</h2>
+            <ul className="mt-4 space-y-2.5">
+              {cities.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/service-areas/${c.slug}`} className="text-small text-white/80 hover:text-white">
+                    {c.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
-
-            {/* Socials */}
-            <div className="flex items-center gap-3 mt-6">
-              <a
-                href={companyInfo.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/65 hover:text-gold hover:border-gold transition-colors duration-300"
-              >
-                <Facebook className="w-3.5 h-3.5" />
+          </div>
+          <div className="lg:col-span-2">
+            <h2 className="text-eyebrow uppercase text-white/50">Contact</h2>
+            <ul className="mt-4 space-y-2.5 text-small text-white/80">
+              <li>
+                <a href={`tel:${company.phoneRaw}`} className="hover:text-white">
+                  {company.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${company.email}`} className="break-all hover:text-white">
+                  {company.email}
+                </a>
+              </li>
+              <li>
+                {company.address.street}
+                <br />
+                {company.address.city}, {company.address.state} {company.address.zip}
+              </li>
+              <li>{company.hours}</li>
+            </ul>
+            <div className="mt-4 flex gap-2">
+              <a href={company.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center text-white/70 hover:text-white">
+                <Facebook className="h-4 w-4" />
               </a>
-              <a
-                href={companyInfo.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/65 hover:text-gold hover:border-gold transition-colors duration-300"
-              >
-                <Instagram className="w-3.5 h-3.5" />
+              <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center text-white/70 hover:text-white">
+                <Instagram className="h-4 w-4" />
               </a>
             </div>
           </div>
         </div>
-
-        {/* Bottom bar */}
-        <div className="mt-14 pt-8 border-t border-white/[0.06]">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-            <p className="text-white/30 font-body text-xs">
-              &copy; {year} {companyInfo.name}. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link
-                href="/privacy"
-                className="text-white/30 hover:text-gold font-body text-xs transition-colors duration-300"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-white/30 hover:text-gold font-body text-xs transition-colors duration-300"
-              >
-                Terms of Service
-              </Link>
-            </div>
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/15 pt-6 text-meta text-white/50 md:flex-row md:items-center md:justify-between">
+          <p>
+            © {new Date().getFullYear()} {company.name}. All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            <Link href="/privacy" className="hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-white">
+              Terms of Service
+            </Link>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

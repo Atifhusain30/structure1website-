@@ -1,56 +1,45 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ReactNode } from 'react';
 
-interface ButtonProps {
-  children: ReactNode;
+type Props = {
+  children: React.ReactNode;
   href?: string;
-  variant?: 'primary' | 'outline' | 'white';
-  className?: string;
   onClick?: () => void;
   type?: 'button' | 'submit';
+  variant?: 'primary' | 'secondary' | 'link';
+  tone?: 'light' | 'dark';
+  arrow?: boolean;
   disabled?: boolean;
-}
+  className?: string;
+};
 
-export default function Button({
-  children,
-  href,
-  variant = 'primary',
-  className,
-  onClick,
-  type = 'button',
-  disabled = false,
-}: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center px-8 py-4 rounded-full font-medium tracking-wider uppercase text-sm transition-all duration-300';
-  
-  const variants = {
-    primary: 'bg-primary-black text-white hover:shadow-xl hover:-translate-y-0.5',
-    outline: 'border-2 border-primary-black text-primary-black hover:bg-primary-black hover:text-white',
-    white: 'bg-white text-primary-black hover:shadow-xl hover:-translate-y-0.5',
-  };
+const base =
+  'inline-flex items-center justify-center gap-2 h-12 px-6 text-sm font-medium tracking-[0.02em] transition-colors duration-150 disabled:opacity-60 disabled:cursor-not-allowed';
+const styles = {
+  primary: { light: 'bg-black text-white hover:bg-charcoal', dark: 'bg-white text-black hover:bg-offwhite' },
+  secondary: { light: 'border border-black text-black hover:bg-black hover:text-white', dark: 'border border-white text-white hover:bg-white hover:text-black' },
+  link: { light: 'h-auto px-0 text-black underline-offset-4 hover:underline hover:text-timber', dark: 'h-auto px-0 text-white underline-offset-4 hover:underline' },
+};
 
-  const buttonContent = (
-    <motion.span
-      className={cn(baseStyles, variants[variant], className, disabled && 'opacity-50 cursor-not-allowed')}
-      whileHover={!disabled ? { scale: 1.02 } : {}}
-      whileTap={!disabled ? { scale: 0.98 } : {}}
-    >
+export default function Button({ children, href, onClick, type = 'button', variant = 'primary', tone = 'light', arrow = false, disabled, className }: Props) {
+  const cls = cn(base, styles[variant][tone], className);
+  const inner = (
+    <>
       {children}
-    </motion.span>
+      {arrow && <ArrowRight className="h-4 w-4" aria-hidden />}
+    </>
   );
-
   if (href) {
-    return <Link href={href}>{buttonContent}</Link>;
+    return (
+      <Link href={href} className={cls}>
+        {inner}
+      </Link>
+    );
   }
-
   return (
-    <button type={type} onClick={onClick} disabled={disabled}>
-      {buttonContent}
+    <button type={type} onClick={onClick} disabled={disabled} className={cls}>
+      {inner}
     </button>
   );
 }
-
-
