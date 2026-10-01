@@ -18,6 +18,15 @@ export type Reel = {
 
 export const reels: Reel[] = [
   {
+    id: 'leanto-560',
+    src: '/videos/leanto-560.mp4',
+    poster: '/videos/leanto-560.jpg',
+    title: '560 sq ft lean-to patio cover, walkthrough',
+    location: 'Dallas–Fort Worth',
+    service: 'patio-covers',
+    instagram: 'https://www.instagram.com/reel/DYnb5L4CC5N/',
+  },
+  {
     id: 'gable-leanto-posts',
     src: '/videos/gable-leanto-posts.mp4',
     poster: '/videos/gable-leanto-posts.jpg',
