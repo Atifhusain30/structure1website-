@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PageHero from '@/components/layout/PageHero';
 import Section from '@/components/layout/Section';
+import ServiceMosaic from '@/components/sections/ServiceMosaic';
 import ServiceIndex from '@/components/sections/ServiceIndex';
 import TrustBar from '@/components/sections/TrustBar';
 import CTASection from '@/components/sections/CTASection';
@@ -22,11 +23,16 @@ export default function ServicesPage() {
         photo="gable-dfw"
       />
       <Section>
-        <ServiceIndex large />
-        <TrustBar className="mt-12" />
+        <ServiceMosaic />
+        <TrustBar className="mt-10" />
+      </Section>
+      <Section tone="offwhite">
+        <h2 className="font-display text-h2">In more detail</h2>
+        <div className="mt-8">
+          <ServiceIndex large />
+        </div>
       </Section>
       <CTASection
-        tone="offwhite"
         heading="Not sure which service fits?"
         text="Describe the space and what you want from it. We will recommend the right structure, finish, and sequence during a free on-site estimate."
         cta="Discuss Your Project"

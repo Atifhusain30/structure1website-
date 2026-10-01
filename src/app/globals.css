@@ -14,7 +14,7 @@ img { display: block; max-width: 100%; }
 ::selection { background: #0E0E0E; color: #fff; }
 
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
-  outline: 2px solid #B98A5E;
+  outline: 2px solid #0E0E0E;
   outline-offset: 2px;
 }
 

@@ -99,7 +99,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   <dd className="mt-1">2-year workmanship</dd>
                 </div>
               </dl>
-              <Link href="/estimate" className="mt-6 inline-flex h-12 w-full items-center justify-center bg-timber text-sm font-medium text-black hover:bg-black hover:text-white">
+              <Link href="/estimate" className="mt-6 inline-flex h-12 w-full items-center justify-center bg-black text-sm font-medium text-white hover:bg-charcoal">
                 Get an Estimate
               </Link>
             </div>

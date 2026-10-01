@@ -23,7 +23,7 @@ export default function StickyBar() {
         <a href={`tel:${company.phoneRaw}`} className="flex h-12 w-14 items-center justify-center border border-black" aria-label={`Call ${company.phone}`}>
           <Phone className="h-5 w-5" />
         </a>
-        <Link href="/estimate" className="flex h-12 flex-1 items-center justify-center bg-timber text-sm font-medium text-black">
+        <Link href="/estimate" className="flex h-12 flex-1 items-center justify-center bg-black text-sm font-medium text-white">
           Get a Free Estimate
         </Link>
       </div>

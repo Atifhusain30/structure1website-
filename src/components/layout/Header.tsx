@@ -119,7 +119,7 @@ export default function Header() {
           </a>
           <Link
             href="/estimate"
-            className="inline-flex h-11 items-center bg-timber px-5 text-sm font-medium text-black transition-colors hover:bg-black hover:text-white"
+            className={cn('inline-flex h-11 items-center px-5 text-sm font-medium transition-colors', onDark ? 'bg-white text-black hover:bg-offwhite' : 'bg-black text-white hover:bg-charcoal')}
           >
             Get a Free Estimate
           </Link>
@@ -175,7 +175,7 @@ export default function Header() {
             </Link>
           ))}
           <div className="mt-6 flex flex-col gap-3">
-            <Link href="/estimate" className="inline-flex h-12 items-center justify-center bg-timber text-sm font-medium text-black" tabIndex={open ? 0 : -1}>
+            <Link href="/estimate" className="inline-flex h-12 items-center justify-center bg-black text-sm font-medium text-white" tabIndex={open ? 0 : -1}>
               Get a Free Estimate
             </Link>
             <a href={`tel:${company.phoneRaw}`} className="inline-flex h-12 items-center justify-center border border-black text-sm font-medium" tabIndex={open ? 0 : -1}>

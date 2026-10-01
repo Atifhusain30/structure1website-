@@ -10,7 +10,6 @@ const config: Config = {
         black: '#0E0E0E',
         charcoal: '#2B2B2B',
         gray: { 200: '#E4E2DC', 500: '#8C8A84', 700: '#4A4946' },
-        timber: '#B98A5E',
       },
       fontFamily: {
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],

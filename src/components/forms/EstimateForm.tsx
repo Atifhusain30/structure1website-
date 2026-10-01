@@ -5,7 +5,7 @@ import { services } from '@/content/services';
 import { company } from '@/content/company';
 
 const TIMELINES = ['As soon as possible', '1–3 months', '3–6 months', 'Just planning'];
-const field = 'h-12 w-full rounded border border-gray-200 bg-white px-4 text-body text-black placeholder:text-gray-500 focus:border-timber focus:outline-none';
+const field = 'h-12 w-full rounded border border-gray-200 bg-white px-4 text-body text-black placeholder:text-gray-500 focus:border-black focus:outline-none';
 const label = 'mb-1.5 block text-meta font-medium text-gray-700';
 
 export default function EstimateForm({ cta = 'Request My Estimate' }: { cta?: string }) {
@@ -61,31 +61,31 @@ export default function EstimateForm({ cta = 'Request My Estimate' }: { cta?: st
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="ef-name" className={label}>
-            Name <span className="text-timber">*</span>
+            Name <span className="text-gray-500">*</span>
           </label>
           <input id="ef-name" name="name" type="text" autoComplete="name" required className={field} />
         </div>
         <div>
           <label htmlFor="ef-phone" className={label}>
-            Phone <span className="text-timber">*</span>
+            Phone <span className="text-gray-500">*</span>
           </label>
           <input id="ef-phone" name="phone" type="tel" autoComplete="tel" required className={field} />
         </div>
         <div>
           <label htmlFor="ef-email" className={label}>
-            Email <span className="text-timber">*</span>
+            Email <span className="text-gray-500">*</span>
           </label>
           <input id="ef-email" name="email" type="email" autoComplete="email" required className={field} />
         </div>
         <div>
           <label htmlFor="ef-city" className={label}>
-            Project address or city <span className="text-timber">*</span>
+            Project address or city <span className="text-gray-500">*</span>
           </label>
           <input id="ef-city" name="city" type="text" autoComplete="address-level2" required placeholder="Frisco, Plano, Dallas…" className={field} />
         </div>
         <div>
           <label htmlFor="ef-service" className={label}>
-            Project type <span className="text-timber">*</span>
+            Project type <span className="text-gray-500">*</span>
           </label>
           <select id="ef-service" name="service" required defaultValue="" className={field}>
             <option value="" disabled>
@@ -147,7 +147,7 @@ export default function EstimateForm({ cta = 'Request My Estimate' }: { cta?: st
         <button
           type="submit"
           disabled={state === 'sending'}
-          className="inline-flex h-12 items-center justify-center gap-2 bg-timber px-6 text-sm font-medium text-black hover:bg-black hover:text-white disabled:opacity-60"
+          className="inline-flex h-12 items-center justify-center gap-2 bg-black px-6 text-sm font-medium text-white hover:bg-charcoal disabled:opacity-60"
         >
           {state === 'sending' ? (
             <>

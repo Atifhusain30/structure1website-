@@ -3,7 +3,7 @@ import Hero from '@/components/home/Hero';
 import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/sections/SectionHeader';
 import TrustBar from '@/components/sections/TrustBar';
-import ServiceIndex from '@/components/sections/ServiceIndex';
+import ServiceMosaic from '@/components/sections/ServiceMosaic';
 import ProjectGrid from '@/components/sections/ProjectGrid';
 import ProcessSteps from '@/components/sections/ProcessSteps';
 import Testimonials from '@/components/sections/Testimonials';
@@ -21,22 +21,26 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <Section id="services">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <SectionHeader className="lg:col-span-7" title="What we build" text="Seven services, one in-house crew. Every project includes drawings, engineering, permits, and a 2-year workmanship warranty." />
+      <Section className="py-6 md:py-8">
+        <TrustBar />
+      </Section>
+
+      <Section id="services" className="pt-10 md:pt-14">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <SectionHeader className="lg:col-span-7" title="What we build" text="Seven services, one in-house crew. Drawings, engineering, permits, and a 2-year workmanship warranty are part of every project." />
           <div className="lg:col-span-5 lg:text-right">
             <Button href="/services" variant="link">
               All services
             </Button>
           </div>
         </div>
-        <div className="mt-10">
-          <ServiceIndex />
+        <div className="mt-8">
+          <ServiceMosaic />
         </div>
       </Section>
 
       <Section tone="offwhite">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <SectionHeader className="lg:col-span-7" title="Recent work" text="Real projects, photographed on site when we finished." />
           <div className="lg:col-span-5 lg:text-right">
             <Button href="/projects" variant="link">
@@ -51,6 +55,9 @@ export default function HomePage() {
 
       <Section>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <Photo id="gable-mckinney-ceiling" ratio="3/4" sizes="(max-width: 1024px) 100vw, 40vw" />
+          </div>
           <div className="lg:col-span-7">
             <SectionHeader title="Built to last, handled end to end" />
             <ul className="mt-8 grid gap-8 sm:grid-cols-2">
@@ -61,16 +68,12 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-            <TrustBar className="mt-10" />
-          </div>
-          <div className="lg:col-span-5">
-            <Photo id="gable-mckinney-ceiling" ratio="3/4" sizes="(max-width: 1024px) 100vw, 40vw" />
           </div>
         </div>
       </Section>
 
       <Section id="process" tone="offwhite">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <SectionHeader className="lg:col-span-7" title="How it works" text="Four steps, one project manager, no surprises." />
           <div className="lg:col-span-5 lg:text-right">
             <Button href="/process" variant="link">
@@ -91,7 +94,7 @@ export default function HomePage() {
       </Section>
 
       <Section tone="offwhite">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <SectionHeader className="lg:col-span-7" title="Where we build" text="Based in Dallas, building across the metroplex. Pick your city for local projects, permit notes, and reviews." />
           <div className="lg:col-span-5 lg:text-right">
             <Button href="/service-areas" variant="link">
