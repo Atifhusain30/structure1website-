@@ -56,7 +56,15 @@ function ReelTile({ reel, reduced }: { reel: Reel; reduced: boolean }) {
       </div>
       <figcaption className="mt-3 flex items-baseline justify-between gap-3">
         <span>
-          <span className="block font-display text-h3">{reel.project ? <Link href={`/projects/${reel.project}`} className="hover:underline hover:underline-offset-4">{reel.title}</Link> : reel.title}</span>
+          <span className="block font-display text-h3">
+            {reel.project ? (
+              <Link href={`/projects/${reel.project}`} className="hover:underline hover:underline-offset-4">{reel.title}</Link>
+            ) : reel.service ? (
+              <Link href={`/services/${reel.service}`} className="hover:underline hover:underline-offset-4">{reel.title}</Link>
+            ) : (
+              reel.title
+            )}
+          </span>
           <span className="block text-meta text-gray-500">{reel.location}</span>
         </span>
         {reel.instagram && (

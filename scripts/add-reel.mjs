@@ -20,7 +20,7 @@ await fs.mkdir(TMP, { recursive: true });
 let input = src;
 if (/^https?:\/\//.test(src)) {
   input = path.join(TMP, `${id}.source.mp4`);
-  const r = spawnSync('python', ['-m', 'yt_dlp', '-f', 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/b', '--merge-output-format', 'mp4', '-o', input, src], { stdio: 'inherit' });
+  const r = spawnSync('python', ['-m', 'yt_dlp', '-f', 'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/b', '--merge-output-format', 'mp4', '--ffmpeg-location', ffmpeg, '-o', input, src], { stdio: 'inherit' });
   if (r.status !== 0) {
     console.error('download failed; if the reel is private or Instagram blocks it, save the MP4 from the Instagram app and pass the file path instead');
     process.exit(1);
@@ -34,7 +34,7 @@ const enc = spawnSync(
   { stdio: 'inherit' },
 );
 if (enc.status !== 0) process.exit(1);
-const pos = spawnSync(ffmpeg, ['-y', '-ss', '00:00:01', '-i', mp4, '-frames:v', '1', '-q:v', '3', jpg], { stdio: 'inherit' });
+const pos = spawnSync(ffmpeg, ['-y', '-ss', '00:00:01', '-i', mp4, '-frames:v', '1', '-update', '1', '-q:v', '3', jpg], { stdio: 'inherit' });
 if (pos.status !== 0) process.exit(1);
 const size = (await fs.stat(mp4)).size;
 console.log(`\nwrote ${path.relative(process.cwd(), mp4)} (${(size / 1048576).toFixed(1)} MB) and ${path.basename(jpg)}\n`);
