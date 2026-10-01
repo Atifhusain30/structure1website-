@@ -1,57 +1,39 @@
-import { MetadataRoute } from 'next';
-import { services, projects } from '@/lib/data';
+import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/blog';
-import { cities } from '@/lib/city-data';
+import { services } from '@/content/services';
+import { projects } from '@/content/projects';
+import { cities } from '@/content/cities';
+import { company } from '@/content/company';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://structure1builds.com';
-
-  const staticPages = [
-    '',
-    '/about',
-    '/services',
-    '/service-areas',
-    '/projects',
-    '/contact',
-    '/blog',
-    '/privacy',
-    '/terms',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: route === '' ? 1 : route === '/blog' ? 0.9 : 0.8,
-  }));
-
-  const servicePages = services.map((service) => ({
-    url: `${baseUrl}/services/${service.id}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
-
-  const cityPages = cities.map((city) => ({
-    url: `${baseUrl}/service-areas/${city.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
-
-  const projectPages = projects.map((project) => ({
-    url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
-
-  const blogPosts = getAllPosts().map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.lastModified || post.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
-
-  return [...staticPages, ...servicePages, ...cityPages, ...projectPages, ...blogPosts];
+  const base = company.url;
+  const now = new Date();
+  const page = (path: string, priority: number, changeFrequency: 'weekly' | 'monthly' = 'monthly') => ({
+    url: `${base}${path}`,
+    lastModified: now,
+    changeFrequency,
+    priority,
+  });
+  return [
+    page('', 1, 'weekly'),
+    page('/services', 0.9),
+    page('/projects', 0.9, 'weekly'),
+    page('/service-areas', 0.8),
+    page('/estimate', 0.9),
+    page('/process', 0.7),
+    page('/about', 0.6),
+    page('/contact', 0.7),
+    page('/blog', 0.8, 'weekly'),
+    page('/privacy', 0.2),
+    page('/terms', 0.2),
+    ...services.map((s) => page(`/services/${s.slug}`, 0.9)),
+    ...cities.map((c) => page(`/service-areas/${c.slug}`, 0.8)),
+    ...projects.map((p) => page(`/projects/${p.slug}`, 0.6)),
+    ...getAllPosts().map((p) => ({
+      url: `${base}/blog/${p.slug}`,
+      lastModified: new Date(p.lastModified || p.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ];
 }
-
-
