@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
     // Modern formats for iOS 14+ and Android
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/webp'], // AVIF encoding stalls Next's optimizer on 2000px sources; Netlify's image CDN negotiates formats in production
     // Mobile-first device sizes (iOS and Android breakpoints)
     deviceSizes: [375, 414, 428, 640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
