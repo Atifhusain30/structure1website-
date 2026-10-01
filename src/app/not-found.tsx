@@ -1,28 +1,21 @@
-import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import Section from '@/components/layout/Section';
+import Button from '@/components/ui/Button';
 
 export default function NotFound() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-rich-black text-white px-6">
-      <div className="text-center max-w-xl">
-        <span className="text-gold font-body text-[11px] font-semibold uppercase tracking-[0.32em] block mb-5">
-          Error 404
-        </span>
-        <h1 className="font-heading font-medium text-white tracking-tight leading-[1.05]"
-            style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}>
-          Page Not <span className="italic text-gold">Found.</span>
-        </h1>
-        <p className="text-white/60 font-body text-base sm:text-lg leading-relaxed mt-6 max-w-md mx-auto">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
-        </p>
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 mt-10 bg-gold hover:bg-gold-light text-rich-black px-8 py-4 font-body font-semibold uppercase tracking-[0.18em] text-xs transition-colors duration-400"
-        >
-          Back to Home
-          <ArrowUpRight className="w-4 h-4" />
-        </Link>
+    <Section className="min-h-[70vh] pt-32 md:pt-44">
+      <p className="text-eyebrow uppercase text-gray-500">Error 404</p>
+      <h1 className="mt-4 font-display text-h1">Page not found</h1>
+      <p className="mt-4 max-w-md text-lead text-gray-700">The page you are looking for does not exist or has moved.</p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Button href="/">Back to home</Button>
+        <Button href="/projects" variant="secondary">
+          View projects
+        </Button>
+        <Button href="/estimate" variant="link" arrow>
+          Get a Free Estimate
+        </Button>
       </div>
-    </section>
+    </Section>
   );
 }

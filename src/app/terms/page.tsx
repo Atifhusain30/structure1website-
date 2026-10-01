@@ -1,5 +1,6 @@
-import { Metadata } from 'next';
-import PageHero from '@/components/layout/PageHero';
+import type { Metadata } from 'next';
+import Section from '@/components/layout/Section';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
@@ -46,29 +47,19 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="Legal"
-        title="Terms of Service"
-        description="Last updated: January 2026"
-        image="/images/hero/cover2.JPG"
-        crumbs={[{ label: 'Home', href: '/' }, { label: 'Terms of Service' }]}
-      />
-
-      <section className="bg-parchment py-section">
-        <div className="max-w-narrow mx-auto px-6 lg:px-10">
-          {sections.map((s, i) => (
-            <div key={s.title} className={i === 0 ? '' : 'mt-12'}>
-              <h2 className="font-heading font-medium text-rich-black text-2xl mb-4 tracking-tight">
-                {s.title}
-              </h2>
-              <p className="text-text-secondary font-body text-[15px] leading-relaxed">
-                {s.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
+    <Section className="pt-28 md:pt-36">
+      <Breadcrumbs items={[{ label: 'Terms of Service' }]} />
+      <p className="mt-8 text-eyebrow uppercase text-gray-500">Legal</p>
+      <h1 className="mt-4 font-display text-h1">Terms of Service</h1>
+      <p className="mt-3 text-meta text-gray-500">Last updated: January 2026</p>
+      <div className="prose-article mt-10">
+        {sections.map((s) => (
+          <section key={s.title}>
+            <h2>{s.title}</h2>
+            <p>{s.body}</p>
+          </section>
+        ))}
+      </div>
+    </Section>
   );
 }
