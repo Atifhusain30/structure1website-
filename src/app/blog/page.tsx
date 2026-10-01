@@ -1,143 +1,75 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Calendar, Clock, ArrowUpRight } from 'lucide-react';
 import PageHero from '@/components/layout/PageHero';
+import Section from '@/components/layout/Section';
+import ArticleCard from '@/components/sections/ArticleCard';
+import CTASection from '@/components/sections/CTASection';
 import { getAllPosts } from '@/lib/blog';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Journal',
-  description:
-    'Field notes from the build site. Cost guides, design inspiration, and planning tips for patio covers, pergolas, and concrete in DFW.',
+  title: 'Resources | Homeowner Guides for DFW Patio Covers & Concrete',
+  description: 'Cost guides, permit how-tos, material comparisons, and design ideas for patio covers, pergolas, and concrete in Dallas-Fort Worth.',
   alternates: { canonical: '/blog' },
-  openGraph: {
-    title: 'Journal | Structure1',
-    description:
-      'Field notes from the build site — patio covers, pergolas, and concrete in DFW.',
-    url: 'https://structure1builds.com/blog',
-    type: 'website',
-  },
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
-  const featured = posts[0];
-  const remaining = posts.slice(1);
+const TOPICS = [
+  { slug: 'all', label: 'All' },
+  { slug: 'patio-covers', label: 'Patio Covers' },
+  { slug: 'pergolas', label: 'Pergolas' },
+  { slug: 'concrete', label: 'Concrete' },
+  { slug: 'planning', label: 'Planning & Permits' },
+];
 
+export default function ResourcesPage({ searchParams }: { searchParams: { topic?: string } }) {
+  const topic = searchParams.topic ?? 'all';
+  const posts = getAllPosts().filter(
+    (p) => topic === 'all' || p.topic === topic || (topic === 'concrete' && ['stamped-concrete', 'driveways-walkways'].includes(p.topic)),
+  );
   return (
     <>
       <PageHero
-        eyebrow="Journal"
-        title="Field notes from"
-        italicWord="the build site."
-        description="Cost guides, design inspiration, permit how-tos. Written by the team that actually swings the hammer."
-        image="/images/hero/sashi3.JPG"
-        crumbs={[{ label: 'Home', href: '/' }, { label: 'Journal' }]}
+        crumbs={[{ label: 'Resources' }]}
+        eyebrow="Resources"
+        title="Homeowner guides for DFW projects"
+        lead="Costs, permits, materials, timelines, and design ideas, written by the crew that builds the work."
+        photo="gable-mckinney-ceiling"
       />
-
-      <section className="bg-parchment py-24 lg:py-32">
-        <div className="max-w-wide mx-auto px-6 lg:px-16">
-          {featured && (
-            <Link href={`/blog/${featured.slug}`} className="group block mb-16 lg:mb-20">
-              <article className="grid grid-cols-1 lg:grid-cols-2 bg-rich-black overflow-hidden">
-                <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden image-hover-zoom">
-                  <Image
-                    src={featured.featuredImage}
-                    alt={featured.featuredImageAlt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    quality={85}
-                    className="object-cover opacity-90 group-hover:opacity-100 transition-opacity"
-                    priority
-                  />
-                  <div className="absolute top-5 left-5">
-                    <span className="bg-gold text-rich-black font-mono text-[10px] font-medium px-3 py-1.5 uppercase tracking-[0.22em]">
-                      Featured
-                    </span>
-                  </div>
-                </div>
-                <div className="p-8 lg:p-14 flex flex-col justify-center text-white">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold mb-4">
-                    {featured.category}
-                  </div>
-                  <h2
-                    className="font-display font-medium leading-[1.05] tracking-[-0.02em]"
-                    style={{ fontSize: 'clamp(1.85rem, 3.4vw, 2.6rem)' }}
-                  >
-                    {featured.title}
-                  </h2>
-                  <p className="text-white/65 font-sans text-[15px] leading-[1.65] mt-5 line-clamp-3">{featured.excerpt}</p>
-                  <div className="flex items-center gap-5 mt-7 text-white/50 text-xs font-mono uppercase tracking-[0.22em]">
-                    <span className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5" />
-                      {new Date(featured.date).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric',
-                      })}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5" />
-                      {featured.readTime}
-                    </span>
-                  </div>
-                  <span className="inline-flex items-center gap-2 mt-8 text-gold font-mono text-[11px] uppercase tracking-[0.24em] group-hover:gap-3 transition-all">
-                    Read Article
-                    <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </article>
+      <Section>
+        <ul className="flex flex-wrap gap-2" aria-label="Filter by topic">
+          {TOPICS.map((t) => (
+            <li key={t.slug}>
+              <Link
+                href={t.slug === 'all' ? '/blog' : `/blog?topic=${t.slug}`}
+                className={cn(
+                  'inline-flex h-10 items-center border px-4 text-sm font-medium transition-colors',
+                  topic === t.slug ? 'border-black bg-black text-white' : 'border-gray-200 text-gray-700 hover:border-black hover:text-black',
+                )}
+              >
+                {t.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        {posts.length > 0 ? (
+          <ul className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((p, i) => (
+              <li key={p.slug}>
+                <ArticleCard post={p} priority={i === 0} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-12 text-body text-gray-700">
+            No guides on that topic yet.{' '}
+            <Link href="/blog" className="font-medium underline underline-offset-4">
+              See all guides
             </Link>
-          )}
-
-          {remaining.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {remaining.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-                  <article className="bg-parchment border border-border h-full flex flex-col hover:border-gold transition-colors">
-                    <div className="relative aspect-[16/10] overflow-hidden image-hover-zoom">
-                      <Image
-                        src={post.featuredImage}
-                        alt={post.featuredImageAlt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-6 flex flex-col flex-1">
-                      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold-dark">
-                        {post.category}
-                      </span>
-                      <h3 className="font-display font-medium text-rich-black text-[22px] leading-[1.15] mt-3 line-clamp-2">
-                        {post.title}
-                      </h3>
-                      <p className="text-stone font-sans text-[14px] leading-[1.65] mt-3 line-clamp-2 flex-1">
-                        {post.excerpt}
-                      </p>
-                      <div className="flex items-center gap-4 mt-5 text-stone text-[10px] font-mono uppercase tracking-[0.22em]">
-                        <span className="flex items-center gap-1.5">
-                          <Calendar className="w-3 h-3" />
-                          {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                          <Clock className="w-3 h-3" />
-                          {post.readTime}
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {posts.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-stone font-sans text-lg">Articles coming soon.</p>
-            </div>
-          )}
-        </div>
-      </section>
+            .
+          </p>
+        )}
+      </Section>
+      <CTASection tone="offwhite" heading="Have a question the guides didn't answer?" text="Ask us directly. Free estimates include a site visit and straight answers." />
     </>
   );
 }

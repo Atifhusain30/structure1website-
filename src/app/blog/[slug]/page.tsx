@@ -1,178 +1,92 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Calendar, Clock, ArrowLeft } from 'lucide-react';
-import { getAllPostSlugs, getPostWithHtml, getRelatedPosts } from '@/lib/blog';
-import BlogTableOfContents from '@/components/blog/TableOfContents';
-import BlogCTA from '@/components/blog/BlogCTA';
+import Section from '@/components/layout/Section';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import Eyebrow from '@/components/ui/Eyebrow';
+import TableOfContents from '@/components/blog/TableOfContents';
 import RelatedPosts from '@/components/blog/RelatedPosts';
+import CTASection from '@/components/sections/CTASection';
+import JsonLd from '@/components/seo/JsonLd';
+import { getAllPostSlugs, getPostWithHtml, getRelatedPosts } from '@/lib/blog';
+import { getService } from '@/content/services';
+import { company } from '@/content/company';
 
-type PageProps = {
-  params: { slug: string };
-};
-
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPostWithHtml(params.slug);
   if (!post) return {};
-
   return {
     title: post.title,
     description: post.excerpt,
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      url: `https://structure1builds.com/blog/${post.slug}`,
-      type: 'article',
-      publishedTime: post.date,
-      modifiedTime: post.lastModified || post.date,
-      images: [{ url: post.featuredImage, width: 1200, height: 630, alt: post.featuredImageAlt }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: [post.featuredImage],
-    },
+    openGraph: { type: 'article', publishedTime: post.date, modifiedTime: post.lastModified, images: [{ url: post.featuredImage, alt: post.featuredImageAlt }] },
   };
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
+export default async function ArticlePage({ params }: { params: { slug: string } }) {
   const post = await getPostWithHtml(params.slug);
   if (!post) notFound();
-
-  const relatedPosts = getRelatedPosts(params.slug, post.category);
-
-  const articleSchema = {
+  const related = getRelatedPosts(post.slug, post.category, 3);
+  const service = getService(post.topic);
+  const schema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
-    image: `https://structure1builds.com${post.featuredImage}`,
+    image: `${company.url}${post.featuredImage}`,
     datePublished: post.date,
-    dateModified: post.lastModified || post.date,
-    author: { '@type': 'Organization', name: 'Structure1 Construction', url: 'https://structure1builds.com' },
-    publisher: { '@type': 'Organization', name: 'Structure1 Construction', url: 'https://structure1builds.com' },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://structure1builds.com/blog/${post.slug}` },
+    dateModified: post.lastModified ?? post.date,
+    author: { '@type': 'Organization', name: company.name },
+    publisher: { '@id': `${company.url}/#business` },
+    mainEntityOfPage: `${company.url}/blog/${post.slug}`,
   };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://structure1builds.com' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://structure1builds.com/blog' },
-      { '@type': 'ListItem', position: 3, name: post.title, item: `https://structure1builds.com/blog/${post.slug}` },
-    ],
-  };
-
+  const date = new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-
-      {/* Hero band */}
-      <section className="relative bg-rich-black overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src={post.featuredImage}
-            alt=""
-            fill
-            sizes="100vw"
-            quality={85}
-            priority
-            className="object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-rich-black/90 via-rich-black/55 to-rich-black/95" />
-          <div className="absolute inset-0 grain-overlay opacity-50" />
+      <Section className="pb-8 pt-28 md:pt-36">
+        <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: post.title }]} />
+        <Eyebrow className="mt-8">
+          {post.category} · {date} · {post.readTime}
+        </Eyebrow>
+        <h1 className="mt-4 max-w-4xl font-display text-h1">{post.title}</h1>
+        <p className="mt-4 max-w-2xl text-lead text-gray-700">{post.excerpt}</p>
+      </Section>
+      <Section className="pb-8 pt-0">
+        <div className="relative aspect-[21/9] overflow-hidden bg-gray-200">
+          <Image src={post.featuredImage} alt={post.featuredImageAlt} fill priority sizes="(max-width: 1280px) 100vw, 1280px" className="object-cover" />
         </div>
-        <div className="relative z-10 max-w-narrow mx-auto px-6 lg:px-16 pt-40 pb-20 lg:pt-48 lg:pb-24 text-center">
-          <nav aria-label="Breadcrumb" className="mb-10">
-            <ol className="flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-white/50">
-              <li>
-                <Link href="/" className="hover:text-gold">
-                  Home
-                </Link>
-              </li>
-              <li className="text-white/30">·</li>
-              <li>
-                <Link href="/blog" className="hover:text-gold">
-                  Journal
-                </Link>
-              </li>
-              <li className="text-white/30">·</li>
-              <li className="text-white truncate max-w-[200px] md:max-w-none">{post.title}</li>
-            </ol>
-          </nav>
-
-          <span className="font-mono text-[11px] uppercase tracking-[0.26em] text-gold">{post.category}</span>
-          <h1
-            className="font-display font-medium text-white leading-[1.02] tracking-[-0.025em] mt-5 max-w-3xl mx-auto"
-            style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}
-          >
-            {post.title}
-          </h1>
-          <div className="flex items-center justify-center gap-6 mt-7 text-white/55 font-mono text-[10px] uppercase tracking-[0.22em]">
-            <span className="flex items-center gap-1.5">
-              <Calendar className="w-3.5 h-3.5 text-gold" />
-              {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-gold" />
-              {post.readTime}
-            </span>
-          </div>
+      </Section>
+      <Section className="pt-0">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <aside className="order-2 lg:order-1 lg:col-span-3">
+            <div className="lg:sticky lg:top-28">
+              <TableOfContents headings={post.headings ?? []} />
+              {service && (
+                <div className="mt-8 border border-gray-200 p-5">
+                  <p className="text-eyebrow uppercase text-gray-500">Related service</p>
+                  <Link href={`/services/${service.slug}`} className="mt-2 block text-small font-medium hover:text-timber">
+                    {service.name} →
+                  </Link>
+                </div>
+              )}
+            </div>
+          </aside>
+          <article className="order-1 lg:order-2 lg:col-span-8 lg:col-start-5">
+            <div className="prose-article" dangerouslySetInnerHTML={{ __html: post.htmlContent ?? '' }} />
+          </article>
         </div>
-      </section>
-
-      <article className="bg-parchment py-section">
-        <div className="max-w-container mx-auto px-6 lg:px-10">
-          {/* Featured Image */}
-          <div className="relative aspect-[2/1] md:aspect-[2.5/1] max-w-4xl mx-auto overflow-hidden mb-14">
-            <Image
-              src={post.featuredImage}
-              alt={post.featuredImageAlt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 900px"
-              priority
-            />
-          </div>
-
-          {/* Content + TOC */}
-          <div className="max-w-4xl mx-auto lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
-            <div
-              className="blog-post prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: post.htmlContent || '' }}
-            />
-            {post.headings && post.headings.length > 0 && (
-              <aside className="hidden lg:block">
-                <BlogTableOfContents headings={post.headings} />
-              </aside>
-            )}
-          </div>
-
-          <BlogCTA />
-
-          {relatedPosts.length > 0 && <RelatedPosts posts={relatedPosts} />}
-
-          <div className="text-center mt-14">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-rich-black hover:text-gold font-body font-semibold uppercase tracking-[0.18em] text-[11px] transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to All Posts
-            </Link>
-          </div>
-        </div>
-      </article>
+      </Section>
+      <Section tone="offwhite">
+        <RelatedPosts posts={related} />
+      </Section>
+      <CTASection heading="Ready to plan your project?" text="Every guide ends the same way: with a free on-site estimate and an itemized quote." />
+      <JsonLd data={schema} />
     </>
   );
 }

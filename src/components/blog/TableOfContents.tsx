@@ -15,48 +15,35 @@ export default function BlogTableOfContents({ headings }: { headings: Heading[] 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { rootMargin: '-80px 0px -70% 0px', threshold: 0 }
+      { rootMargin: '-80px 0px -70% 0px', threshold: 0 },
     );
-
     headings.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, [headings]);
 
-  const scrollToHeading = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  };
+  const items = headings.filter((h) => h.level === 2);
+  if (items.length === 0) return null;
 
   return (
-    <nav className="sticky top-28" aria-label="Table of contents">
-      <h4 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-text-muted mb-4">
-        In this article
-      </h4>
-      <ul className="space-y-2 border-l border-border-light">
-        {headings.filter(h => h.level === 2).map((heading) => (
+    <nav aria-label="Table of contents">
+      <p className="mb-4 text-eyebrow uppercase text-gray-500">In this article</p>
+      <ul className="space-y-1 border-l border-gray-200">
+        {items.map((heading) => (
           <li key={heading.id}>
-            <button
-              onClick={() => scrollToHeading(heading.id)}
-              className={`block text-left text-sm pl-4 py-1 border-l-2 -ml-px transition-colors ${
-                activeId === heading.id
-                  ? 'border-accent-warm text-accent-warm font-medium'
-                  : 'border-transparent text-text-muted hover:text-primary-black hover:border-primary-black/20'
+            <a
+              href={`#${heading.id}`}
+              className={`-ml-px block border-l-2 py-1.5 pl-4 text-small transition-colors ${
+                activeId === heading.id ? 'border-black font-medium text-black' : 'border-transparent text-gray-700 hover:text-timber'
               }`}
             >
               {heading.text}
-            </button>
+            </a>
           </li>
         ))}
       </ul>
