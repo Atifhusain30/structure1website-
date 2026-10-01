@@ -1,25 +1,24 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import Photo from '@/components/ui/Photo';
 import { getService } from '@/content/services';
 import type { Project } from '@/content/types';
 
-export default function ProjectCard({ project, sizes = '(max-width: 768px) 100vw, 33vw' }: { project: Project; sizes?: string }) {
+export default function ProjectCard({ project, sizes = '(max-width: 768px) 100vw, 33vw', feature = false }: { project: Project; sizes?: string; feature?: boolean }) {
   const service = getService(project.service);
   return (
     <Link href={`/projects/${project.slug}`} className="group block">
-      <Photo id={project.cover} ratio="4/3" sizes={sizes} hover />
-      <div className="mt-4 flex items-start justify-between gap-4">
-        <div>
-          <h3 className="font-display text-h3">{project.title}</h3>
-          <p className="mt-1 text-meta text-gray-500">
-            {project.location}
-            {service ? ` · ${service.name}` : ''}
-          </p>
-        </div>
-        <span className="mt-1 inline-flex shrink-0 items-center gap-1 text-sm font-medium group-hover:text-timber">
-          View Project <ArrowRight className="h-4 w-4" aria-hidden />
-        </span>
+      <Photo id={project.cover} ratio={feature ? '21/9' : '4/3'} sizes={sizes} hover />
+      <div className="mt-3 flex items-baseline justify-between gap-4">
+        <h3 className={`font-display ${feature ? 'text-h2' : 'text-h3'} group-hover:underline group-hover:underline-offset-4`}>{project.title}</h3>
+        <p className="shrink-0 text-right text-meta text-gray-500">
+          {project.location}
+          {service && (
+            <>
+              <br />
+              {service.name}
+            </>
+          )}
+        </p>
       </div>
     </Link>
   );

@@ -50,7 +50,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <p className="mt-5 text-body text-gray-700">{p.overview}</p>
             <dl className="mt-10 grid gap-px border border-gray-200 bg-gray-200 sm:grid-cols-2">
               <div className="bg-white p-6">
-                <dt className="text-eyebrow uppercase text-gray-500">Scope of work</dt>
+                <dt className="text-eyebrow text-gray-500">Scope of work</dt>
                 <dd>
                   <ul className="mt-3 space-y-2 text-small text-gray-700">
                     {p.scope.map((s) => (
@@ -60,7 +60,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 </dd>
               </div>
               <div className="bg-white p-6">
-                <dt className="text-eyebrow uppercase text-gray-500">Materials</dt>
+                <dt className="text-eyebrow text-gray-500">Materials</dt>
                 <dd>
                   <ul className="mt-3 space-y-2 text-small text-gray-700">
                     {p.materials.map((m) => (
@@ -75,18 +75,18 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <div className="border border-gray-200 p-6">
               <dl className="space-y-4 text-small">
                 <div>
-                  <dt className="text-eyebrow uppercase text-gray-500">Service</dt>
+                  <dt className="text-eyebrow text-gray-500">Service</dt>
                   <dd className="mt-1">
-                    <Link href={`/services/${service.slug}`} className="font-medium hover:text-timber">
+                    <Link href={`/services/${service.slug}`} className="font-medium hover:underline hover:underline-offset-4">
                       {service.name} →
                     </Link>
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-eyebrow uppercase text-gray-500">Location</dt>
+                  <dt className="text-eyebrow text-gray-500">Location</dt>
                   <dd className="mt-1">
                     {city ? (
-                      <Link href={`/service-areas/${city.slug}`} className="font-medium hover:text-timber">
+                      <Link href={`/service-areas/${city.slug}`} className="font-medium hover:underline hover:underline-offset-4">
                         {p.location} →
                       </Link>
                     ) : (
@@ -95,11 +95,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-eyebrow uppercase text-gray-500">Warranty</dt>
+                  <dt className="text-eyebrow text-gray-500">Warranty</dt>
                   <dd className="mt-1">2-year workmanship</dd>
                 </div>
               </dl>
-              <Link href="/estimate" className="mt-6 inline-flex h-12 w-full items-center justify-center bg-black text-sm font-medium text-white hover:bg-charcoal">
+              <Link href="/estimate" className="mt-6 inline-flex h-12 w-full items-center justify-center bg-timber text-sm font-medium text-black hover:bg-black hover:text-white">
                 Get an Estimate
               </Link>
             </div>

@@ -8,6 +8,7 @@ export default function SectionHeader({
   tone = 'light',
   align = 'left',
   as: Tag = 'h2',
+  className,
 }: {
   eyebrow?: string;
   title: string;
@@ -15,11 +16,12 @@ export default function SectionHeader({
   tone?: 'light' | 'dark';
   align?: 'left' | 'center';
   as?: 'h1' | 'h2';
+  className?: string;
 }) {
   return (
-    <div className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center')}>
+    <div className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center', className)}>
       {eyebrow && (
-        <Eyebrow tone={tone} className="mb-4">
+        <Eyebrow tone={tone} className="mb-3">
           {eyebrow}
         </Eyebrow>
       )}

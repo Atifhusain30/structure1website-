@@ -24,7 +24,7 @@ export default function Breadcrumbs({ items, tone = 'light' }: { items: Crumb[];
         {all.map((c, i) => (
           <li key={i} className="flex items-center gap-2">
             {c.href && i < all.length - 1 ? (
-              <Link href={c.href} className="transition-colors hover:text-timber">
+              <Link href={c.href} className="hover:underline hover:underline-offset-4">
                 {c.label}
               </Link>
             ) : (

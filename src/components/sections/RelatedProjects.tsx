@@ -9,7 +9,7 @@ export default function RelatedProjects({ projects, eyebrow = 'Projects', headin
     <>
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <SectionHeader eyebrow={eyebrow} title={heading} text={text} />
-        <Button href="/projects" variant="link" arrow>
+        <Button href="/projects" variant="link">
           View all projects
         </Button>
       </div>

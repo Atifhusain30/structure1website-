@@ -89,7 +89,7 @@ export default function Header() {
               aria-expanded={menu}
               aria-haspopup="true"
               onClick={() => setMenu((v) => !v)}
-              className={cn('flex h-10 items-center gap-1 text-sm font-medium transition-colors', pathname.startsWith('/services') ? 'text-timber' : muted)}
+              className={cn('flex h-10 items-center gap-1 text-sm font-medium transition-colors', pathname.startsWith('/services') ? cn(text, 'underline underline-offset-[10px] decoration-2') : muted)}
             >
               Services <ChevronDown className={cn('h-4 w-4 transition-transform duration-150', menu && 'rotate-180')} aria-hidden />
             </button>
@@ -107,7 +107,7 @@ export default function Header() {
             </div>
           </div>
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className={cn('text-sm font-medium transition-colors', isActive(l.href) ? 'text-timber' : muted)}>
+            <Link key={l.href} href={l.href} className={cn('text-sm font-medium transition-colors', isActive(l.href) ? cn(text, 'underline underline-offset-[10px] decoration-2') : muted)}>
               {l.label}
             </Link>
           ))}
@@ -119,10 +119,7 @@ export default function Header() {
           </a>
           <Link
             href="/estimate"
-            className={cn(
-              'inline-flex h-11 items-center px-5 text-sm font-medium transition-colors',
-              onDark ? 'bg-white text-black hover:bg-offwhite' : 'bg-black text-white hover:bg-charcoal',
-            )}
+            className="inline-flex h-11 items-center bg-timber px-5 text-sm font-medium text-black transition-colors hover:bg-black hover:text-white"
           >
             Get a Free Estimate
           </Link>
@@ -178,7 +175,7 @@ export default function Header() {
             </Link>
           ))}
           <div className="mt-6 flex flex-col gap-3">
-            <Link href="/estimate" className="inline-flex h-12 items-center justify-center bg-black text-sm font-medium text-white" tabIndex={open ? 0 : -1}>
+            <Link href="/estimate" className="inline-flex h-12 items-center justify-center bg-timber text-sm font-medium text-black" tabIndex={open ? 0 : -1}>
               Get a Free Estimate
             </Link>
             <a href={`tel:${company.phoneRaw}`} className="inline-flex h-12 items-center justify-center border border-black text-sm font-medium" tabIndex={open ? 0 : -1}>

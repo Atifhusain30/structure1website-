@@ -9,7 +9,6 @@ import RelatedGuides from '@/components/sections/RelatedGuides';
 import FAQ from '@/components/sections/FAQ';
 import CTASection from '@/components/sections/CTASection';
 import Photo from '@/components/ui/Photo';
-import Reveal from '@/components/ui/Reveal';
 import JsonLd from '@/components/seo/JsonLd';
 import { services, getService, projectsForService, faqsFor, cities, company, photos } from '@/content';
 
@@ -49,10 +48,8 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <PageHero crumbs={[{ label: 'Services', href: '/services' }, { label: s.name }]} eyebrow="Services" title={`${s.name} in Dallas–Fort Worth`} lead={s.lead} photo={s.hero} />
       <Section className="pb-0">
         <div className="grid grid-cols-3 gap-3 md:gap-6">
-          {s.gallery.map((id, i) => (
-            <Reveal key={id} delay={i * 60}>
-              <Photo id={id} ratio="4/3" sizes="33vw" />
-            </Reveal>
+          {s.gallery.map((id) => (
+            <Photo key={id} id={id} ratio="4/3" sizes="33vw" />
           ))}
         </div>
       </Section>
@@ -68,13 +65,13 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           </div>
           <aside className="lg:col-span-4 lg:col-start-9">
             <div className="border border-gray-200 p-6">
-              <p className="text-eyebrow uppercase text-gray-500">Related services</p>
+              <p className="text-eyebrow text-gray-500">Related services</p>
               <ul className="mt-4 space-y-2">
                 {s.relatedServices.map((r) => {
                   const rs = getService(r)!;
                   return (
                     <li key={r}>
-                      <Link href={`/services/${r}`} className="text-small font-medium hover:text-timber">
+                      <Link href={`/services/${r}`} className="text-small font-medium hover:underline hover:underline-offset-4">
                         {rs.name} →
                       </Link>
                     </li>
@@ -138,7 +135,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
           {cities.map((c) => (
             <li key={c.slug}>
-              <Link href={`/service-areas/${c.slug}`} className="text-small font-medium underline-offset-4 hover:text-timber hover:underline">
+              <Link href={`/service-areas/${c.slug}`} className="text-small font-medium underline-offset-4 hover:underline hover:underline-offset-4 hover:underline">
                 {c.name}
               </Link>
             </li>

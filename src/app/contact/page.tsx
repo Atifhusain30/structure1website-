@@ -25,23 +25,23 @@ export default function ContactPage() {
           <aside className="lg:col-span-4 lg:col-start-9">
             <dl className="divide-y divide-gray-200 border-y border-gray-200 text-small">
               <div className="py-4">
-                <dt className="text-eyebrow uppercase text-gray-500">Phone</dt>
+                <dt className="text-eyebrow text-gray-500">Phone</dt>
                 <dd className="mt-1">
-                  <a href={`tel:${company.phoneRaw}`} className="text-body font-medium hover:text-timber">
+                  <a href={`tel:${company.phoneRaw}`} className="text-body font-medium hover:underline hover:underline-offset-4">
                     {company.phone}
                   </a>
                 </dd>
               </div>
               <div className="py-4">
-                <dt className="text-eyebrow uppercase text-gray-500">Email</dt>
+                <dt className="text-eyebrow text-gray-500">Email</dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${company.email}`} className="break-all hover:text-timber">
+                  <a href={`mailto:${company.email}`} className="break-all hover:underline hover:underline-offset-4">
                     {company.email}
                   </a>
                 </dd>
               </div>
               <div className="py-4">
-                <dt className="text-eyebrow uppercase text-gray-500">Office</dt>
+                <dt className="text-eyebrow text-gray-500">Office</dt>
                 <dd className="mt-1 text-gray-700">
                   {company.address.street}
                   <br />
@@ -49,11 +49,11 @@ export default function ContactPage() {
                 </dd>
               </div>
               <div className="py-4">
-                <dt className="text-eyebrow uppercase text-gray-500">Hours</dt>
+                <dt className="text-eyebrow text-gray-500">Hours</dt>
                 <dd className="mt-1 text-gray-700">{company.hours}</dd>
               </div>
               <div className="py-4">
-                <dt className="text-eyebrow uppercase text-gray-500">Service area</dt>
+                <dt className="text-eyebrow text-gray-500">Service area</dt>
                 <dd className="mt-1 text-gray-700">Dallas–Fort Worth metroplex, about 50 miles from Dallas</dd>
               </div>
             </dl>

@@ -11,7 +11,7 @@ export default function ArticleCard({ post, priority = false }: { post: BlogPost
       <p className="mt-4 text-meta text-gray-500">
         {post.category} · {post.readTime}
       </p>
-      <h3 className="mt-1.5 font-display text-h3 group-hover:text-timber">{post.title}</h3>
+      <h3 className="mt-1.5 font-display text-h3 group-hover:underline group-hover:underline-offset-4">{post.title}</h3>
       <p className="mt-2 line-clamp-2 text-small text-gray-700">{post.excerpt}</p>
     </Link>
   );

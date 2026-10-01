@@ -147,7 +147,7 @@ export default function EstimateForm({ cta = 'Request My Estimate' }: { cta?: st
         <button
           type="submit"
           disabled={state === 'sending'}
-          className="inline-flex h-12 items-center justify-center gap-2 bg-black px-6 text-sm font-medium text-white hover:bg-charcoal disabled:opacity-60"
+          className="inline-flex h-12 items-center justify-center gap-2 bg-timber px-6 text-sm font-medium text-black hover:bg-black hover:text-white disabled:opacity-60"
         >
           {state === 'sending' ? (
             <>

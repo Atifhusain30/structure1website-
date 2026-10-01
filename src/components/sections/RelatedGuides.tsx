@@ -10,7 +10,7 @@ export default function RelatedGuides({ topic, heading = 'Homeowner guides', lim
     <>
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <SectionHeader eyebrow="Resources" title={heading} />
-        <Button href="/blog" variant="link" arrow>
+        <Button href="/blog" variant="link">
           All resources
         </Button>
       </div>

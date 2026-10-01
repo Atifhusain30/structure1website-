@@ -64,11 +64,11 @@ export default function CityPage({ params }: { params: { city: string } }) {
           </div>
           <aside className="lg:col-span-4 lg:col-start-9">
             <div className="border border-gray-200 p-6">
-              <p className="text-eyebrow uppercase text-gray-500">Services in {c.name}</p>
+              <p className="text-eyebrow text-gray-500">Services in {c.name}</p>
               <ul className="mt-4 space-y-2">
                 {services.map((s) => (
                   <li key={s.slug}>
-                    <Link href={`/services/${s.slug}`} className="text-small font-medium hover:text-timber">
+                    <Link href={`/services/${s.slug}`} className="text-small font-medium hover:underline hover:underline-offset-4">
                       {s.name} →
                     </Link>
                   </li>
@@ -85,7 +85,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
             title={local.length > 0 ? `Our work in ${c.name}` : 'Recent work nearby'}
             text={local.length > 0 ? undefined : `We have not published a ${c.name} project yet. These recent DFW builds show the same crew, materials, and standard.`}
           />
-          <Button href="/projects" variant="link" arrow>
+          <Button href="/projects" variant="link">
             View all projects
           </Button>
         </div>

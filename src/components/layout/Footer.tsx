@@ -26,12 +26,12 @@ export default function Footer() {
             <p className="mt-4 max-w-xs text-small text-white/70">
               Dallas–Fort Worth patio covers, pergolas, concrete, and outdoor living. Designed, permitted, and built by one in-house crew.
             </p>
-            <Link href="/estimate" className="mt-6 inline-flex h-12 items-center bg-white px-6 text-sm font-medium text-black hover:bg-offwhite">
+            <Link href="/estimate" className="mt-6 inline-flex h-12 items-center bg-timber px-6 text-sm font-medium text-black hover:bg-white">
               Get a Free Estimate
             </Link>
           </div>
           <div className="lg:col-span-2">
-            <h2 className="text-eyebrow uppercase text-white/50">Services</h2>
+            <h2 className="text-eyebrow text-white/50">Services</h2>
             <ul className="mt-4 space-y-2.5">
               {services.map((s) => (
                 <li key={s.slug}>
@@ -43,7 +43,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="lg:col-span-2">
-            <h2 className="text-eyebrow uppercase text-white/50">Company</h2>
+            <h2 className="text-eyebrow text-white/50">Company</h2>
             <ul className="mt-4 space-y-2.5">
               {companyLinks.map((l) => (
                 <li key={l.href}>
@@ -55,7 +55,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="lg:col-span-2">
-            <h2 className="text-eyebrow uppercase text-white/50">Service Areas</h2>
+            <h2 className="text-eyebrow text-white/50">Service Areas</h2>
             <ul className="mt-4 space-y-2.5">
               {cities.map((c) => (
                 <li key={c.slug}>
@@ -67,7 +67,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="lg:col-span-2">
-            <h2 className="text-eyebrow uppercase text-white/50">Contact</h2>
+            <h2 className="text-eyebrow text-white/50">Contact</h2>
             <ul className="mt-4 space-y-2.5 text-small text-white/80">
               <li>
                 <a href={`tel:${company.phoneRaw}`} className="hover:text-white">

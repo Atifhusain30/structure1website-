@@ -5,7 +5,6 @@ import SectionHeader from '@/components/sections/SectionHeader';
 import TrustBar from '@/components/sections/TrustBar';
 import CTASection from '@/components/sections/CTASection';
 import Photo from '@/components/ui/Photo';
-import Reveal from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -40,9 +39,9 @@ export default function AboutPage() {
       />
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-20">
-          <Reveal className="order-2 lg:order-1 lg:col-span-6">
+          <div className="order-2 lg:order-1 lg:col-span-6">
             <Photo id="pergola-plano-complete" ratio="3/4" sizes="(max-width: 1024px) 100vw, 50vw" />
-          </Reveal>
+          </div>
           <div className="order-1 lg:order-2 lg:col-span-6">
             <SectionHeader eyebrow="The story" title="Craft over shortcuts. Every time." />
             <div className="mt-7 max-w-xl space-y-5 text-body text-gray-700">

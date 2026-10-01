@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import PageHero from '@/components/layout/PageHero';
 import Section from '@/components/layout/Section';
-import ServiceGrid from '@/components/sections/ServiceGrid';
+import ServiceIndex from '@/components/sections/ServiceIndex';
 import TrustBar from '@/components/sections/TrustBar';
 import CTASection from '@/components/sections/CTASection';
 
@@ -17,16 +17,13 @@ export default function ServicesPage() {
     <>
       <PageHero
         crumbs={[{ label: 'Services' }]}
-        eyebrow="Services"
         title="What Structure1 builds"
         lead="Patio covers, pergolas, and concrete are the core. Outdoor living projects combine them. Every job includes drawings, engineering, permits, and a 2-year workmanship warranty."
         photo="gable-dfw"
       />
       <Section>
-        <ServiceGrid />
-      </Section>
-      <Section className="py-0">
-        <TrustBar />
+        <ServiceIndex large />
+        <TrustBar className="mt-12" />
       </Section>
       <CTASection
         tone="offwhite"

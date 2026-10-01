@@ -69,8 +69,8 @@ export default async function ArticlePage({ params }: { params: { slug: string }
               <TableOfContents headings={post.headings ?? []} />
               {service && (
                 <div className="mt-8 border border-gray-200 p-5">
-                  <p className="text-eyebrow uppercase text-gray-500">Related service</p>
-                  <Link href={`/services/${service.slug}`} className="mt-2 block text-small font-medium hover:text-timber">
+                  <p className="text-eyebrow text-gray-500">Related service</p>
+                  <Link href={`/services/${service.slug}`} className="mt-2 block text-small font-medium hover:underline hover:underline-offset-4">
                     {service.name} →
                   </Link>
                 </div>

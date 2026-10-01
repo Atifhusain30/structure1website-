@@ -49,7 +49,7 @@ export default function TermsPage() {
   return (
     <Section className="pt-28 md:pt-36">
       <Breadcrumbs items={[{ label: 'Terms of Service' }]} />
-      <p className="mt-8 text-eyebrow uppercase text-gray-500">Legal</p>
+      <p className="mt-8 text-eyebrow text-gray-500">Legal</p>
       <h1 className="mt-4 font-display text-h1">Terms of Service</h1>
       <p className="mt-3 text-meta text-gray-500">Last updated: January 2026</p>
       <div className="prose-article mt-10">

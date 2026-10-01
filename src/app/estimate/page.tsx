@@ -27,14 +27,14 @@ export default function EstimatePage() {
         </div>
         <aside className="lg:col-span-4 lg:col-start-9">
           <div className="border border-gray-200 p-6">
-            <h2 className="text-eyebrow uppercase text-gray-500">Prefer to talk?</h2>
+            <h2 className="text-eyebrow text-gray-500">Prefer to talk?</h2>
             <p className="mt-3 text-body">
-              <a href={`tel:${company.phoneRaw}`} className="font-medium hover:text-timber">
+              <a href={`tel:${company.phoneRaw}`} className="font-medium hover:underline hover:underline-offset-4">
                 {company.phone}
               </a>
             </p>
             <p className="mt-1 text-small text-gray-700">
-              <a href={`mailto:${company.email}`} className="break-all hover:text-timber">
+              <a href={`mailto:${company.email}`} className="break-all hover:underline hover:underline-offset-4">
                 {company.email}
               </a>
             </p>

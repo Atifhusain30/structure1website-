@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ThankYouPage() {
   return (
     <Section className="min-h-[70vh] pt-32 md:pt-44">
-      <p className="text-eyebrow uppercase text-gray-500">Request received</p>
+      <p className="text-eyebrow text-gray-500">Request received</p>
       <h1 className="mt-4 max-w-2xl font-display text-h1">Thanks for reaching out. We&apos;re on it.</h1>
       <p className="mt-4 max-w-xl text-lead text-gray-700">
         A member of our team will reach out within one business day with next steps. For urgent projects, call us directly.
@@ -22,7 +22,7 @@ export default function ThankYouPage() {
         <a href={`tel:${company.phoneRaw}`} className="inline-flex h-12 items-center bg-black px-6 text-sm font-medium text-white hover:bg-charcoal">
           Call {company.phone}
         </a>
-        <Button href="/projects" variant="secondary" arrow>
+        <Button href="/projects" variant="secondary">
           Browse Our Work
         </Button>
       </div>
