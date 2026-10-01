@@ -6,7 +6,6 @@ import { ChevronDown, Menu, Phone, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { company } from '@/content/company';
 import { services } from '@/content/services';
-import { useHeaderTheme } from './HeaderTheme';
 
 const links = [
   { label: 'Projects', href: '/projects' },
@@ -16,15 +15,20 @@ const links = [
   { label: 'Contact', href: '/contact' },
 ];
 
+/**
+ * Colors come from CSS variables set in globals.css: the header is white by default and turns
+ * transparent/white-on-photo only while the page has a [data-dark-hero] section and the header is
+ * neither scrolled nor open. That is decided in CSS at first paint, so there is no flash on load.
+ */
 export default function Header() {
   const pathname = usePathname();
-  const { dark } = useHeaderTheme();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const servicesBtn = useRef<HTMLButtonElement>(null);
+  const burger = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -40,8 +44,17 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        burger.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', onKey);
     return () => {
       document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
     };
   }, [open]);
 
@@ -64,40 +77,40 @@ export default function Header() {
     };
   }, [menu]);
 
-  const onDark = dark && !scrolled && !open;
-  const text = onDark ? 'text-white' : 'text-black';
-  const muted = onDark ? 'text-white/80 hover:text-white' : 'text-gray-700 hover:text-black';
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
+  const nav = 'text-sm font-medium text-[var(--hdr-muted)] transition-colors hover:text-[var(--hdr-fg)]';
+  const active = 'text-sm font-medium text-[var(--hdr-fg)] underline underline-offset-[10px] decoration-2';
 
   return (
     <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-[background-color] duration-250',
-        onDark ? 'bg-transparent' : 'bg-white border-b border-gray-200',
-      )}
+      data-header=""
+      data-scrolled={scrolled ? '' : undefined}
+      data-open={open ? '' : undefined}
+      className="fixed inset-x-0 top-0 z-50 border-b border-[var(--hdr-line)] bg-[var(--hdr-bg)] text-[var(--hdr-fg)] transition-[background-color,border-color] duration-250"
     >
       <div className={cn('mx-auto flex max-w-site items-center justify-between px-4 sm:px-6 transition-[height] duration-250', scrolled ? 'h-16' : 'h-20')}>
-        <Link href="/" className={cn('font-display text-xl font-bold tracking-tight', text)} aria-label="Structure1 home">
+        <Link href="/" className="font-display text-xl font-bold tracking-tight" aria-label="Structure1 home">
           Structure1
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
-          <div className="relative" ref={menuRef} onMouseEnter={() => setMenu(true)} onMouseLeave={() => setMenu(false)}>
-            <button
-              ref={servicesBtn}
-              type="button"
-              aria-expanded={menu}
-              aria-haspopup="true"
-              onClick={() => setMenu((v) => !v)}
-              className={cn('flex h-10 items-center gap-1 text-sm font-medium transition-colors', pathname.startsWith('/services') ? cn(text, 'underline underline-offset-[10px] decoration-2') : muted)}
-            >
+          <div
+            className="relative"
+            ref={menuRef}
+            onMouseEnter={() => setMenu(true)}
+            onMouseLeave={() => setMenu(false)}
+            onBlur={(e) => {
+              if (!menuRef.current?.contains(e.relatedTarget as Node)) setMenu(false);
+            }}
+          >
+            <button ref={servicesBtn} type="button" aria-expanded={menu} aria-controls="services-menu" onClick={() => setMenu((v) => !v)} className={cn('flex h-10 items-center gap-1', pathname.startsWith('/services') ? active : nav)}>
               Services <ChevronDown className={cn('h-4 w-4 transition-transform duration-150', menu && 'rotate-180')} aria-hidden />
             </button>
             <div className={cn('absolute left-0 top-full pt-3 transition-opacity duration-150', menu ? 'opacity-100' : 'pointer-events-none opacity-0')}>
-              <ul className="w-[22rem] border border-gray-200 bg-white p-2 text-black" role="menu">
+              <ul id="services-menu" className="w-[22rem] border border-gray-200 bg-white p-2 text-black">
                 {services.map((s) => (
-                  <li key={s.slug} role="none">
-                    <Link role="menuitem" href={`/services/${s.slug}`} tabIndex={menu ? 0 : -1} className="block px-4 py-3 hover:bg-offwhite">
+                  <li key={s.slug}>
+                    <Link href={`/services/${s.slug}`} tabIndex={menu ? 0 : -1} className="block px-4 py-3 hover:bg-offwhite">
                       <span className="block text-sm font-medium">{s.navLabel}</span>
                       <span className="block text-meta text-gray-500">{s.navBlurb}</span>
                     </Link>
@@ -107,36 +120,26 @@ export default function Header() {
             </div>
           </div>
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className={cn('text-sm font-medium transition-colors', isActive(l.href) ? cn(text, 'underline underline-offset-[10px] decoration-2') : muted)}>
+            <Link key={l.href} href={l.href} className={isActive(l.href) ? active : nav}>
               {l.label}
             </Link>
           ))}
         </nav>
 
         <div className="hidden items-center gap-6 lg:flex">
-          <a href={`tel:${company.phoneRaw}`} className={cn('text-sm font-medium', muted)}>
+          <a href={`tel:${company.phoneRaw}`} className={nav}>
             {company.phone}
           </a>
-          <Link
-            href="/estimate"
-            className={cn('inline-flex h-11 items-center px-5 text-sm font-medium transition-colors', onDark ? 'bg-white text-black hover:bg-offwhite' : 'bg-black text-white hover:bg-charcoal')}
-          >
+          <Link href="/estimate" className="inline-flex h-11 items-center bg-[var(--hdr-cta-bg)] px-5 text-sm font-medium text-[var(--hdr-cta-fg)] transition-colors hover:bg-[var(--hdr-cta-hover)]">
             Get a Free Estimate
           </Link>
         </div>
 
         <div className="flex items-center gap-1 lg:hidden">
-          <a href={`tel:${company.phoneRaw}`} aria-label={`Call ${company.phone}`} className={cn('flex h-11 w-11 items-center justify-center', text)}>
+          <a href={`tel:${company.phoneRaw}`} aria-label={`Call ${company.phone}`} className="flex h-11 w-11 items-center justify-center">
             <Phone className="h-5 w-5" />
           </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            className={cn('flex h-11 w-11 items-center justify-center', text)}
-          >
+          <button ref={burger} type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Close menu' : 'Open menu'} className="flex h-11 w-11 items-center justify-center">
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -145,19 +148,14 @@ export default function Header() {
       <div
         id="mobile-menu"
         className={cn(
-          'fixed inset-x-0 bottom-0 top-16 overflow-y-auto border-t border-gray-200 bg-white transition-opacity duration-250 lg:hidden',
+          'fixed inset-x-0 bottom-0 overflow-y-auto border-t border-gray-200 bg-white text-black transition-opacity duration-250 lg:hidden',
+          scrolled ? 'top-16' : 'top-20',
           open ? 'opacity-100' : 'pointer-events-none opacity-0',
         )}
         aria-hidden={!open}
       >
         <nav className="px-4 py-4" aria-label="Mobile">
-          <button
-            type="button"
-            onClick={() => setMobileServices((v) => !v)}
-            aria-expanded={mobileServices}
-            className="flex w-full items-center justify-between py-3 text-lg font-medium"
-            tabIndex={open ? 0 : -1}
-          >
+          <button type="button" onClick={() => setMobileServices((v) => !v)} aria-expanded={mobileServices} className="flex w-full items-center justify-between py-3 text-lg font-medium" tabIndex={open ? 0 : -1}>
             Services <ChevronDown className={cn('h-5 w-5 transition-transform duration-150', mobileServices && 'rotate-180')} aria-hidden />
           </button>
           <ul className={cn('overflow-hidden transition-[max-height] duration-250', mobileServices ? 'max-h-[40rem]' : 'max-h-0')}>

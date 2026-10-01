@@ -6,14 +6,14 @@ export const processSteps: ProcessStep[] = [
     summary: 'Tell us about your project. We reply within one business day with next steps and a ballpark range, then walk the site with you.',
     homeownerDoes: 'Send the form or call. Share a few photos of the space and what you have in mind.',
     weDo: 'Site visit, measurements, and a written, itemized estimate that includes permits and engineering.',
-    timing: 'Reply within one business day. Site visit within the week in most cases.',
+    timing: 'Reply within one business day, then we schedule the site visit.',
   },
   {
     number: '02', title: 'Design',
     summary: 'Material selection and drawings tailored to your home, sized to its proportions and roofline.',
     homeownerDoes: 'Choose style, roofing, ceiling finish, lighting, and fans from samples we bring to you.',
     weDo: 'Architectural drawings, wind-load engineering where required, and the HOA package if your neighborhood needs one.',
-    timing: 'Typically one to two weeks alongside the permit submission.',
+    timing: 'Runs alongside the permit submission.',
   },
   {
     number: '03', title: 'Permit',

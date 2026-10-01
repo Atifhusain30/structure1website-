@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    outputFileTracingIncludes: { '/blog': ['./content/blog/**'] },
+  },
   images: {
     // Modern formats for iOS 14+ and Android
     formats: ['image/webp'], // AVIF encoding stalls Next's optimizer on 2000px sources; Netlify's image CDN negotiates formats in production

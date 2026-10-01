@@ -64,7 +64,7 @@ export default function AboutPage() {
           ))}
         </ul>
       </Section>
-      <Section className="py-0">
+      <Section className="py-0 md:py-0">
         <TrustBar />
       </Section>
       <Section>

@@ -1,5 +1,5 @@
 export const trust = [
-  { label: 'Licensed & insured', detail: 'Licensed and insured for residential construction in Texas.' },
+  { label: 'Licensed & insured', detail: 'Licensed and insured on every job.' },
   { label: 'DFW local', detail: 'Based in Dallas. Our crews work across the metroplex every week.' },
   { label: '2-year workmanship warranty', detail: 'Every structure and slab is covered for two years after completion.' },
   { label: '150+ projects completed', detail: 'Patio covers, pergolas, and concrete built for DFW homeowners since 2021.' },

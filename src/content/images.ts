@@ -18,7 +18,7 @@ export const photos = {
   'pergola-midlothian-2': { src: '/images/hero/cover4-new.JPG', alt: 'Pergola with back wall build in Midlothian, Texas' },
   'patio-cover-dfw-1': { src: '/images/hero/cover5.jpg', alt: 'Custom patio cover with polycarbonate panels in Dallas-Fort Worth' },
   'gable-dfw': { src: '/images/hero/debrabuck.JPG', alt: 'Custom gable patio cover in Dallas-Fort Worth' },
-  'gable-dallas-dusk': { src: '/images/hero/main-hero.jpg', alt: 'Cedar gable patio cover at dusk in Dallas, Texas' },
+  'gable-dallas-dusk': { src: '/images/hero/main-hero.jpg', alt: 'Cedar gable patio cover at dusk in Dallas-Fort Worth' },
   'leanto-forney-1': { src: '/images/hero/jeff1.jpg', alt: 'Lean-to patio cover attached to the roofline in Forney, Texas' },
   'leanto-forney-2': { src: '/images/hero/jeff2.JPG', alt: 'Lean-to patio cover with dark wood ceiling, recessed lighting, and fan in Forney, Texas' },
   'leanto-forney-3': { src: '/images/hero/jeff3.JPG', alt: 'Lean-to patio cover detail in Forney, Texas' },

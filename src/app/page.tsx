@@ -4,15 +4,18 @@ import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/sections/SectionHeader';
 import TrustBar from '@/components/sections/TrustBar';
 import ServiceMosaic from '@/components/sections/ServiceMosaic';
+import ReelStrip from '@/components/sections/ReelStrip';
 import ProjectGrid from '@/components/sections/ProjectGrid';
 import ProcessSteps from '@/components/sections/ProcessSteps';
 import Testimonials from '@/components/sections/Testimonials';
 import ServiceAreaGrid from '@/components/sections/ServiceAreaGrid';
-import CTASection from '@/components/sections/CTASection';
+import EstimateForm from '@/components/forms/EstimateForm';
 import Photo from '@/components/ui/Photo';
 import Button from '@/components/ui/Button';
 import { featuredProjects } from '@/content/projects';
-import { why } from '@/content/trust';
+import { reels } from '@/content/reels';
+import { why, trust } from '@/content/trust';
+import { company } from '@/content/company';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
@@ -38,6 +41,22 @@ export default function HomePage() {
           <ServiceMosaic />
         </div>
       </Section>
+
+      {reels.length > 0 && (
+        <Section className="pt-0 md:pt-0">
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+            <SectionHeader className="lg:col-span-7" title="From the job site" text="Short clips our crew shoots while the work is going in." />
+            <div className="lg:col-span-5 lg:text-right">
+              <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" className="text-[0.9375rem] font-medium underline underline-offset-4 decoration-gray-200 hover:decoration-black">
+                Follow on Instagram
+              </a>
+            </div>
+          </div>
+          <div className="mt-8">
+            <ReelStrip reels={reels} />
+          </div>
+        </Section>
+      )}
 
       <Section tone="offwhite">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
@@ -107,7 +126,35 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <CTASection id="estimate" />
+      <Section id="estimate">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <h2 className="font-display text-h2">Get a free estimate</h2>
+            <p className="mt-4 max-w-md text-lead text-gray-700">
+              Tell us about the project. We reply within one business day with next steps, then walk the site with you before quoting. No obligation.
+            </p>
+            <ul className="mt-8 space-y-3 text-small text-gray-700">
+              {trust.slice(0, 4).map((t) => (
+                <li key={t.label} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-black" aria-hidden />
+                  <span>
+                    <span className="font-medium text-black">{t.label}.</span> {t.detail}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 text-small text-gray-700">
+              Prefer to talk?{' '}
+              <a href={`tel:${company.phoneRaw}`} className="font-medium text-black underline underline-offset-4 decoration-gray-200 hover:decoration-black">
+                {company.phone}
+              </a>
+            </p>
+          </div>
+          <div className="lg:col-span-7">
+            <EstimateForm />
+          </div>
+        </div>
+      </Section>
     </>
   );
 }

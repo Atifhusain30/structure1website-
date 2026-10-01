@@ -9,7 +9,7 @@ const config: Config = {
         offwhite: '#F3F2EE',
         black: '#0E0E0E',
         charcoal: '#2B2B2B',
-        gray: { 200: '#E4E2DC', 500: '#8C8A84', 700: '#4A4946' },
+        gray: { 200: '#E4E2DC', 500: '#6B6A65', 700: '#4A4946' },
       },
       fontFamily: {
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],

@@ -6,6 +6,12 @@
   --header-h: 80px;
 }
 
+/* Header colors. White by default; white-on-photo only while a dark hero is on the page and the header is at the top and closed. */
+header[data-header] { --hdr-fg: #0E0E0E; --hdr-muted: #4A4946; --hdr-bg: #FFFFFF; --hdr-line: #E4E2DC; --hdr-cta-bg: #0E0E0E; --hdr-cta-fg: #FFFFFF; --hdr-cta-hover: #2B2B2B; }
+body:has([data-dark-hero]) header[data-header]:not([data-scrolled]):not([data-open]) { --hdr-fg: #FFFFFF; --hdr-muted: rgba(255,255,255,0.82); --hdr-bg: transparent; --hdr-line: transparent; --hdr-cta-bg: #FFFFFF; --hdr-cta-fg: #0E0E0E; --hdr-cta-hover: #F3F2EE; }
+/* Keep the mobile sticky bar from covering the footer's last row. */
+@media (max-width: 1023px) { footer { padding-bottom: 4.5rem; } }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--header-h); }
 body { background: #FFFFFF; color: #0E0E0E; overflow-x: hidden; -webkit-font-smoothing: antialiased; }

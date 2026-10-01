@@ -96,7 +96,7 @@ export const services: Service[] = [
     options: [
       { name: 'Broom finish', blurb: 'Clean, textured, slip-resistant. Driveways, walkways, pool surrounds.', range: '$7 – $11 / sq ft' },
       { name: 'Stamped concrete', blurb: 'Stone, slate, brick, and wood-plank patterns. Patios, outdoor living areas, front entries.', range: '$12 – $22 / sq ft' },
-      { name: 'Stained / sealed', blurb: 'Rich color depth on new or existing slabs. Refreshing patios and covered outdoor rooms.', range: '$4 – $10 / sq ft' },
+      { name: 'Stained / sealed', blurb: 'Rich color depth on new or existing slabs. Refreshing patios and covered outdoor rooms.' },
       { name: 'Tear-out and replacement', blurb: 'Demo, haul-off, re-compacted base, and a new slab for settled, heaved, or cracked concrete.' },
     ],
     reasons: [
@@ -131,7 +131,7 @@ export const services: Service[] = [
       'During your estimate we bring pattern samples and photos of local installs so you can see exactly how a finish looks on a real project. Stamped patios are often poured together with a patio cover so the whole outdoor room is one job.',
     ],
     options: [
-      { name: 'Ashlar slate', blurb: 'Large rectangular stones with a natural slate texture. The most popular DFW patio pattern.' },
+      { name: 'Ashlar slate', blurb: 'Large rectangular stones with a natural slate texture.' },
       { name: 'Random stone / flagstone', blurb: 'Irregular stones for a natural, hand-laid look.' },
       { name: 'Wood plank', blurb: 'Board-width planks with grain texture, often used under covered areas.' },
       { name: 'Herringbone or running-bond brick', blurb: 'Classic brick layouts for entries, borders, and walkways.' },
@@ -165,7 +165,7 @@ export const services: Service[] = [
     lead: 'New driveways, walkways, and replacements poured thick enough and reinforced correctly for North Texas soil.',
     overview: [
       'Driveways take vehicle loads on soil that moves with every wet-dry cycle, so we pour them 5-6 inches thick with steel rebar over compacted base and cut control joints on a correct grid. Walkways and front entries get the same base preparation at patio thickness.',
-      'Tear-out and replacement is a large share of our concrete work in Dallas-Fort Worth: we demo the old slab, haul it off, re-compact the base, and pour new. Our Dallas driveway project adds a stamped border to a broom-finish drive.',
+      'Tear-out and replacement is a large share of our concrete work in Dallas-Fort Worth: we demo the old slab, haul it off, re-compact the base, and pour new. Our Dallas driveway is a full stone-pattern stamp with a contrasting stamped border.',
     ],
     options: [
       { name: 'Broom-finish driveway', blurb: 'The standard: clean, textured, slip-resistant.', range: '$7 – $11 / sq ft' },

@@ -34,16 +34,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   const city = p.city ? getCity(p.city) : undefined;
   return (
     <>
-      <Section className="pb-8 pt-28 md:pt-36">
+      <Section className="pb-8 pt-28 md:pb-8 md:pt-36">
         <Breadcrumbs items={[{ label: 'Projects', href: '/projects' }, { label: p.title }]} />
         <Eyebrow className="mt-8">{service.name}</Eyebrow>
         <h1 className="mt-3 font-display text-h1">{p.title}</h1>
         <p className="mt-3 text-lead text-gray-700">{p.location}</p>
       </Section>
-      <Section className="pt-0">
+      <Section className="pt-0 md:pt-0">
         <ProjectGallery ids={p.gallery} title={p.title} />
       </Section>
-      <Section className="pt-0">
+      <Section className="pt-0 md:pt-0">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <h2 className="font-display text-h2">Overview</h2>

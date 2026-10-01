@@ -46,7 +46,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   return (
     <>
       <PageHero crumbs={[{ label: 'Services', href: '/services' }, { label: s.name }]} eyebrow="Services" title={`${s.name} in Dallas–Fort Worth`} lead={s.lead} photo={s.hero} />
-      <Section className="pb-0">
+      <Section className="pb-0 md:pb-0">
         <div className="grid grid-cols-3 gap-3 md:gap-6">
           {s.gallery.map((id) => (
             <Photo key={id} id={id} ratio="4/3" sizes="33vw" />

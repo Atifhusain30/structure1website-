@@ -28,7 +28,14 @@ export default function ProjectGallery({ ids, title }: { ids: PhotoId[]; title: 
       if (e.key === 'Escape') close();
       if (e.key === 'ArrowRight') step(1);
       if (e.key === 'ArrowLeft') step(-1);
-      if (e.key === 'Tab') e.preventDefault();
+      if (e.key === 'Tab') {
+        const controls = Array.from(document.querySelectorAll<HTMLElement>('[data-lightbox-control]'));
+        if (controls.length === 0) return;
+        e.preventDefault();
+        const i = controls.indexOf(document.activeElement as HTMLElement);
+        const next = e.shiftKey ? (i - 1 + controls.length) % controls.length : (i + 1) % controls.length;
+        controls[next].focus();
+      }
     };
     document.addEventListener('keydown', onKey);
     return () => {
@@ -85,7 +92,7 @@ export default function ProjectGallery({ ids, title }: { ids: PhotoId[]; title: 
             touchX.current = null;
           }}
         >
-          <button ref={closeBtn} type="button" onClick={close} aria-label="Close" className="absolute right-3 top-3 z-10 flex h-12 w-12 items-center justify-center text-white hover:text-white/70">
+          <button ref={closeBtn} data-lightbox-control="" type="button" onClick={close} aria-label="Close" className="absolute right-3 top-3 z-10 flex h-12 w-12 items-center justify-center text-white hover:text-white/70">
             <X className="h-6 w-6" />
           </button>
           <div className="relative h-[80vh] w-full max-w-6xl">
@@ -96,10 +103,10 @@ export default function ProjectGallery({ ids, title }: { ids: PhotoId[]; title: 
           </p>
           {ids.length > 1 && (
             <>
-              <button type="button" onClick={() => step(-1)} aria-label="Previous photo" className="absolute left-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-white hover:text-white/70">
+              <button data-lightbox-control="" type="button" onClick={() => step(-1)} aria-label="Previous photo" className="absolute left-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-white hover:text-white/70">
                 <ChevronLeft className="h-7 w-7" />
               </button>
-              <button type="button" onClick={() => step(1)} aria-label="Next photo" className="absolute right-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-white hover:text-white/70">
+              <button data-lightbox-control="" type="button" onClick={() => step(1)} aria-label="Next photo" className="absolute right-2 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-white hover:text-white/70">
                 <ChevronRight className="h-7 w-7" />
               </button>
             </>

@@ -22,7 +22,7 @@ const LABEL_LEFT = new Set<CitySlug>(['fort-worth', 'carrollton', 'flower-mound'
 
 export function ServiceAreaMap({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 640 420" role="img" aria-label="Map of Structure1 service areas across Dallas–Fort Worth" className={className}>
+    <svg viewBox="0 0 640 420" role="group" aria-label="Map of Structure1 service areas across Dallas–Fort Worth; the same cities are listed beside it" className={className}>
       <circle cx={320} cy={268} r={200} fill="none" stroke="#E4E2DC" strokeDasharray="4 6" />
       <circle cx={320} cy={268} r={100} fill="none" stroke="#E4E2DC" strokeDasharray="2 6" />
       <text x={320} y={268 + 200 + 18} textAnchor="middle" fontSize="12" fill="#8C8A84">
@@ -33,7 +33,7 @@ export function ServiceAreaMap({ className }: { className?: string }) {
         const left = LABEL_LEFT.has(c.slug);
         const isHq = c.slug === 'dallas';
         return (
-          <Link key={c.slug} href={`/service-areas/${c.slug}`} aria-label={`${c.name} service area`}>
+          <Link key={c.slug} href={`/service-areas/${c.slug}`} aria-label={`${c.name} service area`} tabIndex={-1}>
             <g className="cursor-pointer">
               <circle cx={x} cy={y} r={isHq ? 8 : 6} fill={isHq ? '#0E0E0E' : '#FFFFFF'} stroke="#0E0E0E" strokeWidth={1.5} />
               <text x={left ? x - 11 : x + 11} y={y + 4} textAnchor={left ? 'end' : 'start'} fontSize="15" fontWeight={isHq ? 600 : 500} fill="#0E0E0E" className="hover:underline">

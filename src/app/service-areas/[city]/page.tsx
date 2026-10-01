@@ -49,7 +49,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
         crumbs={[{ label: 'Service Areas', href: '/service-areas' }, { label: c.name }]}
         eyebrow={`${c.name} · ${c.county}`}
         title={`Patio Covers, Pergolas & Concrete in ${c.name}, TX`}
-        lead={c.intro[0]}
+        lead={c.seo.description}
         photo={c.hero}
       />
       <Section>
@@ -57,7 +57,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
           <div className="lg:col-span-7">
             <SectionHeader eyebrow="Local" title={`Building in ${c.name}`} />
             <div className="mt-6 space-y-5 text-body text-gray-700">
-              {c.intro.slice(1).map((p, i) => (
+              {c.intro.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
             </div>

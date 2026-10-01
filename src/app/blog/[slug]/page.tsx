@@ -49,7 +49,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
   const date = new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   return (
     <>
-      <Section className="pb-8 pt-28 md:pt-36">
+      <Section className="pb-8 pt-28 md:pb-8 md:pt-36">
         <Breadcrumbs items={[{ label: 'Resources', href: '/blog' }, { label: post.title }]} />
         <Eyebrow className="mt-8">
           {post.category} · {date} · {post.readTime}
@@ -57,12 +57,12 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         <h1 className="mt-4 max-w-4xl font-display text-h1">{post.title}</h1>
         <p className="mt-4 max-w-2xl text-lead text-gray-700">{post.excerpt}</p>
       </Section>
-      <Section className="pb-8 pt-0">
+      <Section className="pb-8 pt-0 md:pb-8 md:pt-0">
         <div className="relative aspect-[21/9] overflow-hidden bg-gray-200">
           <Image src={post.featuredImage} alt={post.featuredImageAlt} fill priority sizes="(max-width: 1280px) 100vw, 1280px" className="object-cover" />
         </div>
       </Section>
-      <Section className="pt-0">
+      <Section className="pt-0 md:pt-0">
         <div className="grid gap-12 lg:grid-cols-12">
           <aside className="order-2 lg:order-1 lg:col-span-3">
             <div className="lg:sticky lg:top-28">

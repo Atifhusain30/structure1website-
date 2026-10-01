@@ -20,6 +20,14 @@ export default function EstimateForm({ cta = 'Request My Estimate' }: { cta?: st
       setError('Please fill in your name, phone, email, city, and project type.');
       return;
     }
+    const files = (data.getAll('photos') as File[]).filter((f) => f && f.size > 0).slice(0, 3);
+    data.delete('photos');
+    const total = files.reduce((n, f) => n + f.size, 0);
+    if (total > 7 * 1024 * 1024) {
+      setError('Photos add up to more than 7 MB. Please pick fewer or smaller photos, or send them after we reply.');
+      return;
+    }
+    files.forEach((f, i) => data.set(`photo${i + 1}`, f));
     data.set('subject', `New Estimate Lead: ${data.get('name')} — ${data.get('service')}`);
     data.set('referralSource', 'website');
     setState('sending');
@@ -126,7 +134,7 @@ export default function EstimateForm({ cta = 'Request My Estimate' }: { cta?: st
         </div>
         <div className="sm:col-span-2">
           <label htmlFor="ef-photos" className={label}>
-            Photos of the space (optional)
+            Photos of the space (optional, up to 3)
           </label>
           <input
             id="ef-photos"

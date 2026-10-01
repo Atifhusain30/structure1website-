@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Inter_Tight } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
-import { HeaderThemeProvider } from '@/components/layout/HeaderTheme';
 import Footer from '@/components/layout/Footer';
 import StickyBar from '@/components/layout/StickyBar';
 import JsonLd from '@/components/seo/JsonLd';
@@ -71,12 +70,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to main content
         </a>
-        <HeaderThemeProvider>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <StickyBar />
-        </HeaderThemeProvider>
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
+        <StickyBar />
         <JsonLd data={localBusiness} />
       </body>
     </html>

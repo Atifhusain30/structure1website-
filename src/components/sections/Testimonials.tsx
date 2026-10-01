@@ -9,7 +9,7 @@ export default function Testimonials({ items = all, limit = 3 }: { items?: Testi
     <ul className="grid gap-10 md:grid-cols-3 md:gap-8">
       {list.map((t) => (
         <li key={t.id}>
-          <div className="flex gap-0.5" aria-label={`${t.rating} out of 5 stars`}>
+          <div className="flex gap-0.5" role="img" aria-label={`${t.rating} out of 5 stars`}>
             {Array.from({ length: t.rating }).map((_, k) => (
               <Star key={k} className="h-3.5 w-3.5 fill-black text-black" aria-hidden />
             ))}

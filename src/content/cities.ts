@@ -7,7 +7,7 @@ export const cities: City[] = [
     hero: 'gable-dallas-dusk',
     intro: [
       'Structure1 Construction is based in Dallas, and Dallas backyards are where a large share of our patio covers, pergolas, and concrete work gets built. From older neighborhoods in East Dallas and Lake Highlands with mature trees and established patios, to North Dallas and Far North Dallas homes with larger lots, we size each structure to the house and work around what you already love about the yard.',
-      'Our Dallas work includes a reinforced driveway with a stamped stone-pattern border and a cedar gable cover photographed at dusk. Being local means short drives for site visits, quick follow-ups, and a crew that knows the city\'s permit process.',
+      'Our Dallas work includes a reinforced driveway with a stamped stone-pattern border. Being local means short drives for site visits, quick follow-ups, and a crew that knows the city\'s permit process.',
     ],
     permitNote: 'The City of Dallas requires a building permit for patio covers, pergolas, and other permanent accessory structures, issued through Development Services. Structure1 prepares the drawings, submits the application, and schedules inspections — permits are included in every Dallas project.',
     neighborhoods: ['Lake Highlands', 'East Dallas', 'Preston Hollow', 'North Dallas', 'Far North Dallas', 'Oak Cliff'],
@@ -23,7 +23,7 @@ export const cities: City[] = [
     ],
     permitNote: 'The City of Fort Worth requires a building permit for patio covers, issued through Development Services. Structure1 prepares the drawings, submits the application, and schedules every inspection — permits are included in every Fort Worth project.',
     neighborhoods: ['Tanglewood', 'Fairmount', 'Alliance', 'Keller area', 'Benbrook area', 'West Fort Worth'],
-    faqIds: [], testimonialIds: [5],
+    faqIds: [], testimonialIds: [],
   },
   {
     slug: 'plano', name: 'Plano', county: 'Collin County',
@@ -93,8 +93,8 @@ export const cities: City[] = [
       'Structure1 Construction builds custom patio covers, pergolas, and stamped concrete in Carrollton, TX. Carrollton is a short drive up the Dallas North Tollway from our base, and its mix of established 1980s–90s neighborhoods and newer developments near Castle Hills means we see everything from replacing a worn patio slab to adding a full covered outdoor room.',
       'Older Carrollton patios are often the right candidates for tear-out and replacement with a reinforced stamped slab before a cover goes up, so the whole project is done once and done right.',
     ],
-    permitNote: 'The City of Carrollton requires a building permit for patio covers and permanent accessory structures, reviewed through its Building Inspection division. Structure1 prepares the drawings, submits the application, and schedules inspections on every Carrollton project.',
-    neighborhoods: ['Castle Hills area', 'Indian Creek', 'Rosemeade', 'Old Downtown Carrollton', 'Hebron', 'Josey Ranch'],
+    permitNote: 'Like nearly every DFW city, Carrollton requires a building permit for patio covers and permanent accessory structures. Structure1 prepares the drawings, submits the application, and schedules inspections on every Carrollton project.',
+    neighborhoods: ['Indian Creek', 'Rosemeade', 'Old Downtown Carrollton', 'Hebron', 'Josey Ranch', 'Nob Hill'],
     faqIds: [], testimonialIds: [],
   },
   {
@@ -105,7 +105,7 @@ export const cities: City[] = [
       'Structure1 Construction builds custom patio covers, pergolas, and stamped concrete in Flower Mound, TX. Flower Mound lots are often larger and more wooded than the rest of the metroplex, with homes set among mature trees, so we size structures to the house and design around the yard rather than clearing it.',
       'Our free-standing modern pergola in neighboring Lewisville, with cedar posts, recessed lighting, and ceiling fans, is the kind of build that fits Flower Mound backyards well.',
     ],
-    permitNote: 'The Town of Flower Mound requires a building permit for patio covers and permanent accessory structures, and many Flower Mound HOAs require architectural approval. Structure1 handles the town permit end to end and prepares the drawings your HOA review needs.',
+    permitNote: 'Like nearly every DFW municipality, Flower Mound requires a building permit for patio covers and permanent accessory structures, and many Flower Mound HOAs require architectural approval. Structure1 handles the permit end to end and prepares the drawings your HOA review needs.',
     neighborhoods: ['Bridlewood', 'Wellington', 'Tour 18', 'Lakeside', 'Wichita Chase', 'Canyon Falls area'],
     faqIds: [], testimonialIds: [],
   },
@@ -117,8 +117,8 @@ export const cities: City[] = [
       'Structure1 Construction builds custom patio covers, pergolas, and stamped concrete in Prosper, TX. Prosper is one of the fastest-growing towns north of Frisco, and most of its homes are new builds with blank-slate backyards: a small builder-grade patio and a lot of lawn. That is the ideal starting point for a complete outdoor room designed as one project.',
       'Nearly every Prosper neighborhood has an active HOA with architectural review, so we prepare the HOA package alongside the town permit and keep both moving in parallel.',
     ],
-    permitNote: 'The Town of Prosper requires a building permit for patio covers and permanent accessory structures, and Prosper HOAs require architectural approval before construction. Structure1 prepares the drawings, submits the permit, and provides the HOA package on every Prosper project.',
-    neighborhoods: ['Windsong Ranch', 'Light Farms', 'Star Trail', 'Whitley Place', 'Lakes of Prosper', 'Gentle Creek'],
+    permitNote: 'Like nearly every DFW municipality, Prosper requires a building permit for patio covers and permanent accessory structures, and Prosper HOAs typically require architectural approval before construction. Structure1 prepares the drawings, submits the permit, and provides the HOA package on every Prosper project.',
+    neighborhoods: ['Windsong Ranch', 'Star Trail', 'Whitley Place', 'Lakes of Prosper', 'Gentle Creek', 'Downtown Prosper'],
     faqIds: [], testimonialIds: [],
   },
 ];
