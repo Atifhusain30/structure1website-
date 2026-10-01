@@ -1,74 +1,29 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Breadcrumbs, { type Crumb } from '@/components/ui/Breadcrumbs';
+import Eyebrow from '@/components/ui/Eyebrow';
+import HeaderTheme from './HeaderTheme';
+import { photos, type Photo, type PhotoId } from '@/content/images';
 
-interface Crumb {
-  label: string;
-  href?: string;
-}
-
-interface PageHeroProps {
-  eyebrow: string;
-  title: string;
-  italicWord?: string;
-  description?: string;
-  image?: string;
-  crumbs?: Crumb[];
-}
-
-export default function PageHero({
-  eyebrow,
-  title,
-  italicWord,
-  description,
-  image = '/images/hero/cover3.JPG',
-  crumbs = [],
-}: PageHeroProps) {
+export default function PageHero({ crumbs, eyebrow, title, lead, photo }: { crumbs: Crumb[]; eyebrow?: string; title: string; lead?: string; photo: PhotoId }) {
+  const p: Photo = photos[photo];
   return (
-    <section className="relative bg-rich-black overflow-hidden">
-      <div className="absolute inset-0">
-        <Image src={image} alt="" fill sizes="100vw" quality={80} priority className="object-cover opacity-45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-rich-black/85 via-rich-black/55 to-rich-black/95" />
-        <div className="absolute inset-0 grain-overlay opacity-50" />
-      </div>
-
-      <div className="relative z-10 max-w-wide mx-auto px-6 lg:px-16 pt-40 pb-20 lg:pt-48 lg:pb-28">
-        {crumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-10">
-            <ol className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-white/50">
-              {crumbs.map((c, i) => (
-                <li key={`${c.label}-${i}`} className="flex items-center gap-3">
-                  {c.href ? (
-                    <Link href={c.href} className="hover:text-gold transition-colors">
-                      {c.label}
-                    </Link>
-                  ) : (
-                    <span className="text-white">{c.label}</span>
-                  )}
-                  {i < crumbs.length - 1 && <span className="text-white/30">·</span>}
-                </li>
-              ))}
-            </ol>
-          </nav>
-        )}
-
-        <div className="eyebrow-row mb-6">
-          <span className="font-mono text-[11px] uppercase tracking-[0.26em] text-gold">{eyebrow}</span>
+    <section className="relative bg-black text-white">
+      <HeaderTheme dark />
+      <div className="relative min-h-[420px] md:min-h-[520px]">
+        <Image src={p.src} alt={p.alt} fill priority sizes="100vw" quality={80} className="object-cover opacity-60" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent" aria-hidden />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="mx-auto max-w-site px-4 pb-10 pt-32 sm:px-6 md:pb-14">
+            <Breadcrumbs items={crumbs} tone="dark" />
+            {eyebrow && (
+              <Eyebrow tone="dark" className="mt-8">
+                {eyebrow}
+              </Eyebrow>
+            )}
+            <h1 className="mt-4 max-w-3xl font-display text-h1">{title}</h1>
+            {lead && <p className="mt-4 max-w-2xl text-lead text-white/80">{lead}</p>}
+          </div>
         </div>
-        <h1
-          className="font-display font-medium text-white leading-[0.98] tracking-[-0.025em] max-w-5xl"
-          style={{ fontSize: 'clamp(2.5rem, 6.5vw, 6rem)' }}
-        >
-          {title}
-          {italicWord && (
-            <>
-              {' '}
-              <span className="italic font-light text-white/80">{italicWord}</span>
-            </>
-          )}
-        </h1>
-        {description && (
-          <p className="mt-7 max-w-2xl text-white/65 font-sans text-base sm:text-lg leading-[1.65]">{description}</p>
-        )}
       </div>
     </section>
   );
