@@ -1,4 +1,5 @@
 ---
+topic: "planning"
 title: "Do You Need a Permit for a Patio Cover in Dallas-Fort Worth? (City-by-City Guide)"
 excerpt: "Yes, most DFW cities require a building permit for patio covers. Here's a city-by-city guide covering Dallas, Fort Worth, Frisco, McKinney, Plano, and more — plus how Structure1 handles permits for you."
 date: "2026-01-15"

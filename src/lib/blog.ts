@@ -13,6 +13,7 @@ export interface BlogPost {
   date: string;
   lastModified?: string;
   category: string;
+  topic: string;
   featuredImage: string;
   featuredImageAlt: string;
   keywords: string[];
@@ -70,6 +71,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     date: data.date || '',
     lastModified: data.lastModified,
     category: data.category || '',
+    topic: data.topic || 'patio-covers',
     featuredImage: data.featuredImage || '',
     featuredImageAlt: data.featuredImageAlt || '',
     keywords: data.keywords || [],
@@ -116,4 +118,22 @@ export function getRelatedPosts(currentSlug: string, category: string, limit = 3
     .slice(0, limit - sameCategoryPosts.length);
 
   return [...sameCategoryPosts, ...remaining];
+}
+
+const TOPIC_FALLBACK: Record<string, string[]> = {
+  pergolas: ['pergolas', 'patio-covers'],
+  'stamped-concrete': ['stamped-concrete', 'concrete', 'planning'],
+  'driveways-walkways': ['driveways-walkways', 'concrete', 'planning'],
+  concrete: ['concrete', 'planning'],
+  'outdoor-living': ['outdoor-living', 'patio-covers', 'planning'],
+  remodeling: ['remodeling', 'planning', 'patio-covers'],
+};
+
+export function getPostsByTopic(topic: string, limit = 3): BlogPost[] {
+  const order = TOPIC_FALLBACK[topic] ?? [topic, 'planning', 'patio-covers'];
+  const all = getAllPosts();
+  const picked: BlogPost[] = [];
+  for (const t of order) for (const p of all) if (p.topic === t && !picked.includes(p)) picked.push(p);
+  for (const p of all) if (!picked.includes(p)) picked.push(p);
+  return picked.slice(0, limit);
 }

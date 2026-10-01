@@ -1,4 +1,5 @@
 ---
+topic: "patio-covers"
 title: "How to Maintain Your Patio Cover in Texas: A Seasonal Guide"
 excerpt: "Keep your patio cover looking great and lasting for decades with this seasonal maintenance guide tailored for the Texas climate — covering cleaning, staining, storm prep, and what to watch for."
 date: "2026-01-20"

@@ -1,4 +1,5 @@
 ---
+topic: "patio-covers"
 title: "Best Patio Cover Materials for Texas Weather: Wood vs. Aluminum vs. Vinyl"
 excerpt: "Choosing the right material for your patio cover in Texas makes all the difference. Here's a head-to-head comparison of cedar, pressure-treated pine, aluminum, and vinyl — with honest pros, cons, and cost ranges for DFW homeowners."
 date: "2026-01-20"

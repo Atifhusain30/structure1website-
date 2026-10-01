@@ -1,4 +1,5 @@
 ---
+topic: "pergolas"
 title: "Patio Cover vs. Pergola: Which Is Right for Your Texas Backyard?"
 excerpt: "Trying to decide between a patio cover and a pergola for your Texas backyard? Here's a detailed comparison of cost, shade coverage, durability, and which option works best for DFW's hot summers."
 date: "2026-01-15"

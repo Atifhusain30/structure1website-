@@ -1,4 +1,5 @@
 ---
+topic: "patio-covers"
 title: "How Much Does a Patio Cover Cost in Dallas-Fort Worth? (2026 Pricing Guide)"
 excerpt: "Planning a patio cover in DFW? Here's what to expect for pricing in 2026 — from basic lean-to covers starting at $8,000 to custom gable designs exceeding $20,000, with a full breakdown of what affects your cost."
 date: "2026-01-15"

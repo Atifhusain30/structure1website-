@@ -1,4 +1,5 @@
 ---
+topic: "patio-covers"
 title: "Does a Patio Cover Increase Home Value in Texas? (What the Data Says)"
 excerpt: "Wondering if a patio cover is a smart investment for your Texas home? Here's what real estate data and DFW market trends tell us about the ROI of outdoor living improvements."
 date: "2026-01-20"

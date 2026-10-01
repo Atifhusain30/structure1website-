@@ -1,4 +1,5 @@
 ---
+topic: "patio-covers"
 title: "15 Stunning Patio Cover Ideas for Dallas-Fort Worth Backyards"
 excerpt: "Looking for patio cover inspiration? Here are 15 popular design ideas we've built for DFW homeowners — from classic gable covers to modern pergolas with polycarbonate roofing, complete with features and approximate costs."
 date: "2026-01-20"

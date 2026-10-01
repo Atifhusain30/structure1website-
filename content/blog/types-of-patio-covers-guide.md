@@ -1,4 +1,5 @@
 ---
+topic: "patio-covers"
 title: "The Complete Guide to Patio Cover Styles: Gable, Lean-To, Pergola & More"
 excerpt: "From classic gable designs to modern pergolas with polycarbonate roofing — here's everything you need to know about patio cover styles available for DFW homeowners, with real project photos."
 date: "2026-01-15"
