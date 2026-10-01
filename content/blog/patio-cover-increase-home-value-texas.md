@@ -5,7 +5,7 @@ excerpt: "Wondering if a patio cover is a smart investment for your Texas home? 
 date: "2026-01-20"
 lastModified: "2026-01-20"
 category: "Home Value"
-featuredImage: "/images/hero/cover5.PNG"
+featuredImage: "/images/hero/cover5.jpg"
 featuredImageAlt: "Custom pergola with polycarbonate roof panels providing shade in a Dallas-Fort Worth backyard"
 keywords:
   - "patio cover home value"
