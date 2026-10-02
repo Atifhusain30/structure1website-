@@ -37,6 +37,11 @@ export const photos = {
   'carport-melissa-1': { src: '/images/images V2/andrew 2.jpeg', alt: 'Gable-style cedar carport with tongue-and-groove ceiling in Melissa, Texas' },
   'carport-melissa-2': { src: '/images/images V2/andrew1.jpeg', alt: 'Cedar carport with decorative metal brackets in Melissa, Texas' },
   'carport-melissa-3': { src: '/images/images V2/andrew3.jpeg', alt: 'Cedar carport detail in Melissa, Texas' },
+  'reno-pergola-turf-wide': { src: '/images/outdoor-renovation/pergola-turf-wide.jpg', alt: 'Free-standing cedar pergola over a concrete patio with an outdoor kitchen and artificial turf behind a white brick home' },
+  'reno-pergola-kitchen-corner': { src: '/images/outdoor-renovation/pergola-kitchen-corner.jpg', alt: 'Cedar pergola with polycarbonate roof and stacked-stone outdoor kitchen island' },
+  'reno-pergola-beam-detail': { src: '/images/outdoor-renovation/pergola-beam-detail.jpg', alt: 'Cedar post, beam, and knee-brace joinery under a polycarbonate pergola roof with a ceiling fan' },
+  'reno-kitchen-pergola-turf': { src: '/images/outdoor-renovation/kitchen-pergola-turf.jpg', alt: 'Outdoor kitchen with stainless grill, fridge, and sink under a cedar pergola, with artificial turf in front' },
+  'reno-kitchen-roof-underside': { src: '/images/outdoor-renovation/kitchen-roof-underside.jpg', alt: 'Underside of a cedar pergola roof with polycarbonate panels and ceiling fan above a stacked-stone outdoor kitchen' },
 } satisfies Record<string, Photo>;
 
 export type PhotoId = keyof typeof photos;

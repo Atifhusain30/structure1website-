@@ -5,6 +5,7 @@ import SectionHeader from '@/components/sections/SectionHeader';
 import TrustBar from '@/components/sections/TrustBar';
 import ServiceMosaic from '@/components/sections/ServiceMosaic';
 import ReelStrip from '@/components/sections/ReelStrip';
+import ProjectFeature from '@/components/sections/ProjectFeature';
 import ProjectGrid from '@/components/sections/ProjectGrid';
 import ProcessSteps from '@/components/sections/ProcessSteps';
 import Testimonials from '@/components/sections/Testimonials';
@@ -59,6 +60,15 @@ export default function HomePage() {
       )}
 
       <Section tone="offwhite">
+        <ProjectFeature
+          slug="full-outdoor-renovation-pergola-kitchen-turf"
+          eyebrow="A complete backyard"
+          heading="Full outdoor renovation: pergola, kitchen, and turf"
+          text="One project, one crew, one timeline. A free-standing cedar pergola with a polycarbonate roof and fans, a stacked-stone outdoor kitchen, a wide concrete patio, and artificial turf that keeps the whole yard clean and usable year-round."
+        />
+      </Section>
+
+      <Section>
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <SectionHeader className="lg:col-span-7" title="Recent work" text="Real projects, photographed on site when we finished." />
           <div className="lg:col-span-5 lg:text-right">
@@ -68,7 +78,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="mt-10">
-          <ProjectGrid projects={featuredProjects(7)} feature />
+          <ProjectGrid projects={featuredProjects(8).filter((p) => p.slug !== 'full-outdoor-renovation-pergola-kitchen-turf')} feature />
         </div>
       </Section>
 

@@ -2,6 +2,14 @@ import type { CitySlug, Project, ServiceSlug } from './types';
 
 export const projects: Project[] = [
   {
+    slug: 'full-outdoor-renovation-pergola-kitchen-turf', title: 'Full Outdoor Renovation: Pergola, Kitchen & Turf', service: 'outdoor-living', city: null, location: 'Dallas–Fort Worth',
+    cover: 'reno-pergola-turf-wide', gallery: ['reno-pergola-turf-wide', 'reno-kitchen-pergola-turf', 'reno-pergola-kitchen-corner', 'reno-kitchen-roof-underside', 'reno-pergola-beam-detail'],
+    overview: 'A complete backyard built as one project: a large free-standing cedar pergola with a polycarbonate roof and ceiling fans, a stacked-stone outdoor kitchen with a built-in grill, fridge, and sink, a wide concrete patio, and artificial turf that keeps the whole yard clean and usable year-round.',
+    scope: ['Free-standing cedar pergola on steel-anchored footings', 'Polycarbonate roof panels with ceiling fans', 'Stacked-stone outdoor kitchen with grill, fridge, sink, and storage', 'Concrete patio poured to size', 'Artificial turf installed across the yard'],
+    materials: ['Western Red Cedar posts, beams, and rafters', 'Polycarbonate roofing', 'Stacked-stone veneer and stainless appliances', 'Reinforced concrete', 'Artificial turf'],
+    featured: true,
+  },
+  {
     slug: 'classic-gable-patio-cover', title: 'Classic Gable Patio Cover', service: 'patio-covers', city: 'mckinney', location: 'McKinney, TX',
     cover: 'gable-mckinney-2', gallery: ['gable-mckinney-2', 'gable-mckinney-ceiling', 'gable-mckinney-build', 'gable-mckinney-1'],
     overview: 'A gable-style patio cover with cedar posts and white trusses, finished with a tongue-and-groove ceiling and fan, built as a backyard living room for a McKinney family.',
