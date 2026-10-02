@@ -4,7 +4,7 @@ import Section from '@/components/layout/Section';
 import ProjectFilters from '@/components/sections/ProjectFilters';
 import ProjectGrid from '@/components/sections/ProjectGrid';
 import CTASection from '@/components/sections/CTASection';
-import { projects } from '@/content/projects';
+import { projects, inServiceFamily, serviceFamily } from '@/content/projects';
 
 export const metadata: Metadata = {
   title: 'Patio Cover, Pergola & Concrete Projects in Dallas-Fort Worth',
@@ -15,7 +15,8 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage({ searchParams }: { searchParams: { service?: string; city?: string } }) {
   const { service, city } = searchParams;
-  const list = projects.filter((p) => (!service || p.service === service) && (!city || p.city === city));
+  const svc = service && service in serviceFamily ? (service as keyof typeof serviceFamily) : undefined;
+  const list = projects.filter((p) => (!svc || inServiceFamily(p, svc)) && (!city || p.city === city));
   return (
     <>
       <PageHero

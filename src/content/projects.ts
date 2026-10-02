@@ -85,8 +85,20 @@ export const projects: Project[] = [
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
 export const featuredProjects = (limit = 6) => projects.filter((p) => p.featured).slice(0, limit);
+/** Services whose projects belong under another service's filter (e.g. every concrete job under "Concrete"). */
+export const serviceFamily: Record<ServiceSlug, ServiceSlug[]> = {
+  'patio-covers': ['patio-covers', 'pergolas'],
+  pergolas: ['pergolas'],
+  concrete: ['concrete', 'stamped-concrete', 'driveways-walkways'],
+  'stamped-concrete': ['stamped-concrete'],
+  'driveways-walkways': ['driveways-walkways'],
+  'outdoor-living': ['outdoor-living'],
+  remodeling: ['remodeling'],
+};
+export const inServiceFamily = (p: Project, slug: ServiceSlug) => serviceFamily[slug].includes(p.service);
+
 export const projectsForService = (slug: ServiceSlug, limit = 6) => {
-  const direct = projects.filter((p) => p.service === slug);
+  const direct = projects.filter((p) => inServiceFamily(p, slug));
   const siblings: Record<ServiceSlug, ServiceSlug[]> = {
     'patio-covers': ['pergolas', 'outdoor-living'], pergolas: ['patio-covers'], concrete: ['stamped-concrete', 'driveways-walkways'],
     'stamped-concrete': ['concrete'], 'driveways-walkways': ['concrete', 'stamped-concrete'], 'outdoor-living': ['patio-covers', 'pergolas', 'stamped-concrete'], remodeling: ['patio-covers'],
