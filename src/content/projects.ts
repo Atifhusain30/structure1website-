@@ -2,11 +2,11 @@ import type { CitySlug, Project, ServiceSlug } from './types';
 
 export const projects: Project[] = [
   {
-    slug: 'full-outdoor-renovation-pergola-kitchen-turf', title: 'Full Outdoor Renovation: Pergola, Kitchen & Turf', service: 'outdoor-living', city: null, location: 'Dallas–Fort Worth',
+    slug: 'full-outdoor-renovation-pergola-kitchen-turf', title: 'Backyard Concrete Patio: Pergola, Kitchen & Turf', service: 'concrete', city: null, location: 'Dallas–Fort Worth',
     cover: 'reno-pergola-turf-wide', gallery: ['reno-pergola-turf-wide', 'reno-kitchen-pergola-turf', 'reno-pergola-kitchen-corner', 'reno-kitchen-roof-underside', 'reno-pergola-beam-detail'],
-    overview: 'A complete backyard built as one project: a large free-standing cedar pergola with a polycarbonate roof and ceiling fans, a stacked-stone outdoor kitchen with a built-in grill, fridge, and sink, a wide concrete patio, and artificial turf that keeps the whole yard clean and usable year-round.',
-    scope: ['Free-standing cedar pergola on steel-anchored footings', 'Polycarbonate roof panels with ceiling fans', 'Stacked-stone outdoor kitchen with grill, fridge, sink, and storage', 'Concrete patio poured to size', 'Artificial turf installed across the yard'],
-    materials: ['Western Red Cedar posts, beams, and rafters', 'Polycarbonate roofing', 'Stacked-stone veneer and stainless appliances', 'Reinforced concrete', 'Artificial turf'],
+    overview: 'The concrete at the center of a full outdoor renovation: a wide, reinforced patio slab poured to carry a free-standing cedar pergola and a stacked-stone outdoor kitchen, with artificial turf laid up to its edges so the whole yard stays clean and usable year-round.',
+    scope: ['Site prep, compacted base, and forms set to drain away from the house', 'Reinforced concrete patio slab sized for the pergola and outdoor kitchen', 'Footings for the pergola posts', 'Control joints cut on a proper grid', 'Clean edges for the turf to meet'],
+    materials: ['Rebar-reinforced concrete', 'Compacted base', 'Broom finish'],
     featured: true,
   },
   {

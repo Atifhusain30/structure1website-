@@ -62,9 +62,9 @@ export default function HomePage() {
       <Section tone="offwhite">
         <ProjectFeature
           slug="full-outdoor-renovation-pergola-kitchen-turf"
-          eyebrow="A complete backyard"
-          heading="Full outdoor renovation: pergola, kitchen, and turf"
-          text="One project, one crew, one timeline. A free-standing cedar pergola with a polycarbonate roof and fans, a stacked-stone outdoor kitchen, a wide concrete patio, and artificial turf that keeps the whole yard clean and usable year-round."
+          eyebrow="Concrete for a complete backyard"
+          heading="Full outdoor renovation: patio, kitchen, and turf"
+          text="The patio slab that carries everything else. A wide, reinforced concrete patio poured to size for a free-standing cedar pergola and a stacked-stone outdoor kitchen, with artificial turf laid up to its edges."
         />
       </Section>
 
