@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage({ searchParams }: { searchParams: { service?: string; city?: string } }) {
   const { service, city } = searchParams;
-  const svc = service && service in serviceFamily ? (service as keyof typeof serviceFamily) : undefined;
+  const svc = service && Object.prototype.hasOwnProperty.call(serviceFamily, service) ? (service as keyof typeof serviceFamily) : undefined;
   const list = projects.filter((p) => (!svc || inServiceFamily(p, svc)) && (!city || p.city === city));
   return (
     <>
