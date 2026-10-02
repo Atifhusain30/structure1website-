@@ -86,8 +86,8 @@ export const services: Service[] = [
       title: 'Concrete Contractor in Dallas-Fort Worth, TX | Patios & Slabs',
       description: 'Concrete patios, slabs, driveways & replacements in Dallas-Fort Worth. Engineered for North Texas clay soil, 2-year warranty, free itemized estimates.',
     },
-    hero: 'stamped-driveway-dallas',
-    gallery: ['stamped-patio-forney-1', 'concrete-slab-pour', 'stamped-flagstone'],
+    hero: 'reno-pergola-turf-wide',
+    gallery: ['stamped-patio-forney-1', 'stamped-driveway-dallas', 'concrete-slab-pour'],
     lead: 'Patios, slabs, driveways, and replacements built for expansive North Texas clay: compacted base, steel rebar, correct thickness, and control joints on a real grid.',
     overview: [
       'Structure1 Construction is a concrete contractor serving Dallas-Fort Worth — patios, driveways, walkways, and decorative finishes across Dallas, Plano, Frisco, McKinney, Arlington, Fort Worth, and the surrounding metroplex. North Texas clay soil expands and contracts with every wet-dry cycle, so we build for it: compacted base, steel reinforcement (rebar, not wire mesh), proper slab thickness, and control joints cut on a correct grid.',
@@ -197,8 +197,8 @@ export const services: Service[] = [
       title: 'Outdoor Living Spaces in Dallas-Fort Worth, TX | Structure1',
       description: 'Complete outdoor living projects in Dallas-Fort Worth: patio cover or pergola, stamped concrete patio, lighting, and fans built by one crew on one timeline. Free estimates.',
     },
-    hero: 'gable-mckinney-1',
-    gallery: ['leanto-forney-2', 'stamped-patio-forney-2', 'pergola-lewisville-2'],
+    hero: 'reno-kitchen-pergola-turf',
+    gallery: ['reno-pergola-kitchen-corner', 'reno-kitchen-roof-underside', 'leanto-forney-2'],
     lead: 'The whole backyard room, designed together: structure, slab, ceiling, lighting, and fans from one crew on one permit and one timeline.',
     overview: [
       'Most of our best projects are not a single item. They are a covered structure, a new stamped concrete patio underneath it, a finished ceiling, recessed lighting, and ceiling fans, planned as one outdoor room instead of pieced together over years.',
