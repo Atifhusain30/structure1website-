@@ -5,15 +5,19 @@ import { getProject } from '@/content/projects';
 import { getService } from '@/content/services';
 
 /**
- * One project, shown big: a wide lead photo, four supporting photos, and the story in a sentence or two.
+ * One project, shown big: a wide lead photo, up to four supporting photos, and the story in a sentence or two.
+ * With an odd number of supporting photos the last one spans both columns so the block stays a full rectangle.
  * Used on the home page for the most complete recent build.
  */
+const TALL = { ratio: '3/4', sizes: '(max-width: 1024px) 50vw, 16vw' } as const;
+const WIDE = { ratio: '4/3', sizes: '(max-width: 1024px) 100vw, 33vw' } as const;
 export default function ProjectFeature({ slug, eyebrow = 'Featured project', heading, text }: { slug: string; eyebrow?: string; heading: string; text: string }) {
   const p = getProject(slug);
   if (!p) return null;
   const service = getService(p.service);
   const [lead, ...rest] = p.gallery;
   const supporting = rest.slice(0, 4);
+  const lastSpans = supporting.length % 2 === 1;
   return (
     <div>
       <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
@@ -38,13 +42,16 @@ export default function ProjectFeature({ slug, eyebrow = 'Featured project', hea
           <Photo id={lead} ratio="4/3" sizes="(max-width: 1024px) 100vw, 66vw" hover />
         </Link>
         <ul className="grid grid-cols-2 gap-3 md:gap-4 lg:col-span-4 lg:grid-cols-2">
-          {supporting.map((id) => (
-            <li key={id}>
-              <Link href={`/projects/${p.slug}`} className="block">
-                <Photo id={id} ratio="3/4" sizes="(max-width: 1024px) 50vw, 16vw" hover />
-              </Link>
-            </li>
-          ))}
+          {supporting.map((id, i) => {
+            const wide = lastSpans && i === supporting.length - 1;
+            return (
+              <li key={id} className={wide ? 'col-span-2' : undefined}>
+                <Link href={`/projects/${p.slug}`} className="block">
+                  <Photo id={id} {...(wide ? WIDE : TALL)} hover />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <p className="mt-4 text-meta text-gray-500">{p.location}</p>

@@ -10,15 +10,20 @@ import ProjectGrid from '@/components/sections/ProjectGrid';
 import ProcessSteps from '@/components/sections/ProcessSteps';
 import Testimonials from '@/components/sections/Testimonials';
 import ServiceAreaGrid from '@/components/sections/ServiceAreaGrid';
-import EstimateForm from '@/components/forms/EstimateForm';
+import CTASection from '@/components/sections/CTASection';
 import Photo from '@/components/ui/Photo';
 import Button from '@/components/ui/Button';
 import { featuredProjects } from '@/content/projects';
+import { homeMosaicTiles } from '@/content/services';
 import { reels } from '@/content/reels';
-import { why, trust } from '@/content/trust';
+import { why } from '@/content/trust';
 import { company } from '@/content/company';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
+
+/** The project shown big above the "Recent work" grid; the grid excludes it and shows one wide lead plus two rows of three. */
+const HOME_FEATURE = 'gable-home-extension-watauga';
+const GRID_COUNT = 7;
 
 export default function HomePage() {
   return (
@@ -31,7 +36,7 @@ export default function HomePage() {
 
       <Section id="services" className="pt-10 md:pt-14">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <SectionHeader className="lg:col-span-7" title="What we build" text="Seven services, one in-house crew. Drawings, engineering, permits, and a 2-year workmanship warranty are part of every project." />
+          <SectionHeader className="lg:col-span-7" title="What we build" text="Patio covers to concrete, one in-house crew. Drawings, engineering, permits, and a 2-year workmanship warranty are part of every project." />
           <div className="lg:col-span-5 lg:text-right">
             <Button href="/services" variant="link">
               All services
@@ -39,7 +44,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="mt-8">
-          <ServiceMosaic />
+          <ServiceMosaic tiles={homeMosaicTiles} />
         </div>
       </Section>
 
@@ -61,10 +66,10 @@ export default function HomePage() {
 
       <Section tone="offwhite">
         <ProjectFeature
-          slug="full-outdoor-renovation-pergola-kitchen-turf"
-          eyebrow="Concrete for a complete backyard"
-          heading="Full outdoor renovation: patio, kitchen, and turf"
-          text="The patio slab that carries everything else. A wide, reinforced concrete patio poured to size for a free-standing cedar pergola and a stacked-stone outdoor kitchen, with artificial turf laid up to its edges."
+          slug={HOME_FEATURE}
+          eyebrow="Engineered and designed in-house"
+          heading="Gable home extension in Watauga"
+          text="A cedar gable roof over the main living area, with a shed-roof wing continuing along the back of the house. Tongue-and-groove ceiling, recessed lighting, and fans over a new concrete patio, from our drawings to the final walk-through."
         />
       </Section>
 
@@ -78,7 +83,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="mt-10">
-          <ProjectGrid projects={featuredProjects(8).filter((p) => p.slug !== 'full-outdoor-renovation-pergola-kitchen-turf')} feature />
+          <ProjectGrid projects={featuredProjects(GRID_COUNT, HOME_FEATURE)} feature />
         </div>
       </Section>
 
@@ -136,35 +141,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="estimate">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <h2 className="font-display text-h2">Get a free estimate</h2>
-            <p className="mt-4 max-w-md text-lead text-gray-700">
-              Tell us about the project. We reply within one business day with next steps, then walk the site with you before quoting. No obligation.
-            </p>
-            <ul className="mt-8 space-y-3 text-small text-gray-700">
-              {trust.slice(0, 4).map((t) => (
-                <li key={t.label} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-black" aria-hidden />
-                  <span>
-                    <span className="font-medium text-black">{t.label}.</span> {t.detail}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 text-small text-gray-700">
-              Prefer to talk?{' '}
-              <a href={`tel:${company.phoneRaw}`} className="font-medium text-black underline underline-offset-4 decoration-gray-200 hover:decoration-black">
-                {company.phone}
-              </a>
-            </p>
-          </div>
-          <div className="lg:col-span-7">
-            <EstimateForm />
-          </div>
-        </div>
-      </Section>
+      <CTASection heading="Ready to plan your project?" text="Tell us what you have in mind. We reply within one business day and walk the site with you before quoting." />
     </>
   );
 }

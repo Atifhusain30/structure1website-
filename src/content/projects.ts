@@ -10,6 +10,22 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'gable-home-extension-watauga', title: 'Gable Home Extension', service: 'patio-covers', city: null, location: 'Watauga, TX',
+    cover: 'gable-watauga-wide', gallery: ['gable-watauga-wide', 'gable-watauga-front', 'gable-watauga-wing', 'gable-watauga-ceiling'],
+    overview: 'A gable home extension engineered and designed in-house by Structure1: a cedar gable roof over the main living area, with a shed-roof wing continuing along the back of the house, tongue-and-groove ceiling, recessed lighting, and fans over a new concrete patio.',
+    scope: ['Engineering drawings and permit package prepared in-house', 'Gable roof structure tied into the existing home', 'Shed-roof wing extended along the back wall', 'Cedar posts on steel-anchored footings', 'Tongue-and-groove ceiling with recessed lighting and fans', 'New concrete patio poured under the cover'],
+    materials: ['Western Red Cedar posts and beams', 'Tongue-and-groove cedar ceiling', 'Recessed LED fixtures', 'Rebar-reinforced concrete patio'],
+    featured: true,
+  },
+  {
+    slug: 'free-standing-patio-cover-pavers-walkway', title: 'Free-Standing Patio Cover, Pavers & Walkway', service: 'outdoor-living', city: null, location: 'Dallas–Fort Worth',
+    cover: 'freestanding-cover-wide', gallery: ['freestanding-cover-wide', 'freestanding-cover-front', 'freestanding-cover-underside', 'freestanding-cover-walkway', 'paver-path-sideyard', 'paver-path-gate', 'freestanding-cover-brace'],
+    overview: 'Three jobs that read as one backyard. A free-standing patio cover in a deep charcoal finish, with recessed lighting and twin fans, sits on a new broom-finish patio. A concrete walkway wraps the side of the house, and large-format pavers set in river rock turn a forgotten side yard into a clean path to the gate.',
+    scope: ['Free-standing cover on its own footings, clear of the roofline', 'Recessed lighting and two ceiling fans', 'New broom-finish concrete patio under the cover', 'Concrete walkway along the side of the home', 'Large-format pavers set in river rock down the side yard', 'Drawings, permit, and inspections handled'],
+    materials: ['Painted timber posts, beams, and knee braces', 'Rebar-reinforced broom-finish concrete', 'Large-format concrete pavers', 'River rock bed', 'Recessed LED fixtures'],
+    featured: true,
+  },
+  {
     slug: 'classic-gable-patio-cover', title: 'Classic Gable Patio Cover', service: 'patio-covers', city: 'mckinney', location: 'McKinney, TX',
     cover: 'gable-mckinney-2', gallery: ['gable-mckinney-2', 'gable-mckinney-ceiling', 'gable-mckinney-build', 'gable-mckinney-1'],
     overview: 'A gable-style patio cover with cedar posts and white trusses, finished with a tongue-and-groove ceiling and fan, built as a backyard living room for a McKinney family.',
@@ -79,12 +95,13 @@ export const projects: Project[] = [
     overview: 'A stamped concrete patio with a premium stone-pattern finish, installed under a custom patio cover.',
     scope: ['Compacted base and rebar', 'Stamped stone-pattern patio', 'Sealer after cure', 'Built together with the patio cover above'],
     materials: ['Rebar-reinforced concrete', 'Stone-pattern stamp with integral color', 'Sealer'],
-    featured: true,
+    featured: false,
   },
 ];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
-export const featuredProjects = (limit = 6) => projects.filter((p) => p.featured).slice(0, limit);
+/** Featured projects in catalog order. `exclude` drops a slug (e.g. the one already shown big) before the limit is applied, so the count is stable. */
+export const featuredProjects = (limit = 6, exclude?: string) => projects.filter((p) => p.featured && p.slug !== exclude).slice(0, limit);
 /** Services whose projects belong under another service's filter (e.g. every concrete job under "Concrete"). */
 export const serviceFamily: Record<ServiceSlug, ServiceSlug[]> = {
   'patio-covers': ['patio-covers', 'pergolas'],
@@ -100,8 +117,8 @@ export const inServiceFamily = (p: Project, slug: ServiceSlug) => serviceFamily[
 export const projectsForService = (slug: ServiceSlug, limit = 6) => {
   const direct = projects.filter((p) => inServiceFamily(p, slug));
   const siblings: Record<ServiceSlug, ServiceSlug[]> = {
-    'patio-covers': ['pergolas', 'outdoor-living'], pergolas: ['patio-covers'], concrete: ['stamped-concrete', 'driveways-walkways'],
-    'stamped-concrete': ['concrete'], 'driveways-walkways': ['concrete', 'stamped-concrete'], 'outdoor-living': ['patio-covers', 'pergolas', 'stamped-concrete'], remodeling: ['patio-covers'],
+    'patio-covers': ['pergolas', 'outdoor-living'], pergolas: ['patio-covers'], concrete: ['stamped-concrete', 'driveways-walkways', 'outdoor-living'],
+    'stamped-concrete': ['concrete', 'outdoor-living'], 'driveways-walkways': ['concrete', 'stamped-concrete', 'outdoor-living'], 'outdoor-living': ['patio-covers', 'pergolas', 'stamped-concrete'], remodeling: ['patio-covers'],
   };
   const extra = projects.filter((p) => siblings[slug].includes(p.service) && !direct.includes(p));
   return [...direct, ...extra].slice(0, limit);

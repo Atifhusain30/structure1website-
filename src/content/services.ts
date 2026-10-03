@@ -1,4 +1,4 @@
-import type { Service, ServiceSlug } from './types';
+import type { MosaicTile, Service, ServiceSlug } from './types';
 
 export const services: Service[] = [
   {
@@ -197,12 +197,12 @@ export const services: Service[] = [
       title: 'Outdoor Living Spaces in Dallas-Fort Worth, TX | Structure1',
       description: 'Complete outdoor living projects in Dallas-Fort Worth: patio cover or pergola, stamped concrete patio, lighting, and fans built by one crew on one timeline. Free estimates.',
     },
-    hero: 'reno-kitchen-pergola-turf',
-    gallery: ['reno-pergola-kitchen-corner', 'reno-kitchen-roof-underside', 'leanto-forney-2'],
+    hero: 'freestanding-cover-wide',
+    gallery: ['freestanding-cover-underside', 'paver-path-sideyard', 'reno-pergola-kitchen-corner'],
     lead: 'The whole backyard room, designed together: structure, slab, ceiling, lighting, and fans from one crew on one permit and one timeline.',
     overview: [
       'Most of our best projects are not a single item. They are a covered structure, a new stamped concrete patio underneath it, a finished ceiling, recessed lighting, and ceiling fans, planned as one outdoor room instead of pieced together over years.',
-      'Because Structure1 self-performs both structures and concrete, the entire project runs on one permit package, one crew, and one schedule. Our Forney project pairs a lean-to cover with a stamped patio; our McKinney gable cover includes a tongue-and-groove ceiling and fan.',
+      'Because Structure1 self-performs both structures and concrete, the entire project runs on one permit package, one crew, and one schedule. Our Forney project pairs a lean-to cover with a stamped patio; our McKinney gable cover includes a tongue-and-groove ceiling and fan; a recent Dallas–Fort Worth build sets a free-standing cover on a new patio with a side walkway and paver path.',
     ],
     options: [
       { name: 'Cover + patio', blurb: 'A gable, lean-to, or polycarbonate structure over a new stamped or broom-finish slab.' },
@@ -267,3 +267,12 @@ export const services: Service[] = [
 
 export const getService = (slug: string): Service | undefined => services.find((s) => s.slug === slug);
 export const serviceSlugs = services.map((s) => s.slug) as ServiceSlug[];
+
+/** Mosaic layout: these two tiles span two columns so each desktop row is 2+1 / 1+1+1 / 2+1. */
+const WIDE_TILES: ServiceSlug[] = ['patio-covers', 'outdoor-living'];
+export const serviceTile = (s: Service): MosaicTile => ({ key: s.slug, href: `/services/${s.slug}`, photo: s.hero, name: s.name, blurb: s.navBlurb, wide: WIDE_TILES.includes(s.slug) });
+/** The /services mosaic: one tile per service. */
+export const mosaicTiles: MosaicTile[] = services.map(serviceTile);
+/** The home-page mosaic: the Stamped Concrete slot shows gable home extensions instead (stamped stays under Concrete, in the nav, and on /services). */
+const gableTile: MosaicTile = { key: 'gable-home-extensions', href: '/services/patio-covers', photo: 'gable-watauga-front', name: 'Gable Home Extensions', blurb: 'Gable roofs engineered and designed in-house' };
+export const homeMosaicTiles: MosaicTile[] = services.map((s) => (s.slug === 'stamped-concrete' ? gableTile : serviceTile(s)));

@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { photos, type Photo, type PhotoId } from '@/content/images';
+import { photos, focalStyle, type Photo, type PhotoId } from '@/content/images';
 
 export default function ProjectGallery({ ids, title }: { ids: PhotoId[]; title: string }) {
   const [index, setIndex] = useState<number | null>(null);
@@ -54,7 +54,7 @@ export default function ProjectGallery({ ids, title }: { ids: PhotoId[]; title: 
         className="relative block aspect-[16/9] w-full overflow-hidden bg-gray-200"
         aria-label={`Open photo 1 of ${ids.length}: ${cover.alt}`}
       >
-        <Image src={cover.src} alt={cover.alt} fill priority sizes="(max-width: 1280px) 100vw, 1280px" quality={85} className="object-cover" />
+        <Image src={cover.src} alt={cover.alt} fill priority sizes="(max-width: 1280px) 100vw, 1280px" quality={85} className="object-cover" style={focalStyle(cover)} />
       </button>
       {ids.length > 1 && (
         <ul className="mt-3 grid grid-cols-4 gap-3 md:grid-cols-6">
@@ -68,7 +68,7 @@ export default function ProjectGallery({ ids, title }: { ids: PhotoId[]; title: 
                   className="photo-hover relative block aspect-square w-full overflow-hidden bg-gray-200"
                   aria-label={`Open photo ${i + 2} of ${ids.length}: ${p.alt}`}
                 >
-                  <Image src={p.src} alt="" fill sizes="(max-width: 768px) 25vw, 200px" className="object-cover" />
+                  <Image src={p.src} alt="" fill sizes="(max-width: 768px) 25vw, 200px" className="object-cover" style={focalStyle(p)} />
                 </button>
               </li>
             );

@@ -29,6 +29,9 @@ export type Service = {
   ownerReview?: boolean;
 };
 
+/** One tile in the services photo mosaic. Usually derived from a Service; the home page swaps one slot for a project-led tile. */
+export type MosaicTile = { key: string; href: string; photo: PhotoId; name: string; blurb: string; wide?: boolean };
+
 export type Project = {
   slug: string;
   title: string;

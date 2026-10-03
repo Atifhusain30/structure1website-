@@ -5,14 +5,26 @@ import { usePathname } from 'next/navigation';
 import { Phone } from 'lucide-react';
 import { company } from '@/content/company';
 
+/**
+ * Mobile call / estimate bar. Hidden while the page's own estimate form (marked `data-estimate-form`,
+ * e.g. the home hero card or the contact page) is still on screen or below the fold; shown once the
+ * visitor has scrolled past it. Pages without a form show the bar after a short scroll.
+ */
 export default function StickyBar() {
   const pathname = usePathname();
   const [show, setShow] = useState(false);
   useEffect(() => {
+    const form = document.querySelector('[data-estimate-form]');
+    if (form) {
+      const io = new IntersectionObserver(([entry]) => setShow(!entry.isIntersecting && entry.boundingClientRect.bottom < 0));
+      io.observe(form);
+      return () => io.disconnect();
+    }
     const onScroll = () => setShow(window.scrollY > 600);
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [pathname]);
   if (pathname === '/estimate') return null;
   return (
     <div

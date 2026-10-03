@@ -1,4 +1,7 @@
-export type Focal = 'center' | 'top' | 'bottom';
+import type { CSSProperties } from 'react';
+
+/** Where a crop should center vertically: a keyword, or a percentage from the top (e.g. '40%') for tall photos shown wide. */
+export type Focal = 'center' | 'top' | 'bottom' | `${number}%`;
 export type Photo = { src: string; alt: string; focal?: Focal };
 
 export const photos = {
@@ -37,12 +40,25 @@ export const photos = {
   'carport-melissa-1': { src: '/images/images V2/andrew 2.jpeg', alt: 'Gable-style cedar carport with tongue-and-groove ceiling in Melissa, Texas' },
   'carport-melissa-2': { src: '/images/images V2/andrew1.jpeg', alt: 'Cedar carport with decorative metal brackets in Melissa, Texas' },
   'carport-melissa-3': { src: '/images/images V2/andrew3.jpeg', alt: 'Cedar carport detail in Melissa, Texas' },
-  'reno-pergola-turf-wide': { src: '/images/outdoor-renovation/pergola-turf-wide.jpg', alt: 'Free-standing cedar pergola over a concrete patio with an outdoor kitchen and artificial turf behind a white brick home' },
+  'reno-pergola-turf-wide': { src: '/images/outdoor-renovation/pergola-turf-wide.jpg', alt: 'Free-standing cedar pergola over a concrete patio with an outdoor kitchen and artificial turf behind a white brick home', focal: '36%' },
   'reno-pergola-kitchen-corner': { src: '/images/outdoor-renovation/pergola-kitchen-corner.jpg', alt: 'Cedar pergola with polycarbonate roof and stacked-stone outdoor kitchen island' },
   'reno-pergola-beam-detail': { src: '/images/outdoor-renovation/pergola-beam-detail.jpg', alt: 'Cedar post, beam, and knee-brace joinery under a polycarbonate pergola roof with a ceiling fan' },
   'reno-kitchen-pergola-turf': { src: '/images/outdoor-renovation/kitchen-pergola-turf.jpg', alt: 'Outdoor kitchen with stainless grill, fridge, and sink under a cedar pergola, with artificial turf in front' },
   'reno-kitchen-roof-underside': { src: '/images/outdoor-renovation/kitchen-roof-underside.jpg', alt: 'Underside of a cedar pergola roof with polycarbonate panels and ceiling fan above a stacked-stone outdoor kitchen' },
+  'gable-watauga-wide': { src: '/images/projects/gable-watauga-wide.jpg', alt: 'Cedar gable home extension with a shed-roof wing along the back of a brick home in Watauga, Texas', focal: '55%' },
+  'gable-watauga-front': { src: '/images/projects/gable-watauga-front.jpg', alt: 'Gable patio cover with cedar posts and trusses over a new concrete patio in Watauga, Texas' },
+  'gable-watauga-wing': { src: '/images/projects/gable-watauga-wing.jpg', alt: 'Cedar shed-roof wing with tongue-and-groove ceiling and recessed lighting on a home extension in Watauga, Texas' },
+  'gable-watauga-ceiling': { src: '/images/projects/gable-watauga-ceiling.jpg', alt: 'Tongue-and-groove cedar ceiling with fan and recessed lights under a gable home extension in Watauga, Texas' },
+  'freestanding-cover-wide': { src: '/images/projects/freestanding-cover-wide.jpg', alt: 'Free-standing charcoal patio cover with recessed lighting over a new concrete patio and lawn in Dallas-Fort Worth', focal: '42%' },
+  'freestanding-cover-front': { src: '/images/projects/freestanding-cover-front.jpg', alt: 'Free-standing patio cover with knee braces and twin ceiling fans beside a brick home in Dallas-Fort Worth' },
+  'freestanding-cover-underside': { src: '/images/projects/freestanding-cover-underside.jpg', alt: 'Underside of a charcoal patio cover roof with recessed lights and ceiling fans in Dallas-Fort Worth' },
+  'freestanding-cover-walkway': { src: '/images/projects/freestanding-cover-walkway.jpg', alt: 'Concrete walkway running from a free-standing patio cover along the side of a brick home in Dallas-Fort Worth' },
+  'freestanding-cover-brace': { src: '/images/projects/freestanding-cover-brace.jpg', alt: 'Painted post, beam, and knee-brace detail with a recessed light on a free-standing patio cover' },
+  'paver-path-sideyard': { src: '/images/projects/paver-path-sideyard.jpg', alt: 'Large-format concrete pavers set in river rock along a fenced side yard in Dallas-Fort Worth' },
+  'paver-path-gate': { src: '/images/projects/paver-path-gate.jpg', alt: 'Paver stepping-stone path in river rock leading from a concrete patio to the side gate' },
 } satisfies Record<string, Photo>;
 
 export type PhotoId = keyof typeof photos;
 export const photo = (id: PhotoId): Photo => photos[id];
+/** Inline object-position for a photo's focal point, for any renderer that crops with object-cover. Undefined keeps the default center crop. */
+export const focalStyle = (p: Photo): CSSProperties | undefined => (p.focal ? { objectPosition: `50% ${p.focal}` } : undefined);

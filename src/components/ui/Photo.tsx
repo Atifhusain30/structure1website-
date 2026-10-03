@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { photos, type Photo as PhotoEntry, type PhotoId } from '@/content/images';
+import { photos, focalStyle, type Photo as PhotoEntry, type PhotoId } from '@/content/images';
 import { cn } from '@/lib/utils';
 
 const ratios = {
@@ -10,7 +10,6 @@ const ratios = {
   '16/9': 'aspect-video',
   fill: 'absolute inset-0',
 } as const;
-const focals = { center: 'object-center', top: 'object-top', bottom: 'object-bottom' } as const;
 
 export default function Photo({
   id,
@@ -38,7 +37,8 @@ export default function Photo({
         priority={priority}
         loading={priority ? 'eager' : 'lazy'}
         quality={82}
-        className={cn('object-cover', focals[p.focal ?? 'center'])}
+        className="object-cover"
+        style={focalStyle(p)}
       />
     </div>
   );
