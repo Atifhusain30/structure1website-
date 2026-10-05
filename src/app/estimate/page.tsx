@@ -7,7 +7,7 @@ import { trust } from '@/content/trust';
 
 export const metadata: Metadata = {
   title: 'Get a Free Estimate | Patio Covers & Concrete in Dallas-Fort Worth',
-  description: 'Request a free, itemized estimate for a patio cover, pergola, or concrete project in Dallas-Fort Worth. We reply within one business day.',
+  description: 'Request a free, itemized estimate for a patio cover or concrete project in Dallas-Fort Worth. We reply within one business day.',
   alternates: { canonical: '/estimate' },
 };
 

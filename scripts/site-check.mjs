@@ -61,7 +61,7 @@ const settle = async (p) => {
 const { base, child } = await server();
 const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
 const fromSitemap = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
-const seeds = [...new Set([...fromSitemap, '/estimate', '/process', '/projects?service=pergolas', '/blog?topic=planning'])];
+const seeds = [...new Set([...fromSitemap, '/estimate', '/process', '/projects?service=patio-covers', '/blog?topic=planning'])];
 const queue = [...seeds];
 const seen = new Set(queue);
 const results = [];

@@ -22,6 +22,19 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // The Pergolas service was folded into Patio Covers (Oct 2026); old URLs stay reachable.
+  async redirects() {
+    const moved = {
+      '/services/pergolas': '/services/patio-covers',
+      '/projects/pergola-with-polycarbonate': '/projects/polycarbonate-patio-cover-plano',
+      '/projects/pergola-with-polycarbonate-fort-worth': '/projects/polycarbonate-patio-cover-fort-worth',
+      '/projects/pergola-with-back-wall': '/projects/patio-cover-with-back-wall',
+      '/projects/free-standing-modern-pergola': '/projects/free-standing-modern-patio-cover',
+      '/projects/full-outdoor-renovation-pergola-kitchen-turf': '/projects/backyard-concrete-patio-kitchen-turf',
+      '/blog/patio-cover-vs-pergola': '/blog/solid-roof-vs-polycarbonate-patio-cover',
+    };
+    return Object.entries(moved).map(([source, destination]) => ({ source, destination, permanent: true }));
+  },
   // Headers for mobile optimization
   async headers() {
     return [

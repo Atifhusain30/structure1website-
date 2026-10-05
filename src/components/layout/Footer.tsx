@@ -24,7 +24,7 @@ export default function Footer() {
               Structure1
             </Link>
             <p className="mt-4 max-w-xs text-small text-white/70">
-              Dallas–Fort Worth patio covers, pergolas, concrete, and outdoor living. Designed, permitted, and built by one in-house crew.
+              Dallas–Fort Worth patio covers, concrete, and outdoor living. Designed, permitted, and built by one in-house crew.
             </p>
             <Link href="/estimate" className="mt-6 inline-flex h-12 items-center bg-white px-6 text-sm font-medium text-black hover:bg-offwhite">
               Get a Free Estimate

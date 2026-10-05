@@ -6,7 +6,7 @@ date: "2026-01-20"
 lastModified: "2026-01-20"
 category: "Home Value"
 featuredImage: "/images/hero/cover5.jpg"
-featuredImageAlt: "Custom pergola with polycarbonate roof panels providing shade in a Dallas-Fort Worth backyard"
+featuredImageAlt: "Custom polycarbonate patio cover providing shade in a Dallas-Fort Worth backyard"
 keywords:
   - "patio cover home value"
   - "patio cover ROI"
@@ -17,7 +17,7 @@ keywords:
 
 Every homeowner thinking about a patio cover eventually asks the same question: *Is this actually going to add value to my house, or is it just money I'll never get back?*
 
-It's a fair question — especially when you're looking at a $10,000–$20,000 investment. You want to enjoy your backyard, but you also want to make smart financial decisions. So let's look at what the data actually says about patio covers and home value, with a specific focus on the Dallas-Fort Worth market where outdoor living is a major factor in how homes are priced and sold.
+It's a fair question — especially when you're looking at a significant investment. You want to enjoy your backyard, but you also want to make smart financial decisions. So let's look at what the data actually says about patio covers and home value, with a specific focus on the Dallas-Fort Worth market where outdoor living is a major factor in how homes are priced and sold.
 
 ## The Short Answer
 
@@ -71,7 +71,7 @@ The ROI conversation typically focuses on what you get back when you sell. But t
 
 ### Expanded Usable Square Footage
 
-Think of a covered patio as an additional room for your house — one that you use more than your formal dining room and probably more than your guest bedroom. A 14×20 patio cover creates 280 square feet of functional space for a fraction of what it would cost to add 280 square feet of enclosed interior space (which runs $150–$300 per square foot in DFW for a room addition).
+Think of a covered patio as an additional room for your house — one that you use more than your formal dining room and probably more than your guest bedroom. A 14×20 patio cover creates 280 square feet of functional space for a fraction of what it would cost to add 280 square feet of enclosed interior space with a room addition.
 
 ### Energy Savings
 
@@ -93,29 +93,25 @@ Not all patio covers are created equal when it comes to home value. Here's how t
 
 A gable patio cover that attaches to your home and matches your existing roofline creates the most seamless, built-in look. To a buyer, it looks like part of the original house, not an add-on. Gable covers with architectural shingles matching the main roof, ceiling fans, and electrical typically return the highest percentage of their cost at resale.
 
-**Typical cost in DFW:** $14,000–$22,000  
-**Estimated value added:** $10,000–$18,000 (60–80% ROI)
+**Estimated return at resale:** 60–80% ROI
 
 ### Attached Lean-To Cover — Strong Value
 
 A lean-to (also called a shed-style or flat-pitch) cover is the most common style we build. It attaches to the home's fascia and slopes away at a single pitch. It's simpler than a gable but still looks clean and intentional. Well-built lean-to covers with quality materials add strong value.
 
-**Typical cost in DFW:** $8,000–$16,000  
-**Estimated value added:** $5,000–$12,000 (55–75% ROI)
+**Estimated return at resale:** 55–75% ROI
 
-### Pergola — Moderate to Strong Value
+### Open-Rafter and Polycarbonate Covers — Moderate to Strong Value
 
-Pergolas add visual appeal and define outdoor space, but their open-rafter design provides limited weather protection unless you add polycarbonate panels or a similar covering. Buyers appreciate the aesthetics but often discount pergolas compared to solid-roof covers because of the reduced functionality. A pergola with polycarbonate roofing, however, bridges that gap nicely.
+Open-rafter patio covers add visual appeal and define outdoor space, but the open design provides limited weather protection unless you add polycarbonate panels or a similar covering. Buyers appreciate the aesthetics but often discount open-rafter covers compared to solid-roof covers because of the reduced functionality. A polycarbonate-roof patio cover, however, bridges that gap nicely.
 
-**Typical cost in DFW:** $6,000–$14,000  
-**Estimated value added:** $3,500–$10,000 (50–70% ROI)
+**Estimated return at resale:** 50–70% ROI
 
 ### Freestanding Cover — Moderate Value
 
 Freestanding covers (not attached to the house) are versatile and useful, but they add slightly less perceived value than attached structures because they don't extend the home itself. They're still a positive addition, especially when positioned over an outdoor kitchen or seating area.
 
-**Typical cost in DFW:** $10,000–$20,000  
-**Estimated value added:** $5,000–$13,000 (45–65% ROI)
+**Estimated return at resale:** 45–65% ROI
 
 For a deeper dive into patio cover styles, including how each one is built and when to choose it, check out our [complete guide to types of patio covers](/blog/types-of-patio-covers-guide).
 
@@ -163,4 +159,4 @@ If you're planning to stay in your home for at least 2–3 years, the combinatio
 
 View our [completed patio cover projects across DFW](/projects) to see the quality and craftsmanship that goes into every Structure1 build.
 
-When you're ready to explore what a patio cover could look like in your backyard, [get a free estimate](/#contact) from Structure1 Construction. We've been building covered outdoor spaces across Dallas-Fort Worth for over 4 years, backed by a 2-year workmanship warranty on every project. Call us at **(580) 665-2758** or fill out our contact form to get started.
+When you're ready to explore what a patio cover could look like in your backyard, [get a free estimate](/estimate) from Structure1 Construction. We've been building covered outdoor spaces across Dallas-Fort Worth for over 4 years, backed by a 2-year workmanship warranty on every project. Call us at **(580) 665-2758** or fill out our contact form to get started.

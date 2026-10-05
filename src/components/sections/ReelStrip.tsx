@@ -88,7 +88,7 @@ export default function ReelStrip({ reels }: { reels: Reel[] }) {
   }, []);
   if (reels.length === 0) return null;
   return (
-    <div className="-mr-4 sm:-mr-6 lg:mr-[calc((100vw-80rem)/-2-1.5rem)]">
+    <div className="-mr-4 sm:-mr-6 lg:mr-[min(-1.5rem,calc((100vw-80rem)/-2-1.5rem))]">
       <ul className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pr-4 [scrollbar-width:none] md:gap-6 sm:pr-6 [&::-webkit-scrollbar]:hidden">
         {reels.map((r, i) => (
           <li key={r.id} className={i % 2 === 1 ? 'lg:pt-10' : ''}>

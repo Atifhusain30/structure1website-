@@ -1,7 +1,7 @@
 import type { PhotoId } from './images';
 
 export type ServiceSlug =
-  | 'patio-covers' | 'pergolas' | 'concrete' | 'stamped-concrete'
+  | 'patio-covers' | 'concrete' | 'stamped-concrete'
   | 'driveways-walkways' | 'outdoor-living' | 'remodeling';
 export type CitySlug =
   | 'dallas' | 'fort-worth' | 'plano' | 'frisco' | 'mckinney'

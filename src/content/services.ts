@@ -5,22 +5,25 @@ export const services: Service[] = [
     slug: 'patio-covers',
     name: 'Patio Covers',
     navLabel: 'Patio Covers',
-    navBlurb: 'Gable, lean-to, and polycarbonate designs',
+    navBlurb: 'Gable, lean-to, polycarbonate, and free-standing designs',
     seo: {
       title: 'Patio Cover Builder in Dallas-Fort Worth, TX | Free Estimates',
-      description: 'Custom patio covers in Dallas-Fort Worth: gable, lean-to & polycarbonate designs. Permits handled, engineered for Texas wind, 2-year warranty. Free estimates.',
+      description: 'Custom patio covers in Dallas-Fort Worth: gable, lean-to, polycarbonate & free-standing designs. Permits handled, engineered for Texas wind, 2-year warranty. Free estimates.',
     },
     hero: 'gable-dfw',
-    gallery: ['gable-mckinney-2', 'leanto-forney-2', 'gable-mckinney-ceiling'],
+    gallery: ['gable-mckinney-2', 'pergola-plano-complete', 'leanto-forney-2'],
     lead: 'Covered outdoor rooms with roofing matched to your home, engineered for North Texas wind, and built by one in-house crew.',
     overview: [
-      'Structure1 Construction is a patio cover builder serving the entire Dallas-Fort Worth metroplex — Dallas, Fort Worth, Plano, Frisco, McKinney, Arlington, and 20+ surrounding cities. We design and build gable covers with shingles matched to your existing roof, cost-effective lean-to designs, and polycarbonate-roof pergolas, all engineered for North Texas wind loads and built from Western Red Cedar on steel-anchored footings.',
+      'Structure1 Construction is a patio cover builder serving the entire Dallas-Fort Worth metroplex — Dallas, Fort Worth, Plano, Frisco, McKinney, Arlington, and 20+ surrounding cities. We design and build gable covers with shingles matched to your existing roof, cost-effective lean-to designs, and polycarbonate-roof covers that keep the light, all engineered for North Texas wind loads and built from Western Red Cedar on steel-anchored footings.',
+      'Covers can attach to the home or stand free on their own steel-anchored footings by a pool or dining area, and a framed back wall adds privacy and wind protection. Our builds in Plano, Fort Worth, Lewisville, and Midlothian include recessed lighting, ceiling fans, and tongue-and-groove ceilings.',
       'Every project includes permits and engineering — we handle drawings, city submission, and inspections in every DFW municipality.',
     ],
     options: [
       { name: 'Lean-To (Shed)', blurb: 'Single slope attached to the home. Clean, low-profile. Best for smaller patios, budget-conscious builds, and low rooflines.', range: '$8,000 – $14,000' },
       { name: 'Gable (A-Frame)', blurb: 'Peaked roofline with shingles matched to your home. Custom and architectural. Best for larger patios, height, airflow, and resale value.', range: '$14,000 – $25,000+' },
-      { name: 'Polycarbonate Pergola', blurb: 'Clear or tinted panels over cedar rafters. Open and bright. Rain protection without losing natural light.', range: '$10,000 – $18,000' },
+      { name: 'Polycarbonate Roof', blurb: 'Clear or tinted panels over cedar rafters. Open and bright. Rain protection without losing natural light.', range: '$10,000 – $18,000' },
+      { name: 'Free-Standing', blurb: 'Set on its own steel-anchored footings by a pool, dining area, or anywhere in the yard.' },
+      { name: 'With Back Wall', blurb: 'A framed back wall adds privacy and wind protection, as on our Midlothian project.' },
     ],
     reasons: [
       { title: 'Usable outdoors in Texas heat', blurb: 'Shade over the patio and the windows behind it lowers surface temperatures and cooling costs.' },
@@ -35,47 +38,9 @@ export const services: Service[] = [
       'Finish: tongue-and-groove ceilings, stain or paint, recessed lighting, and fan blocking as specified.',
       'Permits and inspections handled by us from drawings through final.',
     ],
-    faqIds: ['pc-cost', 'pc-gable-vs-leanto', 'pc-permits', 'pc-roof-match', 'pc-timeline', 'pc-with-concrete', 'pc-materials', 'pc-storms'],
-    relatedServices: ['pergolas', 'stamped-concrete', 'outdoor-living'],
+    faqIds: ['pc-cost', 'pc-gable-vs-leanto', 'pc-solid-vs-poly', 'pc-poly-cost', 'pc-freestanding', 'pc-permits', 'pc-roof-match', 'pc-timeline', 'pc-with-concrete', 'pc-materials', 'pc-storms'],
+    relatedServices: ['outdoor-living', 'stamped-concrete', 'concrete'],
     topic: 'patio-covers',
-  },
-  {
-    slug: 'pergolas',
-    name: 'Pergolas',
-    navLabel: 'Pergolas',
-    navBlurb: 'Cedar pergolas, attached or free-standing',
-    seo: {
-      title: 'Cedar Pergola Builder in Dallas-Fort Worth, TX | Structure1',
-      description: 'Custom cedar pergolas in Dallas-Fort Worth, attached or free-standing, with open rafters or polycarbonate roofing. Permits included, 2-year warranty. Free estimates.',
-    },
-    hero: 'pergola-lewisville-1',
-    gallery: ['pergola-plano-complete', 'pergola-fort-worth', 'pergola-midlothian'],
-    lead: 'Open, bright structures in Western Red Cedar, with the option of polycarbonate roofing for rain protection without losing the light.',
-    overview: [
-      'A pergola gives you defined, partially shaded outdoor space with an open, airy feel. Structure1 builds cedar pergolas across Dallas-Fort Worth, attached to the home or free-standing on their own footings, with open rafters or clear and tinted polycarbonate panels.',
-      'Our pergola projects in Plano, Fort Worth, Lewisville, and Midlothian include recessed lighting, ceiling fans, and privacy back walls. Every build is engineered for North Texas wind and includes the permit and HOA package.',
-    ],
-    options: [
-      { name: 'Open-rafter pergola', blurb: 'Classic cedar rafters and beams for dappled shade and a defined outdoor room.' },
-      { name: 'Polycarbonate-roof pergola', blurb: 'Clear or tinted panels over cedar rafters: rain protection with natural light.', range: '$10,000 – $18,000' },
-      { name: 'Free-standing', blurb: 'Set on its own steel-anchored footings by a pool, dining area, or anywhere in the yard.' },
-      { name: 'With back wall', blurb: 'A framed back wall adds privacy and wind protection, as on our Midlothian project.' },
-    ],
-    reasons: [
-      { title: 'Light without the heat', blurb: 'Rafters and polycarbonate panels filter sun while keeping the space open.' },
-      { title: 'Defines the space', blurb: 'A pergola turns an open slab into a dining room, lounge, or poolside retreat.' },
-      { title: 'Grows with the yard', blurb: 'Add fans, lighting, or a privacy wall now or later without rework.' },
-    ],
-    construction: [
-      'Footings: concrete piers with steel post anchors, sized for the span and North Texas soil.',
-      'Frame: Western Red Cedar posts, beams, and rafters with galvanized or stainless hardware and hurricane ties.',
-      'Roof: open rafters, or polycarbonate panels on purlins with proper drainage slope.',
-      'Finish: stain or paint, recessed lighting and fan blocking as specified.',
-      'Permit and HOA submissions handled by us.',
-    ],
-    faqIds: ['per-vs-cover', 'per-cost', 'per-freestanding', 'per-permit'],
-    relatedServices: ['patio-covers', 'stamped-concrete', 'outdoor-living'],
-    topic: 'pergolas',
   },
   {
     slug: 'concrete',
@@ -86,7 +51,7 @@ export const services: Service[] = [
       title: 'Concrete Contractor in Dallas-Fort Worth, TX | Patios & Slabs',
       description: 'Concrete patios, slabs, driveways & replacements in Dallas-Fort Worth. Engineered for North Texas clay soil, 2-year warranty, free itemized estimates.',
     },
-    hero: 'reno-pergola-turf-wide',
+    hero: 'concrete-slab-pour',
     gallery: ['stamped-patio-forney-1', 'stamped-driveway-dallas', 'concrete-slab-pour'],
     lead: 'Patios, slabs, driveways, and replacements built for expansive North Texas clay: compacted base, steel rebar, correct thickness, and control joints on a real grid.',
     overview: [
@@ -195,7 +160,7 @@ export const services: Service[] = [
     navBlurb: 'Cover, patio, lighting, and fans as one project',
     seo: {
       title: 'Outdoor Living Spaces in Dallas-Fort Worth, TX | Structure1',
-      description: 'Complete outdoor living projects in Dallas-Fort Worth: patio cover or pergola, stamped concrete patio, lighting, and fans built by one crew on one timeline. Free estimates.',
+      description: 'Complete outdoor living projects in Dallas-Fort Worth: patio cover, stamped concrete patio, lighting, and fans built by one crew on one timeline. Free estimates.',
     },
     hero: 'freestanding-cover-wide',
     gallery: ['freestanding-cover-underside', 'paver-path-sideyard', 'reno-pergola-kitchen-corner'],
@@ -207,7 +172,7 @@ export const services: Service[] = [
     options: [
       { name: 'Cover + patio', blurb: 'A gable, lean-to, or polycarbonate structure over a new stamped or broom-finish slab.' },
       { name: 'Ceilings, lighting, fans', blurb: 'Tongue-and-groove ceilings, recessed lighting, and fan blocking coordinated with your electrician.' },
-      { name: 'Privacy and wind walls', blurb: 'Framed back walls on pergolas and covers for shelter and privacy.' },
+      { name: 'Privacy and wind walls', blurb: 'Framed back walls on patio covers for shelter and privacy.' },
       { name: 'Phased builds', blurb: 'Patio now, cover later, designed so the second phase fits without rework.' },
     ],
     reasons: [
@@ -222,7 +187,7 @@ export const services: Service[] = [
       'Ceiling, lighting, and fan finish work; final walk-through.',
     ],
     faqIds: ['ol-scope', 'ol-phases', 'pc-with-concrete', 'pc-timeline'],
-    relatedServices: ['patio-covers', 'pergolas', 'stamped-concrete'],
+    relatedServices: ['patio-covers', 'stamped-concrete', 'concrete'],
     topic: 'outdoor-living',
     ownerReview: true,
   },
@@ -269,10 +234,13 @@ export const getService = (slug: string): Service | undefined => services.find((
 export const serviceSlugs = services.map((s) => s.slug) as ServiceSlug[];
 
 /** Mosaic layout: these two tiles span two columns so each desktop row is 2+1 / 1+1+1 / 2+1. */
-const WIDE_TILES: ServiceSlug[] = ['patio-covers', 'outdoor-living'];
+/** Six services on a 3-column grid: three wide tiles make the rows 2+1 / 1+2 / 2+1 with no gap. */
+const WIDE_TILES: ServiceSlug[] = ['patio-covers', 'driveways-walkways', 'outdoor-living'];
 export const serviceTile = (s: Service): MosaicTile => ({ key: s.slug, href: `/services/${s.slug}`, photo: s.hero, name: s.name, blurb: s.navBlurb, wide: WIDE_TILES.includes(s.slug) });
 /** The /services mosaic: one tile per service. */
 export const mosaicTiles: MosaicTile[] = services.map(serviceTile);
-/** The home-page mosaic: the Stamped Concrete slot shows gable home extensions instead (stamped stays under Concrete, in the nav, and on /services). */
-const gableTile: MosaicTile = { key: 'gable-home-extensions', href: '/services/patio-covers', photo: 'gable-watauga-front', name: 'Gable Home Extensions', blurb: 'Gable roofs engineered and designed in-house' };
-export const homeMosaicTiles: MosaicTile[] = services.map((s) => (s.slug === 'stamped-concrete' ? gableTile : serviceTile(s)));
+const gableTile: MosaicTile = { key: 'gable-home-extensions', href: '/services/patio-covers', photo: 'gable-watauga-wide', name: 'Gable Home Extensions', blurb: 'Gable roofs engineered and designed in-house', wide: true };
+const paversTile: MosaicTile = { key: 'pavers-pathways', href: '/projects/free-standing-patio-cover-pavers-walkway', photo: 'paver-path-gate', name: 'Pavers & Pathways', blurb: 'Stepping-stone paths and paver walks in rock or turf' };
+/** Home page swaps two service tiles for project-led ones (Stamped Concrete -> Gable Home Extensions, Driveways & Walkways -> Pavers & Pathways; both stay on /services) and orders the six so the rows fill: 2+1 / 1+2 / 2+1. */
+const bySlug = (slug: ServiceSlug) => serviceTile(services.find((s) => s.slug === slug)!);
+export const homeMosaicTiles: MosaicTile[] = [bySlug('patio-covers'), { ...bySlug('concrete'), wide: false }, paversTile, gableTile, { ...bySlug('outdoor-living'), photo: 'reno-kitchen-tile' }, { ...bySlug('remodeling'), wide: false }];

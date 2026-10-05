@@ -2,10 +2,10 @@ import type { CitySlug, Project, ServiceSlug } from './types';
 
 export const projects: Project[] = [
   {
-    slug: 'full-outdoor-renovation-pergola-kitchen-turf', title: 'Backyard Concrete Patio: Pergola, Kitchen & Turf', service: 'concrete', city: null, location: 'Dallas–Fort Worth',
+    slug: 'backyard-concrete-patio-kitchen-turf', title: 'Backyard Concrete Patio: Cover, Kitchen & Turf', service: 'concrete', city: null, location: 'Dallas–Fort Worth',
     cover: 'reno-pergola-turf-wide', gallery: ['reno-pergola-turf-wide', 'reno-kitchen-pergola-turf', 'reno-pergola-kitchen-corner', 'reno-kitchen-roof-underside', 'reno-pergola-beam-detail'],
-    overview: 'The concrete at the center of a full outdoor renovation: a wide, reinforced patio slab poured to carry a free-standing cedar pergola and a stacked-stone outdoor kitchen, with artificial turf laid up to its edges so the whole yard stays clean and usable year-round.',
-    scope: ['Site prep, compacted base, and forms set to drain away from the house', 'Reinforced concrete patio slab sized for the pergola and outdoor kitchen', 'Footings for the pergola posts', 'Control joints cut on a proper grid', 'Clean edges for the turf to meet'],
+    overview: 'The concrete at the center of a full outdoor renovation: a wide, reinforced patio slab poured to carry a free-standing cedar patio cover and a stacked-stone outdoor kitchen, with artificial turf laid up to its edges so the whole yard stays clean and usable year-round.',
+    scope: ['Site prep, compacted base, and forms set to drain away from the house', 'Reinforced concrete patio slab sized for the patio cover and outdoor kitchen', 'Footings for the cover posts', 'Control joints cut on a proper grid', 'Clean edges for the turf to meet'],
     materials: ['Rebar-reinforced concrete', 'Compacted base', 'Broom finish'],
     featured: true,
   },
@@ -42,18 +42,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'pergola-with-polycarbonate', title: 'Pergola with Polycarbonate', service: 'pergolas', city: 'plano', location: 'Plano, TX',
+    slug: 'polycarbonate-patio-cover-plano', title: 'Polycarbonate Patio Cover', service: 'patio-covers', city: 'plano', location: 'Plano, TX',
     cover: 'pergola-plano-complete', gallery: ['pergola-plano-foundation', 'pergola-plano-framing', 'pergola-plano-complete', 'pergola-plano-fan'],
-    overview: 'A custom cedar pergola with polycarbonate roofing and an integrated ceiling fan, documented from footings to finish, for year-round outdoor comfort in Plano.',
-    scope: ['Concrete footings and steel post anchors', 'Cedar pergola frame', 'Polycarbonate roof panels', 'Ceiling fan installation'],
+    overview: 'A custom cedar patio cover with polycarbonate roofing and an integrated ceiling fan, documented from footings to finish, for year-round outdoor comfort in Plano.',
+    scope: ['Concrete footings and steel post anchors', 'Cedar frame', 'Polycarbonate roof panels', 'Ceiling fan installation'],
     materials: ['Western Red Cedar', 'Polycarbonate roof panels', 'Galvanized hardware'],
     featured: true,
   },
   {
-    slug: 'pergola-with-back-wall', title: 'Pergola with Back Wall', service: 'pergolas', city: null, location: 'Midlothian, TX',
+    slug: 'patio-cover-with-back-wall', title: 'Patio Cover with Back Wall', service: 'patio-covers', city: null, location: 'Midlothian, TX',
     cover: 'pergola-midlothian', gallery: ['pergola-midlothian', 'pergola-midlothian-2'],
-    overview: 'A custom pergola design with a framed back wall for added privacy and wind protection.',
-    scope: ['Cedar pergola structure', 'Framed privacy back wall', 'Permit drawings and inspections'],
+    overview: 'A custom cedar patio cover with a framed back wall for added privacy and wind protection.',
+    scope: ['Cedar cover structure', 'Framed privacy back wall', 'Permit drawings and inspections'],
     materials: ['Western Red Cedar', 'Framed and finished back wall'],
     featured: true,
   },
@@ -74,17 +74,17 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'pergola-with-polycarbonate-fort-worth', title: 'Pergola with Polycarbonate', service: 'pergolas', city: 'fort-worth', location: 'Fort Worth, TX',
+    slug: 'polycarbonate-patio-cover-fort-worth', title: 'Polycarbonate Patio Cover', service: 'patio-covers', city: 'fort-worth', location: 'Fort Worth, TX',
     cover: 'pergola-fort-worth', gallery: ['pergola-fort-worth'],
-    overview: 'A custom cedar pergola with polycarbonate roofing and ceiling fans for year-round outdoor comfort in Fort Worth.',
-    scope: ['Cedar pergola frame', 'Polycarbonate roof panels', 'Ceiling fans'],
+    overview: 'A custom cedar patio cover with polycarbonate roofing and ceiling fans for year-round outdoor comfort in Fort Worth.',
+    scope: ['Cedar frame', 'Polycarbonate roof panels', 'Ceiling fans'],
     materials: ['Western Red Cedar', 'Polycarbonate roof panels'],
     featured: false,
   },
   {
-    slug: 'free-standing-modern-pergola', title: 'Free Standing Modern Pergola', service: 'pergolas', city: null, location: 'Lewisville, TX',
+    slug: 'free-standing-modern-patio-cover', title: 'Free-Standing Modern Patio Cover', service: 'patio-covers', city: null, location: 'Lewisville, TX',
     cover: 'pergola-lewisville-1', gallery: ['pergola-lewisville-1', 'pergola-lewisville-2'],
-    overview: 'A free-standing modern pergola with cedar posts, a finished ceiling, recessed lighting, and ceiling fans.',
+    overview: 'A free-standing modern patio cover with cedar posts, a finished ceiling, recessed lighting, and ceiling fans.',
     scope: ['Free-standing structure on its own footings', 'Finished ceiling', 'Recessed lighting and ceiling fans'],
     materials: ['Western Red Cedar', 'Tongue-and-groove ceiling', 'Recessed LED fixtures'],
     featured: false,
@@ -104,8 +104,7 @@ export const getProject = (slug: string) => projects.find((p) => p.slug === slug
 export const featuredProjects = (limit = 6, exclude?: string) => projects.filter((p) => p.featured && p.slug !== exclude).slice(0, limit);
 /** Services whose projects belong under another service's filter (e.g. every concrete job under "Concrete"). */
 export const serviceFamily: Record<ServiceSlug, ServiceSlug[]> = {
-  'patio-covers': ['patio-covers', 'pergolas'],
-  pergolas: ['pergolas'],
+  'patio-covers': ['patio-covers', 'outdoor-living'],
   concrete: ['concrete', 'stamped-concrete', 'driveways-walkways'],
   'stamped-concrete': ['stamped-concrete'],
   'driveways-walkways': ['driveways-walkways'],
@@ -117,8 +116,8 @@ export const inServiceFamily = (p: Project, slug: ServiceSlug) => serviceFamily[
 export const projectsForService = (slug: ServiceSlug, limit = 6) => {
   const direct = projects.filter((p) => inServiceFamily(p, slug));
   const siblings: Record<ServiceSlug, ServiceSlug[]> = {
-    'patio-covers': ['pergolas', 'outdoor-living'], pergolas: ['patio-covers'], concrete: ['stamped-concrete', 'driveways-walkways', 'outdoor-living'],
-    'stamped-concrete': ['concrete', 'outdoor-living'], 'driveways-walkways': ['concrete', 'stamped-concrete', 'outdoor-living'], 'outdoor-living': ['patio-covers', 'pergolas', 'stamped-concrete'], remodeling: ['patio-covers'],
+    'patio-covers': ['outdoor-living'], concrete: ['stamped-concrete', 'driveways-walkways', 'outdoor-living'],
+    'stamped-concrete': ['concrete', 'outdoor-living'], 'driveways-walkways': ['concrete', 'stamped-concrete', 'outdoor-living'], 'outdoor-living': ['patio-covers', 'stamped-concrete'], remodeling: ['patio-covers'],
   };
   const extra = projects.filter((p) => siblings[slug].includes(p.service) && !direct.includes(p));
   return [...direct, ...extra].slice(0, limit);

@@ -2,7 +2,7 @@ export const trust = [
   { label: 'Licensed & insured', detail: 'Licensed and insured on every job.' },
   { label: 'DFW local', detail: 'Based in Dallas. Our crews work across the metroplex every week.' },
   { label: '2-year workmanship warranty', detail: 'Every structure and slab is covered for two years after completion.' },
-  { label: '150+ projects completed', detail: 'Patio covers, pergolas, and concrete built for DFW homeowners since 2021.' },
+  { label: '150+ projects completed', detail: 'Patio covers and concrete built for DFW homeowners since 2021.' },
   { label: '4+ years in DFW', detail: 'Founded in Dallas in 2021 and growing one referral at a time.' },
   { label: 'Permits & engineering handled', detail: 'Drawings, engineering, city submission, and inspections are included.' },
   { label: 'In-house crew', detail: 'The same lead carpenter from the first site visit to the final walk-through.' },

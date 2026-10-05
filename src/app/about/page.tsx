@@ -8,7 +8,7 @@ import Photo from '@/components/ui/Photo';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Meet Structure1 — a Dallas–Fort Worth construction and outdoor-living team building permanence into every patio cover, pergola, and concrete project.',
+  description: 'Meet Structure1 — a Dallas–Fort Worth construction and outdoor-living team building permanence into every patio cover and concrete project.',
   alternates: { canonical: '/about' },
 };
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
               <p>
                 What started as a small family operation grew into one of the most trusted construction + outdoor living teams in the DFW Metroplex — because we treat every build like our own home.
               </p>
-              <p>We don&apos;t farm out the heart of the work. The same crew that pours your slab is the one finishing the trim on your pergola.</p>
+              <p>We don&apos;t farm out the heart of the work. The same crew that pours your slab is the one finishing the trim on your patio cover.</p>
             </div>
           </div>
         </div>

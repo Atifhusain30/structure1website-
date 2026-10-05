@@ -33,7 +33,7 @@ The permit process ensures that:
 - Electrical work (fans, lights, outlets) meets code
 - The roof tie-in to your existing home (for attached covers) is properly flashed and sealed
 
-Even freestanding pergolas often require permits in DFW cities, though the requirements may be slightly less stringent than for attached solid-roof covers. The threshold varies — some cities exempt structures under a certain square footage (typically 120 sq ft or less), while others require permits for any roofed structure regardless of size.
+Even freestanding open-rafter patio covers often require permits in DFW cities, though the requirements may be slightly less stringent than for attached solid-roof covers. The threshold varies — some cities exempt structures under a certain square footage (typically 120 sq ft or less), while others require permits for any roofed structure regardless of size.
 
 ### What You'll Need for a Permit Application
 
@@ -55,7 +55,7 @@ The City of Dallas processes patio cover permits through its Building Inspection
 
 - **Permit required:** Yes, for all attached and freestanding patio covers.
 - **Engineered plans required:** Yes. Dallas requires stamped engineered drawings for any structure attached to a residence.
-- **Typical permit fee:** $200–$500 depending on project valuation.
+- **Permit fee:** Varies with the project's declared valuation. Structure1 includes the permit and engineered plans in every project.
 - **Review timeline:** 10–20 business days for residential plan review. Express review is sometimes available for an additional fee.
 - **Inspections:** Dallas typically requires a footing/foundation inspection before concrete is poured and a framing/final inspection before the project is closed out.
 - **Setback requirements:** Structures must meet the setback requirements of the applicable zoning district. In most single-family residential zones, this means 5 feet from side property lines and 5–10 feet from the rear property line. Attached covers on corner lots may have additional street-side setback requirements.
@@ -70,7 +70,7 @@ Fort Worth's Development Services department handles residential construction pe
 
 - **Permit required:** Yes.
 - **Engineered plans required:** Yes, for attached covers and any freestanding structure over 200 square feet.
-- **Typical permit fee:** $150–$400.
+- **Permit fee:** Varies with the project's declared valuation; included in every Structure1 project.
 - **Review timeline:** 7–15 business days for most residential patio cover projects.
 - **Inspections:** Foundation and final inspections are standard.
 - **Setback requirements:** Vary by zoning district. Most residential zones require 5-foot side setbacks and 5-foot rear setbacks for accessory structures.
@@ -83,9 +83,9 @@ Frisco is one of the fastest-growing cities in DFW, and its building department 
 
 **Key details:**
 
-- **Permit required:** Yes, for all patio covers and pergolas.
+- **Permit required:** Yes, for all patio covers.
 - **Engineered plans required:** Yes. Frisco is strict about requiring PE-stamped drawings with full structural calculations.
-- **Typical permit fee:** $250–$600.
+- **Permit fee:** Varies with the project's declared valuation; included in every Structure1 project.
 - **Review timeline:** 10–25 business days. Frisco's plan review can be thorough, especially for larger or more complex structures.
 - **Inspections:** Foundation, framing, and final inspections. Frisco inspectors are known for being detail-oriented.
 - **Setback requirements:** Typically 5 feet from side property lines and 10 feet from the rear. Some Frisco subdivisions have more restrictive setbacks written into the plat.
@@ -99,8 +99,8 @@ McKinney has experienced rapid growth over the past decade, and the city's build
 **Key details:**
 
 - **Permit required:** Yes.
-- **Engineered plans required:** Yes for attached structures. Freestanding pergolas under 200 square feet may have reduced requirements.
-- **Typical permit fee:** $200–$500.
+- **Engineered plans required:** Yes for attached structures. Freestanding covers under 200 square feet may have reduced requirements.
+- **Permit fee:** Varies with the project's declared valuation; included in every Structure1 project.
 - **Review timeline:** 7–15 business days.
 - **Inspections:** Foundation and final, with framing inspection added for larger structures.
 - **Setback requirements:** Standard 5-foot side and rear setbacks in most residential zones, though specific plats may have different requirements.
@@ -115,7 +115,7 @@ Plano is a mature, well-established city with a professional building department
 
 - **Permit required:** Yes.
 - **Engineered plans required:** Yes.
-- **Typical permit fee:** $200–$500.
+- **Permit fee:** Varies with the project's declared valuation; included in every Structure1 project.
 - **Review timeline:** 7–15 business days. Plano is typically on the faster end for residential patio cover permits.
 - **Inspections:** Foundation and final inspections are standard.
 - **Setback requirements:** Most single-family zones require 5-foot side and rear setbacks for covered structures.
@@ -128,15 +128,15 @@ These three cities each have their own building departments with similar but sli
 
 ### Allen
 
-Allen is a mid-sized city in Collin County with a well-run building department. Permit fees are moderate ($200–$450), and review times typically run 7–14 business days. Allen has a high concentration of HOA communities, so architectural review approval is almost always needed before permitting. Allen inspectors are professional and efficient — expect foundation and final inspections.
+Allen is a mid-sized city in Collin County with a well-run building department. Permit fees are moderate, and review times typically run 7–14 business days. Allen has a high concentration of HOA communities, so architectural review approval is almost always needed before permitting. Allen inspectors are professional and efficient — expect foundation and final inspections.
 
 ### Richardson
 
-Richardson is one of the more established cities in DFW with a straightforward permitting process. Fees range from $175–$400, and plan review is typically completed within 10 business days. Richardson's building department is smaller than Dallas or Plano's, which means you sometimes get faster, more personal service. The city's older neighborhoods are mostly non-HOA, while newer areas near CityLine and along the US-75 corridor have community guidelines.
+Richardson is one of the more established cities in DFW with a straightforward permitting process. Fees are moderate, and plan review is typically completed within 10 business days. Richardson's building department is smaller than Dallas or Plano's, which means you sometimes get faster, more personal service. The city's older neighborhoods are mostly non-HOA, while newer areas near CityLine and along the US-75 corridor have community guidelines.
 
 ### Arlington
 
-Arlington's building department is one of the larger operations in Tarrant County. Permit fees ($200–$500) and review timelines (10–20 business days) are comparable to Dallas. Arlington requires full engineered plans for all attached patio covers. The city's inspection process includes foundation and final inspections, and they're generally thorough. Arlington's zoning can be complex — check with the building department or your contractor about your specific zoning district's setback requirements.
+Arlington's building department is one of the larger operations in Tarrant County. Permit fees and review timelines (10–20 business days) are comparable to Dallas. Arlington requires full engineered plans for all attached patio covers. The city's inspection process includes foundation and final inspections, and they're generally thorough. Arlington's zoning can be complex — check with the building department or your contractor about your specific zoning district's setback requirements.
 
 ## What Happens If You Build Without a Permit?
 
@@ -145,7 +145,7 @@ This is a question we get regularly, and we'll be direct: **building a patio cov
 ### Immediate Consequences
 
 - **Stop-work order.** If a city inspector notices unpermitted construction (they drive neighborhoods regularly, and neighbors report), they can issue a stop-work order that halts your project immediately.
-- **Fines.** Most DFW cities impose daily fines for unpermitted construction. These typically range from $200–$2,000 per day in violation and can accumulate rapidly.
+- **Fines.** Most DFW cities impose daily fines for unpermitted construction. These are assessed for every day in violation and can accumulate rapidly.
 - **Forced removal.** In severe cases, the city can require you to demolish the unpermitted structure at your expense. This is rare but does happen, especially when the structure violates setback or easement requirements.
 
 ### Long-Term Consequences
@@ -158,7 +158,7 @@ This is a question we get regularly, and we'll be direct: **building a patio cov
 
 We hear this regularly. Some homeowners point to neighbors who built without permits and suffered no consequences. It's true — not every unpermitted structure gets caught immediately. But the consequences are real when they do surface, and they almost always surface at the worst time (during a home sale, after a storm, or during an insurance claim).
 
-The permit process exists to protect you. The cost of a permit ($150–$600) is a trivial fraction of a $10,000–$20,000 project. It's not worth the risk.
+The permit process exists to protect you. The cost of a permit is a small fraction of the overall project — and at Structure1 it's already included in your quote. It's not worth the risk.
 
 ## How Structure1 Handles Permits for You
 
@@ -216,14 +216,14 @@ We start the engineering and permit process immediately upon contract signing so
 
 ## Frequently Asked Permit Questions
 
-**Do I need a permit for a freestanding pergola?**
+**Do I need a permit for a freestanding patio cover?**
 In most DFW cities, yes — especially if it's over 120 square feet or if it includes any electrical. Some cities exempt very small structures (under 100 sq ft with no electrical), but it's safest to check with your specific city or let your contractor handle it.
 
 **Can I pull the permit myself?**
 Technically, yes — Texas allows homeowners to pull their own building permits. However, most DFW cities still require engineered plans stamped by a licensed PE, and you'll need to schedule and pass inspections yourself. Hiring a contractor who handles permits (like Structure1) saves significant time and hassle.
 
 **How much do permits cost?**
-Typically $150–$600 for a residential patio cover in DFW. The fee is usually based on the project's declared valuation.
+Fees vary by city and are usually based on the project's declared valuation. Structure1 includes permit fees and engineered plans in every project, so there's no separate line item for you to budget.
 
 **Will a patio cover affect my property taxes?**
 Potentially. A covered structure can increase your property's appraised value, which may raise your property taxes slightly. However, the increase is generally modest relative to the improvement's value. The Collin County and Dallas County appraisal districts periodically reassess properties, and a permitted patio cover may show up in that reassessment.
@@ -237,6 +237,6 @@ Permits aren't optional in DFW — and they shouldn't be treated as a nuisance. 
 
 At Structure1 Construction, we build every project to code with full permits and inspections. It's how we've completed over 150 projects across Dallas-Fort Worth with zero code violations. When you work with us, you don't have to think about permits, plans, or inspections — we handle all of it.
 
-Ready to start planning your patio cover? [Get a free estimate](/blog/../#contact) and we'll handle the rest — including every step of the permit process. You can also call us at **(580) 665-2758** or visit our [patio cover services](/services/patio-covers) page to learn more.
+Ready to start planning your patio cover? [Get a free estimate](/estimate) and we'll handle the rest — including every step of the permit process. You can also call us at **(580) 665-2758** or visit our [patio cover services](/services/patio-covers) page to learn more.
 
-For help budgeting your project, check out our [2026 DFW patio cover pricing guide](/blog/patio-cover-cost-dallas-fort-worth). And to explore which style of cover is right for your home, see our [complete guide to patio cover styles](/blog/types-of-patio-covers-guide).
+To understand what drives the cost of your project, check out our [guide to what determines patio cover cost in DFW](/blog/patio-cover-cost-dallas-fort-worth). And to explore which style of cover is right for your home, see our [complete guide to patio cover styles](/blog/types-of-patio-covers-guide).

@@ -14,11 +14,26 @@ export default function StickyBar() {
   const pathname = usePathname();
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const form = document.querySelector('[data-estimate-form]');
-    if (form) {
-      const io = new IntersectionObserver(([entry]) => setShow(!entry.isIntersecting && entry.boundingClientRect.bottom < 0));
+    let io: IntersectionObserver | undefined;
+    let observed: Element | null = null;
+    // The form swaps its marked node for a success message after submit, so re-attach whenever the node changes.
+    const attach = () => {
+      const form = document.querySelector('[data-estimate-form]');
+      if (form === observed) return;
+      io?.disconnect();
+      observed = form;
+      if (!form) return;
+      io = new IntersectionObserver(([entry]) => setShow(!entry.isIntersecting && entry.boundingClientRect.bottom < 0));
       io.observe(form);
-      return () => io.disconnect();
+    };
+    attach();
+    if (observed) {
+      const mo = new MutationObserver(attach);
+      mo.observe(document.body, { childList: true, subtree: true });
+      return () => {
+        mo.disconnect();
+        io?.disconnect();
+      };
     }
     const onScroll = () => setShow(window.scrollY > 600);
     onScroll();

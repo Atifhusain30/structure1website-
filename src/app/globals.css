@@ -56,3 +56,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Service-area map labels (Leaflet tooltips): plain text with a light halo, no bubble. */
+.leaflet-tooltip.sa-label { background: transparent; border: 0; box-shadow: none; padding: 0; font-family: var(--font-sans), system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; color: #0E0E0E; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 6px #fff; }
+.leaflet-tooltip.sa-label::before { display: none; }
+.sa-pin { box-sizing: border-box; border-radius: 9999px; background: #fff; border: 2px solid #0E0E0E; box-shadow: 0 0 0 2px rgba(255,255,255,0.9); cursor: pointer; }
+.sa-pin-home { background: #0E0E0E; }
+.sa-pin:focus-visible { outline: 2px solid #0E0E0E; outline-offset: 3px; }
+.leaflet-container { font-family: var(--font-sans), system-ui, sans-serif; }
+.leaflet-container .sa-tiles { filter: grayscale(1) contrast(0.92) brightness(1.04); }
+.leaflet-container .leaflet-control-attribution { font-size: 0.6875rem; color: #6B6A65; background: rgba(255,255,255,0.8); }
+.leaflet-container .leaflet-control-attribution a { color: #4A4946; }
+.leaflet-bar a { border-radius: 0; color: #0E0E0E; }
+.leaflet-bar { border-radius: 0; border: 1px solid #E4E2DC; box-shadow: none; }

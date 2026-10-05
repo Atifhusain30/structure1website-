@@ -9,14 +9,13 @@ import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Resources | Homeowner Guides for DFW Patio Covers & Concrete',
-  description: 'Cost guides, permit how-tos, material comparisons, and design ideas for patio covers, pergolas, and concrete in Dallas-Fort Worth.',
+  description: 'Cost guides, permit how-tos, material comparisons, and design ideas for patio covers and concrete in Dallas-Fort Worth.',
   alternates: { canonical: '/blog' },
 };
 
 const TOPICS = [
   { slug: 'all', label: 'All' },
   { slug: 'patio-covers', label: 'Patio Covers' },
-  { slug: 'pergolas', label: 'Pergolas' },
   { slug: 'concrete', label: 'Concrete' },
   { slug: 'planning', label: 'Planning & Permits' },
 ];

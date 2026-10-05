@@ -6,7 +6,7 @@ date: "2026-01-20"
 lastModified: "2026-01-20"
 category: "Maintenance"
 featuredImage: "/images/hero/cover3.JPG"
-featuredImageAlt: "Well-maintained pergola with polycarbonate roofing in Fort Worth Texas"
+featuredImageAlt: "Well-maintained polycarbonate patio cover in Fort Worth Texas"
 keywords:
   - "patio cover maintenance"
   - "how to clean patio cover"
@@ -234,6 +234,6 @@ Here's a quick-reference table for your annual maintenance calendar:
 
 **Total annual time commitment:** Approximately 8–12 hours per year, plus a full day every 2–3 years for re-staining.
 
-That's a modest investment to protect a structure that cost $10,000–$25,000 to build and adds real value to your home. Proper maintenance is what separates a patio cover that looks tired and neglected after 10 years from one that still looks beautiful after 30.
+That's a modest commitment to protect a structure you've invested in — one that adds real value to your home. Proper maintenance is what separates a patio cover that looks tired and neglected after 10 years from one that still looks beautiful after 30.
 
-For more on choosing the right structure and materials in the first place, read our guide on the [types of patio covers](/blog/types-of-patio-covers-guide) and our [material comparison for Texas weather](/blog/best-patio-cover-materials-texas). And when you're ready to build a patio cover that's designed to last in the DFW climate, [get a free estimate](/#contact) from Structure1 Construction — or call us directly at **(580) 665-2758**.
+For more on choosing the right structure and materials in the first place, read our guide on the [types of patio covers](/blog/types-of-patio-covers-guide) and our [material comparison for Texas weather](/blog/best-patio-cover-materials-texas). And when you're ready to build a patio cover that's designed to last in the DFW climate, [get a free estimate](/estimate) from Structure1 Construction — or call us directly at **(580) 665-2758**.

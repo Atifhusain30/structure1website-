@@ -5,6 +5,7 @@ import SectionHeader from '@/components/sections/SectionHeader';
 import TrustBar from '@/components/sections/TrustBar';
 import ServiceMosaic from '@/components/sections/ServiceMosaic';
 import ReelStrip from '@/components/sections/ReelStrip';
+import JobSiteBackdrop from '@/components/sections/JobSiteBackdrop';
 import ProjectFeature from '@/components/sections/ProjectFeature';
 import ProjectGrid from '@/components/sections/ProjectGrid';
 import ProcessSteps from '@/components/sections/ProcessSteps';
@@ -49,16 +50,17 @@ export default function HomePage() {
       </Section>
 
       {reels.length > 0 && (
-        <Section className="pt-0 md:pt-0">
-          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+        <Section className="relative overflow-hidden pt-0 md:pt-0 md:pb-48">
+          <JobSiteBackdrop />
+          <div className="relative grid gap-6 lg:grid-cols-12 lg:items-end">
             <SectionHeader className="lg:col-span-7" title="From the job site" text="Short clips our crew shoots while the work is going in." />
             <div className="lg:col-span-5 lg:text-right">
-              <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" className="text-[0.9375rem] font-medium underline underline-offset-4 decoration-gray-200 hover:decoration-black">
+              <a href={company.social.instagram} target="_blank" rel="noopener noreferrer" className="bg-white px-1 text-[0.9375rem] font-medium underline underline-offset-4 decoration-gray-200 hover:decoration-black">
                 Follow on Instagram
               </a>
             </div>
           </div>
-          <div className="mt-8">
+          <div className="relative mt-8">
             <ReelStrip reels={reels} />
           </div>
         </Section>
@@ -137,7 +139,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="mt-10">
-          <ServiceAreaGrid />
+          <ServiceAreaGrid variant="links" />
         </div>
       </Section>
 

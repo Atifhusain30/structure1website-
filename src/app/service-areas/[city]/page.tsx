@@ -38,7 +38,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: `Patio covers, pergolas & concrete in ${c.name}, TX`,
+    name: `Patio covers & concrete in ${c.name}, TX`,
     provider: { '@id': `${company.url}/#business` },
     areaServed: { '@type': 'City', name: c.name },
     url: `${company.url}/service-areas/${c.slug}`,
@@ -48,7 +48,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
       <PageHero
         crumbs={[{ label: 'Service Areas', href: '/service-areas' }, { label: c.name }]}
         eyebrow={`${c.name} · ${c.county}`}
-        title={`Patio Covers, Pergolas & Concrete in ${c.name}, TX`}
+        title={`Patio Covers & Concrete in ${c.name}, TX`}
         lead={c.seo.description}
         photo={c.hero}
       />

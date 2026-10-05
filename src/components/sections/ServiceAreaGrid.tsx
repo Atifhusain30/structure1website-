@@ -1,74 +1,65 @@
 import Link from 'next/link';
 import { cities, serviceAreaList } from '@/content/cities';
 import type { CitySlug } from '@/content/types';
+import ServiceAreaLeafletMap, { type MapCity } from './ServiceAreaLeafletMap';
 
-/**
- * A plan-view diagram of the metroplex: Dallas at the center, the ten service-area pages as dots,
- * and the ~50-mile radius we build within. Positions are approximate road-map geometry (4 px per mile).
- */
-const POS: Record<CitySlug, [number, number]> = {
-  dallas: [320, 268],
-  'fort-worth': [192, 276],
-  arlington: [258, 280],
-  carrollton: [282, 214],
-  plano: [334, 194],
-  allen: [346, 170],
-  frisco: [308, 152],
-  mckinney: [364, 140],
-  prosper: [310, 118],
-  'flower-mound': [232, 178],
+/** Real coordinates for the city guides; Dallas is home base. */
+const CITY_COORDS: Record<CitySlug, [number, number]> = {
+  dallas: [32.7767, -96.797],
+  'fort-worth': [32.7555, -97.3308],
+  plano: [33.0198, -96.6989],
+  frisco: [33.1507, -96.8236],
+  mckinney: [33.1972, -96.6398],
+  arlington: [32.7357, -97.1081],
+  allen: [33.1032, -96.6706],
+  carrollton: [32.9537, -96.8903],
+  'flower-mound': [33.0146, -97.097],
+  prosper: [33.2362, -96.8011],
 };
-const LABEL_LEFT = new Set<CitySlug>(['fort-worth', 'carrollton', 'flower-mound', 'frisco', 'prosper']);
+const mapCities: MapCity[] = cities.map((c) => ({ slug: c.slug, name: c.name, lat: CITY_COORDS[c.slug][0], lng: CITY_COORDS[c.slug][1], home: c.slug === 'dallas' }));
 
-export function ServiceAreaMap({ className }: { className?: string }) {
+const otherTowns = serviceAreaList.filter((n) => !cities.some((c) => c.name === n));
+
+/** Compact form for the home page: the ten city pages as a row of links, plus the towns around them. */
+export function ServiceAreaLinks() {
   return (
-    <svg viewBox="0 0 640 420" role="group" aria-label="Map of Structure1 service areas across Dallas–Fort Worth; the same cities are listed beside it" className={className}>
-      <circle cx={320} cy={268} r={200} fill="none" stroke="#E4E2DC" strokeDasharray="4 6" />
-      <circle cx={320} cy={268} r={100} fill="none" stroke="#E4E2DC" strokeDasharray="2 6" />
-      <text x={320} y={268 + 200 + 18} textAnchor="middle" fontSize="12" fill="#8C8A84">
-        about 50 miles from Dallas
-      </text>
-      {cities.map((c) => {
-        const [x, y] = POS[c.slug];
-        const left = LABEL_LEFT.has(c.slug);
-        const isHq = c.slug === 'dallas';
-        return (
-          <Link key={c.slug} href={`/service-areas/${c.slug}`} aria-label={`${c.name} service area`} tabIndex={-1}>
-            <g className="cursor-pointer">
-              <circle cx={x} cy={y} r={isHq ? 8 : 6} fill={isHq ? '#0E0E0E' : '#FFFFFF'} stroke="#0E0E0E" strokeWidth={1.5} />
-              <text x={left ? x - 11 : x + 11} y={y + 4} textAnchor={left ? 'end' : 'start'} fontSize="15" fontWeight={isHq ? 600 : 500} fill="#0E0E0E" className="hover:underline">
-                {c.name}
-              </text>
-            </g>
-          </Link>
-        );
-      })}
-    </svg>
+    <div>
+      <ul className="flex flex-wrap gap-2" aria-label="Service area pages">
+        {cities.map((c) => (
+          <li key={c.slug}>
+            <Link href={`/service-areas/${c.slug}`} className="inline-flex h-11 items-center border border-gray-200 px-4 text-[0.9375rem] font-medium text-black transition-colors hover:border-black hover:bg-black hover:text-white">
+              {c.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-6 max-w-prose text-small text-gray-700">Also {otherTowns.join(', ')}, and the communities around them.</p>
+    </div>
   );
 }
 
-export default function ServiceAreaGrid({ showList = true }: { showList?: boolean }) {
+export default function ServiceAreaGrid({ variant = 'map' }: { variant?: 'map' | 'links' }) {
+  if (variant === 'links') return <ServiceAreaLinks />;
   return (
     <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-      <div className="lg:col-span-7">
-        <ServiceAreaMap className="h-auto w-full max-w-2xl" />
+      <div className="lg:col-span-8">
+        <ServiceAreaLeafletMap cities={mapCities} className="h-[26rem] w-full bg-offwhite sm:h-[32rem] lg:h-[36rem]" />
       </div>
-      <div className="lg:col-span-5">
-        <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
+      <div className="lg:col-span-4">
+        <h2 className="font-display text-h2">All of Dallas–Fort Worth.</h2>
+        <p className="mt-4 text-lead text-gray-700">
+          150+ projects across Dallas, Tarrant, Collin, and Denton counties and the towns around them. If your home is within about 50 miles of Dallas, we build there.
+        </p>
+        <p className="mt-8 text-small text-gray-500">City guides with local projects, permit notes, and reviews:</p>
+        <ul className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2">
           {cities.map((c) => (
             <li key={c.slug}>
-              <Link href={`/service-areas/${c.slug}`} className="group block">
-                <span className="block font-display text-h3 group-hover:underline group-hover:underline-offset-4">{c.name}</span>
-                <span className="block text-meta text-gray-500">{c.county}</span>
+              <Link href={`/service-areas/${c.slug}`} className="text-[0.9375rem] font-medium underline underline-offset-4 decoration-gray-200 hover:decoration-black">
+                {c.name}
               </Link>
             </li>
           ))}
         </ul>
-        {showList && (
-          <p className="mt-8 text-small text-gray-700">
-            Also {serviceAreaList.filter((n) => !cities.some((c) => c.name === n)).join(', ')}, and the communities around them.
-          </p>
-        )}
       </div>
     </div>
   );

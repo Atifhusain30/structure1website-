@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="hero-copy lg:col-span-7">
           <h1 className="max-w-4xl font-display text-h1">Outdoor spaces built like they belong with your home.</h1>
           <p className="mt-5 max-w-xl text-lead text-white/85">
-            Patio covers, pergolas, concrete, and complete outdoor rooms across Dallas–Fort Worth. One in-house crew from drawings to final walk-through.
+            Patio covers, concrete, and complete outdoor rooms across Dallas–Fort Worth. One in-house crew from drawings to final walk-through.
           </p>
           <Button href="/projects" variant="secondary" tone="dark" className="mt-8">
             See the work

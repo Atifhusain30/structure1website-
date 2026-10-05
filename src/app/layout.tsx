@@ -22,11 +22,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),
   title: {
-    default: 'Structure1 Construction | Patio Covers, Pergolas & Concrete in Dallas-Fort Worth',
+    default: 'Structure1 Construction | Patio Covers & Concrete in Dallas-Fort Worth',
     template: '%s | Structure1 Construction',
   },
   description:
-    "Dallas-Fort Worth's patio cover, pergola, and concrete builder. Permits and engineering handled, 2-year warranty, 150+ projects. Get a free estimate.",
+    "Dallas-Fort Worth's patio cover and concrete builder. Permits and engineering handled, 2-year warranty, 150+ projects. Get a free estimate.",
   openGraph: {
     type: 'website',
     locale: 'en_US',

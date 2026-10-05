@@ -9,7 +9,7 @@ import CTASection from '@/components/sections/CTASection';
 export const metadata: Metadata = {
   title: 'Outdoor Living & Concrete Contractor in Dallas-Fort Worth',
   description:
-    'Patio covers, pergolas, concrete, stamped concrete, driveways, outdoor living, and remodeling in Dallas-Fort Worth. One in-house crew, permits handled, free estimates.',
+    'Patio covers, concrete, stamped concrete, driveways, outdoor living, and remodeling in Dallas-Fort Worth. One in-house crew, permits handled, free estimates.',
   alternates: { canonical: '/services' },
 };
 
@@ -19,7 +19,7 @@ export default function ServicesPage() {
       <PageHero
         crumbs={[{ label: 'Services' }]}
         title="What Structure1 builds"
-        lead="Patio covers, pergolas, and concrete are the core. Outdoor living projects combine them. Every job includes drawings, engineering, permits, and a 2-year workmanship warranty."
+        lead="Patio covers and concrete are the core. Outdoor living projects combine them. Every job includes drawings, engineering, permits, and a 2-year workmanship warranty."
         photo="gable-dfw"
       />
       <Section>

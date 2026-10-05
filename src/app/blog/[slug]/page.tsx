@@ -39,7 +39,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
-    image: `${company.url}${post.featuredImage}`,
+    image: encodeURI(`${company.url}${post.featuredImage}`),
     datePublished: post.date,
     dateModified: post.lastModified ?? post.date,
     author: { '@type': 'Organization', name: company.name },

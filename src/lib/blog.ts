@@ -121,7 +121,6 @@ export function getRelatedPosts(currentSlug: string, category: string, limit = 3
 }
 
 const TOPIC_FALLBACK: Record<string, string[]> = {
-  pergolas: ['pergolas', 'patio-covers'],
   'stamped-concrete': ['stamped-concrete', 'concrete', 'planning'],
   'driveways-walkways': ['driveways-walkways', 'concrete', 'planning'],
   concrete: ['concrete', 'planning'],

@@ -39,7 +39,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
     serviceType: s.name,
     description: s.seo.description,
     url: `${company.url}/services/${s.slug}`,
-    image: `${company.url}${photos[s.hero].src}`,
+    image: encodeURI(`${company.url}${photos[s.hero].src}`),
     provider: { '@id': `${company.url}/#business` },
     areaServed: cities.map((c) => ({ '@type': 'City', name: c.name })),
   };
