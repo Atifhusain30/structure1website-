@@ -18,6 +18,14 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'gable-patio-cover-poolside', title: 'Gable Patio Cover', service: 'patio-covers', city: null, location: 'Midlothian, TX',
+    cover: 'pergola-midlothian', gallery: ['pergola-midlothian'],
+    overview: 'A cedar gable patio cover attached to the back of the house beside the pool. Exposed cedar trusses and beams carry a tongue-and-groove cedar ceiling with a fan and recessed lighting, with a finished fascia and soffit, over a raised patio pad set inside a new block retaining wall.',
+    scope: ['Gable roof structure tied into the existing home', 'Exposed cedar trusses and beams on cedar posts', 'Tongue-and-groove cedar ceiling with fan and recessed lighting', 'Block retaining wall around the raised patio pad', 'Permit drawings and inspections'],
+    materials: ['Western Red Cedar posts, beams, and trusses', 'Tongue-and-groove cedar ceiling', 'Finished fascia and soffit', 'Split-face block retaining wall'],
+    featured: true,
+  },
+  {
     slug: 'free-standing-patio-cover-pavers-walkway', title: 'Free-Standing Patio Cover, Pavers & Walkway', service: 'outdoor-living', city: null, location: 'Dallas–Fort Worth',
     cover: 'freestanding-cover-wide', gallery: ['freestanding-cover-wide', 'freestanding-cover-front', 'freestanding-cover-underside', 'freestanding-cover-walkway', 'paver-path-sideyard', 'paver-path-gate', 'freestanding-cover-brace'],
     overview: 'Three jobs that read as one backyard. A free-standing patio cover in a deep charcoal finish, with recessed lighting and twin fans, sits on a new broom-finish patio. A concrete walkway wraps the side of the house, and large-format pavers set in river rock turn a forgotten side yard into a clean path to the gate.',
@@ -47,14 +55,6 @@ export const projects: Project[] = [
     overview: 'A custom cedar patio cover with polycarbonate roofing and an integrated ceiling fan, documented from footings to finish, for year-round outdoor comfort in Plano.',
     scope: ['Concrete footings and steel post anchors', 'Cedar frame', 'Polycarbonate roof panels', 'Ceiling fan installation'],
     materials: ['Western Red Cedar', 'Polycarbonate roof panels', 'Galvanized hardware'],
-    featured: true,
-  },
-  {
-    slug: 'patio-cover-with-back-wall', title: 'Patio Cover with Back Wall', service: 'patio-covers', city: null, location: 'Midlothian, TX',
-    cover: 'pergola-midlothian', gallery: ['pergola-midlothian', 'pergola-midlothian-2'],
-    overview: 'A custom cedar patio cover with a framed back wall for added privacy and wind protection.',
-    scope: ['Cedar cover structure', 'Framed privacy back wall', 'Permit drawings and inspections'],
-    materials: ['Western Red Cedar', 'Framed and finished back wall'],
     featured: true,
   },
   {

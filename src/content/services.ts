@@ -10,8 +10,8 @@ export const services: Service[] = [
       title: 'Patio Cover Builder in Dallas-Fort Worth, TX | Free Estimates',
       description: 'Custom patio covers in Dallas-Fort Worth: gable, lean-to, polycarbonate & free-standing designs. Permits handled, engineered for Texas wind, 2-year warranty. Free estimates.',
     },
-    hero: 'gable-dfw',
-    gallery: ['gable-mckinney-2', 'pergola-plano-complete', 'leanto-forney-2'],
+    hero: 'reno-kitchen-pergola-turf',
+    gallery: ['gable-dfw', 'pergola-midlothian', 'pergola-lewisville-1'],
     lead: 'Covered outdoor rooms with roofing matched to your home, engineered for North Texas wind, and built by one in-house crew.',
     overview: [
       'Structure1 Construction is a patio cover builder serving the entire Dallas-Fort Worth metroplex — Dallas, Fort Worth, Plano, Frisco, McKinney, Arlington, and 20+ surrounding cities. We design and build gable covers with shingles matched to your existing roof, cost-effective lean-to designs, and polycarbonate-roof covers that keep the light, all engineered for North Texas wind loads and built from Western Red Cedar on steel-anchored footings.',
@@ -23,7 +23,7 @@ export const services: Service[] = [
       { name: 'Gable (A-Frame)', blurb: 'Peaked roofline with shingles matched to your home. Custom and architectural. Best for larger patios, height, airflow, and resale value.', range: '$14,000 – $25,000+' },
       { name: 'Polycarbonate Roof', blurb: 'Clear or tinted panels over cedar rafters. Open and bright. Rain protection without losing natural light.', range: '$10,000 – $18,000' },
       { name: 'Free-Standing', blurb: 'Set on its own steel-anchored footings by a pool, dining area, or anywhere in the yard.' },
-      { name: 'With Back Wall', blurb: 'A framed back wall adds privacy and wind protection, as on our Midlothian project.' },
+      { name: 'With Back Wall', blurb: 'A framed back wall adds privacy and wind protection.' },
     ],
     reasons: [
       { title: 'Usable outdoors in Texas heat', blurb: 'Shade over the patio and the windows behind it lowers surface temperatures and cooling costs.' },
@@ -52,7 +52,7 @@ export const services: Service[] = [
       description: 'Concrete patios, slabs, driveways & replacements in Dallas-Fort Worth. Engineered for North Texas clay soil, 2-year warranty, free itemized estimates.',
     },
     hero: 'concrete-slab-pour',
-    gallery: ['stamped-patio-forney-1', 'stamped-driveway-dallas', 'concrete-slab-pour'],
+    gallery: ['stamped-flagstone', 'stamped-patio-forney-1', 'stamped-driveway-dallas'],
     lead: 'Patios, slabs, driveways, and replacements built for expansive North Texas clay: compacted base, steel rebar, correct thickness, and control joints on a real grid.',
     overview: [
       'Structure1 Construction is a concrete contractor serving Dallas-Fort Worth — patios, driveways, walkways, and decorative finishes across Dallas, Plano, Frisco, McKinney, Arlington, Fort Worth, and the surrounding metroplex. North Texas clay soil expands and contracts with every wet-dry cycle, so we build for it: compacted base, steel reinforcement (rebar, not wire mesh), proper slab thickness, and control joints cut on a correct grid.',
@@ -239,8 +239,8 @@ const WIDE_TILES: ServiceSlug[] = ['patio-covers', 'driveways-walkways', 'outdoo
 export const serviceTile = (s: Service): MosaicTile => ({ key: s.slug, href: `/services/${s.slug}`, photo: s.hero, name: s.name, blurb: s.navBlurb, wide: WIDE_TILES.includes(s.slug) });
 /** The /services mosaic: one tile per service. */
 export const mosaicTiles: MosaicTile[] = services.map(serviceTile);
-const gableTile: MosaicTile = { key: 'gable-home-extensions', href: '/services/patio-covers', photo: 'gable-watauga-wide', name: 'Gable Home Extensions', blurb: 'Gable roofs engineered and designed in-house', wide: true };
+const gableTile: MosaicTile = { key: 'gable-home-extensions', href: '/projects/gable-home-extension-watauga', photo: 'gable-watauga-wide', name: 'Gable Home Extensions', blurb: 'Gable roofs engineered and designed in-house', wide: true };
 const paversTile: MosaicTile = { key: 'pavers-pathways', href: '/projects/free-standing-patio-cover-pavers-walkway', photo: 'paver-path-gate', name: 'Pavers & Pathways', blurb: 'Stepping-stone paths and paver walks in rock or turf' };
-/** Home page swaps two service tiles for project-led ones (Stamped Concrete -> Gable Home Extensions, Driveways & Walkways -> Pavers & Pathways; both stay on /services) and orders the six so the rows fill: 2+1 / 1+2 / 2+1. */
+/** Home page swaps two service tiles for project-led ones that link to their project pages (Stamped Concrete -> Gable Home Extensions, Driveways & Walkways -> Pavers & Pathways; both services stay on /services), leaves Remodeling off the home page (owner request, Oct 2026; it stays on /services), and orders the five so the rows fill: 2+1 / 1+1+1. */
 const bySlug = (slug: ServiceSlug) => serviceTile(services.find((s) => s.slug === slug)!);
-export const homeMosaicTiles: MosaicTile[] = [bySlug('patio-covers'), { ...bySlug('concrete'), wide: false }, paversTile, gableTile, { ...bySlug('outdoor-living'), photo: 'reno-kitchen-tile' }, { ...bySlug('remodeling'), wide: false }];
+export const homeMosaicTiles: MosaicTile[] = [{ ...bySlug('patio-covers'), photo: 'gable-dfw' }, { ...bySlug('concrete'), photo: 'concrete-patio-modern', wide: false }, paversTile, { ...gableTile, wide: false }, { ...bySlug('outdoor-living'), photo: 'reno-kitchen-tile', wide: false }];
