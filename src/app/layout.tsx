@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StickyBar from '@/components/layout/StickyBar';
 import JsonLd from '@/components/seo/JsonLd';
+import MetaPixel from '@/components/analytics/MetaPixel';
 import { company } from '@/content/company';
 import { serviceAreaList } from '@/content/cities';
 
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <StickyBar />
         <JsonLd data={localBusiness} />
+        <MetaPixel />
       </body>
     </html>
   );

@@ -37,6 +37,14 @@ const sections = [
       through your browser settings, though this may affect some website functionality.`,
   },
   {
+    title: 'Advertising and Analytics',
+    body: `We use the Meta Pixel to measure how our Facebook and Instagram ads perform and to show our ads to
+      people who may be interested in our services. The pixel records pages you visit, estimate requests, and taps
+      on our phone number. When you submit our estimate form, your contact details (such as name, email, phone,
+      and city) are hashed in your browser before being shared with Meta to match ad results. You can manage how
+      Meta uses this information in your Facebook or Instagram ad preferences.`,
+  },
+  {
     title: 'Contact Us',
     body: `If you have any questions about this Privacy Policy, please reach out via the contact form or email us at info@structure1.com.`,
   },
@@ -48,7 +56,7 @@ export default function PrivacyPage() {
       <Breadcrumbs items={[{ label: 'Privacy Policy' }]} />
       <p className="mt-8 text-eyebrow text-gray-500">Legal</p>
       <h1 className="mt-4 font-display text-h1">Privacy Policy</h1>
-      <p className="mt-3 text-meta text-gray-500">Last updated: January 2026</p>
+      <p className="mt-3 text-meta text-gray-500">Last updated: October 2026</p>
       <div className="prose-article mt-10">
         {sections.map((s) => (
           <section key={s.title}>
