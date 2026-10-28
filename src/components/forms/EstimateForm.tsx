@@ -4,6 +4,7 @@ import { Check, Loader2 } from 'lucide-react';
 import { services } from '@/content/services';
 import { company } from '@/content/company';
 import { cn } from '@/lib/utils';
+import { trackLead } from '@/lib/track';
 
 const TIMELINES = ['As soon as possible', '1–3 months', '3–6 months', 'Just planning'];
 const field = 'h-12 w-full rounded border border-gray-200 bg-white px-4 text-body text-black placeholder:text-gray-500 focus:border-black focus:outline-none';
@@ -44,6 +45,7 @@ export default function EstimateForm({ cta = 'Request My Estimate', compact = fa
     try {
       const res = await fetch('/__forms.html', { method: 'POST', body: data });
       if (!res.ok) throw new Error(String(res.status));
+      trackLead(String(data.get('service') ?? ''));
       setState('sent');
     } catch {
       setState('error');
