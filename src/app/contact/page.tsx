@@ -6,7 +6,7 @@ import { company } from '@/content/company';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Reach Structure1 Construction. Free estimates, one-business-day replies, serving the Dallas-Fort Worth metroplex.',
+  description: 'Reach Structure1 Builds. Free estimates, one-business-day replies, serving the Dallas-Fort Worth metroplex.',
   alternates: { canonical: '/contact' },
 };
 

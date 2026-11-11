@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import StickyBar from '@/components/layout/StickyBar';
 import JsonLd from '@/components/seo/JsonLd';
 import MetaPixel from '@/components/analytics/MetaPixel';
+import AttributionCapture from '@/components/analytics/AttributionCapture';
 import { company } from '@/content/company';
 import { serviceAreaList } from '@/content/cities';
 
@@ -23,8 +24,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),
   title: {
-    default: 'Structure1 Construction | Patio Covers & Concrete in Dallas-Fort Worth',
-    template: '%s | Structure1 Construction',
+    default: `${company.name} | Patio Covers & Concrete in Dallas-Fort Worth`,
+    template: `%s | ${company.name}`,
   },
   description:
     "Dallas-Fort Worth's patio cover and concrete builder. Permits and engineering handled, 2-year warranty, 150+ projects. Get a free estimate.",
@@ -32,8 +33,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: company.url,
-    siteName: 'Structure1 Construction',
-    images: [{ url: '/images/hero/buckfin1.JPG', width: 1200, height: 630, alt: 'Classic gable patio cover in McKinney, Texas by Structure1 Construction' }],
+    siteName: company.name,
+    images: [{ url: '/images/hero/buckfin1.JPG', width: 1200, height: 630, alt: `Classic gable patio cover in McKinney, Texas by ${company.name}` }],
   },
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <StickyBar />
         <JsonLd data={localBusiness} />
         <MetaPixel />
+        <AttributionCapture />
       </body>
     </html>
   );

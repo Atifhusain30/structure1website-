@@ -6,7 +6,7 @@ date: "2026-01-20"
 lastModified: "2026-01-20"
 category: "Materials"
 featuredImage: "/images/hero/cover2.JPG"
-featuredImageAlt: "Cedar patio cover with tongue-and-groove ceiling installed in the Dallas-Fort Worth area by Structure1 Construction"
+featuredImageAlt: "Cedar patio cover with tongue-and-groove ceiling installed in the Dallas-Fort Worth area by Structure1 Builds"
 keywords:
   - "best material patio cover Texas"
   - "wood patio cover vs aluminum"
@@ -33,7 +33,7 @@ The point is simple: what works in Portland or Phoenix may fail in Dallas. You n
 
 ## Western Red Cedar
 
-Cedar is the premium wood choice for patio covers in North Texas, and it's what we use most often at Structure1 Construction. Here's why — and where it falls short.
+Cedar is the premium wood choice for patio covers in North Texas, and it's what we use most often at Structure1 Builds. Here's why — and where it falls short.
 
 ### Pros
 
@@ -169,7 +169,7 @@ Here's a side-by-side look at all four options for a typical 14×20 patio cover 
 
 ## What We Recommend (and Why)
 
-At Structure1 Construction, we build patio covers primarily with **western red cedar** and **pressure-treated southern yellow pine**. Here's our honest reasoning:
+At Structure1 Builds, we build patio covers primarily with **western red cedar** and **pressure-treated southern yellow pine**. Here's our honest reasoning:
 
 **Cedar is our top recommendation** for homeowners who want a patio cover that looks premium, ages gracefully, and adds genuine value to their home. The higher upfront cost pays for itself through aesthetics, durability, and buyer appeal. When we build a custom gable or open-rafter patio cover with cedar posts, beams, and a tongue-and-groove ceiling, the result is a structure that genuinely transforms a backyard.
 
@@ -222,4 +222,4 @@ For most DFW homeowners we work with, the answer lands on cedar or a cedar-and-p
 
 Wondering what goes into the cost of a patio cover? Check out our [guide to what determines patio cover cost in DFW](/blog/patio-cover-cost-dallas-fort-worth) or explore the different [types of patio covers](/blog/types-of-patio-covers-guide) to figure out which style fits your home best.
 
-Ready to talk materials and get a real estimate? [Get a free estimate](/estimate) from Structure1 Construction. We'll walk through your options, show you material samples, and give you an honest quote for your specific project. Call us at **(580) 665-2758** or fill out our contact form — we typically respond within 24 hours.
+Ready to talk materials and get a real estimate? [Get a free estimate](/estimate) from Structure1 Builds. We'll walk through your options, show you material samples, and give you an honest quote for your specific project. Call us at **(580) 665-2758** or fill out our contact form — we typically respond within 24 hours.

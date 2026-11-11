@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check": "node scripts/site-check.mjs"
+    "check": "node scripts/site-check.mjs",
+    "test": "node --test \"tests/unit/*.test.mjs\"",
+    "test:e2e": "node --test tests/e2e/conversion.e2e.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

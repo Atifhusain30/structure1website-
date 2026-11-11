@@ -6,7 +6,7 @@ date: "2026-01-15"
 lastModified: "2026-01-15"
 category: "Cost Guide"
 featuredImage: "/images/hero/cover1.JPG"
-featuredImageAlt: "Custom gable patio cover with cedar posts installed in Dallas-Fort Worth by Structure1 Construction"
+featuredImageAlt: "Custom gable patio cover with cedar posts installed in Dallas-Fort Worth by Structure1 Builds"
 keywords:
   - "patio cover cost Texas"
   - "patio cover cost DFW"
@@ -208,7 +208,7 @@ If you've been Googling patio cover costs, you've probably seen national average
 - **Wind and storm engineering matters.** North Texas gets severe thunderstorms, high winds, and occasional hail. A patio cover built here needs to be engineered for those loads — which means heavier framing, better connections, and proper tie-downs. That costs more than a cover in a mild climate, but it also means your structure survives the next spring storm season.
 - **Material availability fluctuates.** Cedar and treated lumber prices in Texas have stabilized since the pandemic-era spikes, but they still shift seasonally. Getting a quote in early spring (before peak building season) can sometimes lock in better material pricing.
 
-## Get a Free Estimate from Structure1 Construction
+## Get a Free Estimate from Structure1 Builds
 
 At Structure1, we've built over 150 patio covers and outdoor living structures across Dallas-Fort Worth — from basic lean-to covers in Forney to custom gable builds in Frisco, McKinney, Plano, and beyond. Every project includes engineered plans, city permits, and our 2-year workmanship warranty. We're licensed, insured, and we show up when we say we will.
 

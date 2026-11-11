@@ -6,7 +6,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Dallas, TX | Structure1', description: 'Dallas-based patio cover and stamped concrete builder. Permits handled, 2-year warranty, free on-site estimates across Dallas neighborhoods.' },
     hero: 'gable-dallas-dusk',
     intro: [
-      'Structure1 Construction is based in Dallas, and Dallas backyards are where a large share of our patio covers and concrete work gets built. From older neighborhoods in East Dallas and Lake Highlands with mature trees and established patios, to North Dallas and Far North Dallas homes with larger lots, we size each structure to the house and work around what you already love about the yard.',
+      'Structure1 Builds is based in Dallas, and Dallas backyards are where a large share of our patio covers and concrete work gets built. From older neighborhoods in East Dallas and Lake Highlands with mature trees and established patios, to North Dallas and Far North Dallas homes with larger lots, we size each structure to the house and work around what you already love about the yard.',
       'Our Dallas work includes a reinforced driveway with a stamped stone-pattern border. Being local means short drives for site visits, quick follow-ups, and a crew that knows the city\'s permit process.',
     ],
     permitNote: 'The City of Dallas requires a building permit for patio covers and other permanent accessory structures, issued through Development Services. Structure1 prepares the drawings, submits the application, and schedules inspections — permits are included in every Dallas project.',
@@ -18,7 +18,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Fort Worth, TX | Structure1', description: 'Custom patio covers and stamped concrete in Fort Worth. Permits included, engineered for Texas wind, 2-year warranty. Free estimates.' },
     hero: 'pergola-fort-worth',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete throughout Fort Worth, TX — including a recent cedar cover with polycarbonate roofing, cedar posts, and ceiling fans for a Fort Worth family who wanted year-round outdoor comfort.',
+      'We build custom patio covers and stamped concrete throughout Fort Worth, TX — including a recent cedar cover with polycarbonate roofing, cedar posts, and ceiling fans for a Fort Worth family who wanted year-round outdoor comfort.',
       'From established neighborhoods near the Cultural District to growing communities in far north Fort Worth, our crews build the same way everywhere: Western Red Cedar, steel-anchored footings, and roofing matched to your home.',
     ],
     permitNote: 'The City of Fort Worth requires a building permit for patio covers, issued through Development Services. Structure1 prepares the drawings, submits the application, and schedules every inspection — permits are included in every Fort Worth project.',
@@ -30,7 +30,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Plano, TX | Structure1', description: 'Patio cover contractor in Plano, TX. Gable, lean-to, and polycarbonate designs, stamped concrete. Permits handled, free estimates.' },
     hero: 'pergola-plano-complete',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete throughout Plano, TX — from established neighborhoods around Legacy and Willow Bend to newer builds in East Plano. Plano backyards tend to have mature trees and established landscaping, so we design structures that work around what you already love about your yard.',
+      'We build custom patio covers and stamped concrete throughout Plano, TX — from established neighborhoods around Legacy and Willow Bend to newer builds in East Plano. Plano backyards tend to have mature trees and established landscaping, so we design structures that work around what you already love about your yard.',
       'We\'re based in Dallas, minutes down the tollway — Plano is one of our most active service areas, and our crews are in the city on projects nearly every week.',
     ],
     permitNote: 'The City of Plano requires a building permit for patio covers and permanent shade structures, with plan review through Building Inspections. Structure1 prepares the drawings, submits the application, and schedules inspections — the permit process is included in every Plano project.',
@@ -42,7 +42,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Frisco, TX | Structure1', description: 'Custom patio covers and stamped concrete in Frisco, TX. HOA and city permit packages handled. 2-year warranty. Free estimates.' },
     hero: 'pergola-lewisville-1',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete across Frisco, TX. Frisco\'s newer neighborhoods mean blank-slate backyards — the perfect starting point for a complete outdoor living space with a covered patio and stamped concrete designed together instead of pieced together over years.',
+      'We build custom patio covers and stamped concrete across Frisco, TX. Frisco\'s newer neighborhoods mean blank-slate backyards — the perfect starting point for a complete outdoor living space with a covered patio and stamped concrete designed together instead of pieced together over years.',
       'Most Frisco neighborhoods have active HOAs with architectural review requirements. We prepare the drawings and documentation your HOA needs alongside the city permit package, so both approvals move in parallel.',
     ],
     permitNote: 'The City of Frisco requires a building permit for patio covers and permanent structures, and most Frisco HOAs require architectural approval before construction. Structure1 handles the city permit end to end and prepares the plans and renderings your HOA review needs.',
@@ -54,7 +54,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in McKinney, TX | Structure1', description: 'Patio cover builder in McKinney, TX. Gable covers with roofing matched to your home, stamped concrete. Permits handled, free estimates.' },
     hero: 'gable-mckinney-2',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete throughout McKinney, TX — from historic districts near downtown to newer communities in Craig Ranch and Trinity Falls. One of our signature gable patio covers, with cedar posts and white trusses, was built for a McKinney family.',
+      'We build custom patio covers and stamped concrete throughout McKinney, TX — from historic districts near downtown to newer communities in Craig Ranch and Trinity Falls. One of our signature gable patio covers, with cedar posts and white trusses, was built for a McKinney family.',
       'McKinney\'s mix of home styles calls for structures that match — we color-match shingles to your existing roof, size posts and beams to your home\'s proportions, and engineer every build for North Texas wind.',
     ],
     permitNote: 'The City of McKinney requires a building permit for patio covers, issued through Development Services; engineering documentation is commonly requested for larger spans. Structure1 handles drawings, engineering, submission, and inspections on every McKinney project.',
@@ -66,7 +66,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Arlington, TX | Structure1', description: 'Custom patio covers and stamped concrete in Arlington, TX. Wind-load engineering, permits handled, 2-year warranty. Free estimates.' },
     hero: 'pergola-midlothian',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete across Arlington, TX. Sitting in the heart of the metroplex between Dallas and Fort Worth, Arlington homeowners get the same crews, the same cedar-and-steel construction, and the same 2-year workmanship warranty we deliver everywhere in DFW.',
+      'We build custom patio covers and stamped concrete across Arlington, TX. Sitting in the heart of the metroplex between Dallas and Fort Worth, Arlington homeowners get the same crews, the same cedar-and-steel construction, and the same 2-year workmanship warranty we deliver everywhere in DFW.',
       'Arlington\'s established neighborhoods often have larger lots — room for a full outdoor living project: covered patio and stamped concrete extension built as one job on one timeline.',
     ],
     permitNote: 'The City of Arlington requires a building permit for patio covers and permanent shade structures, with wind-load engineering per North Central Texas building codes. Structure1 handles the complete permit package — drawings, engineering, submission, and inspections.',
@@ -78,7 +78,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Allen, TX | Structure1', description: 'Custom patio covers and stamped concrete in Allen, TX. HOA and city permits handled, 2-year warranty. Free on-site estimates.' },
     hero: 'freestanding-cover-wide',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete in Allen, TX. Allen sits between Plano and McKinney, two of our busiest service areas, so our crews are nearby most weeks. Allen neighborhoods such as Twin Creeks and Star Creek are largely HOA communities with established backyards, which usually means an architectural approval alongside the city permit.',
+      'We build custom patio covers and stamped concrete in Allen, TX. Allen sits between Plano and McKinney, two of our busiest service areas, so our crews are nearby most weeks. Allen neighborhoods such as Twin Creeks and Star Creek are largely HOA communities with established backyards, which usually means an architectural approval alongside the city permit.',
       'An Allen family\'s patio cover is one of our favorite reviews: on time, on budget, and built to the standard we bring to every DFW project.',
     ],
     permitNote: 'The City of Allen requires a building permit for patio covers and other permanent accessory structures, and most Allen HOAs require architectural approval before construction. Structure1 prepares the drawings, submits the city permit, and provides the HOA package.',
@@ -90,7 +90,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Carrollton, TX | Structure1', description: 'Patio covers and stamped concrete for Carrollton, TX homes. Permits handled, engineered for Texas wind, 2-year warranty. Free estimates.' },
     hero: 'leanto-forney-2',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete in Carrollton, TX. Carrollton is a short drive up the Dallas North Tollway from our base, and its mix of established 1980s–90s neighborhoods and newer developments near Castle Hills means we see everything from replacing a worn patio slab to adding a full covered outdoor room.',
+      'We build custom patio covers and stamped concrete in Carrollton, TX. Carrollton is a short drive up the Dallas North Tollway from our base, and its mix of established 1980s–90s neighborhoods and newer developments near Castle Hills means we see everything from replacing a worn patio slab to adding a full covered outdoor room.',
       'Older Carrollton patios are often the right candidates for tear-out and replacement with a reinforced stamped slab before a cover goes up, so the whole project is done once and done right.',
     ],
     permitNote: 'Like nearly every DFW city, Carrollton requires a building permit for patio covers and permanent accessory structures. Structure1 prepares the drawings, submits the application, and schedules inspections on every Carrollton project.',
@@ -102,7 +102,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Flower Mound, TX | Structure1', description: 'Custom patio covers and stamped concrete in Flower Mound, TX. HOA packages and town permits handled, 2-year warranty. Free estimates.' },
     hero: 'reno-pergola-turf-wide',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete in Flower Mound, TX. Flower Mound lots are often larger and more wooded than the rest of the metroplex, with homes set among mature trees, so we size structures to the house and design around the yard rather than clearing it.',
+      'We build custom patio covers and stamped concrete in Flower Mound, TX. Flower Mound lots are often larger and more wooded than the rest of the metroplex, with homes set among mature trees, so we size structures to the house and design around the yard rather than clearing it.',
       'Our free-standing modern patio cover in neighboring Lewisville, with cedar posts, recessed lighting, and ceiling fans, is the kind of build that fits Flower Mound backyards well.',
     ],
     permitNote: 'Like nearly every DFW municipality, Flower Mound requires a building permit for patio covers and permanent accessory structures, and many Flower Mound HOAs require architectural approval. Structure1 handles the permit end to end and prepares the drawings your HOA review needs.',
@@ -114,7 +114,7 @@ export const cities: City[] = [
     seo: { title: 'Patio Covers & Concrete in Prosper, TX | Structure1', description: 'Custom patio covers and stamped concrete for new Prosper, TX homes. HOA and town permits handled, 2-year warranty. Free estimates.' },
     hero: 'gable-watauga-front',
     intro: [
-      'Structure1 Construction builds custom patio covers and stamped concrete in Prosper, TX. Prosper is one of the fastest-growing towns north of Frisco, and most of its homes are new builds with blank-slate backyards: a small builder-grade patio and a lot of lawn. That is the ideal starting point for a complete outdoor room designed as one project.',
+      'We build custom patio covers and stamped concrete in Prosper, TX. Prosper is one of the fastest-growing towns north of Frisco, and most of its homes are new builds with blank-slate backyards: a small builder-grade patio and a lot of lawn. That is the ideal starting point for a complete outdoor room designed as one project.',
       'Nearly every Prosper neighborhood has an active HOA with architectural review, so we prepare the HOA package alongside the town permit and keep both moving in parallel.',
     ],
     permitNote: 'Like nearly every DFW municipality, Prosper requires a building permit for patio covers and permanent accessory structures, and Prosper HOAs typically require architectural approval before construction. Structure1 prepares the drawings, submits the permit, and provides the HOA package on every Prosper project.',

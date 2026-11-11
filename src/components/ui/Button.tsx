@@ -22,6 +22,14 @@ const styles = {
 
 export default function Button({ children, href, onClick, type = 'button', variant = 'primary', tone = 'light', disabled, className }: Props) {
   const cls = cn(base, styles[variant][tone], className);
+  // In-page targets use a plain anchor so the browser moves keyboard focus to the target, too.
+  if (href?.startsWith('#')) {
+    return (
+      <a href={href} className={cls}>
+        {children}
+      </a>
+    );
+  }
   if (href) {
     return (
       <Link href={href} className={cls}>
