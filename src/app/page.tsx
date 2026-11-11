@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
+import HomeProof from '@/components/home/HomeProof';
 import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/sections/SectionHeader';
 import TrustBar from '@/components/sections/TrustBar';
@@ -7,24 +8,19 @@ import ServiceMosaic from '@/components/sections/ServiceMosaic';
 import ReelStrip from '@/components/sections/ReelStrip';
 import JobSiteBackdrop from '@/components/sections/JobSiteBackdrop';
 import ProjectFeature from '@/components/sections/ProjectFeature';
-import ProjectGrid from '@/components/sections/ProjectGrid';
 import ProcessSteps from '@/components/sections/ProcessSteps';
 import Testimonials from '@/components/sections/Testimonials';
 import ServiceAreaGrid from '@/components/sections/ServiceAreaGrid';
 import CTASection from '@/components/sections/CTASection';
 import Photo from '@/components/ui/Photo';
 import Button from '@/components/ui/Button';
-import { featuredProjects } from '@/content/projects';
 import { homeMosaicTiles } from '@/content/services';
 import { reels } from '@/content/reels';
 import { why } from '@/content/trust';
 import { company } from '@/content/company';
+import { HOME_FEATURE, homeProofProjects } from '@/content/home';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
-
-/** The project shown big above the "Recent work" grid; the grid excludes it and shows one wide lead plus two rows of three. */
-const HOME_FEATURE = 'gable-home-extension-watauga';
-const GRID_COUNT = 7;
 
 export default function HomePage() {
   return (
@@ -34,6 +30,8 @@ export default function HomePage() {
       <Section className="py-6 md:py-8">
         <TrustBar />
       </Section>
+
+      <HomeProof projects={homeProofProjects()} />
 
       <Section id="services" className="pt-10 md:pt-14">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
@@ -73,20 +71,6 @@ export default function HomePage() {
           heading="Gable home extension in Watauga"
           text="A cedar gable roof over the main living area, with a shed-roof wing continuing along the back of the house. Tongue-and-groove ceiling, recessed lighting, and fans over a new concrete patio, from our drawings to the final walk-through."
         />
-      </Section>
-
-      <Section>
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <SectionHeader className="lg:col-span-7" title="Recent work" text="Real projects, photographed on site when we finished." />
-          <div className="lg:col-span-5 lg:text-right">
-            <Button href="/projects" variant="link">
-              All projects
-            </Button>
-          </div>
-        </div>
-        <div className="mt-10">
-          <ProjectGrid projects={featuredProjects(GRID_COUNT, HOME_FEATURE)} feature />
-        </div>
       </Section>
 
       <Section>

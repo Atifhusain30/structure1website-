@@ -13,7 +13,7 @@ import { createLeadSubmitter, failureMessage } from '@/lib/lead-submit';
 import { offerNotice, serviceForOffer } from '@/lib/offer';
 
 const TIMELINES = ['As soon as possible', '1–3 months', '3–6 months', 'Just planning'];
-const field = 'h-12 w-full rounded border border-gray-200 bg-white px-4 text-body text-black placeholder:text-gray-500 focus:border-black focus:outline-none aria-[invalid=true]:border-red-500';
+const field = 'h-12 w-full rounded border border-gray-400 bg-white px-4 text-body text-black placeholder:text-gray-500 focus:border-black focus:outline-none aria-[invalid=true]:border-red-500';
 const label = 'mb-1.5 block text-meta font-medium text-gray-700';
 
 const currentAttribution = () => recordTouch(window.location.href, document.referrer, sessionStore());
@@ -162,6 +162,7 @@ export default function EstimateForm({ cta = 'Request My Estimate', compact = fa
           You&apos;re asking about: <span className="font-medium text-black">{notice}</span>
         </p>
       )}
+      <p className="text-meta text-gray-500">Fields marked * are required.</p>
       <div className={cn('grid sm:grid-cols-2', compact ? 'gap-4' : 'gap-5')}>
         <div>
           <label htmlFor={id('name')} className={label}>
@@ -225,7 +226,7 @@ export default function EstimateForm({ cta = 'Request My Estimate', compact = fa
         )}
         <div className="sm:col-span-2">
           <label htmlFor={id('message')} className={label}>
-            Project description
+            Project description <span className="font-normal text-gray-500">(optional)</span>
           </label>
           <textarea
             id={id('message')}

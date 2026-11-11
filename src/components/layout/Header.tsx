@@ -16,8 +16,8 @@ const links = [
 ];
 
 /**
- * Colors come from CSS variables set in globals.css: the header is white by default and turns
- * transparent/white-on-photo only while the page has a [data-dark-hero] section and the header is
+ * Colors come from CSS variables set in globals.css: the header is white by default and turns into a
+ * near-black bar with white text only while the page has a [data-dark-hero] section and the header is
  * neither scrolled nor open. That is decided in CSS at first paint, so there is no flash on load.
  */
 export default function Header() {

@@ -6,9 +6,13 @@
   --header-h: 80px;
 }
 
-/* Header colors. White by default; white-on-photo only while a dark hero is on the page and the header is at the top and closed. */
+/* Header colors. White by default; white text on a near-black bar only while a dark hero is on the page and the header is at the top and closed.
+   The bar is mostly opaque so a bright sky in the hero photo cannot wash the links out. */
 header[data-header] { --hdr-fg: #0E0E0E; --hdr-muted: #4A4946; --hdr-bg: #FFFFFF; --hdr-line: #E4E2DC; --hdr-cta-bg: #0E0E0E; --hdr-cta-fg: #FFFFFF; --hdr-cta-hover: #2B2B2B; }
-body:has([data-dark-hero]) header[data-header]:not([data-scrolled]):not([data-open]) { --hdr-fg: #FFFFFF; --hdr-muted: rgba(255,255,255,0.82); --hdr-bg: transparent; --hdr-line: transparent; --hdr-cta-bg: #FFFFFF; --hdr-cta-fg: #0E0E0E; --hdr-cta-hover: #F3F2EE; }
+body:has([data-dark-hero]) header[data-header]:not([data-scrolled]):not([data-open]) { --hdr-fg: #FFFFFF; --hdr-muted: rgba(255,255,255,0.86); --hdr-bg: rgba(14,14,14,0.82); --hdr-line: rgba(255,255,255,0.12); --hdr-cta-bg: #FFFFFF; --hdr-cta-fg: #0E0E0E; --hdr-cta-hover: #F3F2EE; --focus: #FFFFFF; }
+/* Focus rings are white wherever the ground is dark: the hero headline and its actions (not the white estimate card). */
+[data-dark-hero] .hero-copy { --focus: #FFFFFF; }
+#services-menu { --focus: #0E0E0E; }
 /* Keep the mobile sticky bar from covering the footer's last row. */
 @media (max-width: 1023px) { footer { padding-bottom: 4.5rem; } }
 
@@ -20,7 +24,7 @@ img { display: block; max-width: 100%; }
 ::selection { background: #0E0E0E; color: #fff; }
 
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
-  outline: 2px solid #0E0E0E;
+  outline: 2px solid var(--focus, #0E0E0E);
   outline-offset: 2px;
 }
 

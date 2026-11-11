@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import { photos, focalStyle, type Photo as PhotoEntry, type PhotoId } from '@/content/images';
 import { cn } from '@/lib/utils';
@@ -18,6 +19,7 @@ export default function Photo({
   priority = false,
   className,
   hover = false,
+  position,
 }: {
   id: PhotoId;
   ratio?: keyof typeof ratios;
@@ -25,8 +27,13 @@ export default function Photo({
   priority?: boolean;
   className?: string;
   hover?: boolean;
+  /** Overrides the registry focal for this use only: object-position on small screens, and from `lg` up. */
+  position?: { base: string; lg: string };
 }) {
   const p: PhotoEntry = photos[id];
+  const crop = position
+    ? { className: 'object-cover object-[var(--pos)] lg:object-[var(--pos-lg)]', style: { '--pos': position.base, '--pos-lg': position.lg } as CSSProperties }
+    : { className: 'object-cover', style: focalStyle(p) };
   return (
     <div className={cn('relative overflow-hidden bg-gray-200', ratios[ratio], hover && 'photo-hover', className)}>
       <Image
@@ -37,8 +44,8 @@ export default function Photo({
         priority={priority}
         loading={priority ? 'eager' : 'lazy'}
         quality={82}
-        className="object-cover"
-        style={focalStyle(p)}
+        className={crop.className}
+        style={crop.style}
       />
     </div>
   );

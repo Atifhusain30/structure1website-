@@ -9,7 +9,8 @@ const config: Config = {
         offwhite: '#F3F2EE',
         black: '#0E0E0E',
         charcoal: '#2B2B2B',
-        gray: { 200: '#E4E2DC', 500: '#6B6A65', 700: '#4A4946' },
+        // 400 is for form field borders: the lightest gray that still meets 3:1 against white.
+        gray: { 200: '#E4E2DC', 400: '#8F8D87', 500: '#6B6A65', 700: '#4A4946' },
       },
       fontFamily: {
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],
