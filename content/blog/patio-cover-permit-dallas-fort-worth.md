@@ -6,7 +6,7 @@ date: "2026-01-15"
 lastModified: "2026-01-15"
 category: "Planning"
 featuredImage: "/images/hero/jeff2.JPG"
-featuredImageAlt: "Lean-to patio cover with dark wood ceiling and recessed lighting in Forney Texas by Structure1 Construction"
+featuredImageAlt: "Lean-to patio cover with dark wood ceiling and recessed lighting in Forney Texas by Structure1 Builds"
 keywords:
   - "patio cover permit Texas"
   - "patio cover permit Dallas"
@@ -162,7 +162,7 @@ The permit process exists to protect you. The cost of a permit is a small fracti
 
 ## How Structure1 Handles Permits for You
 
-At Structure1 Construction, permit handling is included in every project. It's not an add-on, it's not optional, and we never skip it. Here's what our process looks like:
+At Structure1 Builds, permit handling is included in every project. It's not an add-on, it's not optional, and we never skip it. Here's what our process looks like:
 
 ### Step 1: Engineering
 
@@ -235,7 +235,7 @@ You can apply for a retroactive permit (sometimes called an "after-the-fact" per
 
 Permits aren't optional in DFW — and they shouldn't be treated as a nuisance. They're a safeguard that protects your investment, your family, and your home's value. The permit process adds a few weeks to your project timeline, but the alternative (fines, removal orders, insurance denials, and resale complications) isn't worth the shortcut.
 
-At Structure1 Construction, we build every project to code with full permits and inspections. It's how we've completed over 150 projects across Dallas-Fort Worth with zero code violations. When you work with us, you don't have to think about permits, plans, or inspections — we handle all of it.
+At Structure1 Builds, we build every project to code with full permits and inspections. It's how we've completed over 150 projects across Dallas-Fort Worth with zero code violations. When you work with us, you don't have to think about permits, plans, or inspections — we handle all of it.
 
 Ready to start planning your patio cover? [Get a free estimate](/estimate) and we'll handle the rest — including every step of the permit process. You can also call us at **(580) 665-2758** or visit our [patio cover services](/services/patio-covers) page to learn more.
 

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Section from '@/components/layout/Section';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import { company } from '@/content/company';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'Privacy policy for Structure1 Construction. Learn how we collect, use, and protect your personal information.',
+  description: 'Privacy policy for Structure1 Builds. Learn how we collect, use, and protect your personal information.',
   alternates: { canonical: '/privacy' },
 };
 
@@ -13,7 +14,14 @@ const sections = [
     title: 'Information We Collect',
     body: `We collect information you provide directly to us, such as when you fill out our contact form,
       request a consultation, or communicate with us. This may include your name, email address, phone number,
-      and details about your project.`,
+      and details about your project. When you send the estimate form, it also includes how you found us: the page
+      you sent it from; the page you first arrived on, as a path without the rest of the address; the website that
+      referred you, as its domain only; and, if the link you followed had them, ad campaign labels (such as the
+      campaign name), ad click identifiers from Google or Meta, and the offer you asked about. Until you send the
+      form, these details stay in your browser's session storage (sessionStorage) for that tab and are not sent
+      anywhere; closing the tab clears them. We keep only a short list of these fields, limit their length and
+      drop campaign labels that look like an email address, but because they come from the link itself, we
+      cannot guarantee they never contain other information.`,
   },
   {
     title: 'How We Use Your Information',
@@ -46,7 +54,7 @@ const sections = [
   },
   {
     title: 'Contact Us',
-    body: `If you have any questions about this Privacy Policy, please reach out via the contact form or email us at info@structure1.com.`,
+    body: `If you have any questions about this Privacy Policy, please reach out via the contact form or email us at ${company.email}.`,
   },
 ];
 
@@ -56,7 +64,7 @@ export default function PrivacyPage() {
       <Breadcrumbs items={[{ label: 'Privacy Policy' }]} />
       <p className="mt-8 text-eyebrow text-gray-500">Legal</p>
       <h1 className="mt-4 font-display text-h1">Privacy Policy</h1>
-      <p className="mt-3 text-meta text-gray-500">Last updated: October 2026</p>
+      <p className="mt-3 text-meta text-gray-500">Last updated: November 2026</p>
       <div className="prose-article mt-10">
         {sections.map((s) => (
           <section key={s.title}>

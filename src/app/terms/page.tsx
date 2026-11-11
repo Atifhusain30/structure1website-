@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'Terms of service for Structure1 Construction. Read our terms and conditions for using our services.',
+  description: 'Terms of service for Structure1 Builds. Read our terms and conditions for using our services.',
   alternates: { canonical: '/terms' },
 };
 
@@ -16,19 +16,19 @@ const sections = [
   },
   {
     title: 'Use License',
-    body: `Permission is granted to temporarily view the materials on Structure1 Construction's website for
+    body: `Permission is granted to temporarily view the materials on the Structure1 Builds website for
       personal, non-commercial use only. This license does not include modifying or copying materials, using
       them for commercial purposes, or removing copyright notices.`,
   },
   {
     title: 'Disclaimer',
-    body: `Materials on this website are provided on an 'as is' basis. Structure1 Construction makes no
+    body: `Materials on this website are provided on an 'as is' basis. Structure1 Builds makes no
       warranties, expressed or implied, and disclaims all other warranties including, without limitation,
       implied warranties of merchantability or fitness for a particular purpose.`,
   },
   {
     title: 'Limitations',
-    body: `In no event shall Structure1 Construction or its suppliers be liable for any damages (including,
+    body: `In no event shall Structure1 Builds or its suppliers be liable for any damages (including,
       without limitation, damages for loss of data or profit) arising out of the use or inability to use the
       materials on this website.`,
   },

@@ -261,6 +261,6 @@ Here's how to take the next step:
 
 1. **Browse our work.** Check out [our completed projects](/projects) to see real examples of patio covers and outdoor spaces we've built across DFW.
 2. **Understand your options.** Read our guides on [patio cover types](/blog/types-of-patio-covers-guide), [material choices](/blog/best-patio-cover-materials-texas), and [what determines patio cover cost in DFW](/blog/patio-cover-cost-dallas-fort-worth) to get informed before your consultation.
-3. **Get your free estimate.** [Contact Structure1 Construction](/estimate) for a free, no-pressure consultation. We'll visit your property, discuss your vision, and provide a detailed estimate. Call us at **(580) 665-2758** or fill out our online form — we typically respond within 24 hours.
+3. **Get your free estimate.** [Contact Structure1 Builds](/estimate) for a free, no-pressure consultation. We'll visit your property, discuss your vision, and provide a detailed estimate. Call us at **(580) 665-2758** or fill out our online form — we typically respond within 24 hours.
 
 We've been building custom [patio covers across Dallas-Fort Worth](/services/patio-covers) for over 4 years, with 150+ completed projects and a 2-year workmanship warranty on every build. Licensed, insured, and ready to make your backyard the best room in your house.

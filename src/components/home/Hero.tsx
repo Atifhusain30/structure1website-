@@ -7,7 +7,8 @@ import { company } from '@/content/company';
 /**
  * The home hero: one calm photo with the headline on the left and the estimate card on the right, so a visitor
  * can ask for a quote without leaving the first screen. On phones the photo backs only the headline band and
- * the card follows it on a dark ground, so the photo is not stretched behind a tall form.
+ * the card follows it on a dark ground, so the photo is not stretched behind a tall form, and a
+ * "Get a free estimate" button (phones only) jumps to it ahead of the secondary "See the work".
  */
 export default function Hero() {
   return (
@@ -22,12 +23,18 @@ export default function Hero() {
           <p className="mt-5 max-w-xl text-lead text-white/85">
             Patio covers, concrete, and complete outdoor rooms across Dallas–Fort Worth. One in-house crew from drawings to final walk-through.
           </p>
-          <Button href="/projects" variant="secondary" tone="dark" className="mt-8">
-            See the work
-          </Button>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {/* Phones stack the card below the headline, so give them a direct way to it. */}
+            <Button href="#hero-estimate" tone="dark" className="lg:hidden">
+              Get a free estimate
+            </Button>
+            <Button href="/projects" variant="secondary" tone="dark">
+              See the work
+            </Button>
+          </div>
         </div>
         <div className="hero-block lg:col-span-5">
-          <div className="bg-white p-6 text-black shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] lg:p-7">
+          <div id="hero-estimate" tabIndex={-1} className="scroll-mt-20 bg-white p-6 focus:outline-none text-black shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] lg:p-7">
             <Eyebrow>Free estimate</Eyebrow>
             <h2 className="mt-2 font-display text-h3">Tell us about the project</h2>
             <p className="mt-2 text-small text-gray-700">

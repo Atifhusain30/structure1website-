@@ -159,4 +159,4 @@ If you're planning to stay in your home for at least 2–3 years, the combinatio
 
 View our [completed patio cover projects across DFW](/projects) to see the quality and craftsmanship that goes into every Structure1 build.
 
-When you're ready to explore what a patio cover could look like in your backyard, [get a free estimate](/estimate) from Structure1 Construction. We've been building covered outdoor spaces across Dallas-Fort Worth for over 4 years, backed by a 2-year workmanship warranty on every project. Call us at **(580) 665-2758** or fill out our contact form to get started.
+When you're ready to explore what a patio cover could look like in your backyard, [get a free estimate](/estimate) from Structure1 Builds. We've been building covered outdoor spaces across Dallas-Fort Worth for over 4 years, backed by a 2-year workmanship warranty on every project. Call us at **(580) 665-2758** or fill out our contact form to get started.

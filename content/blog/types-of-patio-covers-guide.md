@@ -6,7 +6,7 @@ date: "2026-01-15"
 lastModified: "2026-01-15"
 category: "Design Ideas"
 featuredImage: "/images/hero/buckfin1.JPG"
-featuredImageAlt: "Classic gable patio cover with white trusses and cedar posts built in McKinney Texas by Structure1 Construction"
+featuredImageAlt: "Classic gable patio cover with white trusses and cedar posts built in McKinney Texas by Structure1 Builds"
 keywords:
   - "types of patio covers"
   - "patio cover styles"
@@ -18,7 +18,7 @@ keywords:
 
 Choosing a patio cover style isn't just about looks — though looks absolutely matter. The style you pick determines how much shade you get, how the structure handles DFW storms, what it costs, and how well it integrates with your home's architecture. Pick the wrong style and you end up with a structure that feels like an afterthought. Pick the right one and your outdoor space looks like it was always part of the original build.
 
-At Structure1 Construction, we've built every style of patio cover across Dallas-Fort Worth over the past four years — gable, lean-to, open-rafter, polycarbonate, hip, and custom combinations. This guide walks you through each option with honest pros, cons, pricing, and guidance on which style fits your situation.
+At Structure1 Builds, we've built every style of patio cover across Dallas-Fort Worth over the past four years — gable, lean-to, open-rafter, polycarbonate, hip, and custom combinations. This guide walks you through each option with honest pros, cons, pricing, and guidance on which style fits your situation.
 
 ## Gable Patio Covers
 
@@ -243,6 +243,6 @@ Will you want to screen in the patio later? Add a fireplace? Extend the cover fu
 
 If you've read this far, you probably have a strong sense of which style appeals to you — but you might still be unsure about what works best for *your specific home and yard.* That's where a site visit makes all the difference.
 
-At Structure1 Construction, we offer free on-site consultations across Dallas-Fort Worth. We'll walk your yard, discuss your goals, show you photos of similar projects we've completed, and provide a detailed estimate — all with no obligation.
+At Structure1 Builds, we offer free on-site consultations across Dallas-Fort Worth. We'll walk your yard, discuss your goals, show you photos of similar projects we've completed, and provide a detailed estimate — all with no obligation.
 
 [Get a free estimate](/estimate) or call us directly at **(580) 665-2758**. You can also browse our [patio cover services](/services/patio-covers) and [project gallery](/projects) to see our work across DFW.

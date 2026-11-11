@@ -6,7 +6,7 @@ date: "2026-01-15"
 lastModified: "2026-01-15"
 category: "Patio Covers"
 featuredImage: "/images/hero/sashi3.JPG"
-featuredImageAlt: "Polycarbonate patio cover with ceiling fan installed in Plano Texas by Structure1 Construction"
+featuredImageAlt: "Polycarbonate patio cover with ceiling fan installed in Plano Texas by Structure1 Builds"
 keywords:
   - "solid roof vs polycarbonate patio cover"
   - "difference between solid roof and polycarbonate patio cover"

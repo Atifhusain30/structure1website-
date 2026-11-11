@@ -1,5 +1,5 @@
 export const company = {
-  name: 'Structure1 Construction',
+  name: 'Structure1 Builds',
   brand: 'Structure1',
   tagline: 'DFW Residential Construction & Outdoor Living',
   phone: '(580) 665-2758', // owner to replace with a DFW number

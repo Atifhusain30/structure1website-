@@ -195,7 +195,7 @@ Most patio cover maintenance is DIY-friendly. But some situations call for profe
 
 ## Structure1's 2-Year Workmanship Warranty
 
-Every patio cover we build at Structure1 Construction comes with a **2-year workmanship warranty**. Here's what that means in practice:
+Every patio cover we build at Structure1 Builds comes with a **2-year workmanship warranty**. Here's what that means in practice:
 
 **What's covered:**
 - Any defect in construction or installation attributable to our workmanship
@@ -236,4 +236,4 @@ Here's a quick-reference table for your annual maintenance calendar:
 
 That's a modest commitment to protect a structure you've invested in — one that adds real value to your home. Proper maintenance is what separates a patio cover that looks tired and neglected after 10 years from one that still looks beautiful after 30.
 
-For more on choosing the right structure and materials in the first place, read our guide on the [types of patio covers](/blog/types-of-patio-covers-guide) and our [material comparison for Texas weather](/blog/best-patio-cover-materials-texas). And when you're ready to build a patio cover that's designed to last in the DFW climate, [get a free estimate](/estimate) from Structure1 Construction — or call us directly at **(580) 665-2758**.
+For more on choosing the right structure and materials in the first place, read our guide on the [types of patio covers](/blog/types-of-patio-covers-guide) and our [material comparison for Texas weather](/blog/best-patio-cover-materials-texas). And when you're ready to build a patio cover that's designed to last in the DFW climate, [get a free estimate](/estimate) from Structure1 Builds — or call us directly at **(580) 665-2758**.

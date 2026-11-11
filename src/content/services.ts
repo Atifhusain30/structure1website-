@@ -14,7 +14,7 @@ export const services: Service[] = [
     gallery: ['gable-dfw', 'pergola-midlothian', 'pergola-lewisville-1'],
     lead: 'Covered outdoor rooms with roofing matched to your home, engineered for North Texas wind, and built by one in-house crew.',
     overview: [
-      'Structure1 Construction is a patio cover builder serving the entire Dallas-Fort Worth metroplex — Dallas, Fort Worth, Plano, Frisco, McKinney, Arlington, and 20+ surrounding cities. We design and build gable covers with shingles matched to your existing roof, cost-effective lean-to designs, and polycarbonate-roof covers that keep the light, all engineered for North Texas wind loads and built from Western Red Cedar on steel-anchored footings.',
+      'Structure1 Builds is a patio cover builder serving the entire Dallas-Fort Worth metroplex — Dallas, Fort Worth, Plano, Frisco, McKinney, Arlington, and 20+ surrounding cities. We design and build gable covers with shingles matched to your existing roof, cost-effective lean-to designs, and polycarbonate-roof covers that keep the light, all engineered for North Texas wind loads and built from Western Red Cedar on steel-anchored footings.',
       'Covers can attach to the home or stand free on their own steel-anchored footings by a pool or dining area, and a framed back wall adds privacy and wind protection. Our builds in Plano, Fort Worth, Lewisville, and Midlothian include recessed lighting, ceiling fans, and tongue-and-groove ceilings.',
       'Every project includes permits and engineering — we handle drawings, city submission, and inspections in every DFW municipality.',
     ],
@@ -55,7 +55,7 @@ export const services: Service[] = [
     gallery: ['stamped-flagstone', 'stamped-patio-forney-1', 'stamped-driveway-dallas'],
     lead: 'Patios, slabs, driveways, and replacements built for expansive North Texas clay: compacted base, steel rebar, correct thickness, and control joints on a real grid.',
     overview: [
-      'Structure1 Construction is a concrete contractor serving Dallas-Fort Worth — patios, driveways, walkways, and decorative finishes across Dallas, Plano, Frisco, McKinney, Arlington, Fort Worth, and the surrounding metroplex. North Texas clay soil expands and contracts with every wet-dry cycle, so we build for it: compacted base, steel reinforcement (rebar, not wire mesh), proper slab thickness, and control joints cut on a correct grid.',
+      'Structure1 Builds is a concrete contractor serving Dallas-Fort Worth — patios, driveways, walkways, and decorative finishes across Dallas, Plano, Frisco, McKinney, Arlington, Fort Worth, and the surrounding metroplex. North Texas clay soil expands and contracts with every wet-dry cycle, so we build for it: compacted base, steel reinforcement (rebar, not wire mesh), proper slab thickness, and control joints cut on a correct grid.',
       'Concrete also pairs naturally with our patio covers: one crew pours the slab and builds the structure above it, on one permit and one timeline.',
     ],
     options: [
