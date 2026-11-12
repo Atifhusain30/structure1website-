@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { BlogPost } from '@/lib/blog';
+import { sourceFocalStyle } from '@/content/images';
 
 export default function ArticleCard({ post, priority = false }: { post: BlogPost; priority?: boolean }) {
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
       <div className="photo-hover relative aspect-[4/3] overflow-hidden bg-gray-200">
-        <Image src={post.featuredImage} alt={post.featuredImageAlt} fill sizes="(max-width: 768px) 100vw, 33vw" priority={priority} className="object-cover" />
+        <Image src={post.featuredImage} alt={post.featuredImageAlt} fill sizes="(max-width: 768px) 100vw, 33vw" priority={priority} className="object-cover" style={sourceFocalStyle(post.featuredImage)} />
       </div>
       <p className="mt-4 text-meta text-gray-500">
         {post.category} · {post.readTime}

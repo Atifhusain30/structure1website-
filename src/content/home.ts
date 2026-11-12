@@ -17,7 +17,8 @@ export const HERO_PHOTO: { id: PhotoId; position: { base: string; lg: string } }
 /** The project shown big lower on the home page. */
 export const HOME_FEATURE = 'gable-home-extension-watauga';
 
-/** Early proof right under the hero: three finished projects that are not the hero photo or the big feature. */
-export const HOME_PROOF = ['gable-patio-cover-poolside', 'free-standing-patio-cover-pavers-walkway', 'classic-gable-patio-cover'];
+/** Owner-selected recent work: Watauga, the patio/kitchen/turf renovation, then McKinney.
+ * Reuse of the hero project and lower feature is intentional for this selection. */
+export const HOME_PROOF = ['gable-home-extension-watauga', 'backyard-concrete-patio-kitchen-turf', 'classic-gable-patio-cover'];
 
 export const homeProofProjects = (): Project[] => HOME_PROOF.map((slug) => getProject(slug)).filter((p): p is Project => Boolean(p));

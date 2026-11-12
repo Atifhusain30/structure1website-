@@ -89,7 +89,7 @@ export const services: Service[] = [
       description: 'Stamped concrete patios, pool decks & entries in Dallas-Fort Worth. Ashlar slate, random stone, wood plank & brick patterns. $12–$22/sq ft. Free estimates.',
     },
     hero: 'stamped-patio-forney-1',
-    gallery: ['stamped-flagstone', 'stamped-wood-plank', 'stamped-herringbone'],
+    gallery: ['stamped-flagstone', 'stamped-tile', 'stamped-herringbone'],
     lead: 'The look of stone, slate, brick, or wood plank in a single reinforced slab, in integral and antiqued colors chosen to match your home.',
     overview: [
       'Stamped finishes are our concrete specialty. We install the most popular DFW patterns — ashlar slate, random stone, wood plank, herringbone brick, and cobblestone — in integral and antiqued color combinations that complement Texas home exteriors.',

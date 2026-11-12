@@ -6,7 +6,7 @@ date: "2026-01-20"
 lastModified: "2026-01-20"
 category: "Design Ideas"
 featuredImage: "/images/hero/cover4.JPG"
-featuredImageAlt: "Patio cover with protective back wall providing privacy and shade in a Midlothian Texas backyard"
+featuredImageAlt: "Cedar gable patio cover beside a pool in a Midlothian, Texas backyard"
 keywords:
   - "patio cover ideas"
   - "patio cover designs Texas"
