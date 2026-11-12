@@ -24,7 +24,7 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
     title: { absolute: c.seo.title },
     description: c.seo.description,
     alternates: { canonical: `/service-areas/${c.slug}` },
-    openGraph: { images: [{ url: photos[c.hero].src, alt: photos[c.hero].alt }] },
+    openGraph: { images: [{ url: photos[c.hero].src, alt: `Representative DFW project: ${photos[c.hero].alt}` }] },
   };
 }
 
@@ -51,6 +51,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
         title={`Patio Covers & Concrete in ${c.name}, TX`}
         lead={c.seo.description}
         photo={c.hero}
+        caption="DFW project example"
       />
       <Section>
         <div className="grid gap-10 lg:grid-cols-12">

@@ -6,7 +6,7 @@ date: "2026-01-15"
 lastModified: "2026-01-15"
 category: "Cost Guide"
 featuredImage: "/images/hero/cover1.JPG"
-featuredImageAlt: "Custom gable patio cover with cedar posts installed in Dallas-Fort Worth by Structure1 Builds"
+featuredImageAlt: "Cedar patio cover photographed at night with recessed lighting, built in Dallas-Fort Worth by Structure1 Builds"
 keywords:
   - "patio cover cost Texas"
   - "patio cover cost DFW"

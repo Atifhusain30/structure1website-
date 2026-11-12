@@ -43,7 +43,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'lean-to-patio-cover', title: 'Lean-To Style Patio Cover', service: 'patio-covers', city: null, location: 'Forney, TX',
-    cover: 'leanto-forney-2', gallery: ['leanto-forney-1', 'leanto-forney-3', 'leanto-forney-2'],
+    cover: 'leanto-forney-2', gallery: ['leanto-forney-2', 'leanto-forney-3'],
     overview: 'A modern lean-to patio cover attached to the existing roofline, with a dark-stained wood ceiling, recessed lighting, and a ceiling fan.',
     scope: ['Lean-to roof tied into the existing roofline with flashing', 'Dark-stained wood ceiling', 'Recessed lighting and ceiling fan', 'Permit package handled'],
     materials: ['Cedar framing', 'Dark-stained ceiling boards', 'Recessed LED fixtures'],
@@ -51,8 +51,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'polycarbonate-patio-cover-plano', title: 'Polycarbonate Patio Cover', service: 'patio-covers', city: 'plano', location: 'Plano, TX',
-    cover: 'pergola-plano-complete', gallery: ['pergola-plano-foundation', 'pergola-plano-framing', 'pergola-plano-complete', 'pergola-plano-fan'],
-    overview: 'A custom cedar patio cover with polycarbonate roofing and an integrated ceiling fan, documented from footings to finish, for year-round outdoor comfort in Plano.',
+    cover: 'pergola-plano-complete', gallery: ['pergola-plano-complete', 'pergola-plano-foundation', 'pergola-plano-framing', 'pergola-plano-fan'],
+    overview: 'A custom cedar patio cover with polycarbonate roofing and an integrated ceiling fan, for year-round outdoor comfort in Plano.',
     scope: ['Concrete footings and steel post anchors', 'Cedar frame', 'Polycarbonate roof panels', 'Ceiling fan installation'],
     materials: ['Western Red Cedar', 'Polycarbonate roof panels', 'Galvanized hardware'],
     featured: true,
@@ -83,7 +83,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'free-standing-modern-patio-cover', title: 'Free-Standing Modern Patio Cover', service: 'patio-covers', city: null, location: 'Lewisville, TX',
-    cover: 'pergola-lewisville-1', gallery: ['pergola-lewisville-1', 'pergola-lewisville-2'],
+    cover: 'pergola-lewisville-1', gallery: ['pergola-lewisville-1'],
     overview: 'A free-standing modern patio cover with cedar posts, a finished ceiling, recessed lighting, and ceiling fans.',
     scope: ['Free-standing structure on its own footings', 'Finished ceiling', 'Recessed lighting and ceiling fans'],
     materials: ['Western Red Cedar', 'Tongue-and-groove ceiling', 'Recessed LED fixtures'],
@@ -91,7 +91,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'stamped-concrete-patio', title: 'Stamped Concrete Patio', service: 'stamped-concrete', city: null, location: 'Forney, TX',
-    cover: 'stamped-patio-forney-1', gallery: ['stamped-patio-forney-1', 'stamped-patio-forney-2', 'stamped-patio-forney-3', 'stamped-patio-forney-4'],
+    cover: 'stamped-patio-forney-1', gallery: ['stamped-patio-forney-1', 'stamped-patio-forney-3'],
     overview: 'A stamped concrete patio with a premium stone-pattern finish, installed under a custom patio cover.',
     scope: ['Compacted base and rebar', 'Stamped stone-pattern patio', 'Sealer after cure', 'Built together with the patio cover above'],
     materials: ['Rebar-reinforced concrete', 'Stone-pattern stamp with integral color', 'Sealer'],

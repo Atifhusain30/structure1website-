@@ -12,6 +12,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import { getAllPostSlugs, getPostWithHtml, getRelatedPosts } from '@/lib/blog';
 import { getService } from '@/content/services';
 import { company } from '@/content/company';
+import { sourceFocalStyle } from '@/content/images';
 
 export function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({ slug }));
@@ -59,7 +60,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
       </Section>
       <Section className="pb-8 pt-0 md:pb-8 md:pt-0">
         <div className="relative aspect-[21/9] overflow-hidden bg-gray-200">
-          <Image src={post.featuredImage} alt={post.featuredImageAlt} fill priority sizes="(max-width: 1280px) 100vw, 1280px" className="object-cover" />
+          <Image src={post.featuredImage} alt={post.featuredImageAlt} fill priority sizes="(max-width: 1280px) 100vw, 1280px" className="object-cover" style={sourceFocalStyle(post.featuredImage)} />
         </div>
       </Section>
       <Section className="pt-0 md:pt-0">

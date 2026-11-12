@@ -5,8 +5,8 @@ excerpt: "Wondering if a patio cover is a smart investment for your Texas home? 
 date: "2026-01-20"
 lastModified: "2026-01-20"
 category: "Home Value"
-featuredImage: "/images/hero/cover5.jpg"
-featuredImageAlt: "Custom polycarbonate patio cover providing shade in a Dallas-Fort Worth backyard"
+featuredImage: "/images/projects/gable-watauga-wide.jpg"
+featuredImageAlt: "Cedar gable home extension with a shed-roof wing along the back of a brick home in Watauga, Texas"
 keywords:
   - "patio cover home value"
   - "patio cover ROI"

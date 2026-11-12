@@ -34,7 +34,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: company.url,
     siteName: company.name,
-    images: [{ url: '/images/hero/buckfin1.JPG', width: 1200, height: 630, alt: `Classic gable patio cover in McKinney, Texas by ${company.name}` }],
+    // 1200x630 crop of /images/hero/buckfin1.JPG, made by scripts/generate-og-image.mjs
+    images: [{ url: '/images/social/og-default.jpg', width: 1200, height: 630, alt: `Cedar gable patio cover with white trusses and recessed lighting in McKinney, Texas, built by ${company.name}` }],
   },
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
@@ -59,7 +60,7 @@ const localBusiness = {
   areaServed: serviceAreaList.map((name) => ({ '@type': 'City', name })),
   openingHours: 'Mo-Fr 08:00-18:00',
   sameAs: [company.social.facebook, company.social.instagram],
-  image: `${company.url}/images/hero/buckfin1.JPG`,
+  image: `${company.url}/images/social/og-default.jpg`,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -42,11 +42,11 @@ test('three real projects are shown as early proof, each with a location and sco
   }
 });
 
-test('the early proof does not repeat the hero photo or the big featured project below it', () => {
+test('owner-selected Watauga and patio-kitchen projects lead Recent projects', () => {
   const list = homeProofProjects();
   assert.ok(getProject(HOME_FEATURE), 'feature project exists');
-  assert.ok(!HOME_PROOF.includes(HOME_FEATURE));
-  assert.ok(list.every((p) => p.cover !== HERO_PHOTO.id));
+  assert.deepEqual(HOME_PROOF.slice(0, 2), ['gable-home-extension-watauga', 'backyard-concrete-patio-kitchen-turf']);
+  assert.ok(list.every((p) => photos[p.cover]), 'every selected project has an existing real cover photo');
 });
 
 test('proof projects keep their catalog location text verbatim (no invented cities)', () => {

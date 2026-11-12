@@ -5,39 +5,38 @@ export type Focal = 'center' | 'top' | 'bottom' | `${number}%`;
 export type Photo = { src: string; alt: string; focal?: Focal };
 
 export const photos = {
-  'gable-mckinney-1': { src: '/images/hero/buckfin1-new.JPG', alt: 'Classic gable patio cover with cedar posts and white trusses in McKinney, Texas' },
-  'gable-mckinney-2': { src: '/images/hero/buckfin1.JPG', alt: 'Gable patio cover with outdoor furniture in McKinney, Texas' },
+  'gable-mckinney-1': { src: '/images/hero/buckfin1-new.JPG', alt: 'Classic gable patio cover with cedar posts and white trusses in McKinney, Texas', focal: '18%' },
+  'gable-mckinney-2': { src: '/images/hero/buckfin1.JPG', alt: 'Gable patio cover with outdoor furniture in McKinney, Texas', focal: '18%' },
   'gable-mckinney-ceiling': { src: '/images/hero/buckfin2.JPG', alt: 'Tongue-and-groove wood ceiling and fan inside a gable patio cover in McKinney, Texas' },
-  'gable-mckinney-build': { src: '/images/hero/buckfin3.JPG', alt: 'Gable patio cover framing in progress in McKinney, Texas' },
-  'pergola-plano-foundation': { src: '/images/hero/sashi1.JPG', alt: 'Concrete footings poured for a cedar patio cover in Plano, Texas' },
+  'gable-mckinney-build': { src: '/images/hero/buckfin3.JPG', alt: 'Gable patio cover framing in progress in McKinney, Texas', focal: '10%' },
+  'pergola-plano-foundation': { src: '/images/hero/sashi1.JPG', alt: 'Stamped concrete patio slab beside a two-story home in Plano, Texas' },
   'pergola-plano-framing': { src: '/images/hero/sashi2.jpg', alt: 'Cedar patio cover frame under construction in Plano, Texas' },
   'pergola-plano-complete': { src: '/images/hero/sashi3.JPG', alt: 'Completed cedar patio cover with polycarbonate roof in Plano, Texas' },
   'pergola-plano-complete-2': { src: '/images/hero/sashi3-new.JPG', alt: 'Cedar patio cover with polycarbonate roof panels in Plano, Texas' },
   'pergola-plano-fan': { src: '/images/hero/sashi4.JPG', alt: 'Polycarbonate patio cover roof with ceiling fan in Plano, Texas' },
   'pergola-lewisville-1': { src: '/images/hero/cover1.JPG', alt: 'Free-standing modern cedar patio cover with recessed lighting in Lewisville, Texas' },
-  'pergola-lewisville-2': { src: '/images/hero/cover2.JPG', alt: 'Cedar patio cover with tongue-and-groove ceiling and fans in Lewisville, Texas' },
   'pergola-fort-worth': { src: '/images/hero/cover3.JPG', alt: 'Cedar patio cover with polycarbonate roof and ceiling fans in Fort Worth, Texas' },
-  'pergola-midlothian': { src: '/images/hero/cover4.JPG', alt: 'Cedar gable patio cover with exposed trusses and tongue-and-groove ceiling beside a pool in Midlothian, Texas' },
-  'patio-cover-dfw-1': { src: '/images/hero/cover5.jpg', alt: 'Custom patio cover with polycarbonate panels in Dallas-Fort Worth' },
-  'gable-dfw': { src: '/images/hero/debrabuck.JPG', alt: 'Gable patio cover with cedar posts and white trusses over a concrete patio in McKinney, Texas' },
+  'pergola-midlothian': { src: '/images/hero/cover4.JPG', alt: 'Cedar gable patio cover with exposed trusses and tongue-and-groove ceiling beside a pool in Midlothian, Texas', focal: '30%' },
+  'patio-cover-dfw-1': { src: '/images/hero/cover5.jpg', alt: 'Collage of several different patio covers built across Dallas-Fort Worth' },
+  'gable-dfw': { src: '/images/hero/debrabuck.JPG', alt: 'Gable patio cover with cedar posts and white trusses over a concrete patio in McKinney, Texas', focal: '18%' }, // same file as gable-mckinney-2
   'gable-dallas-dusk': { src: '/images/hero/main-hero.jpg', alt: 'Cedar gable patio cover at dusk in Dallas-Fort Worth', focal: '32%' },
-  'leanto-forney-1': { src: '/images/hero/jeff1.jpg', alt: 'Lean-to patio cover attached to the roofline in Forney, Texas' },
+  'leanto-forney-1': { src: '/images/hero/jeff1.jpg', alt: 'Uncovered concrete patio beside a home' },
   'leanto-forney-2': { src: '/images/hero/jeff2.JPG', alt: 'Lean-to patio cover with dark wood ceiling, recessed lighting, and fan in Forney, Texas' },
   'leanto-forney-3': { src: '/images/hero/jeff3.JPG', alt: 'Lean-to patio cover detail in Forney, Texas' },
   'concrete-patio-modern': { src: '/images/concrete/concrete-patio-modern.jpg', alt: 'Broom-finish concrete patio behind a modern stone-and-stucco home with a covered porch in Dallas-Fort Worth', focal: '58%' },
   'stamped-flagstone': { src: '/images/hero/concrete1.jpg', alt: 'Stamped concrete patio in a flagstone pattern under a cedar polycarbonate patio cover in Dallas-Fort Worth', focal: '62%' },
-  'stamped-wood-plank': { src: '/images/hero/concrete2.jpg', alt: 'Wood-plank stamped concrete' },
+  'stamped-random-stone': { src: '/images/hero/concrete2.jpg', alt: 'Random-stone pattern stamped concrete patio beside a cedar post' },
   'concrete-slab-pour': { src: '/images/hero/concrete3.jpg', alt: 'Freshly poured and finished concrete patio slab behind a brick home in Dallas-Fort Worth', focal: '62%' },
   'stamped-tile': { src: '/images/hero/Concrete4.jpg', alt: 'Multi-tone tile-pattern stamped concrete' },
   'stamped-herringbone': { src: '/images/hero/Concrete5.jpg', alt: 'Herringbone brick-pattern stamped concrete' },
-  'stamped-stone-texture': { src: '/images/hero/concrete6.jpg', alt: 'Flagstone-texture stamped concrete detail' },
+  'stamped-stone-texture': { src: '/images/hero/concrete6.jpg', alt: 'Rectangular stone-pattern stamped concrete patio beneath a cedar cover' },
   'stamped-driveway-dallas': { src: '/images/images V2/stamped concrete 2.jpeg', alt: 'Stamped concrete driveway with decorative border in Dallas, Texas' },
   'driveway-dallas': { src: '/images/images V2/concrete driveway.jpeg', alt: 'Concrete driveway in Dallas, Texas' },
   'stamped-patio-forney-1': { src: '/images/images V2/stamped concrete 3.jpeg', alt: 'Stamped concrete patio in a stone pattern in Forney, Texas' },
-  'stamped-patio-forney-2': { src: '/images/images V2/stamped concrete 4.jpeg', alt: 'Stamped concrete patio under a patio cover in Forney, Texas' },
-  'stamped-patio-forney-3': { src: '/images/images V2/stamped concrete 5.jpeg', alt: 'Stamped concrete patio surface detail in Forney, Texas' },
-  'stamped-patio-forney-4': { src: '/images/images V2/stamped concrete 6.jpeg', alt: 'Stamped concrete patio in a slate pattern in Forney, Texas' },
-  'carport-melissa-1': { src: '/images/images V2/andrew 2.jpeg', alt: 'Gable-style cedar carport with tongue-and-groove ceiling in Melissa, Texas' },
+  'stamped-patio-forney-2': { src: '/images/images V2/stamped concrete 4.jpeg', alt: 'Open stamped concrete patio with a rectangular stone pattern and a center medallion' },
+  'stamped-patio-forney-3': { src: '/images/images V2/stamped concrete 5.jpeg', alt: 'Wide view of a stamped concrete patio under a cedar patio cover with a ceiling fan in Forney, Texas' },
+  'stamped-patio-forney-4': { src: '/images/images V2/stamped concrete 6.jpeg', alt: 'Curved stamped concrete patio in a slate pattern beside a brick home' },
+  'carport-melissa-1': { src: '/images/images V2/andrew 2.jpeg', alt: 'Gable-style cedar carport with tongue-and-groove ceiling in Melissa, Texas', focal: '5%' },
   'carport-melissa-2': { src: '/images/images V2/andrew1.jpeg', alt: 'Cedar carport with decorative metal brackets in Melissa, Texas' },
   'carport-melissa-3': { src: '/images/images V2/andrew3.jpeg', alt: 'Cedar carport detail in Melissa, Texas' },
   'reno-pergola-turf-wide': { src: '/images/outdoor-renovation/pergola-turf-wide.jpg', alt: 'Free-standing cedar patio cover over a concrete patio with an outdoor kitchen and artificial turf behind a white brick home', focal: '36%' },
@@ -63,3 +62,11 @@ export type PhotoId = keyof typeof photos;
 export const photo = (id: PhotoId): Photo => photos[id];
 /** Inline object-position for a photo's focal point, for any renderer that crops with object-cover. Undefined keeps the default center crop. */
 export const focalStyle = (p: Photo): CSSProperties | undefined => (p.focal ? { objectPosition: `50% ${p.focal}` } : undefined);
+
+/** Markdown blog images use file paths rather than PhotoIds; keep their crops consistent.
+ * cover2.JPG is a byte-identical legacy copy of buckfin1.JPG, not a separate project. */
+export const sourceFocalStyle = (src: string): CSSProperties | undefined => {
+  const canonical = src === '/images/hero/cover2.JPG' ? photos['gable-mckinney-2'].src : src;
+  const entry: Photo | undefined = Object.values(photos).find((p) => p.src === canonical);
+  return entry ? focalStyle(entry) : undefined;
+};
